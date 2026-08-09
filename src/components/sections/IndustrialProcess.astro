@@ -1,0 +1,42 @@
+---
+const process = [
+  ["01", "Brief técnico", "Relevamos la idea, el uso y la cantidad para recomendar la mejor técnica."],
+  ["02", "Prueba DTF", "Ajustamos color, escala y posición antes de comenzar la producción completa."],
+  ["03", "Mesa crítica", "Controlamos cada pieza y cada terminación durante todo el proceso."],
+  ["04", "Logística", "Preparamos, protegemos y despachamos tu pedido para que llegue impecable."],
+];
+---
+
+<section class="section section-grid industrial">
+  <div class="section-rail section-rail--magenta" aria-hidden="true">Flujo industrial</div>
+  <div class="section-content">
+    <header class="section-heading">
+      <h2>Paso<br />a paso</h2>
+      <p>Un proceso ordenado y transparente para que tu producción llegue como la imaginaste.</p>
+    </header>
+    <div class="process-layout">
+      <div class="asset-slot asset-slot--process"><span>Foto del taller / showroom</span></div>
+      <div class="process-list">
+        {process.map(([number, title, text]) => (
+          <article>
+            <span>{number}</span>
+            <div><h3>{title}</h3><p>{text}</p></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(2rem,4vw,4.5rem); align-items: center; }
+  .asset-slot--process { min-height: clamp(460px, 39vw, 630px); }
+  .process-list { display: grid; gap: 1rem; }
+  .process-list article { min-height: 120px; padding: 1.55rem; display: grid; grid-template-columns: 46px 1fr; background: #0c0c0c; border: 1px solid var(--color-border); }
+  .process-list article > span { color: var(--color-magenta); font-size: .65rem; font-weight: 900; }
+  .process-list article:nth-child(3) > span { color: var(--color-yellow); }
+  .process-list article:nth-child(4) > span { color: #aaa; }
+  .process-list h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+  .process-list p { margin-top: .55rem; color: var(--color-text-muted); font-size: .69rem; }
+  @media (max-width: 640px) { .process-layout { grid-template-columns: 1fr; gap: 1.2rem; } .asset-slot--process { min-height: 380px; } .process-list article { min-height: 145px; padding: 1.3rem; } }
+</style>

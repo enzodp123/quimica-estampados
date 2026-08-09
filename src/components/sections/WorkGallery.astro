@@ -1,0 +1,27 @@
+<section id="trabajos" class="section section-grid watermark">
+  <div class="section-rail section-rail--cyan" aria-hidden="true">Nuestros</div>
+  <div class="section-content">
+    <header class="section-heading">
+      <div><p class="kicker">Cada detalle cuenta</p><h2>Trabajos<br />realizados</h2></div>
+      <p>Estas son algunas de las ideas que ayudamos a convertir en productos reales.</p>
+    </header>
+    <div class="work-grid" aria-label="Galería de trabajos">
+      {Array.from({ length: 6 }).map((_, index) => (
+        <div class={`asset-slot work-${index + 1}`}><span>Trabajo {index + 1}</span></div>
+      ))}
+    </div>
+    <a class="button button--cyan section-cta" href="#contacto">Ver más trabajos</a>
+  </div>
+</section>
+
+<style>
+  .work-grid { display: grid; grid-template-columns: 1.15fr 1.25fr 1fr; grid-template-rows: repeat(2, clamp(220px, 20vw, 305px)); gap: .7rem; }
+  .work-grid .asset-slot { min-height: 0; }
+  .work-3 { grid-row: span 2; }
+  .work-1, .work-5 { background: linear-gradient(135deg,#efd6ae,#8b3b2a); }
+  .work-2 { background: linear-gradient(135deg,#ff5e80,#e3ad87); }
+  .work-3 { background: linear-gradient(135deg,#d3cdb9,#787268); }
+  .work-4 { background: linear-gradient(135deg,#8b5242,#d9b098); }
+  .work-6 { background: linear-gradient(135deg,#27304b,#d2d5d7); }
+  @media (max-width: 640px) { .work-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 175px); } .work-3 { grid-row: span 2; } }
+</style>

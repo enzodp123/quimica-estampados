@@ -1,17 +1,32 @@
 ---
-
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Hero from "../components/layout/Hero.astro";
+import Footer from "../components/layout/footer.astro";
+import Benefits from "../components/sections/Benefits.astro";
+import ProductShowcase from "../components/sections/ProductShowcase.astro";
+import Services from "../components/sections/Services.astro";
+import IndustrialProcess from "../components/sections/IndustrialProcess.astro";
+import WorkGallery from "../components/sections/WorkGallery.astro";
+import About from "../components/sections/About.astro";
+import Contact from "../components/sections/Contact.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import Faq from "../components/sections/Faq.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="Química Estampados | Tu marca, idea y negocio">
+  <Header />
+  <main>
+    <Hero />
+    <Benefits />
+    <ProductShowcase />
+    <Services />
+    <IndustrialProcess />
+    <WorkGallery />
+    <About />
+    <Contact />
+    <Testimonials />
+    <Faq />
+  </main>
+  <Footer />
+</MainLayout>

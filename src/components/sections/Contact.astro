@@ -1,0 +1,40 @@
+<section id="contacto" class="section section-grid watermark contact">
+  <div class="section-rail section-rail--magenta" aria-hidden="true">Contactanos</div>
+  <div class="section-content">
+    <header class="section-heading">
+      <div><p class="kicker">Estamos para ayudarte</p><h2>Resolvemos<br />tus dudas</h2></div>
+      <p>Contanos qué necesitás y te respondemos con la mejor alternativa para tu proyecto.</p>
+    </header>
+    <div class="contact-grid">
+      <form class="contact-form" action="#" method="post">
+        <label>Nombre y apellido<input type="text" name="name" autocomplete="name" required /></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required /></label>
+        <label>Teléfono<input type="tel" name="phone" autocomplete="tel" /></label>
+        <label>Mensaje<textarea name="message" rows="5" required></textarea></label>
+        <button class="button button--primary" type="submit">Enviar consulta</button>
+      </form>
+      <aside class="contact-info">
+        <div><span>01</span><h3>Canales directos</h3><p>WhatsApp · Instagram · Email</p></div>
+        <div><span>02</span><h3>Showroom</h3><p>Alberdi 629, Victoria<br />Entre Ríos, Argentina</p></div>
+        <div class="asset-slot asset-slot--map"><span>Mapa / ubicación</span></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 1.5rem; }
+  .contact-form { min-height: 520px; padding: clamp(1.6rem,3vw,3rem); display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; background: #0d0d0d; border: 1px solid var(--color-border); }
+  .contact-form label { color: var(--color-magenta); font-size: .59rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+  .contact-form label:nth-of-type(4) { grid-column: 1 / -1; }
+  .contact-form input, .contact-form textarea { width: 100%; margin-top: .6rem; padding: .9rem 0; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #333; outline: none; resize: vertical; }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--color-magenta); }
+  .contact-form button { justify-self: start; }
+  .contact-info { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .contact-info > div:not(.asset-slot) { padding: 1.5rem; background: #0d0d0d; border: 1px solid var(--color-border); }
+  .contact-info > div > span { color: var(--color-magenta); font-size: .58rem; font-weight: 900; }
+  .contact-info h3 { margin-top: 1rem; font-family: var(--font-display); font-size: 1rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+  .contact-info p { margin-top: .6rem; color: var(--color-text-muted); font-size: .68rem; }
+  .asset-slot--map { grid-column: 1 / -1; min-height: 300px; background: linear-gradient(25deg,#12202a,#293846); }
+  @media (max-width: 640px) { .contact-grid, .contact-form, .contact-info { grid-template-columns: 1fr; } .contact-form { min-height: 650px; padding: 1.4rem; } .contact-form label:nth-of-type(4), .asset-slot--map { grid-column: auto; } .contact-info > div:not(.asset-slot) { min-height: 150px; } .asset-slot--map { min-height: 330px; } }
+</style>

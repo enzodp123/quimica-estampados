@@ -1,0 +1,56 @@
+---
+import logo from "../../assets/icons/logo-quimica.svg";
+
+const products = [
+  ["Remera oversize", "Algodón premium pesado 24.1", "Desde $18.000"],
+  ["Buzo con capucha", "Algodón frisado premium 20.1", "Desde $35.000"],
+  ["Gorra trucker", "Frente sublimable y ajuste regulable", "Desde $8.500"],
+];
+---
+
+<section id="impresiones" class="section section-grid watermark">
+  <div class="section-rail section-rail--cyan" aria-hidden="true">Impresiones</div>
+  <div class="section-content">
+    <header class="section-heading">
+      <div>
+        <p class="kicker">Impresiones DTF de alta calidad para emprendedores, marcas y empresas</p>
+        <h2>DTF<br />textil</h2>
+      </div>
+      <p>Prendas listas para representar tu identidad, con excelente definición y resistencia al uso.</p>
+    </header>
+
+    <div class="product-grid">
+      {products.map(([name, description, price], index) => (
+        <article class="product-card">
+          <div class="asset-slot asset-slot--product">
+            <div class="mini-garment"><img src={logo.src} alt="" /></div>
+            <span>Foto de producto {index + 1}</span>
+          </div>
+          <div class="product-card__body">
+            <p class="card-index">0{index + 1}</p>
+            <h3>{name}</h3>
+            <p>{description}</p>
+            <div class="product-card__footer"><span>Consultar</span><strong>{price}</strong></div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .product-card { background: #0c0c0c; border: 1px solid var(--color-border); transition: transform var(--transition), border-color var(--transition); }
+  .product-card:hover { transform: translateY(-6px); border-color: rgba(0,191,232,.45); }
+  .asset-slot--product { min-height: clamp(320px, 28vw, 420px); }
+  .mini-garment { position: relative; z-index: 1; width: 45%; aspect-ratio: .75; display: grid; place-items: center; background: linear-gradient(135deg,#1c1c1c,#090909); border-radius: 25% 25% 8% 8%; filter: drop-shadow(0 25px 20px #000); }
+  .mini-garment img { width: 20%; }
+  .asset-slot--product > span { position: absolute; bottom: 1rem; }
+  .product-card__body { padding: 1.5rem; }
+  .product-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+  .product-card__body > p:not(.card-index) { margin-top: .55rem; color: var(--color-text-muted); font-size: .68rem; }
+  .product-card__footer { margin-top: 1.5rem; padding-top: 1rem; display: flex; justify-content: space-between; color: #777; font-size: .62rem; border-top: 1px solid var(--color-border); text-transform: uppercase; }
+  .product-card__footer strong { color: #fff; }
+  @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2,1fr); } .product-card:last-child { grid-column: span 2; width: calc(50% - .625rem); justify-self: center; } }
+  @media (max-width: 640px) { .product-grid { grid-template-columns: 1fr; gap: 1.35rem; } .product-card:last-child { grid-column: auto; width: 100%; } .asset-slot--product { min-height: 330px; } }
+</style>

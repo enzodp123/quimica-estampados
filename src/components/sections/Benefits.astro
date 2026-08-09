@@ -1,0 +1,36 @@
+---
+const benefits = [
+  ["01", "DTF de alta resolución", "Colores intensos y excelente definición."],
+  ["02", "Logística", "Envíos seguros a todo el país."],
+  ["03", "Materiales premium", "Productos elegidos para durar."],
+  ["04", "Atención personalizada", "Te acompañamos de punta a punta."],
+  ["05", "Área de diseño", "Convertimos ideas en piezas listas."],
+];
+---
+
+<section class="benefits container" aria-label="Beneficios de trabajar con nosotros">
+  {benefits.map(([number, title, text]) => (
+    <article class="benefit">
+      <span>{number}</span>
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </article>
+  ))}
+</section>
+
+<style>
+  .benefits { padding: 3.7rem 0 5.6rem; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--color-border); }
+  .benefit { min-height: 112px; padding: 1.35rem; text-align: center; border-right: 1px solid var(--color-border); }
+  .benefit:last-child { border: 0; }
+  .benefit > span { color: var(--color-cyan); font-size: .62rem; font-weight: 900; }
+  .benefit:nth-child(2) > span, .benefit:nth-child(4) > span { color: var(--color-magenta); }
+  .benefit:nth-child(3) > span { color: var(--color-yellow); }
+  .benefit h2 { margin: .55rem 0 .35rem; font-family: var(--font-display); font-size: .88rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+  .benefit p { color: var(--color-text-muted); font-size: .64rem; }
+  @media (max-width: 760px) {
+    .benefits { padding: 2.3rem 0 3.5rem; grid-template-columns: 1fr 1fr; }
+    .benefit { min-height: 128px; padding: 1.15rem .6rem; }
+    .benefit:nth-child(even) { border-right: 0; }
+    .benefit:last-child { grid-column: 1 / -1; }
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+const testimonials = [
+  ["Calidad que sorprende", "La definición y el color quedaron exactamente como los imaginábamos."],
+  ["Un equipo que acompaña", "Nos ayudaron a elegir cada material y cumplieron con los tiempos."],
+  ["Resolutivos de verdad", "Encontraron la forma de producir una idea que parecía imposible."],
+];
+---
+
+<section class="section section-grid testimonials">
+  <div class="section-rail section-rail--cyan" aria-hidden="true">Marcas</div>
+  <div class="section-content">
+    <header class="section-heading section-heading--center">
+      <p class="kicker">Marcas que eligieron trabajar con nosotros</p>
+      <h2>Que confiaron<br />en nosotros</h2>
+    </header>
+    <div class="testimonial-grid">
+      {testimonials.map(([title, text], index) => (
+        <blockquote class={index === 2 ? "featured" : ""}>
+          <span>0{index + 1}</span><h3>{title}</h3><p>{text}</p><footer>Cliente verificado</footer>
+        </blockquote>
+      ))}
+    </div>
+    <div class="brand-row" aria-label="Logos de clientes">
+      <span>WINE</span><span>TOYS</span><span>FAME.</span><span>GRILL</span><span>MORFI</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonial-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.15rem; align-items: start; }
+  blockquote { min-height: 250px; padding: 1.8rem; background: #0c0c0c; border: 1px solid var(--color-border); }
+  blockquote.featured { min-height: 340px; border-color: var(--color-cyan); }
+  blockquote > span { color: var(--color-cyan); font-size: .6rem; font-weight: 900; }
+  blockquote h3 { margin-top: 2rem; font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+  blockquote p { margin-top: .55rem; color: var(--color-text-muted); font-size: .7rem; }
+  blockquote footer { margin-top: 2rem; color: #555; font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; }
+  .brand-row { margin-top: 4rem; display: flex; align-items: center; justify-content: space-around; gap: 2rem; color: #d7d7d7; font-family: var(--font-display); font-size: clamp(1.1rem,2.2vw,1.8rem); font-weight: 900; }
+  .brand-row span:nth-child(2) { color: var(--color-yellow); }
+  .brand-row span:nth-child(4) { color: #ef9c22; }
+  .brand-row span:nth-child(5) { color: var(--color-magenta); }
+  @media (max-width: 640px) { .testimonial-grid { grid-template-columns: 1fr; gap: 1.2rem; } blockquote { min-height: 260px; } blockquote.featured { min-height: 320px; } .brand-row { margin-top: 3rem; flex-wrap: wrap; } }
+</style>

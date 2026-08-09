@@ -1,0 +1,46 @@
+---
+const services = [
+  ["Calcos", "Diseño y producción de stickers resistentes para packaging, vidrieras y productos."],
+  ["Tarjetas personales", "Papelería profesional con terminaciones especiales para hacer visible tu marca."],
+  ["Plotter de corte", "Vinilos de corte y señalética para locales, eventos, vehículos y mucho más."],
+];
+---
+
+<section id="servicios" class="section section-grid">
+  <div class="section-rail section-rail--yellow" aria-hidden="true">Servicios</div>
+  <div class="section-content">
+    <header class="section-heading section-heading--split">
+      <h2>Potenciamos<br />tu marca</h2>
+      <p>Diseñamos y producimos todo lo que tu negocio necesita para verse consistente, profesional y memorable.</p>
+    </header>
+    <div class="service-grid">
+      {services.map(([name, description], index) => (
+        <article class={`service-card service-card--${index + 1}`}>
+          <div class="asset-slot asset-slot--service"><span>Imagen servicio</span></div>
+          <div class="service-card__body">
+            <p class="card-index">0{index + 1}</p>
+            <h3>{name}</h3>
+            <p>{description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <a class="button button--yellow section-cta" href="#contacto">Todos los servicios</a>
+  </div>
+</section>
+
+<style>
+  .service-grid { max-width: 1080px; margin-inline: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.15rem; align-items: start; }
+  .service-card { background: #0d0d0d; border: 1px solid var(--color-border); }
+  .service-card--2 { margin-top: -2.5rem; border-color: rgba(233,224,0,.4); }
+  .asset-slot--service { min-height: clamp(230px, 20vw, 310px); }
+  .service-card--1 .asset-slot { background: linear-gradient(135deg,#cf9b12,#ddd0bd); }
+  .service-card--2 .asset-slot { background: linear-gradient(135deg,#171717,#393939); }
+  .service-card--3 .asset-slot { background: linear-gradient(135deg,#e5e5e5,#777); }
+  .service-card__body { min-height: 175px; padding: 1.45rem; }
+  .service-card h3 { font-family: var(--font-display); font-size: 1.02rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+  .service-card__body > p:not(.card-index) { margin-top: .55rem; color: var(--color-text-muted); font-size: .68rem; }
+  .service-card__body .card-index { color: var(--color-yellow) !important; }
+  @media (max-width: 900px) { .service-grid { grid-template-columns: repeat(2,1fr); } .service-card:last-child { grid-column: span 2; width: calc(50% - .575rem); justify-self: center; } .service-card--2 { margin-top: 0; } }
+  @media (max-width: 640px) { .service-grid { max-width: 305px; grid-template-columns: 1fr; gap: 1.45rem; } .service-card:last-child { grid-column: auto; width: 100%; } .service-card:nth-child(even) { margin-left: 1.3rem; } .asset-slot--service { min-height: 255px; } }
+</style>

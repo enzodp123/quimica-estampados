@@ -1,0 +1,24 @@
+:root {
+  --color-background: #070707;
+  --color-surface: #0d0d0d;
+  --color-surface-light: #151515;
+  --color-text: #f4f4f2;
+  --color-text-muted: #8a8a88;
+  --color-magenta: #ff007f;
+  --color-cyan: #00bfe8;
+  --color-yellow: #e9e000;
+  --color-border: rgba(255, 255, 255, 0.09);
+  --font-jetbrains-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-montserrat: "Montserrat", Arial, Helvetica, sans-serif;
+  --font-poppins: "Poppins", Arial, Helvetica, sans-serif;
+
+  /* Roles tipograficos: cambia estos alias sin tocar cada componente. */
+  --font-primary: var(--font-montserrat);
+  --font-display: var(--font-jetbrains-mono);
+  --font-accent: var(--font-poppins);
+  --header-height: 154px;
+  --container-width: 1320px;
+  --container-padding: clamp(18px, 4vw, 42px);
+  --section-spacing: clamp(82px, 10vw, 145px);
+  --transition: 180ms ease;
+}

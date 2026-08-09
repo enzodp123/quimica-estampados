@@ -1,0 +1,45 @@
+---
+const faqs = [
+  ["¿Cuál es la cantidad mínima?", "Trabajamos proyectos minoristas y mayoristas. La cantidad mínima depende del producto y la técnica elegida."],
+  ["¿Hacen envíos a todo el país?", "Sí. Despachamos pedidos desde Victoria, Entre Ríos, con embalaje preparado para proteger la producción."],
+  ["¿Pueden ayudarme con el diseño?", "Sí. Nuestro equipo puede adaptar tu archivo o desarrollar una propuesta desde cero."],
+  ["¿Cuánto tarda un pedido?", "El plazo se confirma con la cotización porque depende de cantidades, materiales y terminaciones."],
+];
+---
+
+<section id="preguntas" class="section section-grid watermark faq-section">
+  <div class="section-rail section-rail--yellow" aria-hidden="true">Soporte</div>
+  <div class="section-content faq-layout">
+    <header class="section-heading">
+      <div><p class="kicker">Resolvemos tus dudas</p><h2>Preguntas<br />frecuentes</h2></div>
+    </header>
+    <div class="faq-list">
+      {faqs.map(([question, answer], index) => (
+        <details open={index === 0}>
+          <summary><span>0{index + 1}</span>{question}</summary>
+          <p>{answer}</p>
+        </details>
+      ))}
+    </div>
+    <aside class="faq-cta"><span>¿?</span><h3>¿Cuál es el método que sirve para tu proyecto?</h3><p>Escribinos y elegimos juntos materiales, técnica y cantidades.</p><a href="#contacto">Hablemos</a></aside>
+  </div>
+</section>
+
+<style>
+  .faq-layout { display: grid; grid-template-columns: 1.3fr .7fr; gap: 1.5rem; }
+  .faq-layout > .section-heading { grid-column: 1 / -1; }
+  .faq-list { border-top: 1px solid var(--color-border); }
+  details { border-bottom: 1px solid var(--color-border); }
+  summary { min-height: 68px; padding: 1.25rem .5rem; display: flex; gap: 1rem; align-items: center; font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; margin-left: auto; color: #777; font-size: 1rem; }
+  details[open] summary::after { content: "−"; color: var(--color-yellow); }
+  summary span { color: var(--color-yellow); font-size: .55rem; }
+  details > p { padding: 0 2.2rem 1.4rem; color: var(--color-text-muted); font-size: .72rem; }
+  .faq-cta { min-height: 300px; padding: 2rem; align-self: start; background: #0d0d0d; border: 1px solid var(--color-border); }
+  .faq-cta > span { color: var(--color-yellow); font-size: 1.6rem; }
+  .faq-cta h3 { margin-top: 2rem; color: var(--color-yellow); font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+  .faq-cta p { margin-top: .6rem; color: var(--color-text-muted); font-size: .7rem; }
+  .faq-cta a { margin-top: 2rem; padding-bottom: .3rem; display: inline-block; color: var(--color-yellow); font-size: .62rem; font-weight: 900; letter-spacing: .12em; border-bottom: 1px solid var(--color-yellow); text-transform: uppercase; }
+  @media (max-width: 640px) { .faq-layout { grid-template-columns: 1fr; } .faq-layout > .section-heading { grid-column: auto; } summary { min-height: 78px; } .faq-cta { min-height: 340px; } }
+</style>

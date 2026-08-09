@@ -126,7 +126,7 @@ body {
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 @media (max-width: 640px) {
-  :root { --header-height: 112px; --container-padding: 14px; --section-spacing: 68px; }
+  :root { --header-height: 58px; --container-padding: 14px; --section-spacing: 68px; }
   .section-grid { width: calc(100% - 16px); grid-template-columns: [rail-start] 32px [content-start] repeat(12, minmax(0, 1fr)) [content-end]; }
   .section-rail { font-size: 1.02rem; }
   .section-content { padding-inline: .75rem .15rem; }

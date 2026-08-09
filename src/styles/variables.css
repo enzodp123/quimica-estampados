@@ -16,7 +16,7 @@
   --font-primary: var(--font-montserrat);
   --font-display: var(--font-jetbrains-mono);
   --font-accent: var(--font-poppins);
-  --header-height: 154px;
+  --header-height: 68px;
   --container-width: 1320px;
   --container-padding: clamp(18px, 4vw, 42px);
   --section-spacing: clamp(82px, 10vw, 145px);

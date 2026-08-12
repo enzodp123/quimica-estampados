@@ -1,42 +1,287 @@
 ---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import workshop from "../../assets/images/comotrabajamos.png";
+import BackgroundText from "../shared/BackgroundText.astro";
+
 const process = [
-  ["01", "Brief técnico", "Relevamos la idea, el uso y la cantidad para recomendar la mejor técnica."],
-  ["02", "Prueba DTF", "Ajustamos color, escala y posición antes de comenzar la producción completa."],
-  ["03", "Mesa crítica", "Controlamos cada pieza y cada terminación durante todo el proceso."],
-  ["04", "Logística", "Preparamos, protegemos y despachamos tu pedido para que llegue impecable."],
+  {
+    number: "01",
+    title: "Datos del pedido",
+    text: "Contanos qué necesitás, qué cantidad y para qué proyecto. Te asesoramos de manera personalizada para definir juntos las mejores opciones y resolver todas tus dudas.",
+    icon: "lucide:file-text",
+    tone: "cyan",
+  },
+  {
+    number: "02",
+    title: "Diseño",
+    text: "Podés enviarnos tu archivo en formato AI, CDR, PDF, EPS o SVG. También puede ser PNG en alta resolución.",
+    note: "Si no contás con un archivo listo para producción, no hay problema! Nuestro equipo de diseño puede adaptarlo y crear tu diseño desde cero.",
+    icon: "lucide:pen-line",
+    tone: "magenta",
+  },
+  {
+    number: "03",
+    title: "Producción",
+    text: "Una vez aprobado el diseño, seleccionamos los materiales y la técnica de estampado o impresión más adecuada para tu proyecto. Nos ocupamos de cada detalle para lograr un producto de calidad.",
+    icon: "lucide:sliders-horizontal",
+    tone: "yellow",
+  },
+  {
+    number: "04",
+    title: "Envío",
+    text: "Coordinamos el envío según bulto y destino, para que recibas tu producto terminado en las mejores condiciones.",
+    icon: "lucide:package",
+    tone: "white",
+  },
 ];
 ---
 
-<section class="section section-grid industrial">
-  <div class="section-rail section-rail--magenta" aria-hidden="true">Flujo industrial</div>
-  <div class="section-content">
-    <header class="section-heading">
-      <h2>Paso<br />a paso</h2>
-      <p>Un proceso ordenado y transparente para que tu producción llegue como la imaginaste.</p>
-    </header>
-    <div class="process-layout">
-      <div class="asset-slot asset-slot--process"><span>Foto del taller / showroom</span></div>
-      <div class="process-list">
-        {process.map(([number, title, text]) => (
-          <article>
-            <span>{number}</span>
-            <div><h3>{title}</h3><p>{text}</p></div>
-          </article>
-        ))}
-      </div>
+<section id="proceso" class="industrial" aria-labelledby="industrial-heading">
+  <BackgroundText />
+
+  <div class="industrial__rail" aria-hidden="true">Como trabajamos</div>
+  <h2 id="industrial-heading" class="industrial__title">Paso<br />a paso</h2>
+
+  <div class="industrial__stage">
+    <div class="industrial__image-wrap">
+      <Image
+        class="industrial__image"
+        src={workshop}
+        alt="Interior del local de Química Estampados"
+        loading="lazy"
+        widths={[480, 720, 960]}
+        sizes="(max-width: 64rem) 88vw, 36rem"
+      />
+    </div>
+
+    <div class="process-list">
+      {process.map(({ number, title, text, note, icon, tone }) => (
+        <article class:list={["process-step", `process-step--${tone}`]}>
+          <span class="process-step__number">{number}</span>
+          <div class="process-step__card">
+            <div class="process-step__heading">
+              <h3>{title}</h3>
+              <Icon name={icon} aria-hidden="true" />
+            </div>
+            <p>{text}</p>
+            {note && <p class="process-step__note">{note}</p>}
+          </div>
+        </article>
+      ))}
     </div>
   </div>
+
 </section>
 
 <style>
-  .process-layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(2rem,4vw,4.5rem); align-items: center; }
-  .asset-slot--process { min-height: clamp(460px, 39vw, 630px); }
-  .process-list { display: grid; gap: 1rem; }
-  .process-list article { min-height: 120px; padding: 1.55rem; display: grid; grid-template-columns: 46px 1fr; background: #0c0c0c; border: 1px solid var(--color-border); }
-  .process-list article > span { color: var(--color-magenta); font-size: .65rem; font-weight: 900; }
-  .process-list article:nth-child(3) > span { color: var(--color-yellow); }
-  .process-list article:nth-child(4) > span { color: #aaa; }
-  .process-list h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
-  .process-list p { margin-top: .55rem; color: var(--color-text-muted); font-size: .69rem; }
-  @media (max-width: 640px) { .process-layout { grid-template-columns: 1fr; gap: 1.2rem; } .asset-slot--process { min-height: 380px; } .process-list article { min-height: 145px; padding: 1.3rem; } }
+  .industrial {
+    --industrial-heading-bottom: 15rem;
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    height: 81.25rem;
+    overflow: hidden;
+    background: var(--color-background);
+  }
+
+  .industrial__rail {
+    position: absolute;
+    bottom: var(--industrial-heading-bottom);
+    left: var(--editorial-rail-left);
+    z-index: 2;
+    color: var(--color-magenta);
+    font-family: var(--font-montserrat);
+    font-size: var(--vertical-title-font-size);
+    font-weight: var(--vertical-title-font-weight);
+    letter-spacing: -0.045em;
+    line-height: 1;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .industrial__title {
+    position: absolute;
+    bottom: var(--industrial-heading-bottom);
+    left: var(--editorial-title-left);
+    z-index: 2;
+    color: var(--color-text);
+    font-family: var(--font-montserrat);
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+
+  .industrial__stage {
+    width: min(71.7vw, 86rem);
+    height: 64rem;
+    margin-left: 19.7vw;
+    display: grid;
+    grid-template-columns: minmax(0, 35.75rem) minmax(0, 1fr);
+    gap: 5.25rem;
+    align-items: start;
+  }
+
+  .industrial__image-wrap {
+    width: 100%;
+    margin-top: 14.5rem;
+  }
+
+  .industrial__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .process-list {
+    --process-number-size: 2.5rem;
+    position: relative;
+    margin-top: 7.25rem;
+    display: grid;
+    gap: 2.75rem;
+  }
+
+  .process-list::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--process-number-size) / 2);
+    bottom: calc(var(--process-number-size) / 2);
+    left: calc(var(--process-number-size) / 2);
+    z-index: 0;
+    border-left: 0.0625rem solid rgba(255, 255, 255, 0.16);
+    transform: translateX(-50%);
+  }
+
+  .process-step {
+    --step-color: var(--color-text);
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: 4.25rem;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+
+  .process-step--cyan { --step-color: var(--color-cyan); }
+  .process-step--magenta { --step-color: var(--color-magenta); }
+  .process-step--yellow { --step-color: var(--color-yellow); }
+
+  .process-step__number {
+    width: var(--process-number-size);
+    height: var(--process-number-size);
+    display: grid;
+    place-items: center;
+    color: var(--step-color);
+    background: var(--color-background);
+    border: 0.0625rem solid var(--color-border);
+    font-family: var(--font-jetbrains-mono);
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .process-step__card {
+    min-height: 11.25rem;
+    padding: 2.2rem 2.45rem 1.8rem;
+    background: rgba(10, 10, 10, 0.9);
+    border: 0.0625rem solid var(--color-border);
+  }
+
+  .process-step__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--step-color);
+  }
+
+  .process-step__heading h3 {
+    font-family: var(--font-jetbrains-mono);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .process-step__heading svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex: 0 0 auto;
+    stroke-width: 1.75;
+  }
+
+  .process-step__card > p {
+    max-width: 34rem;
+    margin-top: 1rem;
+    color: #f0f0ee;
+    font-family: var(--font-poppins);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.6;
+  }
+
+  .process-step__card > .process-step__note {
+    margin-top: 0.65rem;
+    color: var(--color-magenta);
+    font-size: 0.8125rem;
+    letter-spacing: 0;
+    line-height: 1.9;
+  }
+
+  @media (max-width: 80rem) {
+    .industrial__stage {
+      width: calc(100% - 15rem);
+      margin-left: 12rem;
+      grid-template-columns: minmax(20rem, 0.9fr) minmax(27rem, 1.1fr);
+      gap: 3rem;
+    }
+
+    .process-step { gap: 1.5rem; }
+    .process-step__card { padding-inline: 1.75rem; }
+  }
+
+  @media (max-width: 64rem) {
+    .industrial {
+      height: auto;
+      min-height: 0;
+      padding: 5rem clamp(1.5rem, 5vw, 4rem) 6rem;
+    }
+
+    .industrial__rail { display: none; }
+
+    .industrial__title {
+      position: static;
+      margin-bottom: 3rem;
+      font-size: clamp(2.5rem, 7vw, 4rem);
+    }
+
+    .industrial__stage {
+      width: 100%;
+      height: auto;
+      margin: 0;
+      grid-template-columns: minmax(16rem, 0.8fr) minmax(24rem, 1.2fr);
+      gap: 2rem;
+    }
+
+    .industrial__image-wrap,
+    .process-list { margin-top: 0; }
+    .process-list { gap: 1rem; }
+    .process-list { --process-number-size: 2rem; }
+    .process-step { grid-template-columns: 2rem minmax(0, 1fr); gap: 0.75rem; }
+    .process-step__card { min-height: 0; padding: 1.5rem; }
+
+  }
+
+  @media (max-width: 46rem) {
+    .industrial__stage { grid-template-columns: 1fr; gap: 2.5rem; }
+    .industrial__image-wrap { width: min(100%, 30rem); }
+    .process-step__heading h3 { font-size: 1rem; }
+    .process-step__card > p { font-size: 0.875rem; }
+  }
 </style>

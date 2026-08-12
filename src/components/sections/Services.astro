@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import stickers from "../../assets/images/IMG1.png";
 import cards from "../../assets/images/img2.png";
 import dimensionalSign from "../../assets/images/img3.png";
+import BackgroundText from "../shared/BackgroundText.astro";
 
 const services = [
   {
@@ -30,11 +31,7 @@ const services = [
 ---
 
 <section id="servicios" class="services" aria-labelledby="services-heading">
-  <div class="services__watermark" aria-hidden="true">
-    <span>ESTAMPAMOS TU</span>
-    <span>MARCA, IDEA Y</span>
-    <span>TU NEGOCIO</span>
-  </div>
+  <BackgroundText />
 
   <div class="services__rail" aria-hidden="true">Servicios</div>
 
@@ -86,32 +83,14 @@ const services = [
     background: var(--color-background);
   }
 
-  .services__watermark {
-    position: absolute;
-    top: 2.5rem;
-    left: 4.8%;
-    z-index: -1;
-    color: var(--color-watermark);
-    font-family: var(--font-montserrat);
-    font-size: clamp(6.6rem, 10.35vw, 12.4rem);
-    font-weight: 900;
-    letter-spacing: -0.06em;
-    line-height: 0.93;
-    pointer-events: none;
-    user-select: none;
-    white-space: nowrap;
-  }
-
-  .services__watermark span { display: block; }
-
   .services__rail {
     position: absolute;
     left: var(--editorial-rail-left);
     bottom: 4.2rem;
     color: var(--color-yellow);
     font-family: var(--font-montserrat);
-    font-size: clamp(2rem, 3.3vw, 3.75rem);
-    font-weight: 800;
+    font-size: var(--vertical-title-font-size);
+    font-weight: var(--vertical-title-font-weight);
     letter-spacing: -0.045em;
     line-height: 1;
     text-transform: uppercase;
@@ -142,12 +121,12 @@ const services = [
 
   .service-card--2 {
     margin-top: -5.25rem;
-    border-color: rgba(233, 224, 0, 0.72);
   }
 
-  .service-card:hover {
+  .service-card:hover,
+  .service-card:focus-within {
     transform: translateY(-0.35rem);
-    border-color: rgba(233, 224, 0, 0.72);
+    border-color: var(--color-yellow);
   }
 
   .service-card__visual {
@@ -299,7 +278,6 @@ const services = [
   }
 
   @media (max-width: 42rem) {
-    .services__watermark { top: 3.5rem; left: -2rem; font-size: 5rem; line-height: 1; }
     .services__rail { display: none; }
     .services__content { width: calc(100% - 2rem); padding-block: 4.5rem; }
     .services__grid { grid-template-columns: 1fr; gap: 1.5rem; }

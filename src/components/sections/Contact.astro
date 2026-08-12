@@ -1,40 +1,355 @@
-<section id="contacto" class="section section-grid watermark contact">
-  <div class="section-rail section-rail--magenta" aria-hidden="true">Contactanos</div>
-  <div class="section-content">
-    <header class="section-heading">
-      <div><p class="kicker">Estamos para ayudarte</p><h2>Resolvemos<br />tus dudas</h2></div>
-      <p>Contanos qué necesitás y te respondemos con la mejor alternativa para tu proyecto.</p>
+---
+import { Icon } from "astro-icon/components";
+import BackgroundText from "../shared/BackgroundText.astro";
+---
+
+<section id="contacto" class="contact" aria-labelledby="contact-heading">
+  <BackgroundText />
+
+  <div class="contact__rail" aria-hidden="true">Contactanos</div>
+  <h2 id="contact-heading" class="contact__title">Resolvemos<br />tus dudas</h2>
+
+  <div class="contact__content">
+    <header class="contact__header">
+      <div class="contact__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      <h3>Estamos para ayudarte</h3>
+      <p>Resolvemos tus dudas sobre producción industrial y procesos<br />técnicos para optimizar tus pedidos.</p>
     </header>
-    <div class="contact-grid">
-      <form class="contact-form" action="#" method="post">
-        <label>Nombre y apellido<input type="text" name="name" autocomplete="name" required /></label>
-        <label>Email<input type="email" name="email" autocomplete="email" required /></label>
-        <label>Teléfono<input type="tel" name="phone" autocomplete="tel" /></label>
-        <label>Mensaje<textarea name="message" rows="5" required></textarea></label>
-        <button class="button button--primary" type="submit">Enviar consulta</button>
+
+    <div class="contact__layout">
+      <form class="contact__form" action="#" method="post">
+        <label>
+          <span>Nombre</span>
+          <input type="text" name="name" placeholder="Tu nombre" autocomplete="name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" placeholder="hola@empresa.com" autocomplete="email" required />
+        </label>
+        <label class="contact__field--wide">
+          <span>Proyecto</span>
+          <select name="project">
+            <option>DTF Textil</option>
+            <option>Corpóreos en polifan</option>
+            <option>Calcos y tarjetas personalizadas</option>
+          </select>
+        </label>
+        <label class="contact__field--wide contact__message">
+          <span>Mensaje</span>
+          <textarea name="message" rows="4" placeholder="Contanos detalles de cantidades, colores y superficies..." required></textarea>
+        </label>
+        <button class="contact__submit" type="submit">Enviar</button>
+        <span class="contact__form-line" aria-hidden="true"></span>
       </form>
-      <aside class="contact-info">
-        <div><span>01</span><h3>Canales directos</h3><p>WhatsApp · Instagram · Email</p></div>
-        <div><span>02</span><h3>Showroom</h3><p>Alberdi 629, Victoria<br />Entre Ríos, Argentina</p></div>
-        <div class="asset-slot asset-slot--map"><span>Mapa / ubicación</span></div>
+
+      <aside class="contact__aside">
+        <section class="contact__info-block">
+          <h4>Canales directos</h4>
+          <a href="mailto:quimicaestampados@gmail.com"><Icon name="lucide:mail" aria-hidden="true" />quimicaestampados@gmail.com</a>
+          <a href="https://wa.me/5493431234567"><Icon name="lucide:message-circle" aria-hidden="true" />WhatsApp: +54 9 343 123 4567</a>
+        </section>
+
+        <section class="contact__info-block contact__hours">
+          <h4>Horarios</h4>
+          <p>Lunes a viernes<br />08:00 a 12:00 hrs<br />16:30 a 20:00 hrs</p>
+        </section>
+
+        <nav class="contact__socials" aria-label="Redes sociales">
+          <span aria-hidden="true"><Icon name="lucide:share-2" /></span>
+          <a href="#">Instagram <Icon name="lucide:external-link" aria-hidden="true" /></a>
+          <a href="#">Facebook <Icon name="lucide:external-link" aria-hidden="true" /></a>
+        </nav>
+
+        <div class="contact__map">
+          <iframe
+            title="Ubicación de Química Estampados en Victoria, Entre Ríos"
+            src="https://www.google.com/maps?q=66%20Alem%2C%20Victoria%2C%20Entre%20R%C3%ADos&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </aside>
     </div>
   </div>
 </section>
 
 <style>
-  .contact-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 1.5rem; }
-  .contact-form { min-height: 520px; padding: clamp(1.6rem,3vw,3rem); display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; background: #0d0d0d; border: 1px solid var(--color-border); }
-  .contact-form label { color: var(--color-magenta); font-size: .59rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
-  .contact-form label:nth-of-type(4) { grid-column: 1 / -1; }
-  .contact-form input, .contact-form textarea { width: 100%; margin-top: .6rem; padding: .9rem 0; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #333; outline: none; resize: vertical; }
-  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--color-magenta); }
-  .contact-form button { justify-self: start; }
-  .contact-info { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .contact-info > div:not(.asset-slot) { padding: 1.5rem; background: #0d0d0d; border: 1px solid var(--color-border); }
-  .contact-info > div > span { color: var(--color-magenta); font-size: .58rem; font-weight: 900; }
-  .contact-info h3 { margin-top: 1rem; font-family: var(--font-display); font-size: 1rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
-  .contact-info p { margin-top: .6rem; color: var(--color-text-muted); font-size: .68rem; }
-  .asset-slot--map { grid-column: 1 / -1; min-height: 300px; background: linear-gradient(25deg,#12202a,#293846); }
-  @media (max-width: 640px) { .contact-grid, .contact-form, .contact-info { grid-template-columns: 1fr; } .contact-form { min-height: 650px; padding: 1.4rem; } .contact-form label:nth-of-type(4), .asset-slot--map { grid-column: auto; } .contact-info > div:not(.asset-slot) { min-height: 150px; } .asset-slot--map { min-height: 330px; } }
+  .contact {
+    --contact-heading-bottom: 6.25rem;
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    min-height: clamp(46rem, 64vw, 76rem);
+    overflow: hidden;
+    background: var(--color-background);
+  }
+
+  .contact__rail {
+    position: absolute;
+    bottom: var(--contact-heading-bottom);
+    left: var(--editorial-rail-left);
+    z-index: 2;
+    color: var(--color-magenta);
+    font-family: var(--font-montserrat);
+    font-size: var(--vertical-title-font-size);
+    font-weight: var(--vertical-title-font-weight);
+    letter-spacing: -0.045em;
+    line-height: 1;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .contact__title {
+    position: absolute;
+    bottom: var(--contact-heading-bottom);
+    left: var(--editorial-title-left);
+    z-index: 2;
+    color: var(--color-text);
+    font-family: var(--font-montserrat);
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+
+  .contact__content {
+    width: min(64.5vw, 77.5rem);
+    margin-left: max(17.75vw, calc((100% - 77.5rem) / 2));
+    padding-top: clamp(3rem, 5.5vw, 6.5rem);
+  }
+
+  .contact__header { margin-bottom: 2.15rem; }
+
+  .contact__dots {
+    margin-bottom: 0.65rem;
+    display: flex;
+    gap: 0.2rem;
+  }
+
+  .contact__dots span {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--color-cyan);
+  }
+
+  .contact__dots span:nth-child(2) { background: var(--color-magenta); }
+  .contact__dots span:nth-child(3) { background: var(--color-yellow); }
+
+  .contact__header h3 {
+    color: var(--color-text);
+    font-family: var(--font-montserrat);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .contact__header p {
+    margin-top: 0.8rem;
+    color: #dededc;
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.55;
+    text-transform: uppercase;
+  }
+
+  .contact__layout {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    align-items: start;
+    gap: clamp(2rem, 3.75vw, 4.5rem);
+  }
+
+  .contact__form {
+    position: relative;
+    min-height: 32.75rem;
+    padding: 2.25rem 2rem 3.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: min-content;
+    column-gap: 2.5rem;
+    row-gap: 1.7rem;
+    background: rgba(9, 9, 9, 0.84);
+    border: 0.0625rem solid var(--color-border);
+  }
+
+  .contact__form label { display: block; min-width: 0; }
+
+  .contact__form label > span {
+    display: block;
+    color: var(--color-magenta);
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .contact__form input,
+  .contact__form select,
+  .contact__form textarea {
+    width: 100%;
+    margin-top: 0.65rem;
+    padding: 0.85rem 0.45rem;
+    color: var(--color-text);
+    background: transparent;
+    border: 0;
+    border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.12);
+    border-radius: 0;
+    outline: none;
+    font-family: var(--font-poppins);
+    font-size: 0.72rem;
+  }
+
+  .contact__form input::placeholder,
+  .contact__form textarea::placeholder { color: #555; opacity: 1; }
+
+  .contact__form select {
+    appearance: auto;
+    color-scheme: dark;
+  }
+
+  .contact__form textarea {
+    min-height: 7.75rem;
+    resize: vertical;
+  }
+
+  .contact__form input:focus,
+  .contact__form select:focus,
+  .contact__form textarea:focus { border-color: var(--color-magenta); }
+
+  .contact__field--wide { grid-column: 1 / -1; }
+
+  .contact__submit {
+    width: 10.875rem;
+    min-height: 2.875rem;
+    margin-top: 0.2rem;
+    color: var(--color-magenta);
+    background: transparent;
+    border: 0.0625rem solid var(--color-magenta);
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .contact__submit:hover,
+  .contact__submit:focus-visible { color: #050505; background: var(--color-magenta); }
+
+  .contact__form-line {
+    position: absolute;
+    right: 29%;
+    bottom: 2.25rem;
+    width: 33%;
+    height: 0.0625rem;
+    background: var(--color-magenta);
+  }
+
+  .contact__aside { min-width: 0; }
+
+  .contact__info-block {
+    padding-left: 1rem;
+    border-left: 0.125rem solid var(--color-magenta);
+  }
+
+  .contact__info-block h4 {
+    margin-bottom: 0.8rem;
+    color: var(--color-magenta);
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .contact__info-block a {
+    margin-top: 0.55rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #9a9a98;
+    font-family: var(--font-poppins);
+    font-size: 0.68rem;
+  }
+
+  .contact__info-block a :global(svg) { width: 0.9rem; height: 0.9rem; }
+
+  .contact__hours { margin-top: 2.3rem; }
+
+  .contact__hours p {
+    color: #d2d2d0;
+    font-family: var(--font-poppins);
+    font-size: 0.7rem;
+    line-height: 1.65;
+  }
+
+  .contact__socials {
+    margin-top: 3.25rem;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr 1fr;
+    gap: 0.65rem;
+  }
+
+  .contact__socials span,
+  .contact__socials a {
+    min-height: 2.65rem;
+    padding: 0.6rem 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #d1d1cf;
+    border: 0.0625rem solid var(--color-border);
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.57rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact__socials span { padding: 0; justify-content: center; }
+  .contact__socials :global(svg) { width: 0.85rem; height: 0.85rem; }
+
+  .contact__map {
+    width: 100%;
+    height: 15rem;
+    margin-top: 5rem;
+    overflow: hidden;
+    border: 0.0625rem solid var(--color-border);
+    filter: saturate(0.8) brightness(0.72) contrast(1.1);
+  }
+
+  .contact__map iframe { width: 100%; height: 100%; border: 0; }
+
+  @media (max-width: 64rem) {
+    .contact { min-height: 0; padding-block: 4rem 5rem; }
+    .contact__rail, .contact__title { display: none; }
+    .contact__content { width: min(calc(100% - 4rem), 50rem); margin-inline: auto; padding-top: 0; }
+    .contact__layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact__form { min-height: 31rem; }
+    .contact__aside { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .contact__hours { margin-top: 0; }
+    .contact__socials, .contact__map { grid-column: 1 / -1; margin-top: 0; }
+  }
+
+  @media (max-width: 42rem) {
+    .contact__content { width: calc(100% - 2rem); }
+    .contact__header h3 { font-size: 1.25rem; }
+    .contact__form { min-height: 0; padding: 1.5rem; grid-template-columns: 1fr; }
+    .contact__field--wide { grid-column: auto; }
+    .contact__form-line { display: none; }
+    .contact__aside { grid-template-columns: 1fr; }
+    .contact__socials, .contact__map { grid-column: auto; }
+    .contact__socials { grid-template-columns: 2.5rem 1fr; }
+    .contact__socials a:last-child { grid-column: 2; }
+    .contact__map { height: 18rem; }
+  }
 </style>

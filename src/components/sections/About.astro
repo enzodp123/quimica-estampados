@@ -1,29 +1,236 @@
 ---
-import logo from "../../assets/icons/logo-quimica.svg";
+import { Image } from "astro:assets";
+import BackgroundText from "../shared/BackgroundText.astro";
+import localImage from "../../assets/images/nuestrahistoria.png";
 ---
 
-<section id="nosotros" class="section section-grid about">
-  <div class="section-rail section-rail--yellow" aria-hidden="true">Conocé</div>
-  <div class="section-content about__grid">
-    <article class="about__copy">
-      <img src={logo.src} width="36" height="36" alt="" />
-      <p class="kicker">Química Estampados</p>
-      <h2>Nuestra historia</h2>
-      <p>Nacimos para ayudar a emprendedores y empresas a transformar una idea en algo que se pueda ver, tocar y compartir.</p>
-      <p>Combinamos diseño, oficio y producción para cuidar la identidad de cada proyecto desde el primer mensaje hasta la entrega.</p>
-      <a class="button button--yellow" href="#contacto">Conocenos</a>
+<section id="nosotros" class="about" aria-labelledby="about-heading">
+  <BackgroundText />
+
+  <div class="about__rail" aria-hidden="true">Conocé</div>
+  <h2 id="about-heading" class="about__title">Nuestra<br />historia</h2>
+
+  <div class="about__content">
+    <article class="about__card">
+      <div class="about__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      <h3>Química<br />Estampados</h3>
+
+      <p class="about__lead">Somos una empresa especializada en estampados textiles y productos personalizados.</p>
+      <p>Desde <strong>2016</strong> ofrecemos soluciones para emprendedores, marcas, empresas e instituciones, combinando producción, creatividad y asesoramiento.</p>
+      <p>Acompañando cada proyecto desde la idea inicial hasta el producto final, tenemos un enfoque orientado a la calidad, la atención personalizada y la búsqueda de resultados que potencien la identidad de cada cliente.</p>
+
+      <a class="about__cta" href="#contacto">Conocenos más</a>
+      <span class="about__line" aria-hidden="true"></span>
     </article>
-    <div class="asset-slot asset-slot--about"><span>Foto del local</span></div>
+
+    <div class="about__photo">
+      <Image
+        class="about__image"
+        src={localImage}
+        alt="Local de Química Estampados"
+        loading="lazy"
+        widths={[480, 720, 960]}
+        sizes="(max-width: 42rem) calc(100vw - 2rem), 30vw"
+      />
+    </div>
   </div>
 </section>
 
 <style>
-  .about__grid { display: grid; grid-template-columns: .92fr 1.08fr; align-items: stretch; }
-  .about__copy { padding: clamp(2.5rem,5vw,5.5rem); display: flex; flex-direction: column; align-items: start; justify-content: center; background: #0d0d0d; border: 1px solid var(--color-border); }
-  .about__copy h2 { margin-bottom: 2rem; font-family: var(--font-display); font-size: clamp(3rem, 5vw, 5.8rem); font-weight: 900; letter-spacing: -.045em; line-height: .78; text-transform: uppercase; }
-  .about__copy > p:not(.kicker) { max-width: 490px; margin-bottom: 1rem; color: var(--color-text-muted); font-size: .76rem; }
-  .about__copy .button { margin-top: 1rem; }
-  .about__copy img { margin-bottom: 1rem; }
-  .asset-slot--about { min-height: clamp(570px, 46vw, 720px); background: linear-gradient(140deg,#19222b,#b5cce0 45%,#e20b78 46%,#111 65%); }
-  @media (max-width: 640px) { .about__grid { grid-template-columns: 1fr; } .about__copy { min-height: 510px; padding: 2rem; } .about__copy h2 { font-size: 3rem; } .asset-slot--about { min-height: 450px; } }
+  .about {
+    --about-heading-bottom: clamp(6.25rem, 9vw, 10.8rem);
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    height: clamp(44.5rem, 65vw, 78rem);
+    overflow: hidden;
+    background: var(--color-background);
+  }
+
+  .about__rail {
+    position: absolute;
+    bottom: var(--about-heading-bottom);
+    left: var(--editorial-rail-left);
+    z-index: 2;
+    color: var(--color-yellow);
+    font-family: var(--font-montserrat);
+    font-size: var(--vertical-title-font-size);
+    font-weight: var(--vertical-title-font-weight);
+    letter-spacing: -0.045em;
+    line-height: 1;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .about__title {
+    position: absolute;
+    bottom: var(--about-heading-bottom);
+    left: var(--editorial-title-left);
+    z-index: 2;
+    color: var(--color-text);
+    font-family: var(--font-montserrat);
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+
+  .about__content {
+    width: min(64.5vw, 77.5rem);
+    margin-left: max(17.75vw, calc((100% - 77.5rem) / 2));
+    padding-top: clamp(4.75rem, 6.85vw, 8.25rem);
+    display: grid;
+    grid-template-columns: 1fr 0.988fr;
+    align-items: start;
+    gap: min(3.33vw, 4rem);
+  }
+
+  .about__card {
+    position: relative;
+    min-height: 0;
+    aspect-ratio: 331 / 366;
+    margin-top: min(1.98vw, 2.375rem);
+    padding: 7.6% 7.2%;
+    background: rgba(9, 9, 9, 0.84);
+    border: 0.0625rem solid var(--color-border);
+  }
+
+  .about__dots {
+    margin-bottom: 0.8rem;
+    display: flex;
+    gap: 0.2rem;
+  }
+
+  .about__dots span {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--color-cyan);
+  }
+
+  .about__dots span:nth-child(2) { background: var(--color-magenta); }
+  .about__dots span:nth-child(3) { background: var(--color-yellow); }
+
+  .about__card h3 {
+    color: var(--color-text);
+    font-family: var(--font-montserrat);
+    font-size: clamp(1.8rem, 2.2vw, 2.625rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+
+  .about__card p {
+    max-width: 29rem;
+    margin-top: 0.8rem;
+    color: #bdbdbb;
+    font-family: var(--font-poppins);
+    font-size: clamp(0.82rem, 0.94vw, 1.125rem);
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  .about__card .about__lead {
+    margin-top: 1.9rem;
+    color: #eeeeec;
+    font-family: var(--font-jetbrains-mono);
+    font-size: clamp(0.65rem, 0.73vw, 0.875rem);
+    font-weight: 700;
+    letter-spacing: 0.035em;
+    line-height: 1.55;
+    text-transform: uppercase;
+  }
+
+  .about__cta {
+    width: 10.875rem;
+    min-width: 0;
+    min-height: 2.875rem;
+    margin-top: 1.9rem;
+    padding: 0.75rem 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-yellow);
+    border: 0.0625rem solid var(--color-yellow);
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
+    transition: color var(--transition), background var(--transition);
+  }
+
+  .about__cta:hover,
+  .about__cta:focus-visible {
+    color: #050505;
+    background: var(--color-yellow);
+  }
+
+  .about__line {
+    position: absolute;
+    left: 25.7%;
+    bottom: 7.4%;
+    width: 48.1%;
+    height: 0.0625rem;
+    background: var(--color-yellow);
+    opacity: 0.8;
+  }
+
+  .about__photo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 0.5rem;
+  }
+
+  .about__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  @media (max-width: 64rem) {
+    .about {
+      height: auto;
+      padding-block: 4rem 5rem;
+    }
+
+    .about__rail,
+    .about__title { display: none; }
+
+    .about__content {
+      width: min(calc(100% - 4rem), 50rem);
+      padding-top: 0;
+      grid-template-columns: 1fr 0.95fr;
+      gap: 1.5rem;
+    }
+
+    .about__card {
+      min-height: 0;
+      margin-top: 0;
+      padding: 2rem;
+    }
+
+    .about__line { display: none; }
+  }
+
+  @media (max-width: 42rem) {
+    .about__content {
+      width: calc(100% - 2rem);
+      grid-template-columns: 1fr;
+    }
+
+    .about__card { padding: 1.5rem; }
+    .about__card h3 { font-size: 1.7rem; }
+    .about__card p { font-size: 0.76rem; }
+    .about__photo { aspect-ratio: 4 / 5; }
+  }
 </style>

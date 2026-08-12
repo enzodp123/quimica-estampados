@@ -1,10 +1,10 @@
 :root {
-  --color-background: #070707;
+  --color-background: #0a0a0a;
   --color-surface: #0d0d0d;
   --color-surface-light: #151515;
   --color-text: #f4f4f2;
   --color-text-muted: #8a8a88;
-  --color-watermark: #0a0a0a;
+  --color-watermark: #0d0d0d;
   --color-magenta: #ff007f;
   --color-cyan: #00bfe8;
   --color-yellow: #e9e000;
@@ -23,5 +23,20 @@
   --section-spacing: clamp(82px, 10vw, 145px);
   --editorial-rail-left: clamp(2.5rem, 4vw, 4.8rem);
   --editorial-title-left: clamp(5.5rem, 8.05vw, 9.75rem);
+  --watermark-font-weight: 800;
+  --watermark-letter-spacing: -0.04em;
+  --watermark-line-height: 1.02;
+  --watermark-copy: "ESTAMPAMOS TU\A MARCA, IDEA Y\A TU NEGOCIO";
+  --watermark-left: clamp(1.5rem, 3.25vw, 4rem);
+  --watermark-font-size: clamp(6rem, 10vw, 12rem);
+  --vertical-title-font-size: clamp(3.25rem, 5vw, 4.5rem);
+  --vertical-title-font-weight: 700;
   --transition: 180ms ease;
+}
+
+@media (max-width: 40rem) {
+  :root {
+    --watermark-font-size: clamp(4.5rem, 16vw, 6rem);
+    --vertical-title-font-size: 2.25rem;
+  }
 }

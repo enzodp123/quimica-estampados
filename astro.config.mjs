@@ -7,7 +7,21 @@ export default defineConfig({
   integrations: [
     icon({
       include: {
-        lucide: ['badge-check', 'truck', 'layers-3', 'headphones', 'store'],
+        lucide: [
+          'badge-check',
+          'truck',
+          'layers-3',
+          'headphones',
+          'store',
+          'file-text',
+          'pen-line',
+          'sliders-horizontal',
+          'package',
+          'mail',
+          'message-circle',
+          'share-2',
+          'external-link',
+        ],
       },
     }),
   ],

@@ -10,8 +10,9 @@ const testimonials = [
   <div class="section-rail section-rail--cyan" aria-hidden="true">Marcas</div>
   <div class="section-content">
     <header class="section-heading section-heading--center">
-      <p class="kicker">Marcas que eligieron trabajar con nosotros</p>
-      <h2>Que confiaron<br />en nosotros</h2>
+      <div class="testimonials__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      <h2>Marcas que eligieron<br />trabajar con nosotros</h2>
+      <p>Acompañamos a marcas de distintos rubros ofreciendo producción confiable<br />y acabados de alta calidad.</p>
     </header>
     <div class="testimonial-grid">
       {testimonials.map(([title, text], index) => (
@@ -27,6 +28,40 @@ const testimonials = [
 </section>
 
 <style>
+  .testimonials .section-heading { margin-bottom: 3rem; }
+  .testimonials .section-heading h2 {
+    font-family: var(--font-montserrat);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+  .testimonials .section-heading > p {
+    max-width: none;
+    margin-top: 1rem;
+    padding: 0;
+    color: #dededc;
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.55;
+    text-transform: uppercase;
+  }
+  .testimonials__dots {
+    margin: 0 auto 0.7rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+  }
+  .testimonials__dots span {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--color-cyan);
+  }
+  .testimonials__dots span:nth-child(2) { background: var(--color-magenta); }
+  .testimonials__dots span:nth-child(3) { background: var(--color-yellow); }
   .testimonial-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.15rem; align-items: start; }
   blockquote { min-height: 250px; padding: 1.8rem; background: #0c0c0c; border: 1px solid var(--color-border); }
   blockquote.featured { min-height: 340px; border-color: var(--color-cyan); }

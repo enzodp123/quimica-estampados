@@ -1,0 +1,32 @@
+<div class="background-text" aria-hidden="true">
+  <span>ESTAMPAMOS TU</span>
+  <span>MARCA, IDEA Y</span>
+  <span>TU NEGOCIO</span>
+</div>
+
+<style>
+  .background-text {
+    position: absolute;
+    inset: clamp(1.25rem, 2.5vw, 3rem) 0 clamp(1.25rem, 2.5vw, 3rem) var(--watermark-left);
+    z-index: -1;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--color-watermark);
+    font-family: var(--font-montserrat);
+    font-size: var(--watermark-font-size);
+    font-weight: var(--watermark-font-weight);
+    letter-spacing: var(--watermark-letter-spacing);
+    line-height: var(--watermark-line-height);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .background-text span {
+    display: block;
+    flex: 0 0 auto;
+  }
+</style>

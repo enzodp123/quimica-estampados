@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import crewneck from "../../assets/images/buzo.png";
 import hoodie from "../../assets/images/buzo_capucha.png";
 import cap from "../../assets/images/gorra.png";
+import BackgroundText from "../shared/BackgroundText.astro";
 
 const products = [
   {
@@ -27,9 +28,7 @@ const products = [
 ---
 
 <section id="impresiones" class="product-showcase" aria-labelledby="products-heading">
-  <div class="product-showcase__watermark" aria-hidden="true">
-    ESTAMPAMOS TU<br />MARCA, IDEA Y<br />NEGOCIO
-  </div>
+  <BackgroundText />
 
   <div class="product-showcase__rail product-showcase__rail--left" aria-hidden="true">
     Impresiones
@@ -93,22 +92,6 @@ const products = [
     height: 53.875rem;
     overflow: hidden;
     background: var(--color-background);
-  }
-
-  .product-showcase__watermark {
-    position: absolute;
-    top: 2.25rem;
-    left: 6.3%;
-    z-index: -1;
-    color: var(--color-watermark);
-    font-family: var(--font-montserrat);
-    font-size: clamp(8rem, 11.5vw, 13.5rem);
-    font-weight: 900;
-    letter-spacing: -0.055em;
-    line-height: 1.03;
-    pointer-events: none;
-    user-select: none;
-    white-space: nowrap;
   }
 
   .product-showcase__content {
@@ -299,8 +282,8 @@ const products = [
     z-index: 1;
     color: var(--color-cyan);
     font-family: var(--font-montserrat);
-    font-size: 4.5rem;
-    font-weight: 800;
+    font-size: var(--vertical-title-font-size);
+    font-weight: var(--vertical-title-font-weight);
     letter-spacing: -0.045em;
     line-height: 1;
     text-transform: uppercase;
@@ -374,13 +357,6 @@ const products = [
   }
 
   @media (max-width: 40rem) {
-    .product-showcase__watermark {
-      top: 4rem;
-      left: -2rem;
-      font-size: 6rem;
-      line-height: 1.15;
-    }
-
     .product-showcase__content {
       width: calc(100% - 3rem);
     }

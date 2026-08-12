@@ -1,27 +1,280 @@
-<section id="trabajos" class="section section-grid watermark">
-  <div class="section-rail section-rail--cyan" aria-hidden="true">Nuestros</div>
-  <div class="section-content">
-    <header class="section-heading">
-      <div><p class="kicker">Cada detalle cuenta</p><h2>Trabajos<br />realizados</h2></div>
-      <p>Estas son algunas de las ideas que ayudamos a convertir en productos reales.</p>
+---
+import { Image } from "astro:assets";
+import BackgroundText from "../shared/BackgroundText.astro";
+import work1 from "../../assets/images/nuestros1.png";
+import work2 from "../../assets/images/nuestros2.png";
+import work3 from "../../assets/images/nuestros3.png";
+import work4 from "../../assets/images/nuestros4.png";
+import work5 from "../../assets/images/nuestros5.png";
+
+const categories = [
+  "Estampado textil",
+  "Corpóreos en polifan",
+  "Calcos y tarjetas personalizadas",
+];
+
+const works = [
+  { label: "Estampado textil personalizado", image: work1 },
+  { label: "Tarjetas personales", image: work2 },
+  { label: "Calcos personalizados", image: work3 },
+  { label: "Stickers impresos", image: work4 },
+  { label: "Gorras estampadas", image: work5 },
+];
+---
+
+<section id="trabajos" class="work-gallery" aria-labelledby="work-gallery-heading">
+  <BackgroundText />
+
+  <div class="work-gallery__rail" aria-hidden="true">Nuestros</div>
+  <h2 id="work-gallery-heading" class="work-gallery__title">Trabajos<br />realizados</h2>
+
+  <div class="work-gallery__content">
+    <header class="work-gallery__header">
+      <div class="work-gallery__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      <h3>Cada detalle cuenta</h3>
+      <p>Desde prendas personalizadas hasta piezas gráficas y corporativas, cada trabajo está pensado para representar una marca con la mejor terminación posible.</p>
     </header>
-    <div class="work-grid" aria-label="Galería de trabajos">
-      {Array.from({ length: 6 }).map((_, index) => (
-        <div class={`asset-slot work-${index + 1}`}><span>Trabajo {index + 1}</span></div>
+
+    <nav class="work-gallery__filters" aria-label="Categorías de trabajos">
+      {categories.map((category, index) => (
+        <button class:list={{ "is-active": index === 0 }} type="button">{category}</button>
       ))}
+    </nav>
+
+    <div class="work-gallery__grid" aria-label="Galería de trabajos realizados">
+      <div class="work-gallery__mosaic">
+        {works.slice(0, 2).map(({ label, image }, index) => (
+          <div class:list={["work-gallery__media", `work-gallery__media--${index + 1}`]}>
+            <Image class="work-gallery__image" src={image} alt={label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 40vw" />
+          </div>
+        ))}
+        {works.slice(2, 4).map(({ label, image }, index) => (
+          <div class:list={["work-gallery__media", `work-gallery__media--${index + 4}`]}>
+            <Image class="work-gallery__image" src={image} alt={label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 40vw" />
+          </div>
+        ))}
+      </div>
+
+      <div class="work-gallery__media work-gallery__media--3">
+        <Image class="work-gallery__image" src={works[4].image} alt={works[4].label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 28vw" />
+      </div>
     </div>
-    <a class="button button--cyan section-cta" href="#contacto">Ver más trabajos</a>
+
+    <a class="work-gallery__cta" href="#contacto">Ver más trabajos</a>
   </div>
 </section>
 
 <style>
-  .work-grid { display: grid; grid-template-columns: 1.15fr 1.25fr 1fr; grid-template-rows: repeat(2, clamp(220px, 20vw, 305px)); gap: .7rem; }
-  .work-grid .asset-slot { min-height: 0; }
-  .work-3 { grid-row: span 2; }
-  .work-1, .work-5 { background: linear-gradient(135deg,#efd6ae,#8b3b2a); }
-  .work-2 { background: linear-gradient(135deg,#ff5e80,#e3ad87); }
-  .work-3 { background: linear-gradient(135deg,#d3cdb9,#787268); }
-  .work-4 { background: linear-gradient(135deg,#8b5242,#d9b098); }
-  .work-6 { background: linear-gradient(135deg,#27304b,#d2d5d7); }
-  @media (max-width: 640px) { .work-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 175px); } .work-3 { grid-row: span 2; } }
+  .work-gallery {
+    --work-heading-bottom: 6.375rem;
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    height: 69.5rem;
+    overflow: hidden;
+    background: var(--color-background);
+  }
+
+  .work-gallery__rail {
+    position: absolute;
+    bottom: var(--work-heading-bottom);
+    left: var(--editorial-rail-left);
+    z-index: 2;
+    color: var(--color-cyan);
+    font-family: var(--font-montserrat);
+    font-size: var(--vertical-title-font-size);
+    font-weight: var(--vertical-title-font-weight);
+    letter-spacing: -0.045em;
+    line-height: 1;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .work-gallery__title {
+    position: absolute;
+    bottom: var(--work-heading-bottom);
+    left: clamp(5.5rem, 7.65vw, 9.2rem);
+    z-index: 2;
+    color: var(--color-text);
+    font-family: var(--font-montserrat);
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+
+  .work-gallery__content {
+    width: min(67.7vw, 81.25rem);
+    margin-left: clamp(17.5rem, 20.7vw, 24.75rem);
+    padding-top: 3rem;
+  }
+
+  .work-gallery__header {
+    width: min(100%, 48rem);
+  }
+
+  .work-gallery__dots {
+    margin-bottom: 0.7rem;
+    display: flex;
+    gap: 0.2rem;
+  }
+
+  .work-gallery__dots span {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--color-cyan);
+  }
+
+  .work-gallery__dots span:nth-child(2) { background: var(--color-magenta); }
+  .work-gallery__dots span:nth-child(3) { background: var(--color-yellow); }
+
+  .work-gallery__header h3 {
+    color: var(--color-text);
+    font-family: var(--font-montserrat);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .work-gallery__header p {
+    max-width: 51rem;
+    margin-top: 0.9rem;
+    color: #e1e1df;
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.045em;
+    line-height: 1.55;
+    text-transform: uppercase;
+  }
+
+  .work-gallery__filters {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.65rem;
+  }
+
+  .work-gallery__filters button {
+    min-height: 2.75rem;
+    padding: 0.75rem 1.25rem;
+    color: #d7d7d5;
+    background: rgba(8, 8, 8, 0.84);
+    border: 0.0625rem solid var(--color-border);
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.075em;
+    line-height: 1;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .work-gallery__filters button:hover,
+  .work-gallery__filters button:focus-visible,
+  .work-gallery__filters button.is-active {
+    color: var(--color-text);
+    border-color: var(--color-cyan);
+  }
+
+  .work-gallery__grid {
+    height: 39.5rem;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 2.15fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .work-gallery__mosaic {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .work-gallery__media {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: #101010;
+    border: 0.0625rem solid var(--color-border);
+  }
+
+  .work-gallery__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .work-gallery__media--1 { grid-column: 1 / span 4; grid-row: 1; }
+  .work-gallery__media--2 { grid-column: 5 / span 3; grid-row: 1; }
+  .work-gallery__media--4 { grid-column: 1 / span 3; grid-row: 2; }
+  .work-gallery__media--5 { grid-column: 4 / span 4; grid-row: 2; }
+
+  .work-gallery__cta {
+    width: fit-content;
+    min-width: 14.25rem;
+    min-height: 3.25rem;
+    margin: 3rem auto 0;
+    transform: translateX(-1.5rem);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-cyan);
+    border: 0.0625rem solid var(--color-cyan);
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
+    transition: color var(--transition), background var(--transition);
+  }
+
+  .work-gallery__cta:hover,
+  .work-gallery__cta:focus-visible {
+    color: #050505;
+    background: var(--color-cyan);
+  }
+
+  @media (max-width: 64rem) {
+    .work-gallery { height: auto; padding-block: 4rem 5rem; }
+    .work-gallery__rail,
+    .work-gallery__title { display: none; }
+    .work-gallery__content { width: min(calc(100% - 4rem), 50rem); margin-inline: auto; padding-top: 0; }
+    .work-gallery__filters { justify-content: flex-start; flex-wrap: wrap; }
+    .work-gallery__grid { height: 29rem; }
+    .work-gallery__cta { transform: none; }
+  }
+
+  @media (max-width: 42rem) {
+    .work-gallery__content { width: calc(100% - 2rem); }
+    .work-gallery__header h3 { font-size: 1.25rem; }
+    .work-gallery__filters { display: grid; grid-template-columns: 1fr; }
+    .work-gallery__grid { height: auto; grid-template-columns: 1fr; }
+    .work-gallery__mosaic { display: contents; }
+    .work-gallery__media,
+    .work-gallery__media--1,
+    .work-gallery__media--2,
+    .work-gallery__media--3,
+    .work-gallery__media--4,
+    .work-gallery__media--5 {
+      min-height: 16rem;
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
 </style>

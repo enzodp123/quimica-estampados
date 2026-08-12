@@ -1,11 +1,13 @@
 ---
 import hoodie from "../../assets/images/Gemini_Generated_Image_idmhueidmhueidmh-removebg-preview 2.png";
 import shirt from "../../assets/images/Untitled - 22 de julio de 2026 a las 20.54.55 3.png";
+import BackgroundText from "../shared/BackgroundText.astro";
 
 const tickerItems = Array(7).fill("Dale vida a tu marca");
 ---
 
 <section id="inicio" class="hero">
+  <BackgroundText />
   <div class="hero__ticker" aria-hidden="true">
     <div class="hero__ticker-track">
       <div class="hero__ticker-group">
@@ -72,20 +74,6 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
     border-bottom: 1px solid var(--color-border);
   }
 
-  .hero::before {
-    content: "ESTAMPAMOS TU\A MARCA, TU IDEA Y\A NEGOCIO";
-    position: absolute;
-    inset: 1.6% auto auto 4%;
-    z-index: -1;
-    color: var(--color-watermark);
-    font-family: var(--font-montserrat);
-    font-size: clamp(7rem, 11vw, 13rem);
-    font-weight: 900;
-    letter-spacing: -0.055em;
-    line-height: 1.35;
-    white-space: pre;
-  }
-
   .hero__ticker {
     position: absolute;
     inset: 11px 0 auto;
@@ -131,8 +119,8 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
     z-index: 4;
     padding: 0;
     font-family: var(--font-montserrat);
-    font-size: 4.65rem;
-    font-weight: 800;
+    font-size: var(--vertical-title-font-size);
+    font-weight: var(--vertical-title-font-weight);
     letter-spacing: -0.045em;
   }
 
@@ -247,11 +235,6 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
       min-height: 700px;
     }
 
-    .hero::before {
-      inset: 9% auto auto 3%;
-      font-size: 7.5rem;
-    }
-
     .section-rail {
       left: var(--editorial-rail-left);
     }
@@ -289,16 +272,10 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
       min-height: 760px;
     }
 
-    .hero::before {
-      inset: 10% auto auto -3%;
-      font-size: 5rem;
-      line-height: 0.8;
-    }
-
     .section-rail {
       top: 8%;
       left: 18px;
-      font-size: 3rem;
+      font-size: var(--vertical-title-font-size);
     }
 
     .hero__content {

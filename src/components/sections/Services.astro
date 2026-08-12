@@ -1,46 +1,317 @@
 ---
+import { Image } from "astro:assets";
+import stickers from "../../assets/images/IMG1.png";
+import cards from "../../assets/images/img2.png";
+import dimensionalSign from "../../assets/images/img3.png";
+
 const services = [
-  ["Calcos", "Diseño y producción de stickers resistentes para packaging, vidrieras y productos."],
-  ["Tarjetas personales", "Papelería profesional con terminaciones especiales para hacer visible tu marca."],
-  ["Plotter de corte", "Vinilos de corte y señalética para locales, eventos, vehículos y mucho más."],
+  {
+    name: "Calcos",
+    description: "Aplicaciones resistentes para productos, envases y vidrieras, con excelente adhesión y terminaciones de alta calidad.",
+    image: stickers,
+    imageAlt: "Calcos impresos a color para una marca gastronómica",
+    imagePosition: "50% 48%",
+  },
+  {
+    name: "Tarjetas personales",
+    description: "Tarjetas profesionales con acabados premium que transmiten una excelente primera impresión.",
+    image: cards,
+    imageAlt: "Tarjetas personales negras con terminación brillante",
+    imagePosition: "50% 42%",
+  },
+  {
+    name: "Corpóreos en polifan",
+    description: "Vinilos de corte para vidrieras, vehículos, señalética y aplicaciones corporativas con acabados de alta precisión.",
+    image: dimensionalSign,
+    imageAlt: "Cartel corpóreo de polifan instalado sobre una pared",
+    imagePosition: "50% 50%",
+  },
 ];
 ---
 
-<section id="servicios" class="section section-grid">
-  <div class="section-rail section-rail--yellow" aria-hidden="true">Servicios</div>
-  <div class="section-content">
-    <header class="section-heading section-heading--split">
-      <h2>Potenciamos<br />tu marca</h2>
-      <p>Diseñamos y producimos todo lo que tu negocio necesita para verse consistente, profesional y memorable.</p>
-    </header>
-    <div class="service-grid">
-      {services.map(([name, description], index) => (
-        <article class={`service-card service-card--${index + 1}`}>
-          <div class="asset-slot asset-slot--service"><span>Imagen servicio</span></div>
+<section id="servicios" class="services" aria-labelledby="services-heading">
+  <div class="services__watermark" aria-hidden="true">
+    <span>ESTAMPAMOS TU</span>
+    <span>MARCA, IDEA Y</span>
+    <span>TU NEGOCIO</span>
+  </div>
+
+  <div class="services__rail" aria-hidden="true">Servicios</div>
+
+  <div class="services__content">
+    <div class="services__grid">
+      {services.map(({ name, description, image, imageAlt, imagePosition }, index) => (
+        <article class:list={["service-card", `service-card--${index + 1}`]}>
+          <div class="service-card__visual">
+            <Image
+              class="service-card__image"
+              src={image}
+              alt={imageAlt}
+              loading="lazy"
+              widths={[480, 720, 960]}
+              sizes="(max-width: 42rem) 86vw, (max-width: 64rem) 42vw, 25rem"
+              style={`object-position: ${imagePosition};`}
+            />
+          </div>
+
           <div class="service-card__body">
-            <p class="card-index">0{index + 1}</p>
             <h3>{name}</h3>
             <p>{description}</p>
           </div>
         </article>
       ))}
     </div>
-    <a class="button button--yellow section-cta" href="#contacto">Todos los servicios</a>
+
+    <a class="services__cta" href="#contacto">
+      <span>Todos los servicios</span>
+      <span class="services__cta-mark" aria-hidden="true"></span>
+    </a>
+
+    <div class="services__footer">
+      <h2 id="services-heading">Potenciamos<br />tu marca</h2>
+      <div class="services__summary">
+        <div class="services__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <p>Diseño, impresión y producción visual. Calidad profesional, acabados precisos y resultados pensados para potenciar la identidad de tu negocio.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
-  .service-grid { max-width: 1080px; margin-inline: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.15rem; align-items: start; }
-  .service-card { background: #0d0d0d; border: 1px solid var(--color-border); }
-  .service-card--2 { margin-top: -2.5rem; border-color: rgba(233,224,0,.4); }
-  .asset-slot--service { min-height: clamp(230px, 20vw, 310px); }
-  .service-card--1 .asset-slot { background: linear-gradient(135deg,#cf9b12,#ddd0bd); }
-  .service-card--2 .asset-slot { background: linear-gradient(135deg,#171717,#393939); }
-  .service-card--3 .asset-slot { background: linear-gradient(135deg,#e5e5e5,#777); }
-  .service-card__body { min-height: 175px; padding: 1.45rem; }
-  .service-card h3 { font-family: var(--font-display); font-size: 1.02rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
-  .service-card__body > p:not(.card-index) { margin-top: .55rem; color: var(--color-text-muted); font-size: .68rem; }
-  .service-card__body .card-index { color: var(--color-yellow) !important; }
-  @media (max-width: 900px) { .service-grid { grid-template-columns: repeat(2,1fr); } .service-card:last-child { grid-column: span 2; width: calc(50% - .575rem); justify-self: center; } .service-card--2 { margin-top: 0; } }
-  @media (max-width: 640px) { .service-grid { max-width: 305px; grid-template-columns: 1fr; gap: 1.45rem; } .service-card:last-child { grid-column: auto; width: 100%; } .service-card:nth-child(even) { margin-left: 1.3rem; } .asset-slot--service { min-height: 255px; } }
+  .services {
+    position: relative;
+    isolation: isolate;
+    min-height: 53.875rem;
+    overflow: hidden;
+    background: var(--color-background);
+  }
+
+  .services__watermark {
+    position: absolute;
+    top: 2.5rem;
+    left: 4.8%;
+    z-index: -1;
+    color: var(--color-watermark);
+    font-family: var(--font-montserrat);
+    font-size: clamp(6.6rem, 10.35vw, 12.4rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 0.93;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .services__watermark span { display: block; }
+
+  .services__rail {
+    position: absolute;
+    left: var(--editorial-rail-left);
+    bottom: 4.2rem;
+    color: var(--color-yellow);
+    font-family: var(--font-montserrat);
+    font-size: clamp(2rem, 3.3vw, 3.75rem);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 1;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .services__content {
+    width: min(calc(100% - 17rem), 76rem);
+    margin-inline: auto;
+    padding-block: 10.5rem 3.75rem;
+  }
+
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.25rem;
+    align-items: start;
+  }
+
+  .service-card {
+    min-width: 0;
+    overflow: hidden;
+    background: rgba(8, 8, 8, 0.88);
+    border: 0.0625rem solid var(--color-border);
+    transition: transform var(--transition), border-color var(--transition);
+  }
+
+  .service-card--2 {
+    margin-top: -5.25rem;
+    border-color: rgba(233, 224, 0, 0.72);
+  }
+
+  .service-card:hover {
+    transform: translateY(-0.35rem);
+    border-color: rgba(233, 224, 0, 0.72);
+  }
+
+  .service-card__visual {
+    height: clamp(15rem, 19vw, 19.25rem);
+    overflow: hidden;
+    background: #111;
+  }
+
+  .service-card__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 420ms ease;
+  }
+
+  .service-card:hover .service-card__image { transform: scale(1.025); }
+
+  .service-card__body {
+    min-height: 9.25rem;
+    padding: 1.25rem 1.45rem 1.45rem;
+  }
+
+  .service-card h3 {
+    color: var(--color-yellow);
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.055em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  .service-card p {
+    margin-top: 0.9rem;
+    color: #c1c1bf;
+    font-family: var(--font-poppins);
+    font-size: 0.68rem;
+    line-height: 1.5;
+  }
+
+  .services__cta {
+    width: fit-content;
+    min-width: 15.75rem;
+    min-height: 3.15rem;
+    margin: 3rem auto 0;
+    padding: 0.5rem 1rem 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    color: var(--color-yellow);
+    border: 0.0625rem solid var(--color-yellow);
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+    line-height: 1;
+    text-transform: uppercase;
+    transition: color var(--transition), background var(--transition);
+  }
+
+  .services__cta-mark {
+    position: relative;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-right: 0.0625rem solid currentColor;
+    border-bottom: 0.0625rem solid currentColor;
+  }
+
+  .services__cta-mark::before {
+    content: "";
+    position: absolute;
+    right: 0.15rem;
+    bottom: 0.15rem;
+    width: 0.65rem;
+    border-top: 0.0625rem solid currentColor;
+    transform: rotate(-45deg);
+    transform-origin: right center;
+  }
+
+  .services__cta:hover,
+  .services__cta:focus-visible {
+    color: #060606;
+    background: var(--color-yellow);
+  }
+
+  .services__footer {
+    margin-top: 2.25rem;
+    display: flex;
+    align-items: end;
+    justify-content: flex-end;
+    gap: 3rem;
+  }
+
+  .services__footer h2 {
+    position: absolute;
+    left: var(--editorial-title-left);
+    bottom: 3.75rem;
+    color: var(--color-text);
+    font-family: var(--font-montserrat);
+    font-size: clamp(2.1rem, 3.3vw, 3.75rem);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+
+  .services__summary {
+    width: min(31rem, 48%);
+    display: flex;
+    align-items: start;
+    gap: 0.75rem;
+  }
+
+  .services__summary p {
+    color: #b9b9b7;
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.045em;
+    line-height: 1.45;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  .services__dots { display: flex; gap: 0.2rem; flex: 0 0 auto; }
+  .services__dots span { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--color-cyan); }
+  .services__dots span:nth-child(2) { background: var(--color-magenta); }
+  .services__dots span:nth-child(3) { background: var(--color-yellow); }
+
+  @media (max-width: 75rem) {
+    .services__content { width: min(calc(100% - 10rem), 62rem); }
+    .services__grid { gap: 1.25rem; }
+    .service-card__body { padding-inline: 1.1rem; }
+  }
+
+  @media (max-width: 64rem) {
+    .services { min-height: auto; }
+    .services__content { width: min(calc(100% - 8rem), 49rem); padding-block: 7rem 4.5rem; }
+    .services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+    .service-card--2 { margin-top: 0; }
+    .service-card--3 { grid-column: 1 / -1; width: calc(50% - 0.75rem); justify-self: center; }
+    .service-card__visual { height: 16rem; }
+    .services__footer { align-items: start; flex-direction: column; gap: 1.5rem; }
+    .services__footer h2 { position: static; }
+    .services__summary { width: min(31rem, 100%); }
+    .services__summary p { text-align: left; }
+  }
+
+  @media (max-width: 42rem) {
+    .services__watermark { top: 3.5rem; left: -2rem; font-size: 5rem; line-height: 1; }
+    .services__rail { display: none; }
+    .services__content { width: calc(100% - 2rem); padding-block: 4.5rem; }
+    .services__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .service-card--3 { width: 100%; grid-column: auto; }
+    .service-card__visual { height: clamp(15rem, 69vw, 21rem); }
+    .service-card__body { min-height: auto; }
+    .services__cta { min-width: min(100%, 15.75rem); margin-top: 2.25rem; }
+    .services__footer { margin-top: 2.5rem; }
+    .services__footer h2 { font-size: 2.25rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-card__image { transition: none; }
+  }
 </style>

@@ -24,6 +24,9 @@ body {
 }
 
 .section-rail {
+  position: absolute;
+  top: var(--section-spacing);
+  left: var(--editorial-rail-left);
   grid-column: rail-start / content-start;
   align-self: start;
   justify-self: center;
@@ -50,7 +53,7 @@ body {
   position: absolute;
   inset: 8% 2% auto 9%;
   z-index: -1;
-  color: rgba(255,255,255,.018);
+  color: var(--color-watermark);
   font-family: var(--font-display);
   font-size: clamp(7rem, 12vw, 14rem);
   font-weight: 900;

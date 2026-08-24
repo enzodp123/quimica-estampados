@@ -1,124 +1,204 @@
 ---
 import logo from "../../assets/icons/logo-quimica.svg";
+
+const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
-  <div class="container footer__grid">
+  <div class="footer__grid">
     <div class="footer__brand">
-      <img src={logo.src} width="48" height="48" alt="" />
-      <h2>Qu&iacute;mica Estampados</h2>
+      <img src={logo.src} width="76" height="76" alt="Química Estampados" />
+      <h2>Química Estampados</h2>
       <p>
-        Dise&ntilde;o, estampado y producci&oacute;n para marcas que quieren
-        dejar huella.
+        Estudio creativo <strong>especializado</strong> en estampados<br />
+        <strong>personalizados</strong>, branding y <strong>soluciones gráficas</strong>.
       </p>
-      <div class="color-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="footer__dots" aria-hidden="true"><i></i><i></i><i></i></div>
     </div>
-    <div>
-      <h3>Navegaci&oacute;n</h3><a href="#impresiones">Impresiones</a><a
-        href="#servicios">Servicios</a
-      ><a href="#trabajos">Trabajos</a>
-    </div>
-    <div>
-      <h3>Ayuda</h3><a href="#contacto">Contacto</a><a href="#preguntas"
-        >Preguntas frecuentes</a
-      ><a href="#nosotros">Nosotros</a>
-    </div>
-    <div>
-      <h3>Seguinos</h3><a href="#">Instagram</a><a href="#">Facebook</a><a
-        href="#">WhatsApp</a>
+
+    <nav class="footer__column" aria-label="Servicios">
+      <h3>Servicios</h3>
+      <a href="#servicios">Sublimación</a>
+      <a href="#servicios">DTF</a>
+      <a href="#servicios">Calcos</a>
+      <a href="#servicios">Corpóreos</a>
+    </nav>
+
+    <nav class="footer__column" aria-label="Empresa">
+      <h3>Empresa</h3>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#trabajos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="footer__column footer__contact">
+      <h3>Contacto</h3>
+      <a href="#" aria-label="Instagram">
+        <span>Instagram</span><span class="footer__arrow" aria-hidden="true">›</span>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <span>Facebook</span><span class="footer__arrow" aria-hidden="true">›</span>
+      </a>
+      <a href="mailto:quimicaestampados@gmail.com">
+        <span>quimicaestampados@gmail.com</span><span class="footer__arrow" aria-hidden="true">›</span>
+      </a>
     </div>
   </div>
-  <div class="container footer__bottom">
-    <span>&copy; {new Date().getFullYear()} Qu&iacute;mica Estampados</span
-    ><span>Victoria &middot; Entre R&iacute;os &middot; Argentina</span>
+
+  <div class="footer__bottom">
+    <p><strong>© {year} Química Estampados.</strong> Todos los derechos reservados.</p>
+    <p>Desarrollado por <a href="#">@binadevs</a></p>
   </div>
 </footer>
 
 <style>
   .footer {
-    padding: 4.5rem 0 1.5rem;
+    min-height: clamp(21rem, 20vw, 24rem);
+    padding-top: clamp(2.2rem, 2.3vw, 2.75rem);
     background: #050505;
-    border-top: 1px solid var(--color-border);
+    border-top: 0.0625rem solid var(--color-border);
   }
+
+  .footer__grid,
+  .footer__bottom {
+    width: calc(100% - clamp(2rem, 9vw, 10.8rem) * 2);
+    margin-inline: auto;
+  }
+
   .footer__grid {
     display: grid;
-    grid-template-columns: 2fr repeat(3, 1fr);
-    gap: 3rem;
+    grid-template-columns: 2fr repeat(3, minmax(0, 1fr));
+    gap: clamp(2rem, 3.1vw, 3.75rem);
+    align-items: start;
   }
+
+  .footer__brand img {
+    width: clamp(3.5rem, 4vw, 4.75rem);
+    height: clamp(3.5rem, 4vw, 4.75rem);
+  }
+
   .footer__brand h2 {
-    margin-top: 1rem;
-    font-family: var(--font-display);
-    font-size: 1rem;
+    margin-top: clamp(0.75rem, 0.9vw, 1.05rem);
+    color: #f0f0ed;
+    font-family: var(--font-montserrat);
+    font-size: clamp(0.9rem, 1.05vw, 1.25rem);
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
     text-transform: uppercase;
   }
-  .footer__brand p {
-    max-width: 350px;
-    margin-top: 0.6rem;
-    color: #777;
-    font-size: 0.68rem;
+
+  .footer__brand > p {
+    max-width: 34rem;
+    margin-top: clamp(0.7rem, 0.8vw, 0.95rem);
+    color: #d0d0cd;
+    font-family: var(--font-jetbrains-mono);
+    font-size: clamp(0.55rem, 0.61vw, 0.72rem);
+    letter-spacing: 0.035em;
+    line-height: 1.7;
   }
-  .footer h3 {
-    margin-bottom: 1rem;
+
+  .footer__brand strong {
     color: var(--color-magenta);
-    font-family: var(--font-display);
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    font-weight: 700;
   }
-  .footer a {
-    margin-bottom: 0.65rem;
-    display: block;
-    color: #777;
-    font-size: 0.65rem;
-  }
-  .footer a:hover {
-    color: #fff;
-  }
-  .color-dots {
-    margin-top: 1rem;
+
+  .footer__dots {
+    margin-top: clamp(0.85rem, 1vw, 1.15rem);
     display: flex;
-    gap: 4px;
+    gap: 0.3rem;
   }
-  .color-dots i {
-    width: 6px;
-    height: 6px;
+
+  .footer__dots i {
+    width: 0.5rem;
+    height: 0.5rem;
     border-radius: 50%;
     background: var(--color-cyan);
   }
-  .color-dots i:nth-child(2) {
-    background: var(--color-magenta);
-  }
-  .color-dots i:nth-child(3) {
-    background: var(--color-yellow);
-  }
-  .footer__bottom {
-    margin-top: 3rem;
-    padding-top: 1.2rem;
-    display: flex;
-    justify-content: space-between;
-    color: #3f3f3f;
-    font-size: 0.53rem;
-    letter-spacing: 0.12em;
-    border-top: 1px solid var(--color-border);
+
+  .footer__dots i:nth-child(2) { background: var(--color-magenta); }
+  .footer__dots i:nth-child(3) { background: var(--color-yellow); }
+
+  .footer__column h3 {
+    margin-bottom: clamp(1.1rem, 1.25vw, 1.5rem);
+    color: var(--color-magenta);
+    font-family: var(--font-jetbrains-mono);
+    font-size: clamp(0.58rem, 0.64vw, 0.75rem);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    line-height: 1;
     text-transform: uppercase;
   }
-  @media (max-width: 640px) {
-    .footer {
-      padding-top: 3.5rem;
-    }
-    .footer__grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem 1rem;
-    }
-    .footer__brand {
-      grid-column: 1 / -1;
-    }
-    .footer__bottom {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+
+  .footer__column > a {
+    margin-bottom: clamp(0.65rem, 0.72vw, 0.86rem);
+    display: block;
+    color: #d0d0cd;
+    font-family: var(--font-jetbrains-mono);
+    font-size: clamp(0.52rem, 0.57vw, 0.67rem);
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+    text-transform: uppercase;
+    transition: color var(--transition), border-color var(--transition);
+  }
+
+  .footer__column > a:hover,
+  .footer__column > a:focus-visible {
+    color: #ffffff;
+  }
+
+  .footer__contact > a {
+    min-height: clamp(2rem, 2.05vw, 2.45rem);
+    margin-bottom: clamp(0.45rem, 0.52vw, 0.62rem);
+    padding: 0 clamp(0.65rem, 0.72vw, 0.86rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border: 0.0625rem solid var(--color-border);
+  }
+
+  .footer__arrow {
+    flex: 0 0 auto;
+    color: #f0f0ed;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .footer__bottom {
+    margin-top: clamp(2.8rem, 4vw, 4.8rem);
+    padding: clamp(1rem, 1.1vw, 1.3rem) 0 clamp(1rem, 1.1vw, 1.3rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    color: #626260;
+    border-top: 0.0625rem solid var(--color-border);
+    font-family: var(--font-poppins);
+    font-size: clamp(0.48rem, 0.5vw, 0.58rem);
+    line-height: 1.4;
+  }
+
+  .footer__bottom strong,
+  .footer__bottom a {
+    color: var(--color-magenta);
+    font-weight: 400;
+  }
+
+  @media (max-width: 64rem) {
+    .footer { padding-top: 3rem; }
+    .footer__grid,
+    .footer__bottom { width: calc(100% - 4rem); }
+    .footer__grid { grid-template-columns: 1.5fr repeat(3, 1fr); gap: 2rem; }
+    .footer__brand > p br { display: none; }
+  }
+
+  @media (max-width: 48rem) {
+    .footer__grid,
+    .footer__bottom { width: calc(100% - 2rem); }
+    .footer__grid { grid-template-columns: 1fr 1fr; gap: 2.5rem 1.5rem; }
+    .footer__brand { grid-column: 1 / -1; }
+    .footer__contact { grid-column: 1 / -1; }
+    .footer__bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   }
 </style>

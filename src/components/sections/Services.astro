@@ -22,10 +22,17 @@ const services = [
   },
   {
     name: "Corpóreos en polifan",
-    description: "Vinilos de corte para vidrieras, vehículos, señalética y aplicaciones corporativas con acabados de alta precisión.",
+    description: "Vinilos de corte para vidrieras, vehículos, señalética y aplicaciones comerciales con acabados de alta precisión.",
     image: dimensionalSign,
     imageAlt: "Cartel corpóreo de polifan instalado sobre una pared",
     imagePosition: "50% 50%",
+  },
+  {
+    name: "Calcos",
+    description: "Aplicaciones resistentes para productos, envases y vidrieras, con excelente adhesión y terminaciones de alta calidad.",
+    image: stickers,
+    imageAlt: "Calcos impresos a color para una marca gastronómica",
+    imagePosition: "50% 48%",
   },
 ];
 ---
@@ -59,18 +66,11 @@ const services = [
       ))}
     </div>
 
-    <a class="services__cta" href="#contacto">
-      <span>Todos los servicios</span>
-      <span class="services__cta-mark" aria-hidden="true"></span>
-    </a>
-
-    <div class="services__footer">
-      <h2 id="services-heading">Potenciamos<br />tu marca</h2>
-      <div class="services__summary">
-        <div class="services__dots" aria-hidden="true"><span></span><span></span><span></span></div>
-        <p>Diseño, impresión y producción visual. Calidad profesional, acabados precisos y resultados pensados para potenciar la identidad de tu negocio.</p>
-      </div>
+    <div class="services__pagination" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
     </div>
+
+    <h2 id="services-heading" class="services__title">Potenciamos<br />tu marca</h2>
   </div>
 </section>
 
@@ -78,20 +78,23 @@ const services = [
   .services {
     position: relative;
     isolation: isolate;
-    min-height: 53.875rem;
+    width: 100%;
+    height: 75.1875rem;
     overflow: hidden;
     background: var(--color-background);
+    --background-text-inset: 14.6875rem 0 14.8125rem 5.0625rem;
   }
 
   .services__rail {
     position: absolute;
-    left: var(--editorial-rail-left);
-    bottom: 4.2rem;
+    left: 3.6458%;
+    bottom: 0;
+    z-index: 2;
     color: var(--color-yellow);
     font-family: var(--font-montserrat);
-    font-size: var(--vertical-title-font-size);
-    font-weight: var(--vertical-title-font-weight);
-    letter-spacing: -0.045em;
+    font-size: clamp(3.5rem, 3.75vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
     line-height: 1;
     text-transform: uppercase;
     writing-mode: vertical-rl;
@@ -99,29 +102,36 @@ const services = [
   }
 
   .services__content {
-    width: min(calc(100% - 17rem), 76rem);
-    margin-inline: auto;
-    padding-block: 10.5rem 3.75rem;
+    display: contents;
   }
 
   .services__grid {
+    position: absolute;
+    top: 7.75rem;
+    left: 2.9167%;
+    width: 94.1666%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2.25rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.875rem;
     align-items: start;
   }
 
   .service-card {
+    height: 32.5538rem;
     min-width: 0;
     overflow: hidden;
-    background: rgba(8, 8, 8, 0.88);
-    border: 0.0625rem solid var(--color-border);
+    background: rgba(19, 19, 19, 0.5);
+    border: 0.0625rem solid #353534;
+    backdrop-filter: blur(0.125rem);
     transition: transform var(--transition), border-color var(--transition);
   }
 
-  .service-card--2 {
-    margin-top: -5.25rem;
-  }
+  .service-card--1,
+  .service-card--3 { margin-top: 5.946rem; }
+
+  .service-card--2 { border-color: var(--color-yellow); }
+
+  .service-card--4 { margin-top: 0.0625rem; }
 
   .service-card:hover,
   .service-card:focus-within {
@@ -130,10 +140,12 @@ const services = [
   }
 
   .service-card__visual {
-    height: clamp(15rem, 19vw, 19.25rem);
+    height: 23.75rem;
     overflow: hidden;
     background: #111;
   }
+
+  .service-card--2 .service-card__visual { height: 21.9288rem; }
 
   .service-card__image {
     width: 100%;
@@ -146,147 +158,124 @@ const services = [
   .service-card:hover .service-card__image { transform: scale(1.025); }
 
   .service-card__body {
-    min-height: 9.25rem;
-    padding: 1.25rem 1.45rem 1.45rem;
+    padding: 1.5rem 1.5rem 2rem;
   }
 
   .service-card h3 {
     color: var(--color-yellow);
     font-family: var(--font-jetbrains-mono);
-    font-size: 0.78rem;
+    font-size: 1.25rem;
     font-weight: 800;
-    letter-spacing: 0.055em;
-    line-height: 1.25;
+    letter-spacing: 0.045em;
+    line-height: 1.4;
     text-transform: uppercase;
   }
 
   .service-card p {
-    margin-top: 0.9rem;
-    color: #c1c1bf;
+    margin-top: 0.75rem;
+    color: rgba(255, 255, 255, 0.69);
     font-family: var(--font-poppins);
-    font-size: 0.68rem;
+    font-size: 1rem;
     line-height: 1.5;
   }
 
-  .services__cta {
-    width: fit-content;
-    min-width: 15.75rem;
-    min-height: 3.15rem;
-    margin: 3rem auto 0;
-    padding: 0.5rem 1rem 0.5rem 1.5rem;
+  .services__pagination {
+    position: absolute;
+    top: 48.9375rem;
+    left: 50%;
+    z-index: 2;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    color: var(--color-yellow);
-    border: 0.0625rem solid var(--color-yellow);
-    font-family: var(--font-jetbrains-mono);
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 0.11em;
-    line-height: 1;
-    text-transform: uppercase;
-    transition: color var(--transition), background var(--transition);
+    gap: 0.25rem;
+    transform: translateX(-50%);
   }
 
-  .services__cta-mark {
-    position: relative;
+  .services__pagination span {
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background: #fff;
+  }
+
+  .services__pagination span:first-child {
     width: 0.75rem;
     height: 0.75rem;
-    border-right: 0.0625rem solid currentColor;
-    border-bottom: 0.0625rem solid currentColor;
-  }
-
-  .services__cta-mark::before {
-    content: "";
-    position: absolute;
-    right: 0.15rem;
-    bottom: 0.15rem;
-    width: 0.65rem;
-    border-top: 0.0625rem solid currentColor;
-    transform: rotate(-45deg);
-    transform-origin: right center;
-  }
-
-  .services__cta:hover,
-  .services__cta:focus-visible {
-    color: #060606;
     background: var(--color-yellow);
   }
 
-  .services__footer {
-    margin-top: 2.25rem;
-    display: flex;
-    align-items: end;
-    justify-content: flex-end;
-    gap: 3rem;
-  }
-
-  .services__footer h2 {
+  .services__title {
     position: absolute;
-    left: var(--editorial-title-left);
-    bottom: 3.75rem;
+    left: 8.3854%;
+    bottom: 0;
+    z-index: 2;
     color: var(--color-text);
     font-family: var(--font-montserrat);
-    font-size: clamp(2.1rem, 3.3vw, 3.75rem);
+    font-size: clamp(2.5rem, 2.5vw, 3rem);
     font-weight: 800;
-    letter-spacing: -0.045em;
-    line-height: 0.98;
+    letter-spacing: -0.04em;
+    line-height: 1.33;
     text-transform: uppercase;
   }
-
-  .services__summary {
-    width: min(31rem, 48%);
-    display: flex;
-    align-items: start;
-    gap: 0.75rem;
-  }
-
-  .services__summary p {
-    color: #b9b9b7;
-    font-family: var(--font-jetbrains-mono);
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.045em;
-    line-height: 1.45;
-    text-align: right;
-    text-transform: uppercase;
-  }
-
-  .services__dots { display: flex; gap: 0.2rem; flex: 0 0 auto; }
-  .services__dots span { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--color-cyan); }
-  .services__dots span:nth-child(2) { background: var(--color-magenta); }
-  .services__dots span:nth-child(3) { background: var(--color-yellow); }
 
   @media (max-width: 75rem) {
-    .services__content { width: min(calc(100% - 10rem), 62rem); }
-    .services__grid { gap: 1.25rem; }
-    .service-card__body { padding-inline: 1.1rem; }
+    .services__grid { gap: 1.5rem; }
+    .service-card__body { padding-inline: 1.25rem; }
+    .service-card h3 { font-size: 1rem; }
+    .service-card p { font-size: 0.875rem; }
   }
 
   @media (max-width: 64rem) {
-    .services { min-height: auto; }
-    .services__content { width: min(calc(100% - 8rem), 49rem); padding-block: 7rem 4.5rem; }
-    .services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
-    .service-card--2 { margin-top: 0; }
-    .service-card--3 { grid-column: 1 / -1; width: calc(50% - 0.75rem); justify-self: center; }
-    .service-card__visual { height: 16rem; }
-    .services__footer { align-items: start; flex-direction: column; gap: 1.5rem; }
-    .services__footer h2 { position: static; }
-    .services__summary { width: min(31rem, 100%); }
-    .services__summary p { text-align: left; }
+    .services {
+      height: auto;
+      min-height: 0;
+      padding: 5rem clamp(1.5rem, 5vw, 4rem) 6rem;
+      --background-text-inset: 4rem 0 4rem 1rem;
+    }
+
+    .services__rail { display: none; }
+
+    .services__content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .services__title {
+      position: static;
+      order: -1;
+      margin-bottom: 3rem;
+      font-size: clamp(2.5rem, 7vw, 4rem);
+    }
+
+    .services__grid {
+      position: static;
+      width: 100%;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card,
+    .service-card--1,
+    .service-card--3,
+    .service-card--4 {
+      height: auto;
+      margin-top: 0;
+    }
+
+    .service-card__visual,
+    .service-card--2 .service-card__visual { height: 18rem; }
+
+    .services__pagination {
+      position: static;
+      margin: 2.5rem auto 0;
+      transform: none;
+    }
   }
 
   @media (max-width: 42rem) {
-    .services__rail { display: none; }
-    .services__content { width: calc(100% - 2rem); padding-block: 4.5rem; }
+    .services { padding-inline: 1rem; }
     .services__grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    .service-card--3 { width: 100%; grid-column: auto; }
     .service-card__visual { height: clamp(15rem, 69vw, 21rem); }
     .service-card__body { min-height: auto; }
-    .services__cta { min-width: min(100%, 15.75rem); margin-top: 2.25rem; }
-    .services__footer { margin-top: 2.5rem; }
-    .services__footer h2 { font-size: 2.25rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {

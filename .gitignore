@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local visual QA captures and temporary browser profiles
+.tmp-visual/

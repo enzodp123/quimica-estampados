@@ -2,12 +2,12 @@
   --color-background: #0a0a0a;
   --color-surface: #0d0d0d;
   --color-surface-light: #151515;
-  --color-text: #f4f4f2;
+  --color-text: #ffffff;
   --color-text-muted: #8a8a88;
   --color-watermark: #0d0d0d;
-  --color-magenta: #ff007f;
-  --color-cyan: #00bfe8;
-  --color-yellow: #e9e000;
+  --color-magenta: #e30e7f;
+  --color-cyan: #119fda;
+  --color-yellow: #fcea19;
   --color-border: rgba(255, 255, 255, 0.09);
   --font-jetbrains-mono: "JetBrains Mono", "Courier New", monospace;
   --font-montserrat: "Montserrat", Arial, Helvetica, sans-serif;

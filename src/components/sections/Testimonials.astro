@@ -1,77 +1,365 @@
 ---
-const testimonials = [
-  ["Calidad que sorprende", "La definición y el color quedaron exactamente como los imaginábamos."],
-  ["Un equipo que acompaña", "Nos ayudaron a elegir cada material y cumplieron con los tiempos."],
-  ["Resolutivos de verdad", "Encontraron la forma de producir una idea que parecía imposible."],
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import BackgroundText from "../shared/BackgroundText.astro";
+import brandImage from "../../assets/images/img1_marcas.png";
+import brand1 from "../../assets/images/marca1.png";
+import brand2 from "../../assets/images/marca2.png";
+import brand3 from "../../assets/images/marca3.png";
+import brand4 from "../../assets/images/marca4.png";
+import brand5 from "../../assets/images/marca5.png";
+import brand6 from "../../assets/images/marca6.png";
+
+const values = [
+  {
+    title: "Calidad que representa tu marca",
+    text: "Utilizamos insumos seleccionados y procesos controlados para lograr estampas con excelente definición, color y terminación.",
+  },
+  {
+    title: "Cumplimos los tiempos acordados",
+    text: "Sabemos que cada pedido tiene una fecha importante. Organizamos la producción para entregar en tiempo y forma.",
+  },
+  {
+    title: "Asesoramiento en cada proyecto",
+    text: "Te ayudamos a elegir la técnica, materiales y terminaciones más convenientes según tu producto y presupuesto.",
+  },
+];
+
+const brands = [
+  { src: brand1, alt: "Weber Panadería" },
+  { src: brand2, alt: "Toys Victoria" },
+  { src: brand3, alt: "FitMe Sportwear" },
+  { src: brand4, alt: "La Fonda de Orly" },
+  { src: brand5, alt: "Morfi" },
+  { src: brand6, alt: "Unidad Educativa N.º 38 Sagrada Familia" },
 ];
 ---
 
-<section class="section section-grid testimonials">
-  <div class="section-rail section-rail--cyan" aria-hidden="true">Marcas</div>
-  <div class="section-content">
-    <header class="section-heading section-heading--center">
-      <div class="testimonials__dots" aria-hidden="true"><span></span><span></span><span></span></div>
-      <h2>Marcas que eligieron<br />trabajar con nosotros</h2>
-      <p>Acompañamos a marcas de distintos rubros ofreciendo producción confiable<br />y acabados de alta calidad.</p>
-    </header>
-    <div class="testimonial-grid">
-      {testimonials.map(([title, text], index) => (
-        <blockquote class={index === 2 ? "featured" : ""}>
-          <span>0{index + 1}</span><h3>{title}</h3><p>{text}</p><footer>Cliente verificado</footer>
-        </blockquote>
-      ))}
+<section id="marcas" class="brands" aria-labelledby="brands-heading">
+  <BackgroundText />
+
+  <header class="brands__header">
+    <div class="brands__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h2 id="brands-heading">Marcas que eligieron<br />trabajar con nosotros</h2>
+    <p>Acompañamos a marcas de distintos rubros ofreciendo producción confiable<br />y acabados de alta calidad.</p>
+  </header>
+
+  <div class="brands__body">
+    {values.map(({ title, text }, index) => (
+      <article class:list={["brands__value", `brands__value--${index + 1}`]}>
+        <Icon name="lucide:external-link" aria-hidden="true" />
+        <h3>{title}</h3>
+        <p>{text}</p>
+        <span class="brands__value-line" aria-hidden="true"></span>
+      </article>
+    ))}
+
+    <aside class="brands__cta">
+      <Image
+        class="brands__cta-image"
+        src={brandImage}
+        alt="Gorra y buzo personalizados por Química Estampados"
+        widths={[480, 720, 960]}
+        sizes="(max-width: 48rem) 100vw, 24vw"
+        loading="lazy"
+      />
+      <div class="brands__cta-copy">
+        <h3>¿Listo para ser la próxima marca?</h3>
+        <p>Sumate a las empresas que ya confían en nuestro trabajo.</p>
+        <p>Cada proyecto comienza con una idea y termina con un producto que representa tu marca.</p>
+        <a href="#contacto">Pedir presupuesto</a>
+      </div>
+    </aside>
+  </div>
+
+  <div class="brands__trusted">
+    <div class="brands__trusted-heading">
+      <span aria-hidden="true">Marcas</span>
+      <h3>Que confiaron<br />en nosotros</h3>
     </div>
-    <div class="brand-row" aria-label="Logos de clientes">
-      <span>WINE</span><span>TOYS</span><span>FAME.</span><span>GRILL</span><span>MORFI</span>
+    <div class="brands__logos" aria-label="Marcas que trabajan con Química Estampados">
+      {brands.map(({ src, alt }) => (
+        <Image src={src} alt={alt} widths={[160, 240, 320]} sizes="(max-width: 40rem) 40vw, 10vw" loading="lazy" />
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  .testimonials .section-heading { margin-bottom: 3rem; }
-  .testimonials .section-heading h2 {
-    font-family: var(--font-montserrat);
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    line-height: 1.1;
+  .brands {
+    --brands-gutter: clamp(1rem, 4.8vw, 5.75rem);
+    --background-text-inset: clamp(8rem, 9.2vw, 11rem) 0 clamp(7rem, 9.4vw, 11.25rem) var(--watermark-left);
+    position: relative;
+    isolation: isolate;
+    min-height: clamp(48rem, 57.7vw, 69.2rem);
+    overflow: hidden;
+    padding: clamp(0.35rem, 0.42vw, 0.5rem) var(--brands-gutter) 0;
+    background: var(--color-background);
   }
-  .testimonials .section-heading > p {
-    max-width: none;
-    margin-top: 1rem;
-    padding: 0;
-    color: #dededc;
-    font-family: var(--font-jetbrains-mono);
-    font-size: 0.63rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    line-height: 1.55;
-    text-transform: uppercase;
+
+  .brands__header {
+    position: relative;
+    z-index: 1;
+    margin-inline: auto;
+    text-align: center;
   }
-  .testimonials__dots {
-    margin: 0 auto 0.7rem;
+
+  .brands__dots {
+    margin-bottom: clamp(0.35rem, 0.48vw, 0.58rem);
     display: flex;
     justify-content: center;
     gap: 0.2rem;
   }
-  .testimonials__dots span {
-    width: 0.75rem;
-    height: 0.75rem;
+
+  .brands__dots span {
+    width: clamp(0.55rem, 0.68vw, 0.8rem);
+    height: clamp(0.55rem, 0.68vw, 0.8rem);
     border-radius: 50%;
     background: var(--color-cyan);
   }
-  .testimonials__dots span:nth-child(2) { background: var(--color-magenta); }
-  .testimonials__dots span:nth-child(3) { background: var(--color-yellow); }
-  .testimonial-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.15rem; align-items: start; }
-  blockquote { min-height: 250px; padding: 1.8rem; background: #0c0c0c; border: 1px solid var(--color-border); }
-  blockquote.featured { min-height: 340px; border-color: var(--color-cyan); }
-  blockquote > span { color: var(--color-cyan); font-size: .6rem; font-weight: 900; }
-  blockquote h3 { margin-top: 2rem; font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
-  blockquote p { margin-top: .55rem; color: var(--color-text-muted); font-size: .7rem; }
-  blockquote footer { margin-top: 2rem; color: #555; font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; }
-  .brand-row { margin-top: 4rem; display: flex; align-items: center; justify-content: space-around; gap: 2rem; color: #d7d7d7; font-family: var(--font-display); font-size: clamp(1.1rem,2.2vw,1.8rem); font-weight: 900; }
-  .brand-row span:nth-child(2) { color: var(--color-yellow); }
-  .brand-row span:nth-child(4) { color: #ef9c22; }
-  .brand-row span:nth-child(5) { color: var(--color-magenta); }
-  @media (max-width: 640px) { .testimonial-grid { grid-template-columns: 1fr; gap: 1.2rem; } blockquote { min-height: 260px; } blockquote.featured { min-height: 320px; } .brand-row { margin-top: 3rem; flex-wrap: wrap; } }
+
+  .brands__dots span:nth-child(2) { background: var(--color-magenta); }
+  .brands__dots span:nth-child(3) { background: var(--color-yellow); }
+
+  .brands__header h2 {
+    color: var(--color-text);
+    font-family: var(--font-montserrat);
+    font-size: clamp(1.25rem, 1.7vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    text-transform: uppercase;
+  }
+
+  .brands__header p {
+    margin-top: clamp(0.65rem, 0.7vw, 0.82rem);
+    color: #e0e0de;
+    font-family: var(--font-jetbrains-mono);
+    font-size: clamp(0.54rem, 0.68vw, 0.8rem);
+    font-weight: 700;
+    letter-spacing: 0.055em;
+    line-height: 1.55;
+    text-transform: uppercase;
+  }
+
+  .brands__body {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: clamp(22.5rem, 32vw, 38.4rem);
+    margin: clamp(0.7rem, 0.82vw, 1rem) auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(15.5rem, 1.28fr);
+    gap: clamp(1.5rem, 3.5vw, 4.2rem);
+    align-items: start;
+  }
+
+  .brands__value {
+    min-width: 0;
+    min-height: clamp(13.5rem, 19.7vw, 23.6rem);
+    padding: clamp(1.85rem, 2.5vw, 3rem) clamp(1.2rem, 1.68vw, 2rem) clamp(1.2rem, 1.4vw, 1.7rem);
+    display: flex;
+    flex-direction: column;
+    background: rgba(12, 12, 12, 0.78);
+    border: 0.0625rem solid var(--color-border);
+  }
+
+  .brands__value--1,
+  .brands__value--3 { margin-top: clamp(1.8rem, 2.85vw, 3.4rem); }
+
+  .brands__value--2 { margin-top: clamp(8.4rem, 12.25vw, 14.7rem); }
+
+  .brands__value :global(svg) {
+    width: clamp(0.8rem, 0.8vw, 0.95rem);
+    height: clamp(0.8rem, 0.8vw, 0.95rem);
+    color: var(--color-cyan);
+    stroke-width: 1.4;
+  }
+
+  .brands__value h3 {
+    margin-top: clamp(1.8rem, 2.5vw, 3rem);
+    color: #efefed;
+    font-family: var(--font-jetbrains-mono);
+    font-size: clamp(0.62rem, 0.66vw, 0.78rem);
+    font-weight: 800;
+    letter-spacing: 0.035em;
+    line-height: 1.7;
+    text-transform: uppercase;
+  }
+
+  .brands__value p {
+    margin-top: clamp(0.7rem, 1.05vw, 1.25rem);
+    color: #9a9a98;
+    font-family: var(--font-poppins);
+    font-size: clamp(0.62rem, 0.68vw, 0.8rem);
+    line-height: 1.65;
+  }
+
+  .brands__value-line {
+    width: clamp(5.7rem, 7.5vw, 9rem);
+    height: 0.0625rem;
+    margin: auto auto 0;
+    background: var(--color-cyan);
+  }
+
+  .brands__cta {
+    min-width: 0;
+    min-height: clamp(26rem, 32vw, 38.4rem);
+    padding: clamp(1.65rem, 2.4vw, 2.9rem) clamp(1.65rem, 1.68vw, 2rem) 2rem;
+    background: rgba(10, 10, 10, 0.92);
+    border: 0.0625rem solid var(--color-cyan);
+  }
+
+  .brands__cta-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.625 / 1;
+    display: block;
+    object-fit: cover;
+  }
+
+  .brands__cta-copy { padding-top: clamp(1.45rem, 1.45vw, 1.75rem); }
+
+  .brands__cta h3 {
+    color: var(--color-cyan);
+    font-family: var(--font-jetbrains-mono);
+    font-size: clamp(0.63rem, 0.66vw, 0.78rem);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  .brands__cta p {
+    margin-top: 0.8rem;
+    color: #a2a2a0;
+    font-family: var(--font-poppins);
+    font-size: clamp(0.66rem, 0.68vw, 0.8rem);
+    line-height: 1.65;
+  }
+
+  .brands__cta a {
+    width: fit-content;
+    min-width: clamp(9.8rem, 11.7vw, 14rem);
+    min-height: clamp(2.45rem, 3vw, 3.6rem);
+    margin: clamp(1.25rem, 1.4vw, 1.7rem) auto 0;
+    padding: 0.6rem 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-cyan);
+    border: 0.0625rem solid var(--color-cyan);
+    font-family: var(--font-jetbrains-mono);
+    font-size: clamp(0.55rem, 0.58vw, 0.68rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
+    transition: color var(--transition), background var(--transition);
+  }
+
+  .brands__cta a:hover,
+  .brands__cta a:focus-visible {
+    color: #050505;
+    background: var(--color-cyan);
+  }
+
+  .brands__trusted {
+    position: relative;
+    z-index: 1;
+    min-height: 8.75rem;
+    margin: clamp(2rem, 4.4vw, 5.3rem) calc(var(--brands-gutter) * -1) 0;
+    padding: 0 0 0 var(--brands-gutter);
+    display: grid;
+    grid-template-columns: 27rem minmax(0, 1fr);
+    align-items: center;
+    border-top: 0.0625rem solid rgba(255, 255, 255, 0.035);
+  }
+
+  .brands__trusted-heading {
+    position: relative;
+    height: 8.75rem;
+    display: flex;
+    align-items: end;
+  }
+
+  .brands__trusted-heading > span {
+    position: absolute;
+    bottom: 2.3rem;
+    left: 0;
+    color: var(--color-cyan);
+    font-family: var(--font-montserrat);
+    font-size: 4.5rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .brands__trusted-heading h3 {
+    margin-left: 4rem;
+    padding-bottom: 2.2rem;
+    color: var(--color-text);
+    font-family: var(--font-montserrat);
+    font-size: clamp(1.4rem, 2.15vw, 2.55rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+
+  .brands__logos {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    align-items: center;
+    gap: clamp(1rem, 2vw, 2.4rem);
+  }
+
+  .brands__logos :global(img) {
+    width: 100%;
+    height: clamp(3.3rem, 5vw, 6rem);
+    display: block;
+    object-fit: contain;
+  }
+
+  @media (max-width: 64rem) {
+    .brands {
+      --background-text-inset: clamp(1.25rem, 2.5vw, 3rem) 0 clamp(1.25rem, 2.5vw, 3rem) var(--watermark-left);
+      min-height: 48rem;
+      padding: 4.9rem 2rem 1.45rem;
+    }
+    .brands__body { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .brands__value,
+    .brands__value--1,
+    .brands__value--2,
+    .brands__value--3 { min-height: 13.5rem; margin-top: 0; padding: 1.85rem 1.2rem 1.2rem; }
+    .brands__value h3 { margin-top: 1.8rem; }
+    .brands__value p { margin-top: 0.7rem; }
+    .brands__cta { width: 100%; min-height: 0; margin: 0 0 2rem; padding: 1.65rem; }
+    .brands__cta-image { height: 10.5rem; aspect-ratio: auto; }
+    .brands__trusted { margin-inline: -2rem; padding-inline: 2rem; grid-template-columns: 1fr; }
+    .brands__trusted-heading { height: auto; min-height: 7rem; }
+    .brands__trusted-heading > span { display: none; }
+    .brands__trusted-heading h3 { margin-left: 0; padding: 2rem 0 1rem; }
+    .brands__logos { padding-bottom: 2.5rem; }
+  }
+
+  @media (max-width: 48rem) {
+    .brands { padding: 4rem 1rem 0; }
+    .brands__header p br { display: none; }
+    .brands__body { grid-template-columns: 1fr; }
+    .brands__value,
+    .brands__value--2 { min-height: 12rem; margin-top: 0; }
+    .brands__trusted { margin-inline: -1rem; padding-inline: 1rem; }
+    .brands__logos { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 2rem; }
+    .brands__logos :global(img) { height: 4.5rem; }
+  }
+
+  @media (max-width: 30rem) {
+    .brands__header h2 { font-size: 1.05rem; }
+    .brands__cta { padding: 1rem; }
+    .brands__logos { gap: 1.25rem; }
+  }
 </style>

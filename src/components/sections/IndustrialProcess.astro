@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import workshop from "../../assets/images/comotrabajamos.png";
-import BackgroundText from "../shared/BackgroundText.astro";
 
 const process = [
   {
@@ -38,8 +37,6 @@ const process = [
 ---
 
 <section id="proceso" class="industrial" aria-labelledby="industrial-heading">
-  <BackgroundText />
-
   <div class="industrial__rail" aria-hidden="true">Como trabajamos</div>
   <h2 id="industrial-heading" class="industrial__title">Paso<br />a paso</h2>
 
@@ -76,25 +73,24 @@ const process = [
 
 <style>
   .industrial {
-    --industrial-heading-bottom: 15rem;
     position: relative;
     isolation: isolate;
     width: 100%;
-    height: 81.25rem;
+    height: 66.875rem;
     overflow: hidden;
     background: var(--color-background);
   }
 
   .industrial__rail {
     position: absolute;
-    bottom: var(--industrial-heading-bottom);
-    left: var(--editorial-rail-left);
+    bottom: 0;
+    left: 3.6458%;
     z-index: 2;
     color: var(--color-magenta);
     font-family: var(--font-montserrat);
-    font-size: var(--vertical-title-font-size);
-    font-weight: var(--vertical-title-font-weight);
-    letter-spacing: -0.045em;
+    font-size: clamp(3.5rem, 3.75vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
     line-height: 1;
     text-transform: uppercase;
     writing-mode: vertical-rl;
@@ -103,31 +99,27 @@ const process = [
 
   .industrial__title {
     position: absolute;
-    bottom: var(--industrial-heading-bottom);
-    left: var(--editorial-title-left);
+    bottom: 0.375rem;
+    left: 8.2292%;
     z-index: 2;
     color: var(--color-text);
     font-family: var(--font-montserrat);
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 2.5vw, 3rem);
     font-weight: 800;
-    letter-spacing: -0.045em;
-    line-height: 0.98;
+    letter-spacing: -0.04em;
+    line-height: 1.33;
     text-transform: uppercase;
   }
 
   .industrial__stage {
-    width: min(71.7vw, 86rem);
-    height: 64rem;
-    margin-left: 19.7vw;
-    display: grid;
-    grid-template-columns: minmax(0, 35.75rem) minmax(0, 1fr);
-    gap: 5.25rem;
-    align-items: start;
+    display: contents;
   }
 
   .industrial__image-wrap {
-    width: 100%;
-    margin-top: 14.5rem;
+    position: absolute;
+    top: 10.625rem;
+    left: 18.9063%;
+    width: 30.4167%;
   }
 
   .industrial__image {
@@ -137,33 +129,33 @@ const process = [
   }
 
   .process-list {
-    --process-number-size: 2.5rem;
-    position: relative;
-    margin-top: 7.25rem;
-    display: grid;
-    gap: 2.75rem;
-  }
-
-  .process-list::before {
-    content: "";
     position: absolute;
-    top: calc(var(--process-number-size) / 2);
-    bottom: calc(var(--process-number-size) / 2);
-    left: calc(var(--process-number-size) / 2);
-    z-index: 0;
-    border-left: 0.0625rem solid rgba(255, 255, 255, 0.16);
-    transform: translateX(-50%);
+    top: 1.75rem;
+    left: 56.4063%;
+    width: 39.1667%;
+    display: grid;
+    gap: 0;
   }
 
   .process-step {
     --step-color: var(--color-text);
     min-width: 0;
-    display: grid;
-    grid-template-columns: 2.5rem minmax(0, 1fr);
-    gap: 4.25rem;
-    align-items: start;
     position: relative;
     z-index: 1;
+    padding-left: 6.0625rem;
+    padding-bottom: 3rem;
+  }
+
+  .process-step:last-child { padding-bottom: 0; }
+
+  .process-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: 0;
+    left: 1.25rem;
+    z-index: -1;
+    border-left: 0.0625rem solid rgba(255, 255, 255, 0.16);
   }
 
   .process-step--cyan { --step-color: var(--color-cyan); }
@@ -171,8 +163,11 @@ const process = [
   .process-step--yellow { --step-color: var(--color-yellow); }
 
   .process-step__number {
-    width: var(--process-number-size);
-    height: var(--process-number-size);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.5rem;
+    height: 2.5rem;
     display: grid;
     place-items: center;
     color: var(--step-color);
@@ -185,10 +180,11 @@ const process = [
   }
 
   .process-step__card {
-    min-height: 11.25rem;
-    padding: 2.2rem 2.45rem 1.8rem;
-    background: rgba(10, 10, 10, 0.9);
-    border: 0.0625rem solid var(--color-border);
+    min-height: 11.875rem;
+    padding: 2.0625rem 2.5625rem;
+    background: rgba(19, 19, 19, 0.5);
+    border: 0.0625rem solid #353534;
+    backdrop-filter: blur(0.125rem);
   }
 
   .process-step__heading {
@@ -201,7 +197,7 @@ const process = [
 
   .process-step__heading h3 {
     font-family: var(--font-jetbrains-mono);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 0.025em;
     line-height: 1.2;
@@ -209,40 +205,53 @@ const process = [
   }
 
   .process-step__heading svg {
-    width: 1.15rem;
-    height: 1.15rem;
+    width: 1.5rem;
+    height: 1.5rem;
     flex: 0 0 auto;
     stroke-width: 1.75;
   }
 
   .process-step__card > p {
-    max-width: 34rem;
+    max-width: 35.75rem;
     margin-top: 1rem;
-    color: #f0f0ee;
+    color: rgba(255, 255, 255, 0.87);
     font-family: var(--font-poppins);
     font-size: 1rem;
     font-weight: 400;
-    letter-spacing: -0.015em;
-    line-height: 1.6;
+    letter-spacing: 0;
+    line-height: 1.625;
   }
 
   .process-step__card > .process-step__note {
-    margin-top: 0.65rem;
+    margin-top: 0.75rem;
     color: var(--color-magenta);
     font-size: 0.8125rem;
     letter-spacing: 0;
-    line-height: 1.9;
+    line-height: 1.6;
   }
 
   @media (max-width: 80rem) {
-    .industrial__stage {
-      width: calc(100% - 15rem);
-      margin-left: 12rem;
-      grid-template-columns: minmax(20rem, 0.9fr) minmax(27rem, 1.1fr);
-      gap: 3rem;
+    .industrial {
+      height: auto;
+      min-height: 70rem;
+      padding: 6rem 3rem 11rem 12rem;
     }
 
-    .process-step { gap: 1.5rem; }
+    .industrial__stage {
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(20rem, 0.9fr) minmax(27rem, 1.1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .industrial__image-wrap,
+    .process-list {
+      position: static;
+      width: 100%;
+    }
+
+    .process-step { padding-left: 3.5rem; }
     .process-step__card { padding-inline: 1.75rem; }
   }
 
@@ -264,16 +273,13 @@ const process = [
     .industrial__stage {
       width: 100%;
       height: auto;
-      margin: 0;
       grid-template-columns: minmax(16rem, 0.8fr) minmax(24rem, 1.2fr);
       gap: 2rem;
     }
 
-    .industrial__image-wrap,
-    .process-list { margin-top: 0; }
-    .process-list { gap: 1rem; }
-    .process-list { --process-number-size: 2rem; }
-    .process-step { grid-template-columns: 2rem minmax(0, 1fr); gap: 0.75rem; }
+    .process-step { padding-left: 3rem; padding-bottom: 1rem; }
+    .process-step__number { width: 2rem; height: 2rem; font-size: 0.875rem; }
+    .process-step:not(:last-child)::after { top: 2rem; left: 1rem; }
     .process-step__card { min-height: 0; padding: 1.5rem; }
 
   }

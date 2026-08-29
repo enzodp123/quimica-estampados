@@ -242,11 +242,16 @@ const initialQuestion = questions[initialQuestionIndex];
   }
 
   .faq-list__item:hover,
-  .faq-list__item:focus-visible,
-  .faq-list__item.is-active {
+  .faq-list__item:focus-visible {
     color: #f2f2ef;
     border-color: var(--color-yellow);
     outline: none;
+  }
+
+  .faq-list__item.is-active {
+    color: #f2f2ef;
+    background: rgba(19, 19, 19, 0.72);
+    border-color: var(--color-border);
   }
 
   .faq-list__item :global(svg) {

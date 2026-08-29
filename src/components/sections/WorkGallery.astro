@@ -358,10 +358,15 @@ const initialWorks = workCategories[0].works;
   }
 
   .work-gallery__filters button:hover,
-  .work-gallery__filters button:focus-visible,
-  .work-gallery__filters button.is-active {
+  .work-gallery__filters button:focus-visible {
     color: var(--color-text);
     border-color: var(--color-cyan);
+  }
+
+  .work-gallery__filters button.is-active {
+    color: var(--color-text);
+    background: rgba(19, 19, 19, 0.72);
+    border-color: var(--color-border);
   }
 
   @media (min-width: 64.0625rem) and (max-width: 80rem) {

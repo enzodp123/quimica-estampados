@@ -1,35 +1,32 @@
+---
+import backgroundCopy from "../../assets/images/background-copy.svg";
+---
+
 <div class="background-text" aria-hidden="true">
-  <span>ESTAMPAMOS TU</span>
-  <span>MARCA, IDEA Y</span>
-  <span>TU NEGOCIO</span>
+  <img src={backgroundCopy.src} width="1758" height="732" alt="" />
 </div>
 
 <style>
   .background-text {
     position: absolute;
-    inset: var(
-      --background-text-inset,
-      clamp(1.25rem, 2.5vw, 3rem) 0 clamp(1.25rem, 2.5vw, 3rem) var(--watermark-left)
-    );
+    top: var(--background-text-top, 50%);
+    left: var(--background-text-left, 4.21875%);
     z-index: -1;
-    min-height: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: var(--color-watermark);
-    font-family: var(--font-montserrat);
-    font-size: var(--watermark-font-size);
-    font-weight: var(--watermark-font-weight);
-    letter-spacing: var(--watermark-letter-spacing);
-    line-height: var(--watermark-line-height);
-    white-space: nowrap;
+    width: 91.58125%;
+    transform: translateY(-50%);
     pointer-events: none;
     user-select: none;
   }
 
-  .background-text span {
+  .background-text img {
+    width: 100%;
+    height: auto;
     display: block;
-    flex: 0 0 auto;
+  }
+
+  @media (max-width: 64rem) {
+    .background-text {
+      display: none;
+    }
   }
 </style>

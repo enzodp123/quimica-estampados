@@ -110,35 +110,72 @@ const benefits = [
     line-height: 1.392857;
   }
 
-  @media (max-width: 56.25rem) {
+  @media (min-width: 40.0625rem) and (max-width: 64rem) {
     .benefits {
-      height: auto;
-      min-height: 20.8125rem;
-      padding-block: 4rem;
+      width: calc(100% - 5.25rem);
+      height: 28.375rem;
+      margin-inline: auto;
+      padding-block: 5.25rem 4.75rem;
     }
 
     .benefits__inner {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 3.5rem 1.5rem;
+      width: 100%;
+      height: 100%;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-content: space-between;
+      gap: 2rem 1.25rem;
     }
 
-    .benefit:last-child {
-      grid-column: 1 / -1;
-    }
+    .benefit:nth-child(1) { order: 1; }
+    .benefit:nth-child(3) { order: 2; }
+    .benefit:nth-child(2) { order: 3; }
+    .benefit:nth-child(4) { order: 4; }
+    .benefit:nth-child(5) { order: 5; }
+
+    .benefit:nth-child(4) { grid-column: 1; }
+    .benefit:nth-child(5) { grid-column: 2; }
+
+    .benefit h2 { font-size: 1rem; }
+    .benefit p { font-size: 0.875rem; }
   }
 
-  @media (max-width: 35rem) {
+  @media (max-width: 40rem) {
     .benefits {
-      padding-block: 3.5rem;
+      width: calc(100% - 1.5rem);
+      height: 58.8125rem;
+      margin-inline: auto;
+      padding-block: 3.25rem 3rem;
     }
 
     .benefits__inner {
+      width: 100%;
+      height: 100%;
       grid-template-columns: 1fr;
-      gap: 3rem;
+      align-content: space-between;
+      gap: 0;
     }
 
-    .benefit:last-child {
-      grid-column: auto;
+    .benefit {
+      width: 100%;
+      padding-inline: 0 50%;
+      text-align: center;
     }
+
+    .benefit__icon,
+    .benefit p {
+      margin-inline: auto;
+    }
+
+    .benefit h2 {
+      font-size: 0.875rem;
+    }
+
+    .benefit:nth-child(5) { order: 1; padding-inline: 0 50%; }
+    .benefit:nth-child(3) { order: 2; padding-inline: 50% 0; }
+    .benefit:nth-child(2) { order: 3; padding-inline: 0 50%; }
+    .benefit:nth-child(4) { order: 4; padding-inline: 50% 0; }
+    .benefit:nth-child(1) { order: 5; padding-inline: 0 50%; }
+
+    .benefit p { max-width: 10.5rem; }
   }
 </style>

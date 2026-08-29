@@ -54,6 +54,8 @@ const brands = [
       </article>
     ))}
 
+    <div class="brands__pagination" aria-hidden="true"><span></span><span></span><span></span></div>
+
     <aside class="brands__cta">
       <Image
         class="brands__cta-image"
@@ -91,7 +93,8 @@ const brands = [
     --background-text-inset: clamp(8rem, 9.2vw, 11rem) 0 clamp(7rem, 9.4vw, 11.25rem) var(--watermark-left);
     position: relative;
     isolation: isolate;
-    min-height: clamp(48rem, 57.7vw, 69.2rem);
+    height: 69rem;
+    min-height: 69rem;
     overflow: hidden;
     padding: clamp(0.35rem, 0.42vw, 0.5rem) var(--brands-gutter) 0;
     background: var(--color-background);
@@ -124,10 +127,10 @@ const brands = [
   .brands__header h2 {
     color: var(--color-text);
     font-family: var(--font-montserrat);
-    font-size: clamp(1.25rem, 1.7vw, 2rem);
+    font-size: clamp(1.25rem, 1.875vw, 2.25rem);
     font-weight: 800;
     letter-spacing: -0.02em;
-    line-height: 1.06;
+    line-height: 1.0833;
     text-transform: uppercase;
   }
 
@@ -135,10 +138,10 @@ const brands = [
     margin-top: clamp(0.65rem, 0.7vw, 0.82rem);
     color: #e0e0de;
     font-family: var(--font-jetbrains-mono);
-    font-size: clamp(0.54rem, 0.68vw, 0.8rem);
+    font-size: clamp(0.75rem, 0.8333vw, 1rem);
     font-weight: 700;
     letter-spacing: 0.055em;
-    line-height: 1.55;
+    line-height: 1.75;
     text-transform: uppercase;
   }
 
@@ -153,6 +156,8 @@ const brands = [
     gap: clamp(1.5rem, 3.5vw, 4.2rem);
     align-items: start;
   }
+
+  .brands__pagination { display: none; }
 
   .brands__value {
     min-width: 0;
@@ -180,10 +185,10 @@ const brands = [
     margin-top: clamp(1.8rem, 2.5vw, 3rem);
     color: #efefed;
     font-family: var(--font-jetbrains-mono);
-    font-size: clamp(0.62rem, 0.66vw, 0.78rem);
+    font-size: clamp(0.875rem, 1.0417vw, 1.25rem);
     font-weight: 800;
     letter-spacing: 0.035em;
-    line-height: 1.7;
+    line-height: 1.4;
     text-transform: uppercase;
   }
 
@@ -191,8 +196,8 @@ const brands = [
     margin-top: clamp(0.7rem, 1.05vw, 1.25rem);
     color: #9a9a98;
     font-family: var(--font-poppins);
-    font-size: clamp(0.62rem, 0.68vw, 0.8rem);
-    line-height: 1.65;
+    font-size: clamp(0.875rem, 0.8333vw, 1rem);
+    line-height: 1.5;
   }
 
   .brands__value-line {
@@ -223,10 +228,10 @@ const brands = [
   .brands__cta h3 {
     color: var(--color-cyan);
     font-family: var(--font-jetbrains-mono);
-    font-size: clamp(0.63rem, 0.66vw, 0.78rem);
+    font-size: clamp(0.875rem, 0.8333vw, 1rem);
     font-weight: 800;
     letter-spacing: 0.08em;
-    line-height: 1.5;
+    line-height: 1.75;
     text-transform: uppercase;
   }
 
@@ -234,8 +239,8 @@ const brands = [
     margin-top: 0.8rem;
     color: #a2a2a0;
     font-family: var(--font-poppins);
-    font-size: clamp(0.66rem, 0.68vw, 0.8rem);
-    line-height: 1.65;
+    font-size: clamp(0.875rem, 0.8333vw, 1rem);
+    line-height: 1.5;
   }
 
   .brands__cta a {
@@ -250,10 +255,10 @@ const brands = [
     color: var(--color-cyan);
     border: 0.0625rem solid var(--color-cyan);
     font-family: var(--font-jetbrains-mono);
-    font-size: clamp(0.55rem, 0.58vw, 0.68rem);
+    font-size: clamp(0.75rem, 0.7292vw, 0.875rem);
     font-weight: 700;
     letter-spacing: 0.1em;
-    line-height: 1;
+    line-height: 1.4286;
     text-transform: uppercase;
     transition: color var(--transition), background var(--transition);
   }
@@ -303,10 +308,10 @@ const brands = [
     padding-bottom: 2.2rem;
     color: var(--color-text);
     font-family: var(--font-montserrat);
-    font-size: clamp(1.4rem, 2.15vw, 2.55rem);
+    font-size: clamp(1.4rem, 1.875vw, 2.25rem);
     font-weight: 800;
     letter-spacing: -0.035em;
-    line-height: 1.05;
+    line-height: 1.0833;
     text-transform: uppercase;
   }
 
@@ -324,42 +329,276 @@ const brands = [
     object-fit: contain;
   }
 
-  @media (max-width: 64rem) {
+  @media (min-width: 40.0625rem) and (max-width: 64rem) {
     .brands {
-      --background-text-inset: clamp(1.25rem, 2.5vw, 3rem) 0 clamp(1.25rem, 2.5vw, 3rem) var(--watermark-left);
-      min-height: 48rem;
-      padding: 4.9rem 2rem 1.45rem;
+      width: calc(100% - 3rem);
+      height: 68rem;
+      min-height: 0;
+      margin-inline: auto;
+      padding: 0;
     }
-    .brands__body { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-    .brands__value,
-    .brands__value--1,
-    .brands__value--2,
-    .brands__value--3 { min-height: 13.5rem; margin-top: 0; padding: 1.85rem 1.2rem 1.2rem; }
-    .brands__value h3 { margin-top: 1.8rem; }
-    .brands__value p { margin-top: 0.7rem; }
-    .brands__cta { width: 100%; min-height: 0; margin: 0 0 2rem; padding: 1.65rem; }
-    .brands__cta-image { height: 10.5rem; aspect-ratio: auto; }
-    .brands__trusted { margin-inline: -2rem; padding-inline: 2rem; grid-template-columns: 1fr; }
-    .brands__trusted-heading { height: auto; min-height: 7rem; }
-    .brands__trusted-heading > span { display: none; }
-    .brands__trusted-heading h3 { margin-left: 0; padding: 2rem 0 1rem; }
-    .brands__logos { padding-bottom: 2.5rem; }
-  }
 
-  @media (max-width: 48rem) {
-    .brands { padding: 4rem 1rem 0; }
+    .brands__header {
+      position: absolute;
+      top: 4.25rem;
+      left: 50%;
+      width: 60.963%;
+      transform: translateX(-50%);
+    }
+
+    .brands__header h2 { font-size: 1.5rem; }
+    .brands__header p { font-size: 1rem; line-height: 1.75; }
     .brands__header p br { display: none; }
-    .brands__body { grid-template-columns: 1fr; }
-    .brands__value,
-    .brands__value--2 { min-height: 12rem; margin-top: 0; }
-    .brands__trusted { margin-inline: -1rem; padding-inline: 1rem; }
-    .brands__logos { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 2rem; }
-    .brands__logos :global(img) { height: 4.5rem; }
+
+    .brands__body { display: contents; }
+    .brands__value { display: none; }
+    .brands__value--1 {
+      position: absolute;
+      top: 20.9375rem;
+      left: 10.451%;
+      width: 36.885%;
+      height: 23.75rem;
+      min-height: 0;
+      margin: 0;
+      padding: 3.0625rem clamp(1.25rem, 3.223vw, 2.0625rem);
+      display: flex;
+    }
+
+    .brands__value h3 { margin-top: 2rem; font-size: 1rem; line-height: 1.75; }
+    .brands__value p { font-size: 1rem; line-height: 1.5; }
+    .brands__cta {
+      position: absolute;
+      top: 17rem;
+      left: 52.152%;
+      width: 40.676%;
+      height: 33.25rem;
+      min-height: 0;
+      margin: 0;
+      padding: clamp(1.5rem, 3.223vw, 2.0625rem);
+    }
+
+    .brands__cta-image { height: 12.5rem; aspect-ratio: auto; }
+    .brands__cta h3,
+    .brands__cta p { font-size: 1rem; }
+    .brands__cta a { min-width: 14.125rem; min-height: 3.4375rem; font-size: 0.875rem; }
+
+    .brands__trusted { display: contents; }
+    .brands__trusted-heading {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 48.566%;
+      height: 13.75rem;
+    }
+    .brands__trusted-heading > span { bottom: 0; left: 0; font-size: 3rem; }
+    .brands__trusted-heading h3 { margin-left: 4.4375rem; padding-bottom: 0; font-size: 2.25rem; line-height: 1.05; }
+    .brands__logos {
+      position: absolute;
+      right: -1.537%;
+      bottom: 5.6875rem;
+      width: 91.086%;
+      height: 10rem;
+      padding: 0 6.455% 0 0;
+      display: grid;
+      grid-template-columns: repeat(6, 10rem);
+      gap: 3.5rem;
+      overflow: hidden;
+      border: 0.0625rem solid rgba(240, 237, 230, 0.1);
+    }
+    .brands__logos :global(img) { width: 10rem; height: 10rem; }
   }
 
-  @media (max-width: 30rem) {
-    .brands__header h2 { font-size: 1.05rem; }
-    .brands__cta { padding: 1rem; }
-    .brands__logos { gap: 1.25rem; }
+  @media (min-width: 40.0625rem) and (max-width: 52rem) {
+    .brands { height: 100rem; }
+
+    .brands__header {
+      top: 4rem;
+      left: 6%;
+      width: 88%;
+      transform: none;
+      text-align: left;
+    }
+
+    .brands__dots { justify-content: flex-start; }
+
+    .brands__body {
+      position: absolute;
+      top: 16rem;
+      left: 6%;
+      width: 88%;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.125rem;
+    }
+
+    .brands__value--1 {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: min(100%, 22.5rem);
+    }
+
+    .brands__pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+    }
+
+    .brands__pagination span {
+      width: 0.625rem;
+      height: 0.625rem;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .brands__pagination span:first-child {
+      width: 0.75rem;
+      height: 0.75rem;
+      background: var(--color-cyan);
+    }
+
+    .brands__cta {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: min(100%, 28rem);
+    }
+
+    .brands__trusted {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      min-height: 18rem;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      border: 0;
+    }
+
+    .brands__logos {
+      position: static;
+      order: 1;
+      width: 100%;
+      height: 8.5rem;
+      padding-right: 3rem;
+      grid-template-columns: repeat(6, 7.5rem);
+      gap: 2.5rem;
+    }
+
+    .brands__logos :global(img) { width: 7.5rem; height: 7.5rem; }
+
+    .brands__trusted-heading {
+      position: static;
+      order: 2;
+      width: 100%;
+      height: 8.25rem;
+      display: flex;
+      align-items: end;
+      gap: 0.5rem;
+    }
+
+    .brands__trusted-heading > span {
+      position: static;
+      font-size: 3rem;
+    }
+
+    .brands__trusted-heading h3 {
+      margin: 0;
+      padding: 0;
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .brands {
+      width: calc(100% - 1.5rem);
+      height: 101.88rem;
+      min-height: 0;
+      margin-inline: auto;
+      padding: 3rem 0;
+    }
+
+    .brands__header { text-align: left; }
+    .brands__header h2 { font-size: 1.25rem; }
+    .brands__header p { margin-top: 0.875rem; font-size: 1rem; line-height: 1.75; }
+    .brands__header p br { display: none; }
+    .brands__dots { justify-content: flex-start; }
+
+    .brands__body {
+      min-height: 0;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.125rem;
+    }
+
+    .brands__value { display: none; }
+    .brands__value--1 {
+      width: 19.875rem;
+      min-height: 23.5rem;
+      margin: 0;
+      padding: 2.0625rem;
+      display: flex;
+    }
+    .brands__value h3 { margin-top: 2rem; font-size: 1rem; line-height: 1.75; }
+    .brands__value p { font-size: 1rem; line-height: 1.5; }
+
+    .brands__pagination { display: flex; align-items: center; justify-content: center; gap: 0.25rem; }
+    .brands__pagination span { width: 0.625rem; height: 0.625rem; border-radius: 50%; background: #fff; }
+    .brands__pagination span:first-child { width: 0.75rem; height: 0.75rem; background: var(--color-cyan); }
+
+    .brands__cta {
+      width: 100%;
+      height: 33.677rem;
+      min-height: 0;
+      margin: 0;
+      padding: 2.0625rem 2.0625rem 2.0625rem 1.5625rem;
+    }
+    .brands__cta-image { height: 12.5rem; aspect-ratio: auto; }
+    .brands__cta h3,
+    .brands__cta p { font-size: 1rem; }
+    .brands__cta a { min-width: 14.125rem; min-height: 3.4375rem; font-size: 0.875rem; }
+
+    .brands__trusted {
+      min-height: 19.6875rem;
+      margin: 1.5rem 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      border: 0;
+    }
+
+    .brands__logos {
+      order: 1;
+      width: 55.5625rem;
+      height: 8.5rem;
+      padding-right: 3.9375rem;
+      display: grid;
+      grid-template-columns: repeat(6, 7.5rem);
+      gap: 3.5rem;
+      overflow: hidden;
+      border: 0.0625rem solid rgba(240, 237, 230, 0.1);
+    }
+    .brands__logos :global(img) { width: 7.5rem; height: 7.5rem; }
+
+    .brands__trusted-heading {
+      order: 2;
+      width: 100%;
+      height: 9.1875rem;
+      min-height: 0;
+      display: flex;
+      align-items: end;
+      gap: 0.3125rem;
+    }
+    .brands__trusted-heading > span { position: static; display: block; font-size: 2rem; }
+    .brands__trusted-heading h3 { margin: 0; padding: 0; font-size: 1.25rem; line-height: 1.05; }
   }
 </style>

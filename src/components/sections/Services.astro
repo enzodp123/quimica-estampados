@@ -3,36 +3,45 @@ import { Image } from "astro:assets";
 import stickers from "../../assets/images/IMG1.png";
 import cards from "../../assets/images/img2.png";
 import dimensionalSign from "../../assets/images/img3.png";
+import labels from "../../assets/images/etiquetas.png";
 import BackgroundText from "../shared/BackgroundText.astro";
 
 const services = [
   {
     name: "Calcos",
+    responsiveName: "Calcos",
     description: "Aplicaciones resistentes para productos, envases y vidrieras, con excelente adhesión y terminaciones de alta calidad.",
     image: stickers,
     imageAlt: "Calcos impresos a color para una marca gastronómica",
     imagePosition: "50% 48%",
+    href: "/productos/calcos-papel/",
   },
   {
     name: "Tarjetas personales",
+    responsiveName: "Tarjetas personales",
     description: "Tarjetas profesionales con acabados premium que transmiten una excelente primera impresión.",
     image: cards,
     imageAlt: "Tarjetas personales negras con terminación brillante",
     imagePosition: "50% 42%",
+    href: "/productos/tarjetas-personales/",
   },
   {
-    name: "Corpóreos en polifan",
+    name: "Folletos",
+    responsiveName: "Folletos",
     description: "Vinilos de corte para vidrieras, vehículos, señalética y aplicaciones comerciales con acabados de alta precisión.",
     image: dimensionalSign,
     imageAlt: "Cartel corpóreo de polifan instalado sobre una pared",
     imagePosition: "50% 50%",
+    href: "/productos/folletos/",
   },
   {
-    name: "Calcos",
-    description: "Aplicaciones resistentes para productos, envases y vidrieras, con excelente adhesión y terminaciones de alta calidad.",
-    image: stickers,
-    imageAlt: "Calcos impresos a color para una marca gastronómica",
-    imagePosition: "50% 48%",
+    name: "Etiquetas",
+    responsiveName: "Etiquetas",
+    description: "Etiquetas personalizadas para prendas y productos, impresas con identidad y terminaciones profesionales.",
+    image: labels,
+    imageAlt: "Etiquetas colgantes impresas para productos",
+    imagePosition: "50% 50%",
+    href: "/productos/etiquetas/",
   },
 ];
 ---
@@ -43,9 +52,14 @@ const services = [
   <div class="services__rail" aria-hidden="true">Servicios</div>
 
   <div class="services__content">
+    <div class="services__intro">
+      <div class="services__intro-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p>Todo lo que tu marca necesita, en un solo lugar. Conocé nuestros servicios de impresión, estampado y comunicación visual.</p>
+    </div>
+
     <div class="services__grid">
-      {services.map(({ name, description, image, imageAlt, imagePosition }, index) => (
-        <article class:list={["service-card", `service-card--${index + 1}`]}>
+      {services.map(({ name, responsiveName, description, image, imageAlt, imagePosition, href }, index) => (
+        <a class:list={["service-card", `service-card--${index + 1}`]} href={href} aria-label={`Ver ${name}`}>
           <div class="service-card__visual">
             <Image
               class="service-card__image"
@@ -53,17 +67,35 @@ const services = [
               alt={imageAlt}
               loading="lazy"
               widths={[480, 720, 960]}
-              sizes="(max-width: 42rem) 86vw, (max-width: 64rem) 42vw, 25rem"
+              sizes="(max-width: 40rem) 18rem, (max-width: 64rem) 18rem, 25rem"
               style={`object-position: ${imagePosition};`}
             />
           </div>
 
           <div class="service-card__body">
-            <h3>{name}</h3>
+            <h3>
+              <span class="service-name service-name--desktop">{name}</span>
+              <span class="service-name service-name--responsive">{responsiveName}</span>
+            </h3>
             <p>{description}</p>
           </div>
-        </article>
+        </a>
       ))}
+    </div>
+
+    <a class="services__all-cta" href="#contacto">Todos los servicios</a>
+
+    <div class="services__extras">
+      <article class="service-extra service-extra--cyan">
+        <h3>Corpóreos en Polifan</h3>
+        <p>Cartelería liviana, resistente y personalizada para destacar tu marca en interiores y vidrieras.</p>
+        <a href="https://wa.me/5491126249300" target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
+      </article>
+      <article class="service-extra service-extra--magenta">
+        <h3>Impresión de gran formato</h3>
+        <p>Soluciones visuales de alto impacto para cartelería, eventos, vidrieras y espacios comerciales.</p>
+        <a href="https://wa.me/5491126249300" target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
+      </article>
     </div>
 
     <div class="services__pagination" aria-hidden="true">
@@ -101,9 +133,9 @@ const services = [
     transform: rotate(180deg);
   }
 
-  .services__content {
-    display: contents;
-  }
+  .services__content { display: contents; }
+  .services__intro,
+  .services__all-cta { display: none; }
 
   .services__grid {
     position: absolute;
@@ -119,6 +151,7 @@ const services = [
   .service-card {
     height: 32.5538rem;
     min-width: 0;
+    display: block;
     overflow: hidden;
     background: rgba(19, 19, 19, 0.5);
     border: 0.0625rem solid #353534;
@@ -128,9 +161,7 @@ const services = [
 
   .service-card--1,
   .service-card--3 { margin-top: 5.946rem; }
-
   .service-card--2 { border-color: var(--color-yellow); }
-
   .service-card--4 { margin-top: 0.0625rem; }
 
   .service-card:hover,
@@ -156,12 +187,10 @@ const services = [
   }
 
   .service-card:hover .service-card__image { transform: scale(1.025); }
+  .service-card__body { padding: 1.5rem 1.5rem 2rem; }
 
-  .service-card__body {
-    padding: 1.5rem 1.5rem 2rem;
-  }
-
-  .service-card h3 {
+  .service-card h3,
+  .service-extra h3 {
     color: var(--color-yellow);
     font-family: var(--font-jetbrains-mono);
     font-size: 1.25rem;
@@ -171,12 +200,53 @@ const services = [
     text-transform: uppercase;
   }
 
-  .service-card p {
+  .service-name--responsive { display: none; }
+
+  .service-card p,
+  .service-extra p {
     margin-top: 0.75rem;
     color: rgba(255, 255, 255, 0.69);
     font-family: var(--font-poppins);
     font-size: 1rem;
     line-height: 1.5;
+  }
+
+  .services__extras {
+    position: absolute;
+    top: 53.75rem;
+    left: 31.25%;
+    width: 59.5833%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.75rem;
+  }
+
+  .service-extra {
+    min-height: 19.75rem;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(19, 19, 19, 0.72);
+    border: 0.0625rem solid var(--color-border);
+  }
+
+  .service-extra--cyan { border-top-color: var(--color-cyan); }
+  .service-extra--magenta { border-top-color: var(--color-magenta); }
+  .service-extra--cyan h3 { color: var(--color-cyan); }
+  .service-extra--magenta h3 { color: var(--color-magenta); }
+
+  .service-extra a {
+    width: fit-content;
+    margin-top: 1.75rem;
+    padding-bottom: 0.35rem;
+    color: var(--color-text);
+    border-bottom: 0.0625rem solid currentColor;
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .services__pagination {
@@ -224,58 +294,206 @@ const services = [
     .service-card p { font-size: 0.875rem; }
   }
 
-  @media (max-width: 64rem) {
+  @media (min-width: 40.0625rem) and (max-width: 64rem) {
     .services {
-      height: auto;
-      min-height: 0;
-      padding: 5rem clamp(1.5rem, 5vw, 4rem) 6rem;
-      --background-text-inset: 4rem 0 4rem 1rem;
+      width: calc(100% - 3rem);
+      height: 52.625rem;
+      margin-inline: auto;
     }
 
-    .services__rail { display: none; }
+    .services__grid {
+      top: 4.375rem;
+      left: 1.125rem;
+      width: calc(100% - 2.25rem);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8125rem;
+    }
+
+    .service-card,
+    .service-card--1,
+    .service-card--3 {
+      height: 26.125rem;
+      margin-top: 4.0625rem;
+    }
+
+    .service-card--2 { margin-top: 0; }
+    .service-card--4 { display: none; }
+
+    .service-card__visual,
+    .service-card--2 .service-card__visual { height: 14rem; }
+    .service-card__body { min-height: 12.125rem; padding: 1.5rem; }
+    .service-name--desktop { display: none; }
+    .service-name--responsive { display: inline; }
+
+    .services__pagination,
+    .services__extras { display: none; }
+
+    .services__all-cta {
+      position: absolute;
+      top: 34.75rem;
+      left: 50%;
+      width: 13.5rem;
+      min-height: 3rem;
+      display: grid;
+      place-items: center;
+      color: var(--color-yellow);
+      border: 0.0625rem solid var(--color-yellow);
+      font-family: var(--font-jetbrains-mono);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transform: translateX(-50%);
+    }
+
+    .services__intro {
+      position: absolute;
+      right: 0;
+      bottom: 6.625rem;
+      width: 59%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .services__intro-dots { display: flex; gap: 0.2rem; margin-bottom: 0.75rem; }
+    .services__intro-dots span { width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--color-cyan); }
+    .services__intro-dots span:nth-child(2) { background: var(--color-magenta); }
+    .services__intro-dots span:nth-child(3) { background: var(--color-yellow); }
+    .services__intro p {
+      color: #e1e1df;
+      font-family: var(--font-jetbrains-mono);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.035em;
+      line-height: 1.55;
+      text-transform: uppercase;
+    }
+
+    .services__rail { left: 0; font-size: var(--vertical-title-font-size); }
+    .services__title { left: 4.5rem; font-size: 2rem; line-height: 1.05; }
+  }
+
+  @media (min-width: 40.0625rem) and (max-width: 52rem) {
+    .services { height: 82rem; }
+
+    .services__grid {
+      top: 3.5rem;
+      left: 5%;
+      width: 90%;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .service-card,
+    .service-card--1,
+    .service-card--2,
+    .service-card--3 {
+      width: 100%;
+      margin-top: 0;
+    }
+
+    .service-card--3 {
+      grid-column: 1 / -1;
+      width: calc((100% - 1rem) / 2);
+      justify-self: center;
+    }
+
+    .services__all-cta { top: 58rem; }
+
+    .services__intro {
+      bottom: 6.75rem;
+      width: 72%;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .services {
+      width: calc(100% - 1.5rem);
+      height: 109.4375rem;
+      margin-inline: auto;
+      padding-top: 3rem;
+    }
 
     .services__content {
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
 
-    .services__title {
-      position: static;
-      order: -1;
-      margin-bottom: 3rem;
-      font-size: clamp(2.5rem, 7vw, 4rem);
+    .services__intro {
+      width: 100%;
+      min-height: 7.75rem;
+      padding-inline: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .services__intro-dots { display: flex; gap: 0.2rem; margin-bottom: 0.75rem; }
+    .services__intro-dots span { width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--color-cyan); }
+    .services__intro-dots span:nth-child(2) { background: var(--color-magenta); }
+    .services__intro-dots span:nth-child(3) { background: var(--color-yellow); }
+    .services__intro p {
+      max-width: 19.5rem;
+      color: #e1e1df;
+      font-family: var(--font-jetbrains-mono);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.035em;
+      line-height: 1.55;
+      text-transform: uppercase;
     }
 
     .services__grid {
       position: static;
       width: 100%;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 1.5rem;
     }
 
     .service-card,
     .service-card--1,
-    .service-card--3,
-    .service-card--4 {
+    .service-card--2,
+    .service-card--3 {
+      width: 18rem;
       height: auto;
       margin-top: 0;
     }
 
+    .service-card--1 { order: 2; }
+    .service-card--2 { order: 1; }
+    .service-card--3 { order: 3; }
+    .service-card--4 { display: none; }
     .service-card__visual,
-    .service-card--2 .service-card__visual { height: 18rem; }
+    .service-card--2 .service-card__visual { height: 14rem; }
+    .service-card__body { min-height: 11.25rem; padding: 1.5rem 1.5rem 2rem; }
+    .service-card h3 { font-size: 1rem; }
+    .service-card p { font-size: 0.875rem; line-height: 1.7; }
+    .service-name--desktop { display: none; }
+    .service-name--responsive { display: inline; }
 
-    .services__pagination {
-      position: static;
-      margin: 2.5rem auto 0;
-      transform: none;
+    .services__pagination,
+    .services__extras,
+    .services__all-cta { display: none; }
+
+    .services__rail {
+      left: 0;
+      bottom: 3rem;
+      display: block;
+      font-size: 2rem;
     }
-  }
 
-  @media (max-width: 42rem) {
-    .services { padding-inline: 1rem; }
-    .services__grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    .service-card__visual { height: clamp(15rem, 69vw, 21rem); }
-    .service-card__body { min-height: auto; }
+    .services__title {
+      left: 3.375rem;
+      bottom: 3rem;
+      font-size: 1.25rem;
+      line-height: 1.05;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

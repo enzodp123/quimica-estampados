@@ -23,6 +23,8 @@ export default defineConfig({
           'message-circle',
           'share-2',
           'external-link',
+          'quote',
+          'circle-user-round',
         ],
       },
     }),

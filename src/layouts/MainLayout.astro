@@ -11,6 +11,8 @@ import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/700.css";
 import "@fontsource/poppins/800.css";
 import "@fontsource/poppins/900.css";
+import logo from "../assets/icons/logo-quimica.svg";
+import { siteConfig } from "../data/site";
 
 interface Props {
   title?: string;
@@ -18,9 +20,29 @@ interface Props {
 }
 
 const {
-  title = "Química Estampados",
-  description = "Estampados, impresión textil y soluciones gráficas para marcas.",
+  title = siteConfig.name,
+  description = siteConfig.description,
 } = Astro.props;
+
+const canonicalUrl = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : undefined;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: siteConfig.name,
+  description,
+  email: siteConfig.email,
+  telephone: `+${siteConfig.whatsapp.number}`,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.address.street,
+    addressLocality: siteConfig.address.city,
+    addressRegion: siteConfig.address.province,
+    addressCountry: "AR",
+  },
+  ...(canonicalUrl ? { url: canonicalUrl } : {}),
+};
 ---
 
 <!doctype html>
@@ -29,10 +51,25 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="theme-color" content="#070707" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="icon" href={logo.src} type="image/svg+xml" />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <title>{title}</title>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)}></script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
     <slot />
   </body>
 </html>

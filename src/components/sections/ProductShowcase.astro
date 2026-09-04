@@ -4,6 +4,7 @@ import crewneck from "../../assets/images/buzo.png";
 import hoodie from "../../assets/images/hero-hoodie.png";
 import cap from "../../assets/images/gorra.png";
 import BackgroundText from "../shared/BackgroundText.astro";
+import { productBySlug } from "../../data/products";
 
 const products = [
   {
@@ -12,6 +13,7 @@ const products = [
     image: crewneck,
     imageClass: "product-card__image--crewneck",
     href: "/productos/remera-oversize/",
+    price: productBySlug["remera-oversize"].price,
   },
   {
     name: "Buzo con capucha",
@@ -19,13 +21,15 @@ const products = [
     image: hoodie,
     imageClass: "product-card__image--hoodie",
     href: "/productos/buzo-canguro/",
+    price: productBySlug["buzo-canguro"].price,
   },
   {
     name: "Gorra visera",
-    description: "Algodón premium peinado 24.1",
+    description: "Frente personalizable y ajuste regulable",
     image: cap,
     imageClass: "product-card__image--cap",
     href: "/productos/gorra-trucker/",
+    price: productBySlug["gorra-trucker"].price,
   },
 ];
 ---
@@ -47,9 +51,19 @@ const products = [
       <p>Impresiones DTF de alta calidad para emprendedores, marcas y empresas.</p>
     </header>
 
-    <div class="product-grid">
-      {products.map(({ name, description, image, imageClass, href }) => (
-        <a class="product-card" href={href} aria-label={`Ver ${name}`}>
+    <section
+      id="featured-products-track"
+      class="product-grid"
+      data-product-track
+      aria-label="Carrusel de productos destacados"
+      tabindex="0"
+    >
+      {products.map(({ name, description, image, imageClass, href, price }) => (
+        <a
+          class="product-card"
+          href={href}
+          aria-label={`Ver ${name}`}
+        >
           <div class="product-card__visual">
             <Image
               class:list={["product-card__image", imageClass]}
@@ -76,16 +90,13 @@ const products = [
 
             <div class="product-card__price">
               <span>Desde</span>
-              <strong>$160.000</strong>
+              <strong>{price}</strong>
             </div>
           </div>
         </a>
       ))}
-    </div>
+    </section>
 
-    <div class="product-showcase__pagination" aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span>
-    </div>
   </div>
 </section>
 
@@ -146,33 +157,45 @@ const products = [
   }
 
   .product-grid {
+    --product-gap: 2.625rem;
     position: absolute;
-    top: 9.25rem;
-    left: 16.875%;
+    top: 8rem;
+    left: 16.770833%;
     width: 72.5%;
     height: 38.25rem;
     margin-top: 0;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2.625rem;
+    display: flex;
+    gap: var(--product-gap);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: none;
   }
 
+  .product-grid::-webkit-scrollbar { display: none; }
+
   .product-card {
+    width: calc((100% - var(--product-gap) - var(--product-gap)) / 3);
     height: 38.25rem;
     padding: 3.0625rem 2.0625rem;
     display: flex;
+    flex: 0 0 calc((100% - var(--product-gap) - var(--product-gap)) / 3);
     flex-direction: column;
     gap: 1.5rem;
     overflow: hidden;
     background: rgba(19, 19, 19, 0.5);
     border: 0.0625rem solid #353534;
     backdrop-filter: blur(2px);
+    scroll-snap-align: start;
     transition: transform var(--transition), border-color var(--transition);
   }
 
-  .product-card:hover {
+  .product-card:hover,
+  .product-card:focus-visible {
     transform: translateY(-0.375rem);
     border-color: rgba(0, 191, 232, 0.72);
+    outline: none;
   }
 
   .product-card__visual {
@@ -282,29 +305,6 @@ const products = [
     letter-spacing: 0.02em;
   }
 
-  .product-showcase__pagination {
-    position: absolute;
-    top: 49.75rem;
-    left: calc(50% + 3.75rem);
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    transform: translateX(-50%);
-  }
-
-  .product-showcase__pagination span {
-    width: 0.625rem;
-    height: 0.625rem;
-    border-radius: 50%;
-    background: #fff;
-  }
-
-  .product-showcase__pagination span:first-child {
-    width: 0.75rem;
-    height: 0.75rem;
-    background: var(--color-cyan);
-  }
-
   .product-showcase__rail {
     position: absolute;
     z-index: 1;
@@ -343,7 +343,7 @@ const products = [
     }
 
     .product-grid {
-      gap: 1.5rem;
+      --product-gap: 1.5rem;
     }
 
     .product-showcase__rail--left {
@@ -356,7 +356,60 @@ const products = [
     }
   }
 
-  @media (min-width: 40.0625rem) and (max-width: 64rem) {
+  @media (min-width: 80.0625rem) and (max-width: 110rem) {
+    .product-showcase {
+      height: 54rem;
+      min-height: 54rem;
+    }
+
+    .product-showcase__dots,
+    .product-showcase__header > p {
+      left: 12rem;
+    }
+
+    .product-showcase__header > p {
+      max-width: calc(100% - 15rem);
+      white-space: normal;
+    }
+
+    .product-grid {
+      --product-gap: clamp(1.5rem, 2vw, 2.625rem);
+      top: 8rem;
+      left: 12rem;
+      width: calc(100% - 15rem);
+      height: 40rem;
+    }
+
+    .product-card {
+      width: calc((100% - (var(--product-gap) * 2)) / 3);
+      height: 40rem;
+      padding: 2rem;
+      flex-basis: calc((100% - (var(--product-gap) * 2)) / 3);
+      gap: 1.25rem;
+    }
+
+    .product-card__visual {
+      height: 19.5rem;
+      flex-basis: 19.5rem;
+    }
+
+    .product-card__body {
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card__price {
+      position: static;
+      margin-top: auto;
+      align-self: flex-end;
+    }
+
+    .product-showcase__rail--left { left: 3.25rem; }
+    .product-showcase__title { left: 8rem; }
+  }
+
+  @media (min-width: 40.0625rem) and (max-width: 80rem) {
     .product-showcase {
       width: calc(100% - 3rem);
       height: 52.625rem;
@@ -388,15 +441,14 @@ const products = [
       position: absolute;
       top: 9.5625rem;
       left: 8.0625rem;
-      width: max-content;
+      width: calc(100% - 8.0625rem);
       height: 33.5rem;
       margin: 0;
       display: flex;
       gap: 1.5rem;
     }
 
-    .product-card,
-    .product-card:last-child {
+    .product-card {
       width: 19.5625rem;
       height: 33.5rem;
       padding: 1.5rem;
@@ -409,7 +461,17 @@ const products = [
       flex-basis: 17rem;
     }
 
-    .product-card__body { min-height: 0; }
+    .product-card__body {
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card__price {
+      position: static;
+      margin-top: auto;
+      align-self: flex-end;
+    }
 
     .product-card h3 { font-size: 1.25rem; }
 
@@ -430,63 +492,66 @@ const products = [
       font-size: 2.5rem;
     }
 
-    .product-showcase__pagination { display: none; }
   }
 
   @media (max-width: 40rem) {
     .product-showcase {
       width: calc(100% - 1.5rem);
-      height: 58.1875rem;
+      height: auto;
       min-height: 58.1875rem;
       margin-inline: auto;
-      padding: 0;
+      padding: 3rem 0 10rem;
       display: block;
     }
 
     .product-showcase__content {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
     }
 
     .product-showcase__header {
       width: 100%;
+      order: 3;
+      margin-top: 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .product-showcase__dots {
-      position: absolute;
-      top: 46rem;
-      left: 50%;
+      position: static;
       margin: 0;
-      transform: translateX(-50%);
+      transform: none;
     }
 
     .product-showcase__header > p {
-      position: absolute;
-      top: 47.9375rem;
-      left: 1.5rem;
+      position: static;
       width: calc(100% - 3rem);
+      margin-top: 1rem;
       font-size: 0.875rem;
       line-height: 1.2;
       text-align: center;
     }
 
     .product-grid {
-      position: absolute;
-      inset: 3rem 0 auto;
+      position: relative;
+      inset: auto;
+      order: 1;
       width: 100%;
       height: 34.125rem;
       margin: 0;
-      display: block;
-    }
-
-    .product-card,
-    .product-card:last-child {
-      width: 100%;
-      height: 34.125rem;
-      padding: 1.5rem;
+      display: flex;
       gap: 1rem;
     }
 
-    .product-card:not(:first-child) { display: none; }
+    .product-card {
+      width: 100%;
+      height: 34.125rem;
+      padding: 1.5rem;
+      flex: 0 0 100%;
+      gap: 1rem;
+    }
 
     .product-card__visual {
       height: 17rem;
@@ -501,17 +566,9 @@ const products = [
 
     .product-card__price {
       position: static;
-      margin-top: 1.5rem;
+      margin-top: auto;
       align-self: flex-end;
     }
-
-    .product-showcase__pagination {
-      top: 38.25rem;
-      left: 50%;
-      display: flex;
-    }
-
-    .product-showcase__pagination span:nth-child(n + 4) { display: none; }
 
     .product-showcase__rail {
       bottom: 3.125rem;
@@ -527,5 +584,10 @@ const products = [
       font-size: 1.25rem;
       line-height: 1.05;
     }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .product-grid { scroll-behavior: auto; }
+    .product-card { transition: none; }
   }
 </style>

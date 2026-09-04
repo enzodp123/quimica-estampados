@@ -1,9 +1,10 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import type { Product } from "../../data/products";
-import relatedShirt from "../../assets/products/remera-unisex/main.png";
+import relatedShirt from "../../assets/products/remera-oversize/main.png";
 import relatedSticker from "../../assets/products/shared-calco.png";
 import relatedCap from "../../assets/products/shared-gorra.png";
+import { whatsappUrl } from "../../data/site";
 
 interface Props {
   product: Product;
@@ -11,12 +12,16 @@ interface Props {
 
 const { product } = Astro.props;
 const isPhotoProduct = product.slug === "remera-oversize";
+const gallery = await Promise.all(product.gallery.map(async (image) => ({
+  main: await getImage({ src: image, width: Math.min(1200, image.width), format: "webp", quality: 82 }),
+  thumb: await getImage({ src: image, width: Math.min(180, image.width), format: "webp", quality: 78 }),
+})));
 const relatedProducts = [
   {
-    name: "Remera unisex",
+    name: "Remera oversize",
     copy: "Algodón premium peinado 24.1",
-    price: "$126.400",
-    href: "/productos/remera-unisex/",
+    price: "$160.000",
+    href: "/productos/remera-oversize/",
     image: relatedShirt,
   },
   {
@@ -37,27 +42,31 @@ const relatedProducts = [
 ---
 
 {product.ticker && (
-  <div class="product-ticker" aria-label="Promociones">
+  <aside class="product-ticker" aria-label="Promociones">
     <div class="product-ticker__track">
       <span>3 cuotas sin interés</span><i></i><span>Envío gratis desde 10 unidades</span><i></i><span>Producción personalizada</span><i></i><span>3 cuotas sin interés</span>
     </div>
-  </div>
+  </aside>
 )}
 
-<main class:list={["product-page", `product-page--${product.slug}`]}>
+<main
+  id="main-content"
+  class:list={["product-page", `product-page--${product.slug}`]}
+  data-figma-nodes={product.figmaNodes.join(",")}
+>
   <section class="product-hero" aria-labelledby="product-title">
     <div class="product-gallery" data-product-gallery>
-      <div class="product-gallery__thumbs" aria-label="Galería del producto">
-        {product.gallery.map((image, index) => (
+      <div class="product-gallery__thumbs" role="group" aria-label="Galería del producto">
+        {gallery.map((image, index) => (
           <button
             class:list={["product-gallery__thumb", { "is-active": index === 0 }]}
             type="button"
             data-gallery-thumb
-            data-src={image.src}
+            data-src={image.main.src}
             aria-label={`Ver imagen ${index + 1} de ${product.title}`}
             aria-pressed={index === 0 ? "true" : "false"}
           >
-            <img src={image.src} alt="" loading={index === 0 ? "eager" : "lazy"} />
+            <img src={image.thumb.src} alt="" loading={index === 0 ? "eager" : "lazy"} />
           </button>
         ))}
       </div>
@@ -65,7 +74,7 @@ const relatedProducts = [
       <div class:list={["product-gallery__main", { "is-photo": isPhotoProduct }]}>
         <img
           data-gallery-main
-          src={product.gallery[0].src}
+          src={gallery[0].main.src}
           alt={product.title}
           fetchpriority="high"
         />
@@ -87,9 +96,14 @@ const relatedProducts = [
       {product.quantities.length > 0 && (
         <fieldset class="product-selector">
           <legend>{product.quantityLabel ?? "Cantidad"}</legend>
-          <div class="product-selector__values">
+          <div class="product-selector__values" data-product-choice-group>
             {product.quantities.map((quantity, index) => (
-              <button class:list={["product-chip", { "is-active": index === 0 }]} type="button">{quantity}</button>
+              <button
+                class:list={["product-chip", { "is-active": index === 0 }]}
+                type="button"
+                data-product-choice
+                aria-pressed={index === 0 ? "true" : "false"}
+              >{quantity}</button>
             ))}
           </div>
         </fieldset>
@@ -100,11 +114,16 @@ const relatedProducts = [
       {product.options.map((option) => (
         <fieldset class="product-selector product-selector--wide">
           <legend>{option.label}</legend>
-          <div class="product-selector__values">
+          <div class="product-selector__values" data-product-choice-group>
             {option.values.map((value) => value.href ? (
               <a class:list={["product-chip", { "is-active": value.active }]} href={value.href}>{value.label}</a>
             ) : (
-              <button class:list={["product-chip", { "is-active": value.active }]} type="button">{value.label}</button>
+              <button
+                class:list={["product-chip", { "is-active": value.active }]}
+                type="button"
+                data-product-choice
+                aria-pressed={value.active ? "true" : "false"}
+              >{value.label}</button>
             ))}
           </div>
           {option.note && <p class="product-selector__note">{option.note}</p>}
@@ -117,8 +136,17 @@ const relatedProducts = [
             <div>
               <span>{product.colorLabel}</span>
               {product.colors ? (
-                <div class="color-swatches" aria-label={product.colorLabel}>
-                  {product.colors.map((color) => <i style={`--swatch:${color}`}></i>)}
+                <div class="color-swatches" role="group" aria-label={product.colorLabel} data-product-choice-group>
+                  {product.colors.map((color, index) => (
+                    <button
+                      class:list={{ "is-active": index === 0 }}
+                      type="button"
+                      style={`--swatch:${color}`}
+                      data-product-choice
+                      aria-label={`${product.colorLabel}, opción ${index + 1}`}
+                      aria-pressed={index === 0 ? "true" : "false"}
+                    ></button>
+                  ))}
                 </div>
               ) : product.sizeValue && <strong>{product.sizeValue}</strong>}
             </div>
@@ -134,7 +162,12 @@ const relatedProducts = [
 
       <div class="product-info__actions">
         {product.actions?.map((action) => (
-          <a class:list={["product-action", { "product-action--primary": action === "consultar" }]} href="/#contacto">
+          <a
+            class:list={["product-action", { "product-action--primary": action === "consultar" }]}
+            href={whatsappUrl(`Hola, quisiera consultar por ${product.title}.`)}
+            target="_blank"
+            rel="noreferrer"
+          >
             {action === "cotizar" ? "Cotizá tu medida" : "Consultar por WhatsApp"}
           </a>
         ))}
@@ -169,8 +202,8 @@ const relatedProducts = [
       <h2 id="related-heading">Otros productos</h2>
     </div>
     <div class="related__grid">
-      {relatedProducts.map((related, index) => (
-        <a class:list={["related-card", { "is-active": index === 0 }]} href={related.href}>
+      {relatedProducts.map((related) => (
+        <a class="related-card" href={related.href}>
           <div class="related-card__image">
             <Image src={related.image} alt={related.name} loading="lazy" widths={[280, 480, 640]} sizes="(max-width: 40rem) 80vw, 28vw" />
           </div>
@@ -182,7 +215,6 @@ const relatedProducts = [
         </a>
       ))}
     </div>
-    <div class="related__pagination" aria-hidden="true"><i></i><i></i><i></i></div>
   </section>
 </main>
 
@@ -201,6 +233,20 @@ const relatedProducts = [
       });
     });
   });
+
+  document.querySelectorAll<HTMLElement>("[data-product-choice-group]").forEach((group) => {
+    const choices = group.querySelectorAll<HTMLButtonElement>("[data-product-choice]");
+    choices.forEach((choice) => {
+      choice.addEventListener("click", () => {
+        choices.forEach((item) => {
+          const active = item === choice;
+          item.classList.toggle("is-active", active);
+          item.setAttribute("aria-pressed", String(active));
+        });
+      });
+    });
+  });
+
 </script>
 
 <style>
@@ -419,7 +465,16 @@ const relatedProducts = [
   .product-info__material { grid-column: 1 / -1; }
 
   .color-swatches { margin-top: 0.5rem; display: flex; gap: 0.45rem; }
-  .color-swatches i { width: 1rem; height: 1rem; border: 1px solid #777; border-radius: 50%; background: var(--swatch); }
+  .color-swatches button {
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    border: 1px solid #777;
+    border-radius: 50%;
+    background: var(--swatch);
+    cursor: pointer;
+  }
+  .color-swatches button.is-active { outline: 2px solid var(--color-cyan); outline-offset: 2px; }
 
   .product-info__actions { margin-top: 1.35rem; display: flex; flex-wrap: wrap; gap: 0.65rem; }
   .product-action {
@@ -468,9 +523,22 @@ const relatedProducts = [
 
   .related { margin-top: 5rem; }
   .related__heading { text-align: center; }
-  .related__grid { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
-  .related-card { min-width: 0; padding: 1.5rem; display: block; border: 1px solid #323231; background: #0c0c0c; transition: transform var(--transition), border-color var(--transition); }
-  .related-card:hover { transform: translateY(-0.35rem); border-color: var(--color-cyan); }
+  .related__grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 4rem) / 3);
+    gap: 2rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: none;
+  }
+  .related__grid::-webkit-scrollbar { display: none; }
+  .related-card { min-width: 0; padding: 1.5rem; display: block; border: 1px solid #323231; background: #0c0c0c; scroll-snap-align: start; transition: transform var(--transition), border-color var(--transition); }
+  .related-card:hover,
+  .related-card:focus-visible { transform: translateY(-0.35rem); border-color: var(--color-cyan); }
   .related-card__image { height: 18rem; display: grid; place-items: center; overflow: hidden; }
   .related-card__image :global(img) { width: 100%; height: 100%; object-fit: contain; }
   .related-card__body { padding-top: 1.15rem; font-family: var(--font-jetbrains-mono); text-transform: uppercase; }
@@ -479,8 +547,6 @@ const relatedProducts = [
   .related-card__body > div { margin-top: 1rem; display: flex; justify-content: flex-end; align-items: baseline; gap: 0.55rem; }
   .related-card__body span { color: #777; font-size: 0.65rem; }
   .related-card__body strong { color: #eee; font-size: 1rem; }
-  .related__pagination { display: none; }
-
   @media (max-width: 68.75rem) {
     .product-page { padding-top: 2.25rem; }
     .product-hero,
@@ -501,11 +567,7 @@ const relatedProducts = [
     .product-gallery__thumbs { min-height: 0; max-height: none; }
     .product-info { width: 100%; }
     .product-description { grid-template-columns: 1fr; gap: 2.5rem; }
-    .related__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .related-card:nth-child(3) { display: none; }
-    .related__pagination { margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.35rem; }
-    .related__pagination i { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: #fff; }
-    .related__pagination i:first-child { width: 0.7rem; height: 0.7rem; background: var(--color-cyan); }
+    .related__grid { grid-auto-columns: calc((100% - 2rem) / 2); }
   }
 
   @media (max-width: 40rem) {
@@ -540,12 +602,8 @@ const relatedProducts = [
 
     .related { margin-top: 4rem; }
     .related__heading { text-align: left; }
-    .related__grid { margin-top: 1.75rem; display: block; }
+    .related__grid { margin-top: 1.75rem; grid-auto-columns: 100%; gap: 1rem; }
     .related-card { width: 100%; padding: 1.5rem; }
-    .related-card:not(:first-child) { display: none; }
     .related-card__image { height: 18rem; }
-    .related__pagination { margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.35rem; }
-    .related__pagination i { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: #fff; }
-    .related__pagination i:first-child { width: 0.7rem; height: 0.7rem; background: var(--color-cyan); }
   }
 </style>

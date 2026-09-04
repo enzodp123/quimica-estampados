@@ -1,11 +1,11 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import BackgroundText from "../shared/BackgroundText.astro";
-import work1 from "../../assets/images/nuestros1.png";
-import work2 from "../../assets/images/nuestros2.png";
-import work3 from "../../assets/images/nuestros3.png";
-import work4 from "../../assets/images/nuestros4.png";
-import work5 from "../../assets/images/nuestros5.png";
+import work1 from "../../assets/works/textil/1.jpeg";
+import work2 from "../../assets/works/textil/2.png";
+import work3 from "../../assets/works/textil/3.jpeg";
+import work4 from "../../assets/works/textil/4.jpeg";
+import work5 from "../../assets/works/textil/5.jpeg";
 import galleryClose from "../../assets/icons/gallery-close.svg";
 import calcos1 from "../../assets/works/calcos/1.png";
 import calcos2 from "../../assets/works/calcos/2.png";
@@ -28,17 +28,30 @@ import corporeos3 from "../../assets/works/corporeos/3.png";
 import corporeos4 from "../../assets/works/corporeos/4.png";
 import corporeos5 from "../../assets/works/corporeos/5.png";
 
-const workCategories = [
+type Work = {
+  label: string;
+  image: typeof work1;
+  imagePosition?: string;
+};
+
+type WorkCategory = {
+  id: string;
+  label: string;
+  figmaNode: string;
+  works: Work[];
+};
+
+const workCategories: WorkCategory[] = [
   {
     id: "textil",
     label: "Estampado textil",
-    figmaNode: "estado original",
+    figmaNode: "1031:1593",
     works: [
-      { label: "Estampado textil personalizado", image: work1 },
-      { label: "Tarjetas personales estampadas", image: work2 },
-      { label: "Calcos personalizados aplicados", image: work3 },
-      { label: "Stickers impresos", image: work4 },
-      { label: "Gorras estampadas", image: work5 },
+      { label: "Remeras estampadas para egresados", image: work1 },
+      { label: "Remeras y gorras estampadas para Fundación Oncológica Victoria", image: work2 },
+      { label: "Gorras y prendas estampadas para Otra Cultura", image: work3 },
+      { label: "Indumentaria estampada para La Fonda de Orly", image: work4, imagePosition: "50% 80%" },
+      { label: "Gorras estampadas para Promo 25", image: work5 },
     ],
   },
   {
@@ -91,7 +104,19 @@ const workCategories = [
   },
 ];
 
-const initialWorks = workCategories[0].works;
+const galleryCategories = await Promise.all(workCategories.map(async (category) => ({
+  ...category,
+  works: await Promise.all(category.works.map(async (work) => ({
+    ...work,
+    lightboxSrc: (await getImage({
+      src: work.image,
+      width: Math.min(1600, work.image.width),
+      format: "webp",
+      quality: 84,
+    })).src,
+  }))),
+})));
+const initialWorks = galleryCategories[0].works;
 ---
 
 <section id="trabajos" class="work-gallery" aria-labelledby="work-gallery-heading">
@@ -107,8 +132,8 @@ const initialWorks = workCategories[0].works;
       <p>Desde prendas personalizadas hasta piezas gráficas y corporativas, cada trabajo está pensado para representar una marca con la mejor terminación posible.</p>
     </header>
 
-    <nav class="work-gallery__filters work-gallery__filters--desktop" aria-label="Categorías de trabajos">
-      {workCategories.map((category, index) => (
+    <nav class="work-gallery__filters work-gallery__filters--desktop" aria-label="Categorías de trabajos, escritorio">
+      {galleryCategories.map((category, index) => (
         <button
           class:list={{ "is-active": index === 0 }}
           type="button"
@@ -119,8 +144,8 @@ const initialWorks = workCategories[0].works;
       ))}
     </nav>
 
-    <nav class="work-gallery__filters work-gallery__filters--responsive" aria-label="Categorías de trabajos">
-      {workCategories.map((category, index) => (
+    <nav class="work-gallery__filters work-gallery__filters--responsive" aria-label="Categorías de trabajos, responsive">
+      {galleryCategories.map((category, index) => (
         <button
           class:list={{ "is-active": index === 0 }}
           type="button"
@@ -131,8 +156,8 @@ const initialWorks = workCategories[0].works;
       ))}
     </nav>
 
-    {workCategories.map((category, categoryIndex) => (
-      <div
+    {galleryCategories.map((category, categoryIndex) => (
+      <section
         id={`work-panel-${category.id}`}
         class="work-gallery__grid"
         data-work-panel={category.id}
@@ -141,28 +166,28 @@ const initialWorks = workCategories[0].works;
         hidden={categoryIndex !== 0}
       >
         <div class="work-gallery__mosaic">
-          {category.works.slice(0, 2).map(({ label, image }, index) => (
+          {category.works.slice(0, 2).map(({ label, image, imagePosition }, index) => (
             <button
               class:list={["work-gallery__media", `work-gallery__media--${index + 1}`]}
               type="button"
               data-work-image
-              data-image-src={image.src}
+              data-image-src={category.works[index].lightboxSrc}
               data-image-alt={label}
               aria-label={`Ampliar ${label}`}
             >
-              <Image class="work-gallery__image" src={image} alt={label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 40vw" />
+              <Image class="work-gallery__image" src={image} alt={label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 40vw" style={imagePosition ? `object-position: ${imagePosition};` : undefined} />
             </button>
           ))}
-          {category.works.slice(2, 4).map(({ label, image }, index) => (
+          {category.works.slice(2, 4).map(({ label, image, imagePosition }, index) => (
             <button
               class:list={["work-gallery__media", `work-gallery__media--${index + 4}`]}
               type="button"
               data-work-image
-              data-image-src={image.src}
+              data-image-src={category.works[index + 2].lightboxSrc}
               data-image-alt={label}
               aria-label={`Ampliar ${label}`}
             >
-              <Image class="work-gallery__image" src={image} alt={label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 40vw" />
+              <Image class="work-gallery__image" src={image} alt={label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 40vw" style={imagePosition ? `object-position: ${imagePosition};` : undefined} />
             </button>
           ))}
         </div>
@@ -171,13 +196,13 @@ const initialWorks = workCategories[0].works;
           class="work-gallery__media work-gallery__media--3"
           type="button"
           data-work-image
-          data-image-src={category.works[4].image.src}
+          data-image-src={category.works[4].lightboxSrc}
           data-image-alt={category.works[4].label}
           aria-label={`Ampliar ${category.works[4].label}`}
         >
-          <Image class="work-gallery__image" src={category.works[4].image} alt={category.works[4].label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 28vw" />
+          <Image class="work-gallery__image" src={category.works[4].image} alt={category.works[4].label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 28vw" style={category.works[4].imagePosition ? `object-position: ${category.works[4].imagePosition};` : undefined} />
         </button>
-      </div>
+      </section>
     ))}
 
     <a class="work-gallery__cta" href="#contacto">Ver más trabajos</a>
@@ -188,7 +213,7 @@ const initialWorks = workCategories[0].works;
       <img src={galleryClose.src} width="32" height="32" alt="" />
     </button>
     <div class="work-lightbox__frame">
-      <img class="work-lightbox__image" data-work-lightbox-image src={initialWorks[4].image.src} alt={initialWorks[4].label} />
+      <img class="work-lightbox__image" data-work-lightbox-image src={initialWorks[4].lightboxSrc} alt={initialWorks[4].label} />
     </div>
   </dialog>
 </section>
@@ -366,7 +391,6 @@ const initialWorks = workCategories[0].works;
   .work-gallery__filters button.is-active {
     color: var(--color-text);
     background: rgba(19, 19, 19, 0.72);
-    border-color: var(--color-border);
   }
 
   @media (min-width: 64.0625rem) and (max-width: 80rem) {
@@ -411,7 +435,7 @@ const initialWorks = workCategories[0].works;
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(2px);
     transition: opacity var(--transition);
     pointer-events: none;
@@ -529,7 +553,7 @@ const initialWorks = workCategories[0].works;
     background: var(--color-cyan);
   }
 
-  @media (min-width: 40.0625rem) and (max-width: 64rem) {
+  @media (min-width: 40.0625rem) and (max-width: 110rem) {
     .work-gallery {
       width: calc(100% - 3rem);
       height: 58.9375rem;
@@ -595,9 +619,10 @@ const initialWorks = workCategories[0].works;
   @media (max-width: 40rem) {
     .work-gallery {
       width: calc(100% - 1.5rem);
-      height: 75.5rem;
+      height: auto;
+      min-height: 75.5rem;
       margin-inline: auto;
-      padding-block: 3rem;
+      padding: 3rem 0 12rem;
     }
 
     .work-gallery__content {

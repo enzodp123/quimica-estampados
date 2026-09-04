@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import workshop from "../../assets/images/comotrabajamos.png";
+import workshop from "../../assets/images/industrial-workshop.png";
 import BackgroundText from "../shared/BackgroundText.astro";
 
 const process = [
@@ -24,7 +24,7 @@ const process = [
     number: "03",
     title: "Producción",
     text: "Una vez aprobado el diseño, seleccionamos los materiales y la técnica de estampado o impresión más adecuada para tu proyecto. Nos ocupamos de cada detalle para lograr un producto de calidad.",
-    icon: "lucide:sliders-horizontal",
+    icon: "production-sliders",
     tone: "yellow",
   },
   {
@@ -47,7 +47,7 @@ const process = [
       <Image
         class="industrial__image"
         src={workshop}
-        alt="Interior del local de Química Estampados"
+        alt="Taller de producción de Química Estampados"
         loading="lazy"
         widths={[480, 720, 960]}
         sizes="(max-width: 64rem) 88vw, 36rem"
@@ -61,7 +61,13 @@ const process = [
           <div class="process-step__card">
             <div class="process-step__heading">
               <h3>{title}</h3>
-              <Icon name={icon} aria-hidden="true" />
+              {icon === "production-sliders" ? (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true">
+                  <path d="M10 8h4m-2 13v-9m0-4V3m5 13h4m-2-4V3m0 18v-5M3 14h4m-2-4V3m0 18v-7"></path>
+                </svg>
+              ) : (
+                <Icon name={icon} aria-hidden="true" />
+              )}
             </div>
             <p>{text}</p>
             {note && <p class="process-step__note">{note}</p>}
@@ -232,45 +238,58 @@ const process = [
     line-height: 1.6;
   }
 
-  @media (min-width: 40.0625rem) and (max-width: 64rem) {
+  @media (min-width: 40.0625rem) and (max-width: 110rem) {
     .industrial {
       width: calc(100% - 3rem);
-      height: 93.625rem;
+      height: auto;
+      min-height: 78rem;
       margin-inline: auto;
+      padding: 4.5rem 0 11rem;
     }
 
-    .industrial__stage { display: contents; }
+    .industrial__stage {
+      width: calc(100% - 10rem);
+      margin-left: 8rem;
+      display: grid;
+      grid-template-columns: minmax(16rem, 0.72fr) minmax(24rem, 1fr);
+      align-items: start;
+      gap: clamp(2rem, 4vw, 4.5rem);
+    }
 
     .process-list {
-      top: 4.8125rem;
-      left: 10.143%;
-      width: 79.303%;
-      height: 55rem;
-      display: block;
+      position: relative;
+      top: auto;
+      left: auto;
+      width: auto;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
     }
 
-    .process-step {
-      position: absolute;
-      width: 66.667%;
-      padding: 0 0 2rem 2.0625rem;
-      border-left: 0.0625rem solid #222;
+    .process-step,
+    .process-step:nth-child(1),
+    .process-step:nth-child(2),
+    .process-step:nth-child(3),
+    .process-step:nth-child(4) {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
+      padding: 0 0 0 3.75rem;
+      border-left: 0;
     }
-
-    .process-step:nth-child(1) { top: 0; left: 0; }
-    .process-step:nth-child(2) { top: 14.3125rem; left: 33.85%; padding-left: 2.3125rem; }
-    .process-step:nth-child(3) { top: 32.5rem; left: -0.0625rem; }
-    .process-step:nth-child(4) { top: 48.5rem; left: 33.85%; padding-left: 2rem; }
 
     .process-step:not(:last-child)::after {
       top: 2.5rem;
-      bottom: -2.5rem;
-      left: -0.0625rem;
+      bottom: -1.25rem;
+      left: 1.25rem;
       border-left-color: #222;
     }
 
     .process-step__number {
       top: 0;
-      left: -1.25rem;
+      left: 0;
       width: 2.5rem;
       height: 2.5rem;
       font-size: 1.25rem;
@@ -285,35 +304,54 @@ const process = [
     .process-step__card > p { font-size: 1rem; line-height: 1.625; }
 
     .industrial__image-wrap {
-      top: 67.8125rem;
-      left: 20.389%;
-      width: 59.016%;
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
       height: auto;
-      aspect-ratio: 12 / 7;
+      margin-top: clamp(6rem, 10vw, 10rem);
+      aspect-ratio: 7 / 8;
       overflow: hidden;
     }
 
     .industrial__image { height: 100%; object-fit: cover; }
 
-    .industrial__rail { left: 0; font-size: 3rem; }
-    .industrial__title { left: 3.6875rem; bottom: 0; font-size: 2.25rem; line-height: 1.05; }
+    .industrial__rail { left: 0; bottom: 3rem; font-size: 3rem; }
+    .industrial__title { left: 3.6875rem; bottom: 3rem; font-size: 2.25rem; line-height: 1.05; }
   }
 
-  @media (min-width: 40.0625rem) and (max-width: 52rem) {
-    .industrial { height: 118rem; }
+  @media (min-width: 40.0625rem) and (max-width: 56rem) {
+    .industrial {
+      height: auto;
+      min-height: 0;
+      padding: 5rem 0 10rem;
+    }
+
+    .industrial__stage {
+      width: 100%;
+      margin-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
 
     .industrial__image-wrap {
-      top: 5rem;
-      left: 15%;
+      position: relative;
+      top: auto;
+      left: auto;
       width: 70%;
       max-width: none;
+      margin-top: 0;
+      margin-inline: auto;
     }
 
     .process-list {
-      top: 30rem;
-      left: 9%;
+      position: relative;
+      top: auto;
+      left: auto;
       width: 82%;
       height: auto;
+      margin: 2.5rem auto 0;
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
@@ -357,27 +395,38 @@ const process = [
   @media (max-width: 40rem) {
     .industrial {
       width: calc(100% - 1.5rem);
-      height: 129.3125rem;
+      height: auto;
+      min-height: 129.3125rem;
       margin-inline: auto;
+      padding: 3rem 0 10rem;
     }
 
-    .industrial__stage { display: contents; }
+    .industrial__stage {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
 
     .industrial__image-wrap {
-      top: 5.6875rem;
-      left: 1.375rem;
+      position: relative;
+      top: auto;
+      left: auto;
       width: calc(100% - 2.75rem);
-      max-width: 19.1875rem;
-      height: 21.9375rem;
+      max-width: none;
+      height: auto;
+      aspect-ratio: 7 / 8;
+      margin-inline: auto;
       overflow: hidden;
     }
 
     .industrial__image { height: 100%; object-fit: cover; }
 
     .process-list {
-      top: 31.1875rem;
-      left: 2.3125rem;
+      position: relative;
+      top: auto;
+      left: auto;
       width: calc(100% - 5.375rem);
+      margin-inline: auto;
       display: flex;
       flex-direction: column;
       gap: 1.125rem;
@@ -420,7 +469,7 @@ const process = [
     .process-step__card > p { margin-top: 0.875rem; font-size: 0.875rem; line-height: normal; }
     .process-step__card > .process-step__note { font-size: 0.75rem; line-height: normal; }
 
-    .industrial__rail { left: 0; bottom: 0; font-size: 2rem; }
-    .industrial__title { left: 2.75rem; bottom: 0; font-size: 1.25rem; line-height: 1.05; }
+    .industrial__rail { left: 0; bottom: 3rem; font-size: 2rem; }
+    .industrial__title { left: 2.75rem; bottom: 3rem; font-size: 1.25rem; line-height: 1.05; }
   }
 </style>

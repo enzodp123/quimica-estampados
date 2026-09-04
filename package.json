@@ -8,8 +8,13 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "node scripts/prune-dist-assets.mjs",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "validate:html": "html-validate \"dist/**/*.html\"",
+    "test": "node --test tests/*.test.mjs",
+    "qa": "npm run check && npm run build && npm run validate:html && npm test"
   },
   "dependencies": {
     "@fontsource/jetbrains-mono": "^5.3.0",
@@ -18,5 +23,10 @@
     "@iconify-json/lucide": "^1.2.123",
     "astro": "^7.1.6",
     "astro-icon": "^1.1.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "html-validate": "^11.13.0",
+    "typescript": "^6.0.3"
   }
 }

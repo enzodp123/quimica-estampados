@@ -1,0 +1,45 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/footer.astro";
+---
+
+<MainLayout
+  title="Página no encontrada | Química Estampados"
+  description="La página que buscás no existe o cambió de dirección."
+>
+  <Header />
+  <main id="main-content" class="not-found">
+    <div class="not-found__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+    <p>ERROR 404</p>
+    <h1>Esta página<br />no está estampada</h1>
+    <p class="not-found__copy">El enlace puede haber cambiado. Volvé al inicio o escribinos para encontrar lo que necesitás.</p>
+    <div class="not-found__actions">
+      <a class="button button--primary" href="/">Volver al inicio</a>
+      <a class="button button--cyan" href="/#contacto">Contactarnos</a>
+    </div>
+  </main>
+  <Footer />
+</MainLayout>
+
+<style>
+  .not-found {
+    width: min(calc(100% - 3rem), 75rem);
+    min-height: 42rem;
+    margin-inline: auto;
+    padding-block: clamp(5rem, 10vw, 9rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .not-found__dots { margin-bottom: 1.25rem; display: flex; gap: 0.3rem; }
+  .not-found__dots span { width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--color-cyan); }
+  .not-found__dots span:nth-child(2) { background: var(--color-magenta); }
+  .not-found__dots span:nth-child(3) { background: var(--color-yellow); }
+  .not-found > p:first-of-type { color: var(--color-magenta); font: 700 0.875rem/1 var(--font-display); letter-spacing: 0.12em; }
+  .not-found h1 { margin-top: 1rem; font: 800 clamp(3rem, 8vw, 7rem)/0.92 var(--font-montserrat); letter-spacing: -0.05em; text-transform: uppercase; }
+  .not-found__copy { max-width: 42rem; margin-top: 2rem; color: var(--color-text-muted); font: 400 1rem/1.7 var(--font-poppins); }
+  .not-found__actions { margin-top: 2.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+</style>

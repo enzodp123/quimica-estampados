@@ -1,43 +1,44 @@
 ---
 import { Image } from "astro:assets";
-import stickers from "../../assets/images/IMG1.png";
-import cards from "../../assets/images/img2.png";
-import dimensionalSign from "../../assets/images/img3.png";
-import labels from "../../assets/images/etiquetas.png";
+import stickers from "../../assets/services/calcos.png";
+import cards from "../../assets/services/tarjetas-personales.png";
+import folletos from "../../assets/services/folletos.png";
+import labels from "../../assets/services/etiquetas.png";
 import BackgroundText from "../shared/BackgroundText.astro";
+import { whatsappUrl } from "../../data/site";
 
 const services = [
   {
     name: "Calcos",
     responsiveName: "Calcos",
-    description: "Aplicaciones resistentes para productos, envases y vidrieras, con excelente adhesión y terminaciones de alta calidad.",
+    description: "Son aptas interior/exterior, impresas con tintas ecosolventes, colores vibrantes, resistentes al agua.",
     image: stickers,
     imageAlt: "Calcos impresos a color para una marca gastronómica",
-    imagePosition: "50% 48%",
+    imagePosition: "50% 50%",
     href: "/productos/calcos-papel/",
   },
   {
     name: "Tarjetas personales",
     responsiveName: "Tarjetas personales",
-    description: "Tarjetas profesionales con acabados premium que transmiten una excelente primera impresión.",
+    description: "Terminación mate (sin brillo) o brillante. Ideales para profesionales, comercios y emprendimientos.",
     image: cards,
     imageAlt: "Tarjetas personales negras con terminación brillante",
-    imagePosition: "50% 42%",
+    imagePosition: "50% 50%",
     href: "/productos/tarjetas-personales/",
   },
   {
     name: "Folletos",
     responsiveName: "Folletos",
-    description: "Vinilos de corte para vidrieras, vehículos, señalética y aplicaciones comerciales con acabados de alta precisión.",
-    image: dimensionalSign,
-    imageAlt: "Cartel corpóreo de polifan instalado sobre una pared",
+    description: "Papel ilustración terminación brillante o matelina, hasta 120gr",
+    image: folletos,
+    imageAlt: "Folletos personalizados impresos a color",
     imagePosition: "50% 50%",
     href: "/productos/folletos/",
   },
   {
     name: "Etiquetas",
     responsiveName: "Etiquetas",
-    description: "Etiquetas personalizadas para prendas y productos, impresas con identidad y terminaciones profesionales.",
+    description: "Terminación mate (sin brillo) o brillante. Ideales para profesionales, comercios y emprendimientos.",
     image: labels,
     imageAlt: "Etiquetas colgantes impresas para productos",
     imagePosition: "50% 50%",
@@ -88,18 +89,16 @@ const services = [
     <div class="services__extras">
       <article class="service-extra service-extra--cyan">
         <h3>Corpóreos en Polifan</h3>
-        <p>Cartelería liviana, resistente y personalizada para destacar tu marca en interiores y vidrieras.</p>
-        <a href="https://wa.me/5491126249300" target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
+        <p>Letras, logos y diseños realizados en polifan, ideales para destacar tu marca en vidrieras, locales, eventos y espacios comerciales.</p>
+        <p class="service-extra__detail"><strong>¿Querés cotizar el tuyo?</strong> El presupuesto se realiza de manera personalizada según las medidas, cantidad, diseño y terminación</p>
+        <a href={whatsappUrl("Hola, quisiera consultar por corpóreos en polifan.")} target="_blank" rel="noreferrer">Consultar</a>
       </article>
       <article class="service-extra service-extra--magenta">
         <h3>Impresión de gran formato</h3>
-        <p>Soluciones visuales de alto impacto para cartelería, eventos, vidrieras y espacios comerciales.</p>
-        <a href="https://wa.me/5491126249300" target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
+        <p>Impresión de alta calidad para vidrieras, locales, vehículos, cartelería y diferentes proyectos comerciales. Trabajamos con distintos tipos de materiales según la superficie, el uso y el resultado que quieras lograr.</p>
+        <p class="service-extra__detail"><strong>Cada proyecto es diferente.</strong> Te asesoramos sobre cada material y cotizamos según las medidas, la cantidad y las características de cada trabajo.</p>
+        <a href={whatsappUrl("Hola, quisiera consultar por impresión de gran formato.")} target="_blank" rel="noreferrer">Consultar</a>
       </article>
-    </div>
-
-    <div class="services__pagination" aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span>
     </div>
 
     <h2 id="services-heading" class="services__title">Potenciamos<br />tu marca</h2>
@@ -111,7 +110,7 @@ const services = [
     position: relative;
     isolation: isolate;
     width: 100%;
-    height: 75.1875rem;
+    height: 77.375rem;
     overflow: hidden;
     background: var(--color-background);
     --background-text-inset: 14.6875rem 0 14.8125rem 5.0625rem;
@@ -139,7 +138,7 @@ const services = [
 
   .services__grid {
     position: absolute;
-    top: 7.75rem;
+    top: 8.25rem;
     left: 2.9167%;
     width: 94.1666%;
     display: grid;
@@ -149,7 +148,7 @@ const services = [
   }
 
   .service-card {
-    height: 32.5538rem;
+    height: 32.5rem;
     min-width: 0;
     display: block;
     overflow: hidden;
@@ -161,7 +160,9 @@ const services = [
 
   .service-card--1,
   .service-card--3 { margin-top: 5.946rem; }
-  .service-card--4 { margin-top: 0.0625rem; }
+  .service-card--2 { height: 32.5538rem; }
+  .service-card--3 { height: 31.3038rem; }
+  .service-card--4 { height: 34.375rem; margin-top: 0.125rem; }
 
   .service-card:hover,
   .service-card:focus-within {
@@ -170,12 +171,14 @@ const services = [
   }
 
   .service-card__visual {
-    height: 23.75rem;
+    height: 21.875rem;
     overflow: hidden;
     background: #111;
   }
 
   .service-card--2 .service-card__visual { height: 21.9288rem; }
+  .service-card--3 .service-card__visual { height: 22.4288rem; }
+  .service-card--4 .service-card__visual { height: 23.75rem; }
 
   .service-card__image {
     width: 100%;
@@ -210,66 +213,78 @@ const services = [
     line-height: 1.5;
   }
 
+  .service-extra p { margin-top: 1.5rem; }
+
   .services__extras {
     position: absolute;
-    top: 53.75rem;
-    left: 31.25%;
-    width: 59.5833%;
+    top: 49.625rem;
+    left: 35.0521%;
+    width: 59.4271%;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2.75rem;
+    gap: 2.5625rem;
   }
 
   .service-extra {
-    min-height: 19.75rem;
-    padding: 3rem;
+    height: auto;
+    min-height: 23.8125rem;
+    padding: 1.5rem 1.5rem 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     background: rgba(19, 19, 19, 0.72);
     border: 0.0625rem solid var(--color-border);
+    transition: transform var(--transition), border-color var(--transition);
   }
 
-  .service-extra--cyan { border-top-color: var(--color-cyan); }
-  .service-extra--magenta { border-top-color: var(--color-magenta); }
-  .service-extra--cyan h3 { color: var(--color-cyan); }
-  .service-extra--magenta h3 { color: var(--color-magenta); }
+  .service-extra--cyan { margin-top: 3rem; }
+  .service-extra h3 { color: var(--color-yellow); }
+  .service-extra__detail { margin-bottom: 1.5rem; }
+  .service-extra__detail strong { display: block; color: var(--color-yellow); font-weight: 400; }
+
+  .service-extra--cyan:hover,
+  .service-extra--cyan:focus-within {
+    transform: translateY(-0.35rem);
+    border-color: var(--color-cyan);
+  }
+
+  .service-extra--magenta:hover,
+  .service-extra--magenta:focus-within {
+    transform: translateY(-0.35rem);
+    border-color: var(--color-magenta);
+  }
 
   .service-extra a {
-    width: fit-content;
-    margin-top: 1.75rem;
-    padding-bottom: 0.35rem;
-    color: var(--color-text);
-    border-bottom: 0.0625rem solid currentColor;
+    position: relative;
+    width: 14.125rem;
+    min-height: 3.4375rem;
+    margin-top: auto;
+    display: grid;
+    place-items: center;
+    color: var(--color-yellow);
+    border: 0.09375rem solid var(--color-yellow);
     font-family: var(--font-jetbrains-mono);
-    font-size: 0.6875rem;
+    font-size: 0.875rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
-  .services__pagination {
+  .service-extra a::before,
+  .service-extra a::after {
+    content: "";
     position: absolute;
-    top: 48.9375rem;
-    left: 50%;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    transform: translateX(-50%);
+    height: 0.125rem;
+    background: var(--color-background);
+    pointer-events: none;
   }
 
-  .services__pagination span {
-    width: 0.625rem;
-    height: 0.625rem;
-    border-radius: 50%;
-    background: #fff;
-  }
-
-  .services__pagination span:first-child {
-    width: 0.75rem;
-    height: 0.75rem;
-    background: var(--color-yellow);
+  .service-extra a::before { top: -0.09375rem; left: 0.65625rem; width: 1.5625rem; }
+  .service-extra a::after {
+    right: 0.65625rem;
+    bottom: -0.09375rem;
+    width: 2.8125rem;
+    background: linear-gradient(90deg, var(--color-background) 0 1.5625rem, transparent 1.5625rem 2.1875rem, var(--color-background) 2.1875rem);
   }
 
   .services__title {
@@ -293,10 +308,57 @@ const services = [
     .service-card p { font-size: 0.875rem; }
   }
 
-  @media (min-width: 40.0625rem) and (max-width: 64rem) {
+  @media (min-width: 80.0625rem) and (max-width: 110rem) {
+    .services { height: 86rem; }
+
+    .services__grid {
+      top: 6rem;
+      left: 3rem;
+      width: calc(100% - 6rem);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(1rem, 2vw, 2.5rem);
+    }
+
+    .service-card,
+    .service-card--1,
+    .service-card--2,
+    .service-card--3,
+    .service-card--4 {
+      height: auto;
+      min-height: 34rem;
+    }
+
+    .service-card--1,
+    .service-card--3 { margin-top: 4rem; }
+
+    .service-card--2,
+    .service-card--4 { margin-top: 0; }
+
+    .service-card__visual,
+    .service-card--1 .service-card__visual,
+    .service-card--2 .service-card__visual,
+    .service-card--3 .service-card__visual,
+    .service-card--4 .service-card__visual {
+      height: clamp(17rem, 20vw, 21.875rem);
+    }
+
+    .service-card__body {
+      min-height: 0;
+      padding: 1.5rem;
+    }
+
+    .services__extras {
+      top: 48rem;
+      left: 24%;
+      width: 72%;
+      gap: clamp(1.5rem, 2.5vw, 2.5625rem);
+    }
+  }
+
+  @media (min-width: 40.0625rem) and (max-width: 80rem) {
     .services {
       width: calc(100% - 3rem);
-      height: 52.625rem;
+      height: 92rem;
       margin-inline: auto;
     }
 
@@ -304,28 +366,55 @@ const services = [
       top: 4.375rem;
       left: 1.125rem;
       width: calc(100% - 2.25rem);
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: flex;
       gap: 0.8125rem;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scroll-snap-type: inline proximity;
+      scrollbar-width: none;
     }
+
+    .services__grid::-webkit-scrollbar { display: none; }
 
     .service-card,
     .service-card--1,
-    .service-card--3 {
-      height: 26.125rem;
+    .service-card--2,
+    .service-card--3,
+    .service-card--4 {
+      width: 19.5625rem;
+      height: auto;
+      min-height: 26.125rem;
+      flex: 0 0 19.5625rem;
       margin-top: 4.0625rem;
+      scroll-snap-align: start;
     }
 
-    .service-card--2 { margin-top: 0; }
-    .service-card--4 { display: none; }
+    .service-card--2,
+    .service-card--4 { margin-top: 0; }
+
+    .service-card--4 { display: block; }
 
     .service-card__visual,
-    .service-card--2 .service-card__visual { height: 14rem; }
+    .service-card--1 .service-card__visual,
+    .service-card--2 .service-card__visual,
+    .service-card--3 .service-card__visual,
+    .service-card--4 .service-card__visual { height: 14rem; }
     .service-card__body { min-height: 12.125rem; padding: 1.5rem; }
     .service-name--desktop { display: none; }
     .service-name--responsive { display: inline; }
 
-    .services__pagination,
-    .services__extras { display: none; }
+    .services__pagination { display: none; }
+
+    .services__extras {
+      top: 40.5rem;
+      left: 8.0625rem;
+      width: calc(100% - 9.625rem);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(1.5rem, 3.2vw, 2.5625rem);
+    }
+
+    .service-extra { min-width: 0; }
 
     .services__all-cta {
       position: absolute;
@@ -333,7 +422,7 @@ const services = [
       left: 50%;
       width: 13.5rem;
       min-height: 3rem;
-      display: grid;
+      display: none;
       place-items: center;
       color: var(--color-yellow);
       border: 0.0625rem solid var(--color-yellow);
@@ -350,7 +439,7 @@ const services = [
       right: 0;
       bottom: 6.625rem;
       width: 59%;
-      display: flex;
+      display: none;
       flex-direction: column;
       align-items: flex-end;
       text-align: right;
@@ -374,15 +463,35 @@ const services = [
     .services__title { left: 4.5rem; font-size: 2rem; line-height: 1.05; }
   }
 
-  @media (min-width: 40.0625rem) and (max-width: 52rem) {
-    .services { height: 82rem; }
+  @media (min-width: 40.0625rem) and (max-width: 56rem) {
+    .services {
+      height: auto;
+      min-height: 0;
+      padding: 3.5rem 0 11rem;
+    }
+
+    .services__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .services__intro {
+      position: static;
+      width: 90%;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
 
     .services__grid {
-      top: 3.5rem;
-      left: 5%;
+      position: static;
       width: 90%;
+      margin-top: 2rem;
+      display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
+      overflow: visible;
     }
 
     .service-card,
@@ -390,6 +499,8 @@ const services = [
     .service-card--2,
     .service-card--3 {
       width: 100%;
+      height: auto;
+      min-height: 26.125rem;
       margin-top: 0;
     }
 
@@ -399,20 +510,35 @@ const services = [
       justify-self: center;
     }
 
-    .services__all-cta { top: 58rem; }
+    .service-card--4 { display: none; }
 
-    .services__intro {
-      bottom: 6.75rem;
-      width: 72%;
+    .services__all-cta {
+      position: static;
+      margin-top: 2rem;
+      display: grid;
+      transform: none;
     }
+
+    .services__extras {
+      position: static;
+      width: min(90%, 34.375rem);
+      margin-top: 3rem;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-extra--cyan { margin-top: 0; }
+    .services__rail { bottom: 3rem; }
+    .services__title { bottom: 3rem; }
   }
 
   @media (max-width: 40rem) {
     .services {
       width: calc(100% - 1.5rem);
-      height: 109.4375rem;
+      height: auto;
+      min-height: 109.4375rem;
       margin-inline: auto;
-      padding-top: 3rem;
+      padding: 3rem 0 10rem;
     }
 
     .services__content {
@@ -459,7 +585,7 @@ const services = [
     .service-card--1,
     .service-card--2,
     .service-card--3 {
-      width: 18rem;
+      width: min(18rem, 100%);
       height: auto;
       margin-top: 0;
     }
@@ -469,7 +595,10 @@ const services = [
     .service-card--3 { order: 3; }
     .service-card--4 { display: none; }
     .service-card__visual,
-    .service-card--2 .service-card__visual { height: 14rem; }
+    .service-card--1 .service-card__visual,
+    .service-card--2 .service-card__visual,
+    .service-card--3 .service-card__visual,
+    .service-card--4 .service-card__visual { height: 14rem; }
     .service-card__body { min-height: 11.25rem; padding: 1.5rem 1.5rem 2rem; }
     .service-card h3 { font-size: 1rem; }
     .service-card p { font-size: 0.875rem; line-height: 1.7; }
@@ -477,8 +606,27 @@ const services = [
     .service-name--responsive { display: inline; }
 
     .services__pagination,
-    .services__extras,
     .services__all-cta { display: none; }
+
+    .services__extras {
+      position: static;
+      width: min(100%, 22rem);
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-extra {
+      width: 100%;
+      min-height: 0;
+      padding: 1.5rem 1.25rem 2rem;
+    }
+
+    .service-extra--cyan { margin-top: 0; }
+    .service-extra h3 { font-size: 1rem; }
+    .service-extra p { font-size: 0.875rem; line-height: 1.7; }
+    .service-extra a { width: min(14.125rem, 100%); }
 
     .services__rail {
       left: 0;

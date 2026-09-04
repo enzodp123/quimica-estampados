@@ -1,10 +1,11 @@
 ---
 import logo from "../../assets/icons/logo-quimica.svg";
+import { siteConfig } from "../../data/site";
 
 const year = new Date().getFullYear();
 ---
 
-<footer class="footer">
+<footer class="footer" data-figma-node="1031:2067">
   <div class="footer__grid">
     <div class="footer__brand">
       <img src={logo.src} width="76" height="76" alt="Química Estampados" />
@@ -33,21 +34,40 @@ const year = new Date().getFullYear();
 
     <div class="footer__column footer__contact">
       <h3>Contacto</h3>
-      <a href="#" aria-label="Instagram">
-        <span>Instagram</span><span class="footer__arrow" aria-hidden="true">›</span>
-      </a>
-      <a href="#" aria-label="Facebook">
-        <span>Facebook</span><span class="footer__arrow" aria-hidden="true">›</span>
-      </a>
-      <a href="mailto:quimicaestampados@gmail.com">
-        <span>quimicaestampados@gmail.com</span><span class="footer__arrow" aria-hidden="true">›</span>
+      {siteConfig.social.instagram ? (
+        <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
+          <span>Instagram</span><span class="footer__arrow" aria-hidden="true">›</span>
+        </a>
+      ) : (
+        <span class="footer__placeholder" title="Enlace pendiente de configurar">
+          <span>Instagram</span><span class="footer__arrow" aria-hidden="true">›</span>
+        </span>
+      )}
+      {siteConfig.social.facebook ? (
+        <a href={siteConfig.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">
+          <span>Facebook</span><span class="footer__arrow" aria-hidden="true">›</span>
+        </a>
+      ) : (
+        <span class="footer__placeholder" title="Enlace pendiente de configurar">
+          <span>Facebook</span><span class="footer__arrow" aria-hidden="true">›</span>
+        </span>
+      )}
+      <a href={`mailto:${siteConfig.email}`}>
+        <span>{siteConfig.email}</span><span class="footer__arrow" aria-hidden="true">›</span>
       </a>
     </div>
   </div>
 
-  <div class="footer__bottom">
+  <div class="footer__bottom" data-figma-node="1031:2128">
     <p><strong>© {year} Química Estampados.</strong> Todos los derechos reservados.</p>
-    <p>Desarrollado por <a href="#">@binadevs</a></p>
+    <p>
+      Desarrollado por
+      {siteConfig.developer.url ? (
+        <a href={siteConfig.developer.url} target="_blank" rel="noreferrer">{siteConfig.developer.label}</a>
+      ) : (
+        <span>{siteConfig.developer.label}</span>
+      )}
+    </p>
   </div>
 </footer>
 
@@ -56,7 +76,7 @@ const year = new Date().getFullYear();
     height: 24.104375rem;
     min-height: 24.104375rem;
     padding-top: 1.8125rem;
-    background: #050505;
+    background: var(--color-background);
     border-top: 0.0625rem solid var(--color-border);
   }
 
@@ -132,7 +152,8 @@ const year = new Date().getFullYear();
     text-transform: uppercase;
   }
 
-  .footer__column > a {
+  .footer__column > a,
+  .footer__column > .footer__placeholder {
     margin-bottom: clamp(0.65rem, 0.72vw, 0.86rem);
     display: block;
     color: #d0d0cd;
@@ -149,7 +170,10 @@ const year = new Date().getFullYear();
     color: #ffffff;
   }
 
-  .footer__contact > a {
+  .footer__column > .footer__placeholder { color: #777774; }
+
+  .footer__contact > a,
+  .footer__contact > .footer__placeholder {
     min-height: clamp(2rem, 2.05vw, 2.45rem);
     margin-bottom: clamp(0.45rem, 0.52vw, 0.62rem);
     padding: 0 clamp(0.65rem, 0.72vw, 0.86rem);
@@ -157,7 +181,9 @@ const year = new Date().getFullYear();
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
-    border: 0.0625rem solid var(--color-border);
+    background: rgba(19, 19, 19, 0.5);
+    border: 0.0625rem solid #353534;
+    backdrop-filter: blur(2px);
     font-size: clamp(0.6875rem, 0.625vw, 0.75rem);
     letter-spacing: 0.1em;
     line-height: 1.3333;
@@ -181,18 +207,28 @@ const year = new Date().getFullYear();
     gap: 2rem;
     color: #626260;
     border-top: 0.0625rem solid var(--color-border);
-    font-family: var(--font-poppins);
+    font-family: var(--font-montserrat);
     font-size: clamp(0.75rem, 0.7292vw, 0.875rem);
+    font-weight: 400;
     line-height: 1.2143;
   }
 
   .footer__bottom strong,
-  .footer__bottom a {
+  .footer__bottom a,
+  .footer__bottom span {
     color: var(--color-magenta);
     font-weight: 400;
   }
 
-  @media (min-width: 40.0625rem) and (max-width: 64rem) {
+  @media (min-width: 64.0625rem) {
+    .footer__brand img { width: 5rem; height: 5rem; }
+    .footer__brand h2 { margin-top: 1.5rem; }
+    .footer__brand > p { max-width: 35.6875rem; margin-top: 1.5rem; font-size: 1rem; }
+    .footer__dots { margin-top: 1.5rem; }
+    .footer__dots i { width: 0.875rem; height: 0.875rem; }
+  }
+
+  @media (min-width: 40.0625rem) and (max-width: 110rem) {
     .footer {
       width: calc(100% - 3rem);
       min-height: 38.875rem;
@@ -220,8 +256,10 @@ const year = new Date().getFullYear();
     .footer__dots { margin-top: 1.5rem; }
     .footer__dots i { width: 0.875rem; height: 0.875rem; }
     .footer__column h3 { margin-bottom: 1.25rem; font-size: 1rem; }
-    .footer__column > a { margin-bottom: 0.625rem; font-size: 0.875rem; }
-    .footer__contact > a { min-height: 2.5rem; font-size: 0.75rem; }
+    .footer__column > a,
+    .footer__column > .footer__placeholder { margin-bottom: 0.625rem; font-size: 0.875rem; }
+    .footer__contact > a,
+    .footer__contact > .footer__placeholder { min-height: 2.5rem; font-size: 0.75rem; }
 
     .footer__bottom {
       margin-top: 1.5rem;
@@ -293,13 +331,15 @@ const year = new Date().getFullYear();
       line-height: 1.625;
     }
 
-    .footer__column > a {
+    .footer__column > a,
+    .footer__column > .footer__placeholder {
       margin-bottom: 0.625rem;
       font-size: 0.875rem;
       line-height: 1.2857;
     }
 
-    .footer__contact > a {
+    .footer__contact > a,
+    .footer__contact > .footer__placeholder {
       min-height: 2.5rem;
       margin-bottom: 0.625rem;
       padding-inline: 0.8125rem 0.3125rem;

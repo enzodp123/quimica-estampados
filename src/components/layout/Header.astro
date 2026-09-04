@@ -1,5 +1,8 @@
 ---
 import logo from "../../assets/icons/logo-quimica.svg";
+import { siteConfig } from "../../data/site";
+
+const isProductRoute = Astro.url.pathname.startsWith("/productos/");
 ---
 
 <header class="site-header">
@@ -9,7 +12,7 @@ import logo from "../../assets/icons/logo-quimica.svg";
         Venta mayorista y minorista
         <span class="envios"> - Envío gratis a partir de 10 remeras/buzos</span>
       </span>
-      <span>65 Alem - Victoria, Entre Ríos</span>
+      <span>{siteConfig.address.street} - {siteConfig.address.city}, {siteConfig.address.province}</span>
     </div>
   </div>
   <div class="nav-shell">
@@ -30,13 +33,20 @@ import logo from "../../assets/icons/logo-quimica.svg";
     </button>
     <nav id="main-menu" class="main-nav" aria-label="Navegación principal">
       <ul class="nav-list">
-        <li><a class="nav-link is-active" href="/#inicio" aria-current="page">Inicio</a></li>
+        <li>
+          <a
+            class:list={["nav-link", { "is-active": !isProductRoute }]}
+            href="/#inicio"
+            aria-current={!isProductRoute ? "page" : undefined}
+          >Inicio</a>
+        </li>
         <li class="nav-item--services">
           <button
-            class="nav-menu__trigger"
+            class:list={["nav-menu__trigger", { "is-active": isProductRoute }]}
             type="button"
             aria-expanded="false"
             aria-controls="services-menu"
+            aria-current={isProductRoute ? "page" : undefined}
           >
             Servicios <span class="chevron" aria-hidden="true"></span>
           </button>
@@ -113,9 +123,11 @@ import logo from "../../assets/icons/logo-quimica.svg";
     if (textileMenu) textileMenu.hidden = true;
   };
 
-  const closeMenu = () => {
+  const closeMenu = (restoreFocus = false) => {
+    const wasOpen = button?.getAttribute("aria-expanded") === "true";
     button?.setAttribute("aria-expanded", "false");
     menu?.classList.remove("is-open");
+    if (restoreFocus && wasOpen) button?.focus();
   };
 
   button?.addEventListener("click", () => {
@@ -156,8 +168,12 @@ import logo from "../../assets/icons/logo-quimica.svg";
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeServicesMenu();
-      closeMenu();
+      closeMenu(true);
     }
+  });
+
+  window.matchMedia("(min-width: 56.01rem)").addEventListener("change", (event) => {
+    if (event.matches) closeMenu();
   });
 </script>
 
@@ -416,8 +432,8 @@ import logo from "../../assets/icons/logo-quimica.svg";
       display: block;
       grid-column: 1;
       align-self: center;
-      justify-self: start;
-      white-space: nowrap;
+      justify-self: center;
+      white-space: normal;
     }
     .announcement__inner > span:last-child {
       grid-column: 1;
@@ -504,6 +520,20 @@ import logo from "../../assets/icons/logo-quimica.svg";
       padding-left: 0.5rem;
       background: transparent;
       border: 0;
+    }
+  }
+
+  @media (max-width: 30rem) {
+    .announcement__inner {
+      font-size: 0.6875rem;
+      letter-spacing: 0.055rem;
+      line-height: 1.35;
+    }
+
+    .envios { display: block; }
+
+    .nav-shell {
+      padding-inline: 0.75rem;
     }
   }
 </style>

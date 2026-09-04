@@ -1,4 +1,10 @@
 import type { ImageMetadata } from "astro";
+import {
+  formatCatalogPrice,
+  priceCatalog,
+  resolveCatalogPrice,
+  type PriceCatalogId,
+} from "./pricing";
 
 import oversizeMain from "../assets/products/remera-oversize/main.png";
 import oversizeDetail2 from "../assets/products/remera-oversize/detail-2.png";
@@ -68,15 +74,19 @@ import etiquetas3 from "../assets/products/etiquetas/detail-3.png";
 
 export interface ProductChoice {
   label: string;
+  value?: string;
   active?: boolean;
   href?: string;
 }
 
 export interface ProductOption {
   label: string;
+  priceKey?: string;
   values: ProductChoice[];
   note?: string;
 }
+
+export type ProductAction = "cotizar" | "consultar";
 
 export interface Product {
   slug: string;
@@ -84,20 +94,20 @@ export interface Product {
   ticker?: boolean;
   breadcrumb: string;
   title: string;
+  seoTitle?: string;
+  pricingId: PriceCatalogId;
+  priceSelection: Record<string, string>;
   packLabel: string;
   price: string;
-  oldPrice?: string;
-  installments?: string;
-  discount?: string;
   quantities: string[];
   quantityLabel?: string;
-  shipping: string;
+  shipping?: string;
   options: ProductOption[];
   colorLabel?: string;
   colors?: string[];
   sizeLabel?: string;
   sizeValue?: string;
-  actions?: Array<"cotizar" | "consultar">;
+  actions?: ProductAction[];
   notices: string[];
   promotion?: string;
   description: string;
@@ -108,19 +118,24 @@ export interface Product {
 const apparelDescription =
   "Algodón peinado 24.1 con terminaciones premium como tapa costura en el cuello y refuerzo de costura en hombros.";
 
-const apparelSizes = [
-  "Talle S: largo 70 cm · ancho de sisa 63 cm · largo manga 57 cm",
-  "Talle M: largo 72 cm · ancho de sisa 65 cm · largo manga 59 cm",
-  "Talle L: largo 74 cm · ancho de sisa 67 cm · largo manga 60 cm",
-  "Talle XL: largo 76 cm · ancho de sisa 69 cm · largo manga 62 cm",
-];
+const consultActions: ProductAction[] = ["consultar"];
+const quoteAndConsultActions: ProductAction[] = ["cotizar", "consultar"];
 
-const packChoices = ["X5", "X10", "X20"];
-const printChoices = ["X100", "X300", "X500"];
-const apparelNotices = [
-  "Trabajamos todos los colores, consultanos tiempo de producción.",
-  "Envíos full: 48/72 hs hábiles para colores negro, blanco y gris.",
-];
+const catalogPrice = (pricingId: PriceCatalogId, selection: Record<string, string>) =>
+  formatCatalogPrice(resolveCatalogPrice(pricingId, selection));
+
+const catalogQuantities = (pricingId: PriceCatalogId) =>
+  priceCatalog[pricingId].variants
+    .find((variant) => variant.key === "quantity")
+    ?.options.map((option) => option.value.toUpperCase()) ?? [];
+
+const catalogNotices = (pricingId: PriceCatalogId) => [...priceCatalog[pricingId].notes];
+
+const calcoSizeChoices: ProductChoice[] = priceCatalog["calcos-papel"].variants[0].options.map((option, index) => ({
+  label: `${option.label} · ${option.description}`,
+  value: option.value,
+  active: index === 0,
+}));
 
 const calcoTypeChoices: ProductChoice[] = [
   { label: "Papel", href: "/productos/calcos-papel/" },
@@ -134,22 +149,20 @@ export const products: Product[] = [
     figmaNodes: ["642:3220", "642:2986", "655:982"],
     breadcrumb: "Inicio > Pack de Remeras",
     title: "Remera oversize personalizable",
+    pricingId: "remeras-adulto",
+    priceSelection: { quantity: "x5" },
     packLabel: "Packs de remeras",
-    price: "$160.000",
-    installments: "3 cuotas sin interés de $53.333,33",
-    discount: "21% de descuento con transferencia/depósito",
-    quantities: packChoices,
-    quantityLabel: "Cantidad: pack x5",
-    shipping: "Envío gratis a partir de 10 unidades",
+    price: catalogPrice("remeras-adulto", { quantity: "x5" }),
+    quantities: catalogQuantities("remeras-adulto"),
+    quantityLabel: "Cantidad",
     options: [],
     colorLabel: "Colores flash",
     colors: ["#f2f2ef", "#585858", "#f0ede6"],
     sizeLabel: "Talles",
     sizeValue: "Del 1 al 10",
-    actions: ["consultar"],
-    notices: apparelNotices,
+    actions: consultActions,
+    notices: catalogNotices("remeras-adulto"),
     description: `Remera manga corta: ${apparelDescription}`,
-    sizeTable: apparelSizes,
     gallery: [oversizeMain, oversizeDetail2, oversizeDetail3],
   },
   {
@@ -158,41 +171,43 @@ export const products: Product[] = [
     ticker: true,
     breadcrumb: "Inicio > Pack de Remeras",
     title: "Remera unisex",
+    pricingId: "remeras-adulto",
+    priceSelection: { quantity: "x5" },
     packLabel: "Packs de remeras",
-    price: "$126.400",
-    oldPrice: "$160.000",
-    installments: "3 cuotas sin interés de $53.333,33",
-    discount: "21% de descuento con transferencia/depósito",
-    quantities: packChoices,
-    quantityLabel: "Cantidad: pack x5",
-    shipping: "Envío gratis a partir de 10 unidades",
+    price: catalogPrice("remeras-adulto", { quantity: "x5" }),
+    quantities: catalogQuantities("remeras-adulto"),
+    quantityLabel: "Cantidad",
     options: [],
     colorLabel: "Colores flash",
     colors: ["#f2f2ef", "#585858", "#f0ede6"],
     sizeLabel: "Talles",
     sizeValue: "Del 1 al 10",
-    actions: ["consultar"],
-    notices: apparelNotices,
+    actions: consultActions,
+    notices: catalogNotices("remeras-adulto"),
     description: `Remera manga corta: ${apparelDescription}`,
     gallery: [unisexMain, unisexDetail2, unisexDetail3],
   },
   ...[
-    ["calcos-papel", "1033:2504", "Papel", "$6.000", "$7.260", "$2.420", calcosPapelMain, calcosPapel1, calcosPapel2, calcosPapel3],
-    ["calcos-vinilo", "1039:3107", "Vinilo troquelado", "$9.500", "$11.490", "$3.830", calcosViniloMain, calcosVinilo1, calcosVinilo2, calcosVinilo3],
-    ["calcos-dtf-uv", "1039:3362", "DTF UV", "$17.500", "$21.174", "$7.058", calcosDtfMain, calcosDtf1, calcosDtf2, calcosDtf3],
-  ].map(([slug, node, type, price, oldPrice, installment, ...gallery]) => ({
+    ["calcos-papel", "1033:2504", "Papel", calcosPapelMain, calcosPapel1, calcosPapel2, calcosPapel3],
+    ["calcos-vinilo", "1039:3107", "Vinilo troquelado", calcosViniloMain, calcosVinilo1, calcosVinilo2, calcosVinilo3],
+    ["calcos-dtf-uv", "1039:3362", "DTF UV", calcosDtfMain, calcosDtf1, calcosDtf2, calcosDtf3],
+  ].map(([slug, node, type, ...gallery]) => {
+    const pricingId = slug as "calcos-papel" | "calcos-vinilo" | "calcos-dtf-uv";
+    const priceSelection = { size: "xs", quantity: "x100" };
+
+    return ({
     slug: slug as string,
     figmaNodes: [node as string],
     ticker: true,
     breadcrumb: "Inicio > Servicios > Calcos",
     title: "Calcos",
+    seoTitle: `Calcos ${type as string}`,
+    pricingId,
+    priceSelection,
     packLabel: "Packs de calcos",
-    price: price as string,
-    oldPrice: oldPrice as string,
-    installments: `3 cuotas de ${installment as string}`,
-    quantities: printChoices,
-    quantityLabel: "Cantidad: pack x100",
-    shipping: "Envío gratis a partir de 300 unidades",
+    price: catalogPrice(pricingId, priceSelection),
+    quantities: catalogQuantities(pricingId),
+    quantityLabel: "Cantidad",
     options: [
       {
         label: `Tipo de calco: ${type}`,
@@ -200,42 +215,41 @@ export const products: Product[] = [
       },
       {
         label: "Seleccionar medida",
-        values: [{ label: "Tamaño: XS", active: true }],
-        note: "En los packs aparecen medidas estándar, las más usadas, pero imprimimos en la medida que tu proyecto necesite.",
+        priceKey: "size",
+        values: calcoSizeChoices,
+        note: "Si la medida no corresponde a una categoría definida, consultar precio.",
       },
     ],
     colorLabel: "Bases",
     sizeValue: "Color · transparente · holográficas",
-    actions: ["cotizar", "consultar"],
+    actions: quoteAndConsultActions,
     notices: [
       "Tipo de corte: cuadradas, rectangulares, circulares o con la forma que quieras.",
-      "Envíos full: 48/72 hs hábiles.",
     ],
     description:
       "Calcos aptos para interior y exterior, impresos con tintas ecosolventes, colores vibrantes, resistentes al agua. Ideales para vidrieras, vehículos, cartelería, packaging, objetos y diferentes superficies.",
     gallery: gallery as ImageMetadata[],
-  })),
+  });
+  }),
   {
     slug: "gorra-trucker",
     figmaNodes: ["1060:1260"],
     ticker: true,
     breadcrumb: "Inicio > Pack de Gorras",
     title: "Gorra trucker",
+    pricingId: "gorra-trucker",
+    priceSelection: { quantity: "x5" },
     packLabel: "Packs de gorra trucker",
-    price: "$47.500",
-    oldPrice: "$57.475",
-    installments: "3 cuotas sin interés de $19.158,33",
-    discount: "21% de descuento con transferencia/depósito",
-    quantities: packChoices,
-    quantityLabel: "Cantidad: pack x5",
-    shipping: "Envío gratis a partir de 10 unidades",
+    price: catalogPrice("gorra-trucker", { quantity: "x5" }),
+    quantities: catalogQuantities("gorra-trucker"),
+    quantityLabel: "Cantidad",
     options: [],
     colorLabel: "Colores flash",
     colors: ["#efefec", "#545454", "#0e0e0e"],
     sizeLabel: "Talles",
     sizeValue: "Regulable",
-    actions: ["consultar"],
-    notices: apparelNotices,
+    actions: consultActions,
+    notices: catalogNotices("gorra-trucker"),
     description: "Gorra trucker con frente personalizable, visera curva y ajuste posterior regulable.",
     gallery: [gorraMain, gorra1, gorra2, gorra3],
   },
@@ -245,21 +259,19 @@ export const products: Product[] = [
     ticker: true,
     breadcrumb: "Inicio > Infantil",
     title: "Remera niño",
+    pricingId: "remeras-infantiles",
+    priceSelection: { quantity: "x5" },
     packLabel: "Packs de remeras",
-    price: "$92.035",
-    oldPrice: "$116.500",
-    installments: "3 cuotas sin interés de $38.833,33",
-    discount: "21% de descuento con transferencia/depósito",
-    quantities: packChoices,
-    quantityLabel: "Cantidad: pack x5",
-    shipping: "Envío gratis a partir de 10 unidades",
+    price: catalogPrice("remeras-infantiles", { quantity: "x5" }),
+    quantities: catalogQuantities("remeras-infantiles"),
+    quantityLabel: "Cantidad",
     options: [],
     colorLabel: "Colores",
     colors: ["#efefec", "#545454", "#0e0e0e"],
     sizeLabel: "Talles",
     sizeValue: "Del 4 al 18",
-    actions: ["consultar"],
-    notices: apparelNotices,
+    actions: consultActions,
+    notices: catalogNotices("remeras-infantiles"),
     description: `Remera infantil: ${apparelDescription}`,
     gallery: [ninoMain, nino1, nino2],
   },
@@ -269,22 +281,19 @@ export const products: Product[] = [
     ticker: true,
     breadcrumb: "Inicio > Infantil",
     title: "Remera egresadito",
+    pricingId: "remeras-infantiles",
+    priceSelection: { quantity: "x5" },
     packLabel: "Packs de remeras",
-    price: "$126.400",
-    oldPrice: "$160.000",
-    installments: "3 cuotas sin interés de $38.833,33",
-    discount: "21% de descuento con transferencia/depósito",
-    quantities: packChoices,
-    quantityLabel: "Cantidad: pack x5",
-    shipping: "Envío gratis a partir de 15 unidades",
+    price: catalogPrice("remeras-infantiles", { quantity: "x5" }),
+    quantities: catalogQuantities("remeras-infantiles"),
+    quantityLabel: "Cantidad",
     options: [],
     colorLabel: "Colores flash",
     colors: ["#efefec", "#545454", "#0e0e0e"],
     sizeLabel: "Talles",
-    sizeValue: "Del 4 al 12",
-    actions: ["consultar"],
-    promotion: "Promoción: remera para la seño de regalo.",
-    notices: [apparelNotices[0], "Envíos full: 48/72 hs hábiles para color blanco."],
+    sizeValue: "Del 4 al 18",
+    actions: consultActions,
+    notices: catalogNotices("remeras-infantiles"),
     description: `Remera infantil: ${apparelDescription}`,
     gallery: [egresaditoMain, egresadito1, egresadito2, egresadito3],
   },
@@ -294,17 +303,20 @@ export const products: Product[] = [
     ticker: true,
     breadcrumb: "Inicio > Chombas",
     title: "Chomba",
-    packLabel: "Cotización personalizada",
-    price: "Consultar",
-    quantities: [],
-    shipping: "Envío gratis a partir de 10 unidades",
+    seoTitle: "Chomba de algodón personalizada",
+    pricingId: "chomba-algodon",
+    priceSelection: { quantity: "x5" },
+    packLabel: "Packs de chombas",
+    price: catalogPrice("chomba-algodon", { quantity: "x5" }),
+    quantities: catalogQuantities("chomba-algodon"),
+    quantityLabel: "Cantidad",
     options: [{ label: "Tipo: algodón peinado", values: [{ label: "Algodón peinado", active: true }, { label: "Piqué de algodón" }] }],
     colorLabel: "Colores flash",
     colors: ["#efefec", "#545454", "#0e0e0e"],
     sizeLabel: "Talles",
-    sizeValue: "Del 1 al 6",
-    actions: ["consultar"],
-    notices: [apparelNotices[0], "Demora de producción y entrega: 10 días aproximadamente."],
+    sizeValue: "Del 1 al 5",
+    actions: consultActions,
+    notices: catalogNotices("chomba-algodon"),
     description: "Chomba de algodón peinado, con cuello polo y botones. Terminaciones premium, tapacostura en cuello y refuerzo en hombros.",
     gallery: [chombaAlgodonMain, chombaAlgodon1, chombaAlgodon2, chombaAlgodon3, chombaAlgodon4],
   },
@@ -314,49 +326,59 @@ export const products: Product[] = [
     ticker: true,
     breadcrumb: "Inicio > Buzos",
     title: "Buzo cuello redondo",
+    pricingId: "buzo-cuello-redondo",
+    priceSelection: { quantity: "x5" },
     packLabel: "Packs de buzos",
-    price: "$178.303",
-    oldPrice: "$225.700",
-    installments: "3 cuotas sin interés de $75.233,33",
-    discount: "21% de descuento con transferencia/depósito",
-    quantities: packChoices,
-    quantityLabel: "Cantidad: pack x5",
-    shipping: "Envío gratis a partir de 10 unidades",
-    options: [], colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
-    actions: ["consultar"], notices: apparelNotices, description: apparelDescription,
+    price: catalogPrice("buzo-cuello-redondo", { quantity: "x5" }),
+    quantities: catalogQuantities("buzo-cuello-redondo"),
+    quantityLabel: "Cantidad",
+    options: [], colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Consultar",
+    actions: consultActions,
+    notices: catalogNotices("buzo-cuello-redondo"),
+    description: "Buzo de cuello redondo en algodón frizado, personalizable y con terminaciones reforzadas.",
     gallery: [buzoRedondoMain, buzoRedondo1, buzoRedondo2, buzoRedondo3],
   },
   {
     slug: "buzo-canguro",
     figmaNodes: ["835:1452"], ticker: true, breadcrumb: "Inicio > Buzos", title: "Buzo canguro frizado", packLabel: "Packs de buzos",
-    price: "$207.217", oldPrice: "$262.300", installments: "3 cuotas sin interés de $87.433,33", discount: "21% de descuento con transferencia/depósito",
-    quantities: packChoices, quantityLabel: "Cantidad: pack x5", shipping: "Envío gratis a partir de 10 unidades", options: [],
+    pricingId: "canguro-adulto", priceSelection: { quantity: "x5" }, price: catalogPrice("canguro-adulto", { quantity: "x5" }),
+    quantities: catalogQuantities("canguro-adulto"), quantityLabel: "Cantidad", options: [],
     colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
-    actions: ["consultar"], notices: apparelNotices, description: apparelDescription, gallery: [canguroMain, canguro1, canguro2, canguro3],
+    actions: consultActions,
+    notices: catalogNotices("canguro-adulto"),
+    description: "Buzo canguro frizado con capucha, bolsillo delantero y terminaciones reforzadas.",
+    gallery: [canguroMain, canguro1, canguro2, canguro3],
   },
   {
     slug: "buzo-canguro-nino",
     figmaNodes: ["834:713"], ticker: true, breadcrumb: "Inicio > Infantil", title: "Buzo canguro niño", packLabel: "Packs de buzo canguro niño",
-    price: "$163.846", oldPrice: "$207.400", installments: "3 cuotas sin interés de $69.133,33", discount: "21% de descuento con transferencia/depósito",
-    quantities: packChoices, quantityLabel: "Cantidad: pack x5", shipping: "Envío gratis a partir de 10 unidades", options: [],
-    colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 8 al 16",
-    actions: ["consultar"], notices: apparelNotices, description: apparelDescription, gallery: [canguroNinoMain, canguroNino1, canguroNino2, canguroNino3],
+    pricingId: "canguro-infantil", priceSelection: { quantity: "x5" }, price: catalogPrice("canguro-infantil", { quantity: "x5" }),
+    quantities: catalogQuantities("canguro-infantil"), quantityLabel: "Cantidad", options: [],
+    colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 4 al 18",
+    actions: consultActions,
+    notices: catalogNotices("canguro-infantil"),
+    description: "Buzo canguro infantil con capucha, bolsillo delantero y superficie personalizable.",
+    gallery: [canguroNinoMain, canguroNino1, canguroNino2, canguroNino3],
   },
   {
     slug: "campera-capucha",
     figmaNodes: ["835:2180"], ticker: true, breadcrumb: "Inicio > Camperas", title: "Campera con capucha", packLabel: "Packs de campera premium",
-    price: "$207.217", oldPrice: "$262.300", installments: "3 cuotas sin interés de $87.433,33", discount: "21% de descuento con transferencia/depósito",
-    quantities: packChoices, quantityLabel: "Cantidad: pack x5", shipping: "Envío gratis a partir de 10 unidades", options: [],
-    colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
-    actions: ["consultar"], notices: apparelNotices, description: apparelDescription, gallery: [camperaMain, campera1],
+    pricingId: "campera", priceSelection: { quantity: "x5" }, price: catalogPrice("campera", { quantity: "x5" }),
+    quantities: catalogQuantities("campera"), quantityLabel: "Cantidad", options: [],
+    colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Consultar",
+    actions: consultActions,
+    notices: catalogNotices("campera"),
+    description: "Campera con capucha y cierre frontal, preparada para personalización textil.",
+    gallery: [camperaMain, campera1],
   },
   {
     slug: "chomba-pique",
-    figmaNodes: ["1059:1017"], ticker: true, breadcrumb: "Inicio > Chombas", title: "Chomba", packLabel: "Cotización personalizada", price: "Consultar",
-    quantities: [], shipping: "Envío gratis a partir de 10 unidades",
+    figmaNodes: ["1059:1017"], ticker: true, breadcrumb: "Inicio > Chombas", title: "Chomba", seoTitle: "Chomba de piqué personalizada",
+    pricingId: "chomba-pique", priceSelection: { quantity: "x5" }, packLabel: "Packs de chombas", price: catalogPrice("chomba-pique", { quantity: "x5" }),
+    quantities: catalogQuantities("chomba-pique"), quantityLabel: "Cantidad",
     options: [{ label: "Tipo: piqué de algodón", values: [{ label: "Algodón peinado" }, { label: "Piqué de algodón", active: true }] }],
     colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
-    actions: ["consultar"], notices: [apparelNotices[0], "Demora de producción y entrega: 10 días aproximadamente."],
+    actions: consultActions, notices: catalogNotices("chomba-pique"),
     description: "Chomba de piqué de algodón, con cuello polo y botones. Terminaciones premium, tapacostura en cuello y refuerzo en hombros.",
     gallery: [chombaPiqueMain, chombaPique1, chombaPique2, chombaPique3, chombaPique4],
   },
@@ -366,7 +388,7 @@ export const products: Product[] = [
     price: "$18.000", oldPrice: "$21.780", installments: "3 cuotas de $7.260", quantities: printChoices, quantityLabel: "Cantidad: pack x100",
     shipping: "Envío gratis a partir de 300 unidades",
     options: [{ label: "Tipo de folleto: simple faz", values: [{ label: "Simple faz", active: true }, { label: "Doble faz" }] }, { label: "Medidas", values: [{ label: "Estándar 10 × 15 cm", active: true }, { label: "Chico 7 × 10 cm" }] }],
-    sizeValue: "Papel ilustración brillante o mate, hasta 120 g", actions: ["consultar"], notices: ["Corte recto o personalizado según el proyecto.", "Envíos full: 48/72 hs hábiles."],
+    sizeValue: "Papel ilustración brillante o mate, hasta 120 g", actions: consultActions, notices: ["Corte recto o personalizado según el proyecto.", "Envíos full: 48/72 hs hábiles."],
     description: "Folletos impresos en alta definición, disponibles en simple o doble faz y distintos gramajes.", gallery: [folletosMain, folletos1, folletos2, folletos3],
   },
   {
@@ -375,7 +397,7 @@ export const products: Product[] = [
     price: "$18.000", oldPrice: "$21.780", installments: "3 cuotas de $7.260", quantities: printChoices, quantityLabel: "Cantidad: pack x100",
     shipping: "Envío gratis a partir de 300 unidades",
     options: [{ label: "Tipo de tarjeta: simple faz", values: [{ label: "Simple faz", active: true }, { label: "Doble faz" }] }, { label: "Medida", values: [{ label: "8,5 × 5,5 cm", active: true }, { label: "9 × 5 cm" }] }],
-    sizeValue: "Papel terminación mate o brillante, hasta 250 g", actions: ["consultar"], notices: ["Corte recto o personalizado según el proyecto.", "Envíos full: 48/72 hs hábiles."],
+    sizeValue: "Papel terminación mate o brillante, hasta 250 g", actions: consultActions, notices: ["Corte recto o personalizado según el proyecto.", "Envíos full: 48/72 hs hábiles."],
     description: "Tarjetas personales impresas en alta definición, disponibles en simple o doble faz y diferentes terminaciones.", gallery: [tarjetasMain, tarjetas1, tarjetas2, tarjetas3],
   },
   {
@@ -384,7 +406,7 @@ export const products: Product[] = [
     price: "$6.000", oldPrice: "$7.260", installments: "3 cuotas de $2.420", quantities: printChoices, quantityLabel: "Cantidad: pack x100",
     shipping: "Envío gratis a partir de 300 unidades",
     options: [{ label: "Seleccionar medida", values: [{ label: "Tamaño: XS", active: true }], note: "Imprimimos también en la medida exacta que tu proyecto necesite." }],
-    actions: ["consultar"], notices: ["Corte cuadrado, rectangular, circular o con forma personalizada.", "Envíos full: 48/72 hs hábiles."],
+    actions: consultActions, notices: ["Corte cuadrado, rectangular, circular o con forma personalizada.", "Envíos full: 48/72 hs hábiles."],
     description: "Etiquetas personalizadas para prendas, packaging y productos. Impresión nítida y terminaciones profesionales.", gallery: [etiquetasMain, etiquetas1, etiquetas2, etiquetas3],
   },
 ];

@@ -10,18 +10,18 @@ import brand4 from "../../assets/images/marca4.png";
 import brand5 from "../../assets/images/marca5.png";
 import brand6 from "../../assets/images/marca6.png";
 
-const values = [
+const testimonials = [
   {
-    title: "Calidad que representa tu marca",
-    text: "Utilizamos insumos seleccionados y procesos controlados para lograr estampas con excelente definición, color y terminación.",
+    author: "Otra Cultura",
+    quote: "“Los chicos trabajan excelente, a nosotros nos hicieron toda la grafica y la ropa que usamos todos los días, de una calidad hermosa. los super recomiendo”",
   },
   {
-    title: "Cumplimos los tiempos acordados",
-    text: "Sabemos que cada pedido tiene una fecha importante. Organizamos la producción para entregar en tiempo y forma.",
+    author: "Veterinaria Pocas Pulgas",
+    quote: "“Ese equipo la rompe toda! Son unos genios! Excelente calidad de diseños y materiales a un precio increíble. 100% recomendables“",
   },
   {
-    title: "Asesoramiento en cada proyecto",
-    text: "Te ayudamos a elegir la técnica, materiales y terminaciones más convenientes según tu producto y presupuesto.",
+    author: "Lucia Novello",
+    quote: "Siempre en el detalle para que quede tal cual lo imaginabas y mejor todavía ✨️Super profesionales y dedicados, gracias!! 👏❤️",
   },
 ];
 
@@ -35,7 +35,7 @@ const brands = [
 ];
 ---
 
-<section id="marcas" class="brands" aria-labelledby="brands-heading">
+<section id="marcas" class="brands" aria-labelledby="brands-heading" data-figma-node="1131:2432">
   <BackgroundText />
 
   <header class="brands__header">
@@ -45,18 +45,38 @@ const brands = [
   </header>
 
   <div class="brands__body">
-    {values.map(({ title, text }, index) => (
-      <article class:list={["brands__value", `brands__value--${index + 1}`]}>
-        <Icon name="lucide:external-link" aria-hidden="true" />
-        <h3>{title}</h3>
-        <p>{text}</p>
-        <span class="brands__value-line" aria-hidden="true"></span>
-      </article>
-    ))}
+    <div id="testimonial-track" class="brands__testimonials" data-testimonial-carousel>
+      {testimonials.map(({ author, quote }, index) => (
+        <article class:list={["brands__value", `brands__value--${index + 1}`]} data-testimonial-card>
+          <Icon class="brands__quote-icon" name="lucide:quote" aria-hidden="true" />
+          <figure class="brands__testimonial">
+            <figcaption>
+              <Icon name="lucide:circle-user-round" aria-hidden="true" />
+              <span>{author}</span>
+            </figcaption>
+            <blockquote><p>{quote}</p></blockquote>
+          </figure>
+          <span class="brands__value-line-slot" aria-hidden="true">
+            <span class="brands__value-line"></span>
+          </span>
+        </article>
+      ))}
+    </div>
 
-    <div class="brands__pagination" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="brands__pagination" role="group" aria-label="Elegir testimonio">
+      {testimonials.map(({ author }, index) => (
+        <button
+          type="button"
+          aria-label={`Mostrar testimonio de ${author}`}
+          aria-controls="testimonial-track"
+          aria-current={index === 0 ? "true" : "false"}
+          data-testimonial-dot
+          data-index={index}
+        ></button>
+      ))}
+    </div>
 
-    <aside class="brands__cta">
+    <aside class="brands__cta" aria-label="Propuesta de productos personalizados">
       <Image
         class="brands__cta-image"
         src={brandImage}
@@ -79,13 +99,46 @@ const brands = [
       <span aria-hidden="true">Marcas</span>
       <h3>Que confiaron<br />en nosotros</h3>
     </div>
-    <div class="brands__logos" aria-label="Marcas que trabajan con Química Estampados">
+    <div class="brands__logos" role="group" aria-label="Marcas que trabajan con Química Estampados">
       {brands.map(({ src, alt }) => (
         <Image src={src} alt={alt} widths={[160, 240, 320]} sizes="(max-width: 40rem) 40vw, 10vw" loading="lazy" />
       ))}
     </div>
   </div>
 </section>
+
+<script>
+  const testimonialCarousel = document.querySelector<HTMLElement>("[data-testimonial-carousel]");
+  const testimonialCards = Array.from(document.querySelectorAll<HTMLElement>("[data-testimonial-card]"));
+  const testimonialDots = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-testimonial-dot]"));
+
+  const selectTestimonial = (index: number, shouldScroll = true) => {
+    testimonialDots.forEach((dot, dotIndex) => dot.setAttribute("aria-current", String(dotIndex === index)));
+    if (shouldScroll && testimonialCarousel) {
+      testimonialCarousel.scrollTo({
+        left: testimonialCarousel.clientWidth * index,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      });
+    }
+  };
+
+  testimonialDots.forEach((dot) => {
+    dot.addEventListener("click", () => selectTestimonial(Number(dot.dataset.index ?? 0)));
+  });
+
+  let testimonialScrollFrame = 0;
+  testimonialCarousel?.addEventListener("scroll", () => {
+    cancelAnimationFrame(testimonialScrollFrame);
+    testimonialScrollFrame = requestAnimationFrame(() => {
+      if (!testimonialCarousel.clientWidth) return;
+      const index = Math.min(
+        testimonialCards.length - 1,
+        Math.max(0, Math.round(testimonialCarousel.scrollLeft / testimonialCarousel.clientWidth)),
+      );
+      selectTestimonial(index, false);
+    });
+  }, { passive: true });
+</script>
 
 <style>
   .brands {
@@ -157,7 +210,25 @@ const brands = [
     align-items: start;
   }
 
+  .brands__testimonials { display: contents; }
+
   .brands__pagination { display: none; }
+
+  .brands__pagination button {
+    width: 0.625rem;
+    height: 0.625rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  .brands__pagination button[aria-current="true"] {
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--color-cyan);
+  }
 
   .brands__value {
     min-width: 0;
@@ -165,8 +236,9 @@ const brands = [
     padding: clamp(1.85rem, 2.5vw, 3rem) clamp(1.2rem, 1.68vw, 2rem) clamp(1.2rem, 1.4vw, 1.7rem);
     display: flex;
     flex-direction: column;
-    background: rgba(12, 12, 12, 0.78);
-    border: 0.0625rem solid var(--color-border);
+    background: rgba(19, 19, 19, 0.5);
+    border: 0.0625rem solid #353534;
+    backdrop-filter: blur(2px);
   }
 
   .brands__value--1,
@@ -174,15 +246,25 @@ const brands = [
 
   .brands__value--2 { margin-top: clamp(8.4rem, 12.25vw, 14.7rem); }
 
-  .brands__value :global(svg) {
+  .brands__quote-icon {
     width: clamp(0.8rem, 0.8vw, 0.95rem);
     height: clamp(0.8rem, 0.8vw, 0.95rem);
+    flex: 0 0 auto;
     color: var(--color-cyan);
     stroke-width: 1.4;
   }
 
-  .brands__value h3 {
-    margin-top: clamp(1.8rem, 2.5vw, 3rem);
+  .brands__testimonial {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .brands__testimonial figcaption {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: #efefed;
     font-family: var(--font-jetbrains-mono);
     font-size: clamp(0.875rem, 1.0417vw, 1.25rem);
@@ -192,19 +274,51 @@ const brands = [
     text-transform: uppercase;
   }
 
-  .brands__value p {
+  .brands__testimonial figcaption :global(svg) {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: 0 0 1.5rem;
+    color: var(--color-cyan);
+    stroke-width: 1.5;
+  }
+
+  .brands__testimonial blockquote {
     margin-top: clamp(0.7rem, 1.05vw, 1.25rem);
+  }
+
+  .brands__testimonial p {
     color: #9a9a98;
     font-family: var(--font-poppins);
     font-size: clamp(0.875rem, 0.8333vw, 1rem);
     line-height: 1.5;
   }
 
+  .brands__value-line-slot {
+    min-height: clamp(2.5rem, 3vw, 3.625rem);
+    display: flex;
+    align-items: end;
+    justify-content: center;
+  }
+
   .brands__value-line {
     width: clamp(5.7rem, 7.5vw, 9rem);
     height: 0.0625rem;
-    margin: auto auto 0;
+    display: block;
     background: var(--color-cyan);
+  }
+
+  @media (min-width: 64.0625rem) {
+    .brands__dots { gap: 0.25rem; }
+    .brands__dots span { width: 0.875rem; height: 0.875rem; }
+    .brands__header h2 { font-size: 2rem; }
+    .brands__body { min-height: 38.5625rem; }
+    .brands__value { height: 23.75rem; min-height: 23.75rem; padding: 3.0625rem 2.0625rem; }
+    .brands__quote-icon { width: 1.5rem; height: 1.5rem; }
+    .brands__testimonial { height: 10.25rem; min-height: 10.25rem; }
+    .brands__testimonial figcaption { font-size: 1rem; line-height: 1.75; }
+    .brands__testimonial p { font-size: 1rem; line-height: 1.5; }
+    .brands__value-line-slot { min-height: 3.625rem; }
+    .brands__value-line { width: 10rem; }
   }
 
   .brands__cta {
@@ -212,7 +326,13 @@ const brands = [
     min-height: clamp(26rem, 32vw, 38.4rem);
     padding: clamp(1.65rem, 2.4vw, 2.9rem) clamp(1.65rem, 1.68vw, 2rem) 2rem;
     background: rgba(10, 10, 10, 0.92);
-    border: 0.0625rem solid var(--color-cyan);
+    border: 0.0625rem solid #353534;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+
+  .brands__cta:hover,
+  .brands__cta:focus-within {
+    border-color: var(--color-cyan);
   }
 
   .brands__cta-image {
@@ -267,6 +387,10 @@ const brands = [
   .brands__cta a:focus-visible {
     color: #050505;
     background: var(--color-cyan);
+  }
+
+  @media (min-width: 64.0625rem) {
+    .brands__cta { min-height: 38.5625rem; }
   }
 
   .brands__trusted {
@@ -329,7 +453,7 @@ const brands = [
     object-fit: contain;
   }
 
-  @media (min-width: 40.0625rem) and (max-width: 64rem) {
+  @media (min-width: 40.0625rem) and (max-width: 110rem) {
     .brands {
       width: calc(100% - 3rem);
       height: 68rem;
@@ -351,21 +475,67 @@ const brands = [
     .brands__header p br { display: none; }
 
     .brands__body { display: contents; }
-    .brands__value { display: none; }
-    .brands__value--1 {
+    .brands__testimonials {
       position: absolute;
       top: 20.9375rem;
       left: 10.451%;
       width: 36.885%;
       height: 23.75rem;
+      display: flex;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .brands__testimonials::-webkit-scrollbar { display: none; }
+    .brands__value,
+    .brands__value--1,
+    .brands__value--2,
+    .brands__value--3 {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
+      height: 23.75rem;
       min-height: 0;
       margin: 0;
       padding: 3.0625rem clamp(1.25rem, 3.223vw, 2.0625rem);
       display: flex;
+      flex: 0 0 100%;
+      scroll-snap-align: start;
     }
 
-    .brands__value h3 { margin-top: 2rem; font-size: 1rem; line-height: 1.75; }
-    .brands__value p { font-size: 1rem; line-height: 1.5; }
+    .brands__quote-icon { width: 1.5rem; height: 1.5rem; }
+    .brands__testimonial { min-height: 10.25rem; }
+    .brands__testimonial figcaption { font-size: 1rem; line-height: 1.75; }
+    .brands__testimonial p { font-size: 1rem; line-height: 1.5; }
+    .brands__pagination {
+      position: absolute;
+      top: 45.375rem;
+      left: 28.8935%;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      transform: translateX(-50%);
+    }
+
+    .brands__pagination button {
+      width: 0.625rem;
+      height: 0.625rem;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .brands__pagination button[aria-current="true"] {
+      width: 0.75rem;
+      height: 0.75rem;
+      background: var(--color-cyan);
+    }
     .brands__cta {
       position: absolute;
       top: 17rem;
@@ -402,10 +572,14 @@ const brands = [
       display: grid;
       grid-template-columns: repeat(6, 10rem);
       gap: 3.5rem;
-      overflow: hidden;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scroll-snap-type: inline proximity;
+      scrollbar-width: none;
       border: 0.0625rem solid rgba(240, 237, 230, 0.1);
     }
-    .brands__logos :global(img) { width: 10rem; height: 10rem; }
+    .brands__logos::-webkit-scrollbar { display: none; }
+    .brands__logos :global(img) { width: 10rem; height: 10rem; scroll-snap-align: start; }
   }
 
   @media (min-width: 40.0625rem) and (max-width: 52rem) {
@@ -433,31 +607,22 @@ const brands = [
       gap: 1.125rem;
     }
 
-    .brands__value--1 {
+    .brands__testimonials {
       position: relative;
       top: auto;
       left: auto;
       width: min(100%, 22.5rem);
+      height: 23.75rem;
+      flex: 0 0 auto;
     }
 
     .brands__pagination {
+      position: static;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.25rem;
-    }
-
-    .brands__pagination span {
-      width: 0.625rem;
-      height: 0.625rem;
-      border-radius: 50%;
-      background: #fff;
-    }
-
-    .brands__pagination span:first-child {
-      width: 0.75rem;
-      height: 0.75rem;
-      background: var(--color-cyan);
+      transform: none;
     }
 
     .brands__cta {
@@ -518,10 +683,10 @@ const brands = [
   @media (max-width: 40rem) {
     .brands {
       width: calc(100% - 1.5rem);
-      height: 101.88rem;
-      min-height: 0;
+      height: auto;
+      min-height: 101.88rem;
       margin-inline: auto;
-      padding: 3rem 0;
+      padding: 3rem 0 10rem;
     }
 
     .brands__header { text-align: left; }
@@ -539,20 +704,33 @@ const brands = [
       gap: 1.125rem;
     }
 
-    .brands__value { display: none; }
-    .brands__value--1 {
-      width: 19.875rem;
+    .brands__testimonials {
+      width: 100%;
+      max-width: 19.875rem;
+      display: flex;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .brands__testimonials::-webkit-scrollbar { display: none; }
+    .brands__value,
+    .brands__value--1,
+    .brands__value--2,
+    .brands__value--3 {
+      width: 100%;
       min-height: 23.5rem;
       margin: 0;
       padding: 2.0625rem;
       display: flex;
+      flex: 0 0 100%;
+      scroll-snap-align: start;
     }
-    .brands__value h3 { margin-top: 2rem; font-size: 1rem; line-height: 1.75; }
-    .brands__value p { font-size: 1rem; line-height: 1.5; }
+    .brands__quote-icon { width: 1.5rem; height: 1.5rem; }
+    .brands__testimonial figcaption { font-size: 1rem; line-height: 1.75; }
+    .brands__testimonial p { font-size: 1rem; line-height: 1.5; }
 
     .brands__pagination { display: flex; align-items: center; justify-content: center; gap: 0.25rem; }
-    .brands__pagination span { width: 0.625rem; height: 0.625rem; border-radius: 50%; background: #fff; }
-    .brands__pagination span:first-child { width: 0.75rem; height: 0.75rem; background: var(--color-cyan); }
 
     .brands__cta {
       width: 100%;
@@ -578,16 +756,20 @@ const brands = [
 
     .brands__logos {
       order: 1;
-      width: 55.5625rem;
+      width: 100%;
       height: 8.5rem;
-      padding-right: 3.9375rem;
+      padding-right: 0;
       display: grid;
       grid-template-columns: repeat(6, 7.5rem);
-      gap: 3.5rem;
-      overflow: hidden;
+      gap: 1.5rem;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scroll-snap-type: inline proximity;
+      scrollbar-width: none;
       border: 0.0625rem solid rgba(240, 237, 230, 0.1);
     }
-    .brands__logos :global(img) { width: 7.5rem; height: 7.5rem; }
+    .brands__logos::-webkit-scrollbar { display: none; }
+    .brands__logos :global(img) { width: 7.5rem; height: 7.5rem; scroll-snap-align: start; }
 
     .brands__trusted-heading {
       order: 2;

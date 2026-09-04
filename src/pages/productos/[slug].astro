@@ -17,11 +17,12 @@ interface Props {
 }
 
 const { product } = Astro.props;
+const pageTitle = product.seoTitle ?? product.title;
 ---
 
 <MainLayout
-  title={`${product.title} | Química Estampados`}
-  description={`${product.title}. Productos personalizados de Química Estampados.`}
+  title={`${pageTitle} | Química Estampados`}
+  description={`${pageTitle}. Productos personalizados de Química Estampados.`}
 >
   <Header />
   <ProductDetail product={product} />

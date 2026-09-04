@@ -1,9 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
 import BackgroundText from "../shared/BackgroundText.astro";
+import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
 ---
 
-<section id="contacto" class="contact" aria-labelledby="contact-heading">
+<section id="contacto" class="contact" aria-labelledby="contact-heading" data-figma-node="1031:1735">
   <BackgroundText />
 
   <div class="contact__rail" aria-hidden="true">Contactanos</div>
@@ -13,11 +14,18 @@ import BackgroundText from "../shared/BackgroundText.astro";
     <header class="contact__header">
       <div class="contact__dots" aria-hidden="true"><span></span><span></span><span></span></div>
       <h3>Estamos para ayudarte</h3>
-      <p>Resolvemos tus dudas sobre producción industrial y procesos<br />técnicos para optimizar tus pedidos.</p>
+      <p>Resolvemos tus dudas sobre producción industrial y procesos<br /> técnicos para optimizar tus pedidos.</p>
     </header>
 
     <div class="contact__layout">
-      <form class="contact__form" action="#" method="post">
+      <form
+        class="contact__form"
+        action={siteConfig.contactFormEndpoint || undefined}
+        method="post"
+        data-contact-form
+        data-endpoint={siteConfig.contactFormEndpoint}
+        data-fallback-email={siteConfig.email}
+      >
         <label>
           <span>Nombre</span>
           <input type="text" name="name" placeholder="Tu nombre" autocomplete="name" required />
@@ -27,11 +35,12 @@ import BackgroundText from "../shared/BackgroundText.astro";
           <input type="email" name="email" placeholder="hola@empresa.com" autocomplete="email" required />
         </label>
         <label class="contact__field--wide">
-          <span>Proyecto</span>
-          <select name="project">
-            <option>DTF Textil</option>
-            <option>Corpóreos en polifan</option>
-            <option>Calcos y tarjetas personalizadas</option>
+          <span>Servicio</span>
+          <select name="project" required>
+            <option value="Estampado textil">Estampado Textil</option>
+            <option value="DTF textil">DTF Textil</option>
+            <option value="Corpóreos en polifan">Corpóreos en polifan</option>
+            <option value="Calcos y tarjetas personalizadas">Calcos y tarjetas personalizadas</option>
           </select>
         </label>
         <label class="contact__field--wide contact__message">
@@ -39,31 +48,40 @@ import BackgroundText from "../shared/BackgroundText.astro";
           <textarea name="message" rows="4" placeholder="Contanos detalles de cantidades, colores y superficies..." required></textarea>
         </label>
         <button class="contact__submit" type="submit">Enviar</button>
+        <p class="contact__form-status" role="status" aria-live="polite" data-contact-status></p>
         <span class="contact__form-line" aria-hidden="true"></span>
       </form>
 
-      <aside class="contact__aside">
+      <aside class="contact__aside" aria-label="Información de contacto">
         <section class="contact__info-block">
           <h4>Canales directos</h4>
-          <a href="mailto:quimicaestampados@gmail.com"><Icon name="lucide:mail" aria-hidden="true" /><span>quimicaestampados@gmail.com</span></a>
-          <a href="https://wa.me/5493431234567"><Icon name="lucide:message-circle" aria-hidden="true" /><span>WhatsApp: +54 9 343 123 4567</span></a>
+          <a href={`mailto:${siteConfig.email}`}><Icon name="lucide:mail" aria-hidden="true" /><span>{siteConfig.email}</span></a>
+          <a href={whatsappUrl()} target="_blank" rel="noreferrer"><Icon name="lucide:message-circle" aria-hidden="true" /><span>WhatsApp: {siteConfig.whatsapp.display}</span></a>
         </section>
 
         <section class="contact__info-block contact__hours">
           <h4>Horarios</h4>
-          <p>Lunes a viernes<br />08:00 a 12:00 hrs<br />16:30 a 20:00 hrs</p>
+          <p>Lunes a viernes<br />08:00 a 12:00 hs<br />16:30 a 20:00 hs</p>
         </section>
 
         <nav class="contact__socials" aria-label="Redes sociales">
-          <span aria-hidden="true"><Icon name="lucide:share-2" /></span>
-          <a href="#">Instagram <Icon name="lucide:external-link" aria-hidden="true" /></a>
-          <a href="#">Facebook <Icon name="lucide:external-link" aria-hidden="true" /></a>
+          <span class="contact__social-icon" aria-hidden="true"><Icon name="lucide:share-2" /></span>
+          {siteConfig.social.instagram ? (
+            <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer">Instagram <Icon name="lucide:external-link" aria-hidden="true" /></a>
+          ) : (
+            <span class="contact__social-placeholder" title="Enlace pendiente de configurar">Instagram</span>
+          )}
+          {siteConfig.social.facebook ? (
+            <a href={siteConfig.social.facebook} target="_blank" rel="noreferrer">Facebook <Icon name="lucide:external-link" aria-hidden="true" /></a>
+          ) : (
+            <span class="contact__social-placeholder" title="Enlace pendiente de configurar">Facebook</span>
+          )}
         </nav>
 
         <div class="contact__map">
           <iframe
             title="Ubicación de Química Estampados en Victoria, Entre Ríos"
-            src="https://www.google.com/maps?q=66%20Alem%2C%20Victoria%2C%20Entre%20R%C3%ADos&output=embed"
+            src={mapEmbedUrl}
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
@@ -72,6 +90,59 @@ import BackgroundText from "../shared/BackgroundText.astro";
     </div>
   </div>
 </section>
+
+<script>
+  const contactForm = document.querySelector<HTMLFormElement>("[data-contact-form]");
+  const contactStatus = contactForm?.querySelector<HTMLElement>("[data-contact-status]");
+  const contactSubmit = contactForm?.querySelector<HTMLButtonElement>("button[type='submit']");
+
+  contactForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!contactForm.reportValidity()) return;
+
+    const data = new FormData(contactForm);
+    const endpoint = contactForm.dataset.endpoint?.trim();
+    const fallbackEmail = contactForm.dataset.fallbackEmail?.trim();
+    const originalLabel = contactSubmit?.textContent ?? "Enviar";
+
+    if (contactSubmit) {
+      contactSubmit.disabled = true;
+      contactSubmit.setAttribute("aria-busy", "true");
+      contactSubmit.textContent = "Enviando…";
+    }
+    if (contactStatus) contactStatus.textContent = "Preparando tu consulta…";
+
+    try {
+      if (endpoint) {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" },
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        contactForm.reset();
+        if (contactStatus) contactStatus.textContent = "¡Gracias! Recibimos tu consulta y te responderemos pronto.";
+      } else if (fallbackEmail) {
+        const name = String(data.get("name") ?? "");
+        const email = String(data.get("email") ?? "");
+        const project = String(data.get("project") ?? "Consulta web");
+        const message = String(data.get("message") ?? "");
+        const subject = `Consulta web: ${project}`;
+        const body = [`Nombre: ${name}`, `Email: ${email}`, `Proyecto: ${project}`, "", message].join("\n");
+        window.location.href = `mailto:${fallbackEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        if (contactStatus) contactStatus.textContent = "Abrimos tu aplicación de correo con el mensaje preparado.";
+      }
+    } catch {
+      if (contactStatus) contactStatus.textContent = "No pudimos enviar la consulta. Escribinos por email o WhatsApp.";
+    } finally {
+      if (contactSubmit) {
+        contactSubmit.disabled = false;
+        contactSubmit.removeAttribute("aria-busy");
+        contactSubmit.textContent = originalLabel;
+      }
+    }
+  });
+</script>
 
 <style>
   .contact {
@@ -175,8 +246,9 @@ import BackgroundText from "../shared/BackgroundText.astro";
     grid-auto-rows: min-content;
     column-gap: 2.5rem;
     row-gap: 1.7rem;
-    background: rgba(9, 9, 9, 0.84);
-    border: 0.0625rem solid var(--color-border);
+    background: rgba(19, 19, 19, 0.5);
+    border: 0.0625rem solid #353534;
+    backdrop-filter: blur(2px);
   }
 
   .contact__form label { display: block; min-width: 0; }
@@ -244,6 +316,17 @@ import BackgroundText from "../shared/BackgroundText.astro";
 
   .contact__submit:hover,
   .contact__submit:focus-visible { color: #050505; background: var(--color-magenta); }
+
+  .contact__submit:disabled { opacity: 0.6; cursor: wait; }
+
+  .contact__form-status {
+    min-height: 1.25rem;
+    grid-column: 1 / -1;
+    color: #b8b8b5;
+    font-family: var(--font-poppins);
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
 
   .contact__form-line {
     position: absolute;
@@ -317,7 +400,9 @@ import BackgroundText from "../shared/BackgroundText.astro";
     align-items: center;
     justify-content: space-between;
     color: #d1d1cf;
-    border: 0.0625rem solid var(--color-border);
+    background: rgba(19, 19, 19, 0.5);
+    border: 0.0625rem solid #353534;
+    backdrop-filter: blur(2px);
     font-family: var(--font-jetbrains-mono);
     font-size: 0.57rem;
     font-weight: 700;
@@ -326,6 +411,11 @@ import BackgroundText from "../shared/BackgroundText.astro";
   }
 
   .contact__socials span { padding: 0; justify-content: center; }
+  .contact__socials .contact__social-placeholder {
+    padding: 0.6rem 0.9rem;
+    justify-content: flex-start;
+    color: #777774;
+  }
   .contact__socials :global(svg) { width: 0.85rem; height: 0.85rem; }
 
   .contact__map {
@@ -345,7 +435,7 @@ import BackgroundText from "../shared/BackgroundText.astro";
 
   @media (min-width: 64.0625rem) {
     .contact {
-      --contact-heading-bottom: 2rem;
+      --contact-heading-bottom: 0;
       --background-text-inset: 9.5rem 0 12rem var(--watermark-left);
       --watermark-font-size: clamp(6rem, 9.5vw, 11.4rem);
       --watermark-left: 4.2vw;
@@ -361,7 +451,7 @@ import BackgroundText from "../shared/BackgroundText.astro";
 
     .contact__header { margin-bottom: clamp(2.15rem, 3.7vw, 4.4375rem); }
 
-    .contact__dots { gap: 0.3125rem; }
+    .contact__dots { gap: 0.25rem; }
 
     .contact__dots span {
       width: clamp(0.75rem, 0.73vw, 0.875rem);
@@ -371,7 +461,7 @@ import BackgroundText from "../shared/BackgroundText.astro";
     .contact__header h3 { font-size: clamp(1.5rem, 1.67vw, 2rem); }
     .contact__header p {
       font-size: clamp(0.75rem, 0.835vw, 1rem);
-      line-height: 1.55;
+      line-height: 1.75;
     }
 
     .contact__layout {
@@ -459,7 +549,7 @@ import BackgroundText from "../shared/BackgroundText.astro";
     }
   }
 
-  @media (min-width: 40.0625rem) and (max-width: 64rem) {
+  @media (min-width: 40.0625rem) and (max-width: 110rem) {
     .contact {
       width: calc(100% - 3rem);
       height: 69rem;
@@ -476,7 +566,10 @@ import BackgroundText from "../shared/BackgroundText.astro";
       padding: 0;
     }
 
-    .contact__header { width: 87.069%; margin-bottom: 5.25rem; }
+    .contact__header {
+      width: 60.5%;
+      margin-bottom: 5.25rem;
+    }
     .contact__header h3 { font-size: 2rem; }
     .contact__header p { font-size: 1rem; line-height: 1.75; }
     .contact__header p br { display: none; }
@@ -555,10 +648,10 @@ import BackgroundText from "../shared/BackgroundText.astro";
   @media (max-width: 40rem) {
     .contact {
       width: calc(100% - 1.5rem);
-      height: 126.8125rem;
-      min-height: 0;
+      height: auto;
+      min-height: 126.8125rem;
       margin-inline: auto;
-      padding-top: 3rem;
+      padding: 3rem 0 10rem;
     }
 
     .contact__content {
@@ -596,7 +689,7 @@ import BackgroundText from "../shared/BackgroundText.astro";
     .contact__hours p { font-size: 1rem; }
     .contact__hours { margin-top: 0; }
     .contact__socials { margin-top: 0; grid-template-columns: 3rem 1fr; gap: 1rem; }
-    .contact__socials a:last-child { grid-column: 2; }
+    .contact__socials :is(a, .contact__social-placeholder):last-child { grid-column: 2; }
     .contact__socials span,
     .contact__socials a { min-height: 3rem; font-size: 0.75rem; }
     .contact__map { width: 100%; height: 17rem; margin-top: 0; }

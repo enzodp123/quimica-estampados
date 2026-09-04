@@ -4,7 +4,7 @@ import BackgroundText from "../shared/BackgroundText.astro";
 import localImage from "../../assets/images/nuestrahistoria.png";
 ---
 
-<section id="nosotros" class="about" aria-labelledby="about-heading">
+<section id="nosotros" class="about" aria-labelledby="about-heading" data-figma-node="1031:1666">
   <BackgroundText />
 
   <div class="about__rail" aria-hidden="true">Conocé</div>
@@ -96,8 +96,9 @@ import localImage from "../../assets/images/nuestrahistoria.png";
     min-height: 0;
     margin-top: 0;
     padding: 3.0625rem 2.6875rem;
-    background: rgba(9, 9, 9, 0.84);
-    border: 0.0625rem solid var(--color-border);
+    background: rgba(19, 19, 19, 0.5);
+    border: 0.0625rem solid #353534;
+    backdrop-filter: blur(2px);
   }
 
   .about__dots {
@@ -200,7 +201,15 @@ import localImage from "../../assets/images/nuestrahistoria.png";
     object-fit: cover;
   }
 
-  @media (min-width: 40.0625rem) and (max-width: 64rem) {
+  @media (min-width: 64.0625rem) {
+    .about__dots { gap: 0.25rem; }
+    .about__dots span { width: 0.875rem; height: 0.875rem; }
+    .about__card h3 { font-size: 2.5rem; }
+    .about__card p { max-width: 28rem; font-size: 1rem; line-height: 1.5; }
+    .about__card .about__lead { font-size: 0.875rem; line-height: 1.7143; }
+  }
+
+  @media (min-width: 40.0625rem) and (max-width: 110rem) {
     .about {
       width: calc(100% - 3rem);
       height: 60rem;
@@ -266,9 +275,10 @@ import localImage from "../../assets/images/nuestrahistoria.png";
   @media (max-width: 40rem) {
     .about {
       width: calc(100% - 1.5rem);
-      height: 79.234375rem;
+      height: auto;
+      min-height: 79.234375rem;
       margin-inline: auto;
-      padding-block: 3rem;
+      padding: 3rem 0 12rem;
     }
 
     .about__content {

@@ -1,0 +1,66 @@
+---
+import type { ProductCardData } from "../../data/product-cards";
+import chevron from "../../assets/icons/product-chevron.svg";
+import ProductCard from "./ProductCard.astro";
+
+interface Props {
+  id: string;
+  label: string;
+  cards: ProductCardData[];
+}
+
+const { id, label, cards } = Astro.props;
+const trackId = `${id}-track`;
+---
+
+<div class="product-carousel" data-product-carousel>
+  <section id={trackId} class="product-carousel__track" data-product-track aria-label={label} aria-roledescription="carrusel" tabindex="0">
+    {cards.map((card) => <ProductCard card={card} />)}
+  </section>
+  <div class="product-carousel__controls" data-carousel-controls hidden>
+    <button type="button" class="product-carousel__arrow product-carousel__arrow--previous" data-carousel-previous aria-label="Ver productos anteriores" aria-controls={trackId} disabled>
+      <img src={chevron.src} width="24" height="24" alt="" />
+    </button>
+    <button type="button" class="product-carousel__arrow product-carousel__arrow--next" data-carousel-next aria-label="Ver productos siguientes" aria-controls={trackId}>
+      <img src={chevron.src} width="24" height="24" alt="" />
+    </button>
+  </div>
+</div>
+
+<script>
+  import { initProductCarousels } from "../../scripts/product-carousel";
+  initProductCarousels();
+  document.addEventListener("astro:page-load", () => initProductCarousels());
+</script>
+
+<style>
+  .product-carousel { width: 100%; min-width: 0; }
+  .product-carousel__track {
+    --product-gap: 2.625rem;
+    position: relative;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: auto;
+    grid-auto-columns: calc((100% - var(--product-gap) * 2) / 3);
+    gap: var(--product-gap);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .product-carousel__track::-webkit-scrollbar { display: none; }
+  .product-carousel__track:focus-visible { outline: 2px solid var(--color-cyan); outline-offset: 4px; }
+  .product-carousel__controls { margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 0.75rem; }
+  .product-carousel__controls[hidden] { display: none; }
+  .product-carousel__arrow { width: 3rem; height: 3rem; padding: 0; display: grid; place-items: center; border: 1px solid #353534; background: #13131380; cursor: pointer; transition: border-color var(--transition), opacity var(--transition); }
+  .product-carousel__arrow img { width: 1.5rem; height: 1.5rem; }
+  .product-carousel__arrow--previous img { transform: rotate(90deg); }
+  .product-carousel__arrow--next img { transform: rotate(-90deg); }
+  .product-carousel__arrow:hover:not(:disabled), .product-carousel__arrow:focus-visible { border-color: var(--color-cyan); }
+  .product-carousel__arrow:disabled { opacity: 0.3; cursor: default; }
+  @media (max-width: 110rem) { .product-carousel__track { --product-gap: 1.5rem; } }
+  @media (max-width: 80rem) { .product-carousel__track { grid-auto-columns: max(17.5rem, calc((100% - var(--product-gap)) / 2)); } }
+  @media (max-width: 40rem) { .product-carousel__track { --product-gap: 1rem; grid-auto-columns: 100%; } }
+  @media (prefers-reduced-motion: reduce) { .product-carousel__track { scroll-behavior: auto; } .product-carousel__arrow { transition: none; } }
+</style>

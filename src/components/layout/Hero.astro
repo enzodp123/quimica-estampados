@@ -26,7 +26,6 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
     <div class="hero__intro">
       <p class="hero__rail" aria-hidden="true">
         <span class="copy-desktop">Creamos</span>
-        <span class="copy-responsive">Estampamos</span>
       </p>
 
       <h1>
@@ -37,23 +36,15 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
           <span>marca</span>
           <span>necesita</span>
         </span>
-        <span class="hero__headline copy-responsive" aria-hidden="true">
-          <span>Tu</span>
-          <span>marca</span>
-          <span>idea y</span>
-          <span>negocio</span>
-        </span>
       </h1>
 
       <ul class="hero__list">
         <li>Diseño y personalización de productos para tu marca</li>
         <li>
           <span class="copy-desktop">Estampados · Diseño · Impresión</span>
-          <span class="copy-responsive">Estampados textiles • DTF • Sublimación</span>
         </li>
         <li>
           <span class="copy-desktop">100% algodón peinado 24.1</span>
-          <span class="copy-responsive">100% algodón premium</span>
         </li>
       </ul>
     </div>
@@ -198,8 +189,6 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
     display: block;
   }
 
-  .copy-responsive { display: none; }
-
   .hero__list {
     grid-column: 1 / -1;
     grid-row: 2;
@@ -250,7 +239,8 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
     position: absolute;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 34px 24px rgba(0, 0, 0, 0.72));
+    filter: drop-shadow(0px 0px 2px rgb(255, 255, 255));
+  
   }
 
   .hero__shirt {
@@ -331,9 +321,6 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
       height: auto;
       min-height: 0;
     }
-
-    .copy-desktop { display: none; }
-    .copy-responsive { display: block; }
 
     .hero__ticker { font-size: 0.625rem; }
     .hero__ticker-group { padding-right: 2.5rem; gap: 2.5rem; }

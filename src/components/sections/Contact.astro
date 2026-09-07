@@ -25,6 +25,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
         data-contact-form
         data-endpoint={siteConfig.contactFormEndpoint}
         data-fallback-email={siteConfig.email}
+        data-whatsapp-number={siteConfig.whatsapp.number}
       >
         <label>
           <span>Nombre</span>
@@ -37,10 +38,14 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
         <label class="contact__field--wide">
           <span>Servicio</span>
           <select name="project" required>
-            <option value="Estampado textil">Estampado Textil</option>
-            <option value="DTF textil">DTF Textil</option>
+            <option value="Estampado textil / Indumentaria">Estampado textil / Indumentaria</option>
+            <option value="Impresión DTF textil">Impresión DTF textil</option>
+            <option value="Calcos personalizados">Calcos personalizados</option>
+            <option value="Tarjetas personales">Tarjetas personales</option>
+            <option value="Folletos y etiquetas">Folletos y etiquetas</option>
             <option value="Corpóreos en polifan">Corpóreos en polifan</option>
-            <option value="Calcos y tarjetas personalizadas">Calcos y tarjetas personalizadas</option>
+            <option value="Impresión en gran formato">Impresión en gran formato</option>
+            <option value="Otro / Consulta general">Otro / Consulta general</option>
           </select>
         </label>
         <label class="contact__field--wide contact__message">
@@ -92,56 +97,84 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
 </section>
 
 <script>
-  const contactForm = document.querySelector<HTMLFormElement>("[data-contact-form]");
-  const contactStatus = contactForm?.querySelector<HTMLElement>("[data-contact-status]");
-  const contactSubmit = contactForm?.querySelector<HTMLButtonElement>("button[type='submit']");
+  function initContactForm() {
+    const contactForm = document.querySelector<HTMLFormElement>("[data-contact-form]");
+    if (!contactForm || contactForm.dataset.initialized === "true") return;
+    contactForm.dataset.initialized = "true";
 
-  contactForm?.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    if (!contactForm.reportValidity()) return;
+    const contactStatus = contactForm.querySelector<HTMLElement>("[data-contact-status]");
+    const contactSubmit = contactForm.querySelector<HTMLButtonElement>("button[type='submit']");
 
-    const data = new FormData(contactForm);
-    const endpoint = contactForm.dataset.endpoint?.trim();
-    const fallbackEmail = contactForm.dataset.fallbackEmail?.trim();
-    const originalLabel = contactSubmit?.textContent ?? "Enviar";
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!contactForm.reportValidity()) return;
 
-    if (contactSubmit) {
-      contactSubmit.disabled = true;
-      contactSubmit.setAttribute("aria-busy", "true");
-      contactSubmit.textContent = "Enviando…";
-    }
-    if (contactStatus) contactStatus.textContent = "Preparando tu consulta…";
+      const data = new FormData(contactForm);
+      const endpoint = contactForm.dataset.endpoint?.trim();
+      const whatsappNumber = contactForm.dataset.whatsappNumber?.trim() || "5491126249300";
+      const originalLabel = contactSubmit?.textContent ?? "Enviar";
 
-    try {
-      if (endpoint) {
-        const response = await fetch(endpoint, {
-          method: "POST",
-          body: data,
-          headers: { Accept: "application/json" },
-        });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        contactForm.reset();
-        if (contactStatus) contactStatus.textContent = "¡Gracias! Recibimos tu consulta y te responderemos pronto.";
-      } else if (fallbackEmail) {
-        const name = String(data.get("name") ?? "");
-        const email = String(data.get("email") ?? "");
-        const project = String(data.get("project") ?? "Consulta web");
-        const message = String(data.get("message") ?? "");
-        const subject = `Consulta web: ${project}`;
-        const body = [`Nombre: ${name}`, `Email: ${email}`, `Proyecto: ${project}`, "", message].join("\n");
-        window.location.href = `mailto:${fallbackEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        if (contactStatus) contactStatus.textContent = "Abrimos tu aplicación de correo con el mensaje preparado.";
-      }
-    } catch {
-      if (contactStatus) contactStatus.textContent = "No pudimos enviar la consulta. Escribinos por email o WhatsApp.";
-    } finally {
+      const name = String(data.get("name") ?? "").trim();
+      const email = String(data.get("email") ?? "").trim();
+      const project = String(data.get("project") ?? "Consulta web").trim();
+      const message = String(data.get("message") ?? "").trim();
+
       if (contactSubmit) {
-        contactSubmit.disabled = false;
-        contactSubmit.removeAttribute("aria-busy");
-        contactSubmit.textContent = originalLabel;
+        contactSubmit.disabled = true;
+        contactSubmit.setAttribute("aria-busy", "true");
+        contactSubmit.textContent = "Abriendo WhatsApp…";
       }
-    }
-  });
+      if (contactStatus) contactStatus.textContent = "Preparando tu consulta para WhatsApp…";
+
+      try {
+        if (endpoint) {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            body: data,
+            headers: { Accept: "application/json" },
+          });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          contactForm.reset();
+          if (contactStatus) contactStatus.textContent = "¡Gracias! Recibimos tu consulta y te responderemos pronto.";
+        } else {
+          const lines = [
+            "¡Hola Química Estampados! 👋",
+            "Quisiera hacer una consulta desde el sitio web:",
+            "",
+            `• Nombre: ${name}`,
+            `• Email: ${email}`,
+            `• Servicio de interés: ${project}`,
+            "",
+            "• Consulta:",
+            message,
+          ];
+          const waText = lines.join("\n");
+          const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waText)}`;
+
+          const opened = window.open(waUrl, "_blank", "noopener,noreferrer");
+          if (!opened || opened.closed || typeof opened.closed === "undefined") {
+            window.location.href = waUrl;
+          }
+
+          contactForm.reset();
+          if (contactStatus) {
+            contactStatus.textContent = "¡Listo! Te redirigimos a WhatsApp para enviar tu consulta.";
+          }
+        }
+      } catch {
+        if (contactStatus) contactStatus.textContent = "No pudimos procesar la consulta. Por favor escribinos directamente por WhatsApp.";
+      } finally {
+        if (contactSubmit) {
+          contactSubmit.disabled = false;
+          contactSubmit.removeAttribute("aria-busy");
+          contactSubmit.textContent = originalLabel;
+        }
+      }
+    });
+  }
+
+  initContactForm();
+  document.addEventListener("astro:page-load", initContactForm);
 </script>
 
 <style>
@@ -286,6 +319,15 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
   .contact__form select {
     appearance: auto;
     color-scheme: dark;
+    background-color: #131313;
+    color: var(--color-text);
+    cursor: pointer;
+  }
+
+  .contact__form select option {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 0.5rem;
   }
 
   .contact__form textarea {

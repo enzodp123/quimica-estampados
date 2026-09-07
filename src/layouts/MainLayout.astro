@@ -8,6 +8,7 @@ import "@fontsource/montserrat/700.css";
 import "@fontsource/montserrat/800.css";
 import "@fontsource/montserrat/900.css";
 import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/700.css";
 import "@fontsource/poppins/800.css";
 import "@fontsource/poppins/900.css";
@@ -68,8 +69,18 @@ const structuredData = {
     <title>{title}</title>
     <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)}></script>
   </head>
-  <body>
+  <body class:list={{ "product-route": Astro.url.pathname.startsWith("/productos/") }}>
     <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
     <slot />
   </body>
 </html>
+
+<style>
+  .product-route {
+    --font-jetbrains-mono: var(--font-poppins);
+    --font-montserrat: var(--font-poppins);
+    --font-primary: var(--font-poppins);
+    --font-display: var(--font-poppins);
+    font-family: var(--font-poppins);
+  }
+</style>

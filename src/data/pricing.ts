@@ -2,6 +2,7 @@ export interface CatalogChoice {
   value: string;
   label: string;
   description?: string;
+  examples?: string[];
 }
 
 export interface CatalogDimension {
@@ -17,6 +18,14 @@ export interface CatalogPrice {
   unitPrice?: string;
   installments?: string;
   note?: string;
+  requiresConsultation?: boolean;
+}
+
+export interface CatalogExtra {
+  id: string;
+  name: string;
+  price: string;
+  unit: string;
 }
 
 export interface CatalogProduct {
@@ -28,14 +37,17 @@ export interface CatalogProduct {
   sizes?: string[];
   prices: CatalogPrice[];
   notes: string[];
+  extras?: CatalogExtra[];
+  requiresConsultation?: boolean;
 }
 
-const sizeChoices: CatalogChoice[] = [
-  { value: "xs", label: "XS", description: "Hasta 12 cm²" },
-  { value: "chicas", label: "Chicas", description: "Hasta 25 cm²" },
-  { value: "medianas", label: "Medianas", description: "Hasta 50 cm²" },
-  { value: "grandes", label: "Grandes", description: "Hasta 75 cm²" },
-  { value: "xl", label: "XL", description: "Hasta 100 cm²" },
+// Fuente comercial: docs/catalogo-precios-fuente.txt. No interpolar ni corregir importes.
+export const sizeChoices: CatalogChoice[] = [
+  { value: "xs", label: "XS", description: "Hasta 12 cm²", examples: ["3x3 cm", "3x4 cm", "2,5x5 cm", "5x2,5 cm"] },
+  { value: "chicas", label: "Chicas", description: "Hasta 25 cm²", examples: ["4x4 cm", "5x5 cm", "6x4 cm", "7x3 cm", "8x3 cm"] },
+  { value: "medianas", label: "Medianas", description: "Hasta 50 cm²", examples: ["6x6 cm", "7x7 cm", "6x8 cm", "12x4 cm", "10x5 cm"] },
+  { value: "grandes", label: "Grandes", description: "Hasta 75 cm²", examples: ["8x8 cm", "10x7 cm", "15x5 cm", "20x3,5 cm"] },
+  { value: "xl", label: "XL", description: "Hasta 100 cm²", examples: ["9x9 cm", "10x10 cm", "8x12 cm", "15x6 cm", "20x5 cm", "5x20 cm"] },
 ];
 
 const quantityChoices = (...quantities: number[]): CatalogChoice[] =>
@@ -246,7 +258,11 @@ export const priceCatalog = {
     id: "lona-front", name: "Lona front", category: "Lona", description: "Precio sin terminación.",
     variants: [{ key: "measure", label: "Medida", options: ["0,50 × 0,50 mt", "0,50 × 1 mt", "1 × 1 mt", "1 × 2 mt", "1 × 3 mt"].map((label, index) => ({ value: `m${index + 1}`, label })) }],
     prices: ["$10.000", "$20.000", "$38.000", "$70.000", "$98.000"].map((total, index) => price({ measure: `m${index + 1}` }, 1, { total })),
-    notes: ["Incluye digitalización básica y texto, diseño o logo ya existente.", "El diseño personalizado se cotiza aparte en lonas chicas.", "Ojalillos: $1.000 c/u.", "Fuelle: $3.000 por metro."],
+    notes: ["Incluye digitalización básica y texto, diseño o logo ya existente.", "El diseño personalizado se cotiza aparte en lonas chicas."],
+    extras: [
+      { id: "ojalillos", name: "Ojalillos", price: "$1.000", unit: "c/u" },
+      { id: "fuelle", name: "Fuelle", price: "$3.000", unit: "por metro" },
+    ],
   },
   "fly-banner-gota": {
     id: "fly-banner-gota", name: "Fly Banner forma gota", category: "Fly banners", description: "Altura 1,70 mt, tamaño mediano. Incluye estaca y diseño.",
@@ -315,16 +331,41 @@ export const priceCatalog = {
 
 export type PriceCatalogId = keyof typeof priceCatalog;
 
+export const findCatalogPrice = (
+  catalog: CatalogProduct | undefined,
+  selection: Record<string, string>,
+): CatalogPrice | undefined => {
+  if (!catalog || catalog.requiresConsultation) return undefined;
+  // Toda dimensión debe existir y coincidir. Una opción desconocida nunca hereda un precio.
+  if (Object.keys(selection).length !== catalog.variants.length) return undefined;
+  if (!catalog.variants.every(({ key, options }) => options.some(({ value }) => selection[key] === value))) return undefined;
+  return catalog.prices.find((entry) => !entry.requiresConsultation &&
+    Object.entries(entry.selections).every(([key, value]) => selection[key] === value));
+};
+
 export const resolveCatalogPrice = (
   catalogId: PriceCatalogId,
   selection: Record<string, string>,
-): CatalogPrice | undefined => priceCatalog[catalogId].prices.find((entry) =>
-  Object.entries(entry.selections).every(([key, value]) => selection[key] === value),
-);
+): CatalogPrice | undefined => findCatalogPrice(priceCatalog[catalogId], selection);
 
-export const formatCatalogPrice = (entry?: CatalogPrice): string => {
-  if (!entry) return "Consultar";
+export const getCatalogTotal = (entry?: CatalogPrice): string | undefined => {
+  if (!entry || entry.requiresConsultation) return undefined;
   if (entry.total) return entry.total;
-  if (entry.unitPrice) return `${entry.unitPrice} c/u`;
-  return "Consultar";
+  if (!entry.unitPrice || !entry.quantity || !Number.isSafeInteger(entry.quantity) || entry.quantity < 1) return undefined;
+  // Mostrar el total del pack, según la indicación del cliente. La fuente conserva el unitario.
+  const amount = entry.unitPrice.match(/^\$(\d+(?:\.\d{3})*)(?:,(\d{1,2}))?$/);
+  if (!amount) return undefined;
+  const cents = Number(amount[1].replaceAll(".", "")) * 100 + Number((amount[2] ?? "").padEnd(2, "0"));
+  const totalCents = cents * entry.quantity;
+  if (!Number.isSafeInteger(totalCents)) return undefined;
+  const whole = Math.floor(totalCents / 100).toLocaleString("es-AR");
+  const decimals = totalCents % 100;
+  return `$${whole}${decimals ? `,${String(decimals).padStart(2, "0")}` : ""}`;
 };
+
+export const formatCatalogPrice = (entry?: CatalogPrice): string => getCatalogTotal(entry) ?? "Consultar";
+
+export const describeCatalogSelection = (catalog: CatalogProduct, selection: Record<string, string>): string =>
+  catalog.variants.map(({ key, options }) => options.find(({ value }) => value === selection[key])?.label ?? "Consultar").join(" · ");
+
+export const catalogList: CatalogProduct[] = Object.values(priceCatalog);

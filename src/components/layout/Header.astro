@@ -1,8 +1,38 @@
 ---
 import logo from "../../assets/icons/logo-quimica.svg";
 import { siteConfig } from "../../data/site";
+import { catalogList } from "../../data/pricing";
+import { visibleProducts } from "../../data/products";
 
 const isProductRoute = Astro.url.pathname.startsWith("/productos/");
+const productLinks = new Map<string, string>(
+  visibleProducts.filter((product) => !product.requiresConsultation)
+    .map((product) => [product.pricingId, `/productos/${product.slug}/`]),
+);
+const visibleCatalog = catalogList.filter((product) => productLinks.has(product.id));
+const textileCategories = new Set(["Remeras", "Chombas", "Buzos", "Gorras"]);
+const catalogLink = (product: (typeof catalogList)[number]) => ({
+  label: product.name,
+  href: productLinks.get(product.id)!,
+});
+const serviceGroups = [
+  ...[...new Set(visibleCatalog.map((product) => product.category))]
+    .filter((category) => !textileCategories.has(category))
+    .map((category) => ({
+      label: category,
+      links: visibleCatalog.filter((product) => product.category === category).map(catalogLink),
+    })),
+  {
+    label: "Estampado textil",
+    links: [
+      ...visibleCatalog.filter((product) => textileCategories.has(product.category)).map(catalogLink),
+      ...visibleProducts.filter((product) => product.requiresConsultation).map((product) => ({
+        label: product.title,
+        href: `/productos/${product.slug}/`,
+      })),
+    ],
+  },
+];
 ---
 
 <header class="site-header">
@@ -10,7 +40,7 @@ const isProductRoute = Astro.url.pathname.startsWith("/productos/");
     <div class="announcement__inner">
       <span>
         Venta mayorista y minorista
-        <span class="envios"> - Envío gratis a partir de 10 remeras/buzos</span>
+        <span class="envios"> - Productos personalizados</span>
       </span>
       <span>{siteConfig.address.street} - {siteConfig.address.city}, {siteConfig.address.province}</span>
     </div>
@@ -51,26 +81,21 @@ const isProductRoute = Astro.url.pathname.startsWith("/productos/");
             Servicios <span class="chevron" aria-hidden="true"></span>
           </button>
           <ul id="services-menu" class="services-menu" hidden>
-            <li><a href="/productos/calcos-papel/">Calcos</a></li>
-            <li><a href="/#servicios">Plotters</a></li>
-            <li><a href="/#servicios">Diseño gráfico</a></li>
-            <li class="services-menu__nested">
-              <button
-                class="services-submenu__trigger"
-                type="button"
-                aria-expanded="false"
-                aria-controls="textile-menu"
-              >
-                Estampado textil <span class="chevron" aria-hidden="true"></span>
-              </button>
-              <ul id="textile-menu" class="services-submenu" hidden>
-                <li><a href="/productos/remera-unisex/">Remeras</a></li>
-                <li><a href="/productos/campera-capucha/">Camperas</a></li>
-                <li><a href="/productos/gorra-trucker/">Gorras</a></li>
-                <li><a href="/productos/remera-egresadito/">Egresaditos</a></li>
-                <li><a href="/productos/remera-nino/">Infantil</a></li>
-              </ul>
-            </li>
+            {serviceGroups.map((group, index) => group.links.length === 1 ? (
+              <li><a href={group.links[0].href}>{group.label}</a></li>
+            ) : (
+              <li class="services-menu__nested">
+                <button
+                  class="services-submenu__trigger"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls={`services-group-${index}`}
+                >{group.label}<span class="chevron" aria-hidden="true"></span></button>
+                <ul id={`services-group-${index}`} class="services-submenu" hidden>
+                  {group.links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+                </ul>
+              </li>
+            ))}
           </ul>
         </li>
         <li><a class="nav-link" href="/#trabajos">Trabajos</a></li>
@@ -89,8 +114,7 @@ const isProductRoute = Astro.url.pathname.startsWith("/productos/");
   const servicesItem = document.querySelector<HTMLElement>(".nav-item--services");
   const servicesTrigger = document.querySelector<HTMLButtonElement>(".nav-menu__trigger");
   const servicesMenu = document.querySelector<HTMLElement>(".services-menu");
-  const textileTrigger = document.querySelector<HTMLButtonElement>(".services-submenu__trigger");
-  const textileMenu = document.querySelector<HTMLElement>(".services-submenu");
+  const submenuTriggers = document.querySelectorAll<HTMLButtonElement>(".services-submenu__trigger");
   const navOptions = document.querySelectorAll<HTMLElement>(".nav-link, .nav-menu__trigger");
   const compactAt = announcement?.offsetHeight || 40;
 
@@ -116,14 +140,22 @@ const isProductRoute = Astro.url.pathname.startsWith("/productos/");
     activeOption.setAttribute("aria-current", "page");
   };
 
+  const closeSubmenus = () => {
+    submenuTriggers.forEach((trigger) => {
+      trigger.setAttribute("aria-expanded", "false");
+      const submenu = document.getElementById(trigger.getAttribute("aria-controls") ?? "");
+      if (submenu) submenu.hidden = true;
+    });
+  };
+
   const closeServicesMenu = () => {
     servicesTrigger?.setAttribute("aria-expanded", "false");
     if (servicesMenu) servicesMenu.hidden = true;
-    textileTrigger?.setAttribute("aria-expanded", "false");
-    if (textileMenu) textileMenu.hidden = true;
+    closeSubmenus();
   };
 
   const closeMenu = (restoreFocus = false) => {
+    closeServicesMenu();
     const wasOpen = button?.getAttribute("aria-expanded") === "true";
     button?.setAttribute("aria-expanded", "false");
     menu?.classList.remove("is-open");
@@ -139,14 +171,20 @@ const isProductRoute = Astro.url.pathname.startsWith("/productos/");
   servicesTrigger?.addEventListener("click", () => {
     const isOpen = servicesTrigger.getAttribute("aria-expanded") === "true";
     servicesTrigger.setAttribute("aria-expanded", String(!isOpen));
-    if (servicesMenu) servicesMenu.hidden = isOpen;
+    if (isOpen) closeServicesMenu();
+    else if (servicesMenu) servicesMenu.hidden = false;
     setActiveOption(servicesTrigger);
   });
 
-  textileTrigger?.addEventListener("click", () => {
-    const isOpen = textileTrigger.getAttribute("aria-expanded") === "true";
-    textileTrigger.setAttribute("aria-expanded", String(!isOpen));
-    if (textileMenu) textileMenu.hidden = isOpen;
+  submenuTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const isOpen = trigger.getAttribute("aria-expanded") === "true";
+      closeSubmenus();
+      if (isOpen) return;
+      const submenu = document.getElementById(trigger.getAttribute("aria-controls") ?? "");
+      trigger.setAttribute("aria-expanded", "true");
+      if (submenu) submenu.hidden = false;
+    });
   });
 
   menu?.querySelectorAll<HTMLAnchorElement>("a").forEach((link) => {
@@ -341,6 +379,11 @@ const isProductRoute = Astro.url.pathname.startsWith("/productos/");
     z-index: 30;
     width: max-content;
     min-width: 190px;
+    max-width: min(22rem, calc(100vw - 2rem));
+    max-height: calc(100dvh - 11rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
     padding: 0.4rem 0.2rem 0.7rem;
     background: #0d0d0d;
     border: 1px solid var(--color-border);
@@ -360,7 +403,7 @@ const isProductRoute = Astro.url.pathname.startsWith("/productos/");
     color: #e6e6e6;
     background: transparent;
     border: 0;
-    font-family: var(--font-display);
+    font-family: var(--font-poppins);
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -395,6 +438,40 @@ const isProductRoute = Astro.url.pathname.startsWith("/productos/");
     height: 1px;
     margin: 5px 0;
     background: #fff;
+  }
+  @media (min-width: 56.01rem) and (max-width: 75.625rem) {
+    .announcement__inner {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.72fr);
+      gap: 1rem;
+      padding-inline: 32px;
+      font-size: 0.75rem;
+      letter-spacing: 0.06rem;
+      line-height: 1.25;
+    }
+    .announcement__inner > span:first-child {
+      grid-column: 1;
+      min-width: 0;
+    }
+    .announcement__inner > span:last-child {
+      grid-column: 2;
+      min-width: 0;
+      text-align: right;
+    }
+    .nav-shell {
+      padding-inline: 32px;
+    }
+    .brand img {
+      width: 64px;
+      height: 64px;
+    }
+    .nav-list {
+      gap: 20px;
+    }
+    .nav-link,
+    .nav-menu__trigger {
+      font-size: 0.75rem;
+      letter-spacing: 0.08rem;
+    }
   }
   @media (max-width: 56rem) {
     :global(:root) {
@@ -516,6 +593,10 @@ const isProductRoute = Astro.url.pathname.startsWith("/productos/");
     .services-menu {
       position: static;
       width: 100%;
+      min-width: 0;
+      max-width: none;
+      max-height: none;
+      overflow: visible;
       margin-top: 0.35rem;
       padding-left: 0.5rem;
       background: transparent;

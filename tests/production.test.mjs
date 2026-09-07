@@ -27,11 +27,12 @@ const routeMap = new Map(pages.map((page) => [routeFor(page.path), page]));
 
 const extract = (html, pattern) => [...html.matchAll(pattern)].map((match) => match[1]);
 
-test("genera el home, 17 productos y una página 404", () => {
+test("genera el home, las 17 fichas con imágenes y una página 404", () => {
   assert.equal(documentPages.length, 18);
   assert.ok(routeMap.has("/"));
+  assert.equal(routeMap.has("/productos/"), false);
   assert.ok(routeMap.has("/404.html"));
-  assert.equal([...routeMap.keys()].filter((route) => route.startsWith("/productos/")).length, 17);
+  assert.equal([...routeMap.keys()].filter((route) => route.startsWith("/productos/") && route !== "/productos/").length, 17);
 });
 
 test("cada documento tiene metadatos y landmarks básicos", () => {

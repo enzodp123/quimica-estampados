@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+import type { ProductCardData } from "../../data/product-cards";
+import { describeCatalogSelection, formatCatalogPrice, priceCatalog, resolveCatalogPrice } from "../../data/pricing";
+
+interface Props {
+  card: ProductCardData;
+}
+
+const { card } = Astro.props;
+const { product, name, description, image, badge, highlighted, consultAction } = card;
+const catalog = priceCatalog[product.pricingId];
+const entry = product.requiresConsultation ? undefined : resolveCatalogPrice(product.pricingId, product.priceSelection);
+const consultation = consultAction || !entry;
+const packs = consultation ? [] : catalog.variants.find(({ key }) => key === "quantity")?.options.filter(({ value }) => value !== "x1") ?? [];
+const priceLabel = describeCatalogSelection(catalog, product.priceSelection);
+---
+
+<a
+  class:list={["product-card", { "product-card--highlighted": highlighted }]}
+  href={`/productos/${product.slug}/`}
+  data-product-card={product.slug}
+  aria-label={`Ver ${name}${badge ? ` ${badge.toLowerCase()}` : ""}`}
+>
+  {badge && <span class="product-card__badge">{badge}</span>}
+  <div class="product-card__visual">
+    <Image
+      class="product-card__image"
+      src={image}
+      alt={`${name}${badge ? ` ${badge.toLowerCase()}` : ""}`}
+      loading="lazy"
+      widths={[280, 350, 525, 700]}
+      sizes="(max-width: 40rem) 80vw, (max-width: 80rem) 18rem, 22rem"
+      format="webp"
+    />
+  </div>
+  <div class="product-card__body">
+    <h3>{name}</h3>
+    <p class="product-card__description">{description}</p>
+    <p class="product-card__pack-label">{consultation ? "Consultar packs disponibles" : "Packs disponibles:"}</p>
+    {consultation ? (
+      <span class="product-card__consult">Consultar producto</span>
+    ) : (
+      <div class="product-card__footer">
+        <ul class="product-card__packs" aria-label={`Packs disponibles de ${name}`}>
+          {packs.map((pack) => <li>{pack.value.toUpperCase()}</li>)}
+        </ul>
+        <div class="product-card__price">
+          <span>{priceLabel}</span>
+          <strong>{formatCatalogPrice(entry)}</strong>
+        </div>
+      </div>
+    )}
+  </div>
+</a>
+
+<style>
+  .product-card {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    min-height: 38.25rem;
+    padding: 3rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: var(--color-text);
+    background: #13131380;
+    border: 1px solid #353534;
+    backdrop-filter: blur(2px);
+    scroll-snap-align: start;
+    font-family: var(--font-poppins);
+    text-transform: uppercase;
+    transition: border-color var(--transition), background-color var(--transition);
+  }
+  .product-card--highlighted { border-color: #1081b0; }
+  .product-card:hover { border-color: var(--color-cyan); background: #191919; }
+  .product-card:focus-visible { outline: 2px solid var(--color-cyan); outline-offset: -3px; }
+  .product-card__badge { position: absolute; top: 0.75rem; right: 0.5rem; padding: 0.375rem 1rem; border: 1px solid var(--color-cyan); color: var(--color-cyan); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.0875rem; }
+  .product-card__visual { width: 100%; max-width: 21.875rem; aspect-ratio: 1; margin-inline: auto; flex-shrink: 0; overflow: hidden; }
+  .product-card__image { width: 100%; height: 100%; object-fit: contain; }
+  .product-card__body { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  h3 { color: var(--color-cyan); font-size: 1.25rem; font-weight: 700; line-height: 1.4; }
+  .product-card__description { margin-top: 0.75rem; font-size: 0.875rem; font-weight: 500; line-height: 1.5; }
+  .product-card__pack-label { margin-top: auto; padding-top: 1rem; color: #ffffffb3; font-size: 0.75rem; font-weight: 700; line-height: 1.5; }
+  .product-card__footer { margin-top: 1rem; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
+  .product-card__packs { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .product-card__packs li { min-width: 2.5rem; height: 2.5rem; padding-inline: 0.375rem; display: grid; place-items: center; border: 1px solid #353534; color: var(--color-cyan); font-size: 0.75rem; font-weight: 700; }
+  .product-card__price { margin-left: auto; text-align: right; }
+  .product-card__price span { display: block; color: #ffffffb3; font-size: 0.75rem; line-height: 1.5; }
+  .product-card__price strong { display: block; font-size: 1.25rem; font-weight: 700; line-height: 1.4; white-space: nowrap; }
+  .product-card__consult { position: relative; width: min(100%, 16.4375rem); min-height: 3.4375rem; margin-top: 1rem; padding: 0.75rem; display: flex; align-items: center; justify-content: center; border: 1px solid #fff; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.06em; text-align: center; }
+  .product-card__consult::before, .product-card__consult::after { position: absolute; width: 1.5625rem; height: 2px; background: var(--color-background); content: ""; }
+  .product-card__consult::before { top: -1px; left: 0.6875rem; }
+  .product-card__consult::after { bottom: -1px; right: 1.9375rem; }
+  @media (max-width: 110rem) { .product-card { min-height: 34.125rem; padding: 2.5rem 1.5rem 1.5rem; } }
+  @media (max-width: 40rem) { .product-card { min-height: 33rem; padding-inline: 1.25rem; } }
+  @media (prefers-reduced-motion: reduce) { .product-card { transition: none; } }
+</style>

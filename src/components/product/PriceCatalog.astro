@@ -1,0 +1,71 @@
+---
+// Plantilla guardada para una futura incorporación. No tiene una ruta pública.
+import MainLayout from "../../layouts/MainLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/footer.astro";
+import CatalogPricing from "../../components/product/CatalogPricing.astro";
+import { catalogList, sizeChoices } from "../../data/pricing";
+import { products } from "../../data/products";
+
+const categories = [...new Set(catalogList.map((product) => product.category))];
+const categoryId = (category: string) => `categoria-${category.toLowerCase().replaceAll(" ", "-")}`;
+const detailLinks = new Map<string, string>(products.filter((product) => !product.requiresConsultation).map((product) => [product.pricingId, `/productos/${product.slug}/`]));
+---
+
+<MainLayout title="Catálogo y precios | Química Estampados" description="Todos nuestros precios de calcos, tarjetas, etiquetas, folletos, gorras, tazas, vinilos, lonas, banners y prendas personalizadas.">
+  <Header />
+  <main id="main-content" class="catalog-page">
+    <header class="catalog-page__intro">
+      <p class="section-kicker">Química Estampados</p>
+      <h1>Catálogo y precios</h1>
+      <p>Elegí tu producto, medida y cantidad. Encontrá los precios por unidad, los totales de cada pack y las cuotas disponibles.</p>
+    </header>
+    <nav class="catalog-page__categories" aria-label="Categorías del catálogo">
+      {categories.map((category) => <a href={`#${categoryId(category)}`}>{category}</a>)}
+    </nav>
+
+    <details class="catalog-page__sizes">
+      <summary>Guía de tamaños de calcos y etiquetas</summary>
+      <ul>{sizeChoices.map((size) => <li><strong>{size.label} · {size.description}</strong><span>Ejemplos: {size.examples?.join(" · ")}</span></li>)}</ul>
+    </details>
+
+    {categories.map((category) => (
+      <section class="catalog-page__category" aria-labelledby={categoryId(category)}>
+        <h2 id={categoryId(category)}>{category}</h2>
+        <div class="catalog-page__grid">
+          {catalogList.filter((product) => product.category === category).map((product) => (
+            <article class="catalog-card" id={product.id}>
+              <h3>{product.name}</h3>
+              {product.description && <p class="catalog-card__description">{product.description}</p>}
+              <CatalogPricing catalog={product} />
+              {detailLinks.has(product.id) && <a class="catalog-card__detail" href={detailLinks.get(product.id)}>Ver producto y fotos →</a>}
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+  <Footer />
+</MainLayout>
+
+<style>
+  .catalog-page { max-width: 90rem; margin: 0 auto; padding: 4rem clamp(1rem, 4vw, 4rem) 5rem; font-family: var(--font-poppins); }
+  .catalog-page__intro { max-width: 48rem; margin-bottom: 2rem; }
+  h1 { margin: 0.75rem 0 1rem; font-family: var(--font-poppins); font-size: clamp(2rem, 5vw, 4rem); letter-spacing: -0.04em; line-height: 1.1; }
+  .catalog-page__intro > p:last-child { color: #c2c2bd; line-height: 1.7; }
+  .catalog-page__categories { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
+  .catalog-page__categories a { border: 1px solid #555550; padding: 0.65rem 1rem; border-radius: 2rem; font-size: 0.85rem; }
+  .catalog-page__categories a:hover { color: #111; background: var(--color-cyan); border-color: var(--color-cyan); }
+  .catalog-page__sizes { border-block: 1px solid #42423e; padding: 1rem 0; }
+  .catalog-page__sizes summary { cursor: pointer; color: var(--color-cyan); font-size: 0.9rem; }
+  .catalog-page__sizes ul { list-style: none; display: grid; gap: 1rem; margin-top: 1.5rem; padding: 0; font-size: 0.85rem; }
+  .catalog-page__sizes span { display: block; color: #c2c2bd; margin-top: 0.35rem; }
+  .catalog-page__category { margin-top: 3rem; }
+  h2 { font-family: var(--font-poppins); font-size: 1.8rem; margin-bottom: 1.25rem; scroll-margin-top: 7rem; }
+  .catalog-page__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; align-items: start; }
+  .catalog-card { min-width: 0; padding: clamp(1rem, 2vw, 2rem); border: 1px solid #42423e; border-radius: 0.5rem; background: #171715; scroll-margin-top: 7rem; }
+  h3 { font-family: var(--font-poppins); font-size: 1.25rem; line-height: 1.4; }
+  .catalog-card__description { color: #c2c2bd; font-size: 0.85rem; line-height: 1.65; margin-top: 0.6rem; }
+  .catalog-card__detail { display: block; margin-top: 1rem; color: var(--color-cyan); font-size: 0.8rem; }
+  @media (max-width: 50rem) { .catalog-page__grid { grid-template-columns: minmax(0, 1fr); } }
+</style>

@@ -19,8 +19,12 @@ export const siteConfig = {
     display: import.meta.env.PUBLIC_WHATSAPP_DISPLAY || "+54 9 11 2624-9300",
   },
   social: {
-    instagram: import.meta.env.PUBLIC_INSTAGRAM_URL || "",
-    facebook: import.meta.env.PUBLIC_FACEBOOK_URL || "",
+    instagram:
+      import.meta.env.PUBLIC_INSTAGRAM_URL ||
+      "https://www.instagram.com/quimicaestampados.ok/",
+    facebook:
+      import.meta.env.PUBLIC_FACEBOOK_URL ||
+      "https://www.facebook.com/quimicaestampados/?locale=es_LA",
   },
   developer: {
     label: "@binadevs",

@@ -1,0 +1,114 @@
+---
+import {
+  describeCatalogSelection, findCatalogPrice, formatCatalogPrice, getCatalogTotal,
+  type CatalogProduct,
+} from "../../data/pricing";
+import { whatsappUrl } from "../../data/site";
+
+interface Props {
+  catalog: CatalogProduct;
+  initialSelection?: Record<string, string>;
+  requiresConsultation?: boolean;
+  title?: string;
+}
+
+const { catalog, initialSelection = catalog.prices[0]?.selections ?? {}, requiresConsultation = false, title = catalog.name } = Astro.props;
+const entry = requiresConsultation ? undefined : findCatalogPrice(catalog, initialSelection);
+const otherLabel = (key: string) => key === "quantity" ? "Otra cantidad" : ["size", "measure", "format"].includes(key) ? "Otra medida" : "Otra opción";
+---
+
+<div class="catalog-pricing" data-catalog-pricing data-catalog={JSON.stringify(catalog)} data-consult-only={requiresConsultation ? "true" : "false"}>
+  <div class="catalog-pricing__result" aria-live="polite" aria-atomic="true">
+    <p data-price-label>{getCatalogTotal(entry) ? "Total" : "Precio"} · <span data-price-selection>{describeCatalogSelection(catalog, initialSelection)}</span></p>
+    <strong data-product-price>{formatCatalogPrice(entry)}</strong>
+    <p data-product-installments hidden={!entry?.installments}>{entry?.installments}</p>
+    <p data-price-note hidden={!entry?.note}>{entry?.note}</p>
+  </div>
+
+  {catalog.variants.map((dimension) => (
+    <fieldset class="catalog-pricing__selector" data-price-dimension={dimension.key}>
+      <legend>{dimension.label}</legend>
+      <div class="catalog-pricing__choices">
+        {[...dimension.options, { value: "consultar", label: otherLabel(dimension.key) }].map((option) => (
+          <button
+            type="button"
+            class:list={["catalog-pricing__choice", { "is-active": initialSelection[dimension.key] === option.value }]}
+            data-price-choice={option.value}
+            aria-pressed={initialSelection[dimension.key] === option.value ? "true" : "false"}
+          >{option.label}{option.description && <span>{option.description}</span>}</button>
+        ))}
+      </div>
+      {dimension.key === "quantity" && (
+        <label class="catalog-pricing__custom" data-custom-quantity-label hidden>
+          Cantidad de unidades
+          <input type="number" min="1" step="1" inputmode="numeric" data-custom-quantity />
+        </label>
+      )}
+    </fieldset>
+  ))}
+
+  <p class="catalog-pricing__help">Para otras cantidades, medidas o personalizaciones: Consultar.</p>
+  {!requiresConsultation && catalog.sizes && <p class="catalog-pricing__help">{catalog.sizes.join(" · ")}</p>}
+  {!requiresConsultation && catalog.notes.length > 0 && <ul class="catalog-pricing__notes">{catalog.notes.map((note) => <li>{note}</li>)}</ul>}
+  {!requiresConsultation && catalog.extras && (
+    <div class="catalog-pricing__extras">
+      <p>Terminaciones adicionales</p>
+      <ul>{catalog.extras.map((extra) => <li>{extra.name}: <strong>{extra.price} {extra.unit}</strong></li>)}</ul>
+    </div>
+  )}
+
+  {!requiresConsultation && (
+    <details class="catalog-pricing__table">
+      <summary>Ver lista completa de precios</summary>
+      <section class="catalog-pricing__scroll" aria-label={`Lista de precios de ${catalog.name}`} tabindex="0">
+        <table>
+          <caption>{catalog.name}</caption>
+          <thead><tr><th scope="col">Opción</th><th scope="col">Total</th><th scope="col">Cuotas</th><th scope="col">Detalle</th></tr></thead>
+          <tbody>{catalog.prices.map((row) => (
+            <tr>
+              <th scope="row">{describeCatalogSelection(catalog, row.selections)}</th>
+              <td>{formatCatalogPrice(row)}</td>
+              <td>{row.installments ?? "Consultar"}</td>
+              <td>{row.note ?? "—"}</td>
+            </tr>
+          ))}</tbody>
+        </table>
+      </section>
+    </details>
+  )}
+
+  <a class="catalog-pricing__contact" data-price-contact data-product-title={title} href={whatsappUrl(`Hola, quisiera consultar por ${title}. ${describeCatalogSelection(catalog, initialSelection)}. Precio: ${formatCatalogPrice(entry)}.`)} target="_blank" rel="noreferrer">Consultar por WhatsApp <span aria-hidden="true">↗</span></a>
+</div>
+
+<script>
+  import { initCatalogPricing } from "../../scripts/catalog-pricing";
+  initCatalogPricing();
+</script>
+
+<style>
+  .catalog-pricing { min-width: 0; font-family: var(--font-poppins); }
+  .catalog-pricing [hidden] { display: none; }
+  .catalog-pricing__result { margin: 1.25rem 0 1.5rem; }
+  .catalog-pricing__result p { margin: 0.4rem 0; color: #c2c2bd; font-size: 0.8rem; line-height: 1.5; }
+  .catalog-pricing__result strong { display: block; font-family: var(--font-poppins); font-size: 1.375rem; line-height: 1.4; color: var(--color-magenta); }
+  .catalog-pricing__selector { min-width: 0; margin: 1.25rem 0; padding: 0; border: 0; }
+  .catalog-pricing__selector legend { padding: 0; margin-bottom: 0.6rem; font-size: 0.85rem; font-weight: 600; }
+  .catalog-pricing__choices { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .catalog-pricing__choice { padding: 0.65rem 0.85rem; border: 1px solid #353534; border-radius: 0; background: transparent; color: var(--color-magenta); font: inherit; font-size: 0.78rem; cursor: pointer; }
+  .catalog-pricing__choice span { display: block; margin-top: 0.2rem; font-size: 0.68rem; }
+  .catalog-pricing__choice:hover, .catalog-pricing__choice.is-active { border-color: var(--color-magenta); }
+  .catalog-pricing__custom { display: grid; gap: 0.5rem; max-width: 16rem; margin-top: 0.8rem; font-size: 0.8rem; }
+  .catalog-pricing__custom input { width: 100%; padding: 0.65rem; background: #191919; border: 1px solid #666; border-radius: 0.25rem; color: white; font: inherit; }
+  .catalog-pricing__help, .catalog-pricing__notes, .catalog-pricing__extras { color: #c2c2bd; font-size: 0.8rem; line-height: 1.65; margin: 0.75rem 0; }
+  .catalog-pricing__notes, .catalog-pricing__extras ul { padding-left: 1.1rem; }
+  .catalog-pricing__extras p { color: #fff; font-weight: 600; }
+  .catalog-pricing__table { margin-top: 1.25rem; border-top: 1px solid #42423e; padding-top: 1rem; }
+  .catalog-pricing__table summary { cursor: pointer; font-size: 0.8rem; color: var(--color-cyan); }
+  .catalog-pricing__scroll { overflow-x: auto; max-width: 100%; margin-top: 0.8rem; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.75rem; text-align: left; }
+  caption { text-align: left; padding-bottom: 0.6rem; font-weight: 600; }
+  th, td { padding: 0.65rem; border-bottom: 1px solid #41413d; white-space: nowrap; }
+  th { font-weight: 600; }
+  thead { color: #c2c2bd; }
+  .catalog-pricing__contact { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; padding: 0.9rem 1rem; border: 1px solid var(--color-magenta); background: transparent; color: var(--color-magenta); font-size: 0.8rem; font-weight: 700; border-radius: 0; }
+</style>

@@ -1,0 +1,1158 @@
+QUIERO QUE USES ESTA INFORMACIÓN COMO FUENTE ÚNICA DE PRECIOS PARA EL PROYECTO.
+
+IMPORTANTE:
+- No inventar precios.
+- No modificar precios.
+- No calcular descuentos nuevos.
+- No reemplazar valores por estimaciones.
+- Si una combinación no está definida, mostrar "Consultar".
+- El símbolo monetario utilizado es "$".
+- Los precios de pack que dicen "$XX.XXX c/u" son precios POR UNIDAD dentro de ese pack.
+- Los precios que dicen "Total" corresponden al total de esa cantidad.
+- Mantener separados los distintos tipos de producto.
+- Evitar duplicar productos.
+- Usar esta lista como fuente de verdad para precios.
+
+==================================================
+CATÁLOGO GENERAL - QUÍMICA ESTAMPADOS
+==================================================
+
+
+##################################################
+1. CALCOS
+##################################################
+
+
+==================================================
+CLASIFICACIÓN POR TAMAÑO
+==================================================
+
+XS
+- Hasta 12 cm²
+- Ejemplos:
+  - 3x3 cm
+  - 3x4 cm
+  - 2,5x5 cm
+  - 5x2,5 cm
+
+CHICAS
+- Hasta 25 cm²
+- Ejemplos:
+  - 4x4 cm
+  - 5x5 cm
+  - 6x4 cm
+  - 7x3 cm
+  - 8x3 cm
+
+MEDIANAS
+- Hasta 50 cm²
+- Ejemplos:
+  - 6x6 cm
+  - 7x7 cm
+  - 6x8 cm
+  - 12x4 cm
+  - 10x5 cm
+
+GRANDES
+- Hasta 75 cm²
+- Ejemplos:
+  - 8x8 cm
+  - 10x7 cm
+  - 15x5 cm
+  - 20x3,5 cm
+
+XL
+- Hasta 100 cm²
+- Ejemplos:
+  - 9x9 cm
+  - 10x10 cm
+  - 8x12 cm
+  - 15x6 cm
+  - 20x5 cm
+  - 5x20 cm
+
+
+
+==================================================
+1.1 CALCOS VINILO TROQUELADAS
+==================================================
+
+XS - Hasta 12 cm²
+
+100 unidades:
+- Total: $9.500
+- Precio unitario: $95
+- 3 cuotas de $3.830
+
+300 unidades:
+- Total: $25.650
+- Precio unitario: $85,50
+- 3 cuotas de $5.600
+
+500 unidades:
+- Total: $38.000
+- Precio unitario: $76
+- 3 cuotas de $15.300
+
+
+CHICAS - Hasta 25 cm²
+
+100 unidades:
+- Total: $17.500
+- Precio unitario: $175
+- 3 cuotas de $7.060
+
+300 unidades:
+- Total: $47.250
+- Precio unitario: $157,50
+- 3 cuotas de $19.000
+
+500 unidades:
+- Total: $70.000
+- Precio unitario: $140
+- 3 cuotas de $28.230
+
+
+MEDIANAS - Hasta 50 cm²
+
+100 unidades:
+- Total: $32.000
+- Precio unitario: $320
+- 3 cuotas de $19.900
+
+300 unidades:
+- Total: $86.400
+- Precio unitario: $288
+- 3 cuotas de $34.850
+
+500 unidades:
+- Total: $128.000
+- Precio unitario: $256
+- 3 cuotas de $51.600
+
+
+GRANDES - Hasta 75 cm²
+
+100 unidades:
+- Total: $50.000
+- Precio unitario: $500
+- 3 cuotas de $20.160
+
+300 unidades:
+- Total: $135.000
+- Precio unitario: $450
+- 3 cuotas de $54.450
+
+500 unidades:
+- Total: $212.500
+- Precio unitario: $425
+- 3 cuotas de $85.700
+
+
+XL - Hasta 100 cm²
+
+100 unidades:
+- Total: $69.000
+- Precio unitario: $690
+- 3 cuotas de $27.830
+
+300 unidades:
+- Total: $186.000
+- Precio unitario: $620
+- 3 cuotas de $75.000
+
+500 unidades:
+- Total: $293.000
+- Precio unitario: $586
+- 3 cuotas de $118.175
+
+
+
+==================================================
+1.2 CALCOS PAPEL ADHESIVO
+==================================================
+
+XS - Hasta 12 cm²
+
+100 unidades:
+- Total: $6.000
+- Precio unitario: $60
+- 3 cuotas de $2.420
+
+300 unidades:
+- Total: $16.500
+- Precio unitario: $55
+- 3 cuotas de $6.655
+
+500 unidades:
+- Total: $27.000
+- Precio unitario: $54
+- 3 cuotas de $10.890
+
+
+CHICAS - Hasta 25 cm²
+
+100 unidades:
+- Total: $12.500
+- Precio unitario: $125
+- 3 cuotas de $5.040
+
+300 unidades:
+- Total: $34.500
+- Precio unitario: $115
+- 3 cuotas de $13.900
+
+500 unidades:
+- Total: $55.000
+- Precio unitario: $110
+- 3 cuotas de $22.183
+
+
+MEDIANAS - Hasta 50 cm²
+
+100 unidades:
+- Total: $25.600
+- Precio unitario: $256
+- 3 cuotas de $10.325
+
+300 unidades:
+- Total: $72.900
+- Precio unitario: $243
+- 3 cuotas de $29.400
+
+500 unidades:
+- Total: $119.000
+- Precio unitario: $238
+- 3 cuotas de $48.000
+
+
+GRANDES - Hasta 75 cm²
+
+100 unidades:
+- Total: $37.500
+- Precio unitario: $375
+- 3 cuotas de $15.125
+
+300 unidades:
+- Total: $103.500
+- Precio unitario: $345
+- 3 cuotas de $41.745
+
+500 unidades:
+- Total: $165.000
+- Precio unitario: $330
+- 3 cuotas de $66.550
+
+
+XL - Hasta 100 cm²
+
+100 unidades:
+- Total: $50.000
+- Precio unitario: $500
+- 3 cuotas de $20.166
+
+300 unidades:
+- Total: $138.000
+- Precio unitario: $460
+- 3 cuotas de $55.660
+
+500 unidades:
+- Total: $220.000
+- Precio unitario: $440
+- 3 cuotas de $88.733
+
+
+
+==================================================
+1.3 CALCOS DTF UV
+==================================================
+
+XS - Hasta 12 cm²
+
+100 unidades:
+- Total: $17.500
+- Precio unitario: $175
+- 3 cuotas de $7.058
+
+
+CHICAS - Hasta 25 cm²
+
+50 unidades:
+- Total: $20.000
+- Precio unitario: $400
+- 3 cuotas de $8.066
+
+100 unidades:
+- Total: $36.000
+- Precio unitario: $360
+- 3 cuotas de $14.520
+
+
+MEDIANAS - Hasta 50 cm²
+
+50 unidades:
+- Total: $37.500
+- Precio unitario: $750
+- 3 cuotas de $15.125
+
+100 unidades:
+- Total: $69.000
+- Precio unitario: $690
+- 3 cuotas de $27.830
+
+
+GRANDES - Hasta 75 cm²
+
+50 unidades:
+- Total: $55.000
+- Precio unitario: $1.100
+- 3 cuotas de $22.185
+
+100 unidades:
+- Total: $99.000
+- Precio unitario: $990
+- 3 cuotas de $39.930
+
+
+XL - Hasta 100 cm²
+
+50 unidades:
+- Total: $70.000
+- Precio unitario: $1.400
+- 3 cuotas de $28.233
+
+100 unidades:
+- Total: $120.000
+- Precio unitario: $1.200
+- 3 cuotas de $48.400
+
+
+
+##################################################
+2. TARJETAS
+##################################################
+
+Tamaños estándar:
+- 8,5 x 5,5 cm
+- 9 x 5 cm
+
+Material:
+- Papel terminación mate o brillante
+- Hasta 250 gr
+
+
+SIMPLE FAZ
+
+100 unidades:
+- Total: $18.000
+
+300 unidades:
+- Total: $48.000
+- Equivale a $16.000 las 100
+
+500 unidades:
+- Total: $75.000
+- Equivale a $15.000 las 100
+
+
+DOBLE FAZ
+
+100 unidades:
+- Total: $25.000
+
+300 unidades:
+- Total: $66.000
+- Equivale a $22.000 las 100
+
+500 unidades:
+- Total: $100.000
+- Equivale a $20.000 las 100
+
+
+
+##################################################
+3. ETIQUETAS
+##################################################
+
+Material:
+- Papel terminación mate o brillante
+- Hasta 250 gr
+
+
+XS - Hasta 12 cm²
+
+100 unidades:
+- Total: $6.000
+- Precio unitario: $60
+- 3 cuotas de $2.420
+
+300 unidades:
+- Total: $16.500
+- Precio unitario: $55
+- 3 cuotas de $6.655
+
+500 unidades:
+- Total: $27.000
+- Precio unitario: $54
+- 3 cuotas de $10.890
+
+
+CHICAS - Hasta 25 cm²
+
+100 unidades:
+- Total: $12.500
+- Precio unitario: $125
+- 3 cuotas de $5.040
+
+300 unidades:
+- Total: $34.500
+- Precio unitario: $115
+- 3 cuotas de $13.900
+
+500 unidades:
+- Total: $55.000
+- Precio unitario: $110
+- 3 cuotas de $22.183
+
+
+MEDIANAS - Hasta 50 cm²
+
+100 unidades:
+- Total: $25.600
+- Precio unitario: $256
+- 3 cuotas de $10.325
+
+300 unidades:
+- Total: $72.900
+- Precio unitario: $243
+- 3 cuotas de $29.400
+
+500 unidades:
+- Total: $119.000
+- Precio unitario: $238
+- 3 cuotas de $48.000
+
+
+GRANDES - Hasta 75 cm²
+
+100 unidades:
+- Total: $37.500
+- Precio unitario: $375
+- 3 cuotas de $15.125
+
+300 unidades:
+- Total: $103.500
+- Precio unitario: $345
+- 3 cuotas de $41.745
+
+500 unidades:
+- Total: $165.000
+- Precio unitario: $330
+- 3 cuotas de $66.550
+
+
+XL - Hasta 100 cm²
+
+100 unidades:
+- Total: $50.000
+- Precio unitario: $500
+- 3 cuotas de $20.166
+
+300 unidades:
+- Total: $138.000
+- Precio unitario: $460
+- 3 cuotas de $55.660
+
+500 unidades:
+- Total: $220.000
+- Precio unitario: $440
+- 3 cuotas de $88.733
+
+
+
+##################################################
+4. FOLLETOS
+##################################################
+
+
+==================================================
+4.1 FOLLETO ESTÁNDAR
+==================================================
+
+Medida:
+- 10x15 cm
+
+Material:
+- Papel ilustración
+- Terminación brillante o matelina
+- Hasta 120 gr
+
+
+SIMPLE FAZ
+
+100 unidades:
+- Total: $18.000
+
+300 unidades:
+- Total: $48.000
+- $16.000 los 100
+
+500 unidades:
+- Total: $75.000
+- $15.000 los 100
+
+
+DOBLE FAZ
+
+100 unidades:
+- Total: $25.000
+
+300 unidades:
+- Total: $66.000
+- $22.000 los 100
+
+500 unidades:
+- Total: $100.000
+- $20.000 los 100
+
+
+
+==================================================
+4.2 FOLLETOS CHICOS
+==================================================
+
+Medida:
+- 7x10 cm
+
+Material:
+- Papel ilustración
+- Terminación brillante o matelina
+- Hasta 120 gr
+
+
+SIMPLE FAZ
+
+100 unidades:
+- Total: $15.000
+
+300 unidades:
+- Total: $42.000
+- $14.000 los 100
+
+500 unidades:
+- Total: $65.000
+- $13.000 los 100
+
+
+DOBLE FAZ
+
+100 unidades:
+- Total: $21.000
+
+300 unidades:
+- Total: $57.000
+- $19.000 los 100
+
+500 unidades:
+- Total: $90.000
+- $18.000 los 100
+
+
+
+##################################################
+5. GORRAS
+##################################################
+
+Producto:
+- Gorra Trucker
+- Sublimada o con DTF
+
+1 unidad:
+- $10.000
+
+Pack x5:
+- Total: $47.500
+- $9.500 c/u
+
+Pack x10:
+- Total: $90.000
+- $9.000 c/u
+
+Pack x20:
+- Total: $160.000
+- $8.000 c/u
+
+Pack x30:
+- Total: $225.000
+- $7.500 c/u
+
+Pack x50:
+- Total: $325.000
+- $6.500 c/u
+
+
+
+##################################################
+6. TAZAS
+##################################################
+
+
+==================================================
+6.1 TAZA CERÁMICA
+==================================================
+
+Descripción:
+- Cerámica premium AAA sublimada
+
+1 unidad:
+- $15.000
+
+Pack x10:
+- Total: $135.000
+- $13.500 c/u
+
+Pack x30:
+- Total: $375.000
+- $12.500 c/u
+
+Pack x50:
+- Total: $550.000
+- $11.000 c/u
+
+
+
+==================================================
+6.2 TAZA PLÁSTICA
+==================================================
+
+Descripción:
+- Plástico sublimado
+
+1 unidad:
+- $9.000
+
+Pack x10:
+- Total: $70.000
+- $7.000 c/u
+
+Pack x30:
+- Total: $120.000
+- $4.000 c/u
+
+
+
+##################################################
+7. VINILO
+##################################################
+
+
+==================================================
+7.1 VINILO SIN TROQUELAR
+==================================================
+
+Características:
+- Base blanca o transparente
+- Sin troquelar
+
+Incluye:
+- Digitalización básica
+- Texto o logo ya existente
+
+Diseño personalizado:
+- Se cotiza aparte
+
+
+PRECIOS:
+
+0,50 x 0,50 mt:
+- $10.000
+
+0,50 x 1 mt:
+- $20.000
+
+1 x 1 mt:
+- $38.000
+
+1 x 2 mt:
+- $70.000
+
+1 x 3 mt:
+- $105.000
+
+
+
+==================================================
+7.2 VINILO TROQUELADO
+==================================================
+
+Características:
+- Base blanca o transparente
+- Troquelado
+
+Incluye:
+- Digitalización básica
+- Texto, diseño o logo ya existente
+
+Diseño personalizado:
+- Se cotiza aparte en vinilos chicos
+
+
+PRECIOS:
+
+0,50 x 0,50 mt:
+- $13.000
+
+0,50 x 1 mt:
+- $26.000
+
+1 x 1 mt:
+- $49.000
+
+1 x 2 mt:
+- $88.000
+
+
+
+##################################################
+8. LONA
+##################################################
+
+Producto:
+- Lona front
+
+Importante:
+- Precio sin terminación
+
+Incluye:
+- Digitalización básica
+- Texto, diseño o logo ya existente
+
+Diseño personalizado:
+- Se cotiza aparte en lonas chicas
+
+
+PRECIOS:
+
+0,50 x 0,50 mt:
+- $10.000
+
+0,50 x 1 mt:
+- $20.000
+
+1 x 1 mt:
+- $38.000
+
+1 x 2 mt:
+- $70.000
+
+1 x 3 mt:
+- $98.000
+
+
+TERMINACIONES ADICIONALES:
+
+Ojalillos:
+- $1.000 c/u
+
+Fuelle:
+- $3.000 por metro
+
+
+
+##################################################
+9. FLY BANNERS
+##################################################
+
+Producto:
+- Fly Banner forma gota
+- Altura: 1,70 mt
+- Tamaño mediano
+
+Incluye:
+- Estaca
+- Diseño
+
+Otras formas o medidas:
+- Consultar
+
+
+1 unidad:
+- $130.000
+
+2 unidades:
+- Total $250.000
+
+
+
+##################################################
+10. BANNERS
+##################################################
+
+Tamaño estándar:
+- 0,85 x 1,90 mt
+
+Otras medidas:
+- Consultar
+
+
+
+==================================================
+10.1 PORTABANNER DE 2 TENSORES CLÁSICO
+==================================================
+
+1 unidad:
+- $100.000
+
+2 unidades:
+- Total $185.000
+
+
+
+==================================================
+10.2 PORTABANNER ROLL-UP
+==================================================
+
+1 unidad:
+- $120.000
+
+2 unidades:
+- Total $220.000
+
+
+
+##################################################
+11. REMERAS
+##################################################
+
+Material:
+- Algodón peinado 24.1
+
+Terminaciones premium:
+- Tapacostura en cuello
+- Refuerzo en hombros
+
+Precio correspondiente a:
+- Estampado chico adelante
+- Media espalda
+
+
+
+==================================================
+11.1 REMERAS INFANTILES
+==================================================
+
+Talles:
+- Del 4 al 18
+
+1 unidad:
+- $20.000
+
+Pack x5:
+- $19.000 c/u
+
+Pack x10:
+- $18.000 c/u
+
+Pack x20:
+- $17.500 c/u
+
+Pack x50:
+- $16.000 c/u
+
+
+
+==================================================
+11.2 REMERAS ADULTO
+==================================================
+
+Talles:
+- Del 1 al 10
+
+1 unidad:
+- $25.000
+
+Pack x5:
+- $24.000 c/u
+
+Pack x10:
+- $23.000 c/u
+
+Pack x20:
+- $22.000 c/u
+
+Pack x50:
+- $20.000 c/u
+
+
+
+##################################################
+12. CHOMBAS
+##################################################
+
+
+==================================================
+12.1 CHOMBA ALGODÓN PEINADO 24.1
+==================================================
+
+Características:
+- Algodón peinado 24.1
+- Cuello polo
+- Botones
+
+Talles:
+- Del 1 al 5
+
+Terminaciones premium:
+- Tapacostura en cuello
+- Refuerzo en hombros
+
+Precio correspondiente a:
+- Estampado chico adelante
+- Media espalda
+
+Solo logo chico adelante:
+- Consultar
+
+
+1 unidad:
+- $30.000
+
+Pack x5:
+- $28.500 c/u
+
+Pack x10:
+- $27.000 c/u
+
+
+
+==================================================
+12.2 CHOMBA PIQUÉ
+==================================================
+
+Características:
+- Piqué de algodón
+- Cuello polo
+- Botones
+
+Talles:
+- Del 1 al 10
+
+1 unidad:
+- $35.000
+
+Pack x5:
+- $33.000 c/u
+
+Pack x10:
+- $31.500 c/u
+
+
+
+##################################################
+13. BUZOS
+##################################################
+
+Todos los siguientes precios corresponden a:
+- Estampado chico adelante
+- Media espalda
+
+Terminaciones premium:
+- Tapacostura en cuello
+- Refuerzo en hombros
+
+
+
+==================================================
+13.1 CANGURO INFANTIL
+==================================================
+
+Características:
+- Canguro de algodón
+- Frisa clásica
+
+Talles:
+- Del 4 al 18
+
+1 unidad:
+- $35.000
+
+Pack x5:
+- $34.000 c/u
+
+Pack x10:
+- $31.000 c/u
+
+
+
+==================================================
+13.2 CANGURO ADULTO
+==================================================
+
+Características:
+- Canguro de algodón
+- Frisa clásica
+
+Talles:
+- Del 1 al 10
+
+1 unidad:
+- $39.000
+
+Pack x5:
+- $37.000 c/u
+
+Pack x10:
+- $35.000 c/u
+
+
+
+==================================================
+13.3 CANGURO PREMIUM
+==================================================
+
+Características:
+- Frisa invisible
+- Capucha forrada
+- Ojales
+- Cordón
+
+1 unidad:
+- $45.000
+
+Pack x5:
+- $43.000 c/u
+
+Pack x10:
+- $40.000 c/u
+
+
+
+==================================================
+13.4 BUZO CUELLO REDONDO
+==================================================
+
+Características:
+- Algodón
+- Frisa clásica
+- Cuello redondo
+
+1 unidad:
+- $32.000
+
+Pack x5:
+- $30.500 c/u
+
+Pack x10:
+- $28.800 c/u
+
+
+
+==================================================
+13.5 CAMPERA
+==================================================
+
+Características:
+- Algodón
+- Frisa clásica
+- Capucha
+- Bolsillos
+- Cierre
+
+1 unidad:
+- $45.000
+
+Pack x5:
+- $43.000 c/u
+
+Pack x10:
+- $40.000 c/u
+
+
+
+##################################################
+REGLAS DE IMPLEMENTACIÓN PARA CODEX
+##################################################
+
+1. Crear una estructura centralizada para todos los precios.
+
+2. No escribir los precios directamente dentro de componentes de UI
+si pueden mantenerse en un archivo de datos separado.
+
+Ejemplos posibles:
+- precios.ts
+- productos.ts
+- catalogo.ts
+- products.json
+
+3. Cada producto debería poder almacenar como mínimo:
+- id
+- nombre
+- categoría
+- descripción
+- variantes
+- tamaños
+- cantidades
+- precio
+- precioUnitario
+- precioPack
+- cuotas
+- notas
+- requiereConsulta
+
+4. Si existe más de una opción:
+por ejemplo:
+- tamaño
+- cantidad
+- tipo de impresión
+- simple faz / doble faz
+- infantil / adulto
+
+el precio debe cambiar según la variante seleccionada.
+
+5. NO calcular automáticamente precios para cantidades que no estén
+definidas en esta lista.
+
+Ejemplo:
+
+Si existen:
+100 = $18.000
+300 = $48.000
+500 = $75.000
+
+y el usuario pide 200:
+
+NO calcular $36.000.
+
+Debe mostrarse:
+"Consultar precio"
+
+6. Cuando un producto diga:
+"Diseño personalizado se cotiza aparte"
+
+mostrar claramente:
+"El diseño personalizado se cotiza aparte."
+
+7. Cuando diga:
+"Por otras medidas consultar"
+
+mostrar:
+"Consultar por otras medidas."
+
+8. En productos vendidos por pack, respetar el precio unitario del pack.
+
+Ejemplo:
+
+Remeras adulto:
+Pack x10 = $23.000 c/u
+
+Significa:
+- cantidad mínima de esa opción: 10
+- precio mostrado por unidad: $23.000 c/u
+
+No reemplazarlo por otro precio.
+
+9. Mantener la información comercial exactamente según este catálogo.
+
+10. Si hay alguna duda, dato faltante o variante no especificada:
+NO inventar.
+Mostrar "Consultar".

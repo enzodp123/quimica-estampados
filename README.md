@@ -177,7 +177,27 @@ El repositorio usa valores funcionales para poder probar el flujo completo, pero
 - Dirección normalizada: `65 Alem, Victoria, Entre Ríos`; en el diseño también aparecía `66 Alem`.
 - Email visible y receptor alternativo: `quimicaestampados@gmail.com`.
 - Endpoint real del formulario, perfiles sociales, URL del crédito y dominio canónico.
-- Tarifas y condiciones comerciales incluidas en las fichas.
+- Condiciones de envío y plazos de producción no incluidos en la lista de precios.
 - Copys donde se corrigieron inconsistencias evidentes del diseño; deben recibir aprobación final del cliente.
 
 Hasta completar esos datos, el proyecto está preparado para QA y preproducción, pero no para una publicación comercial definitiva.
+
+## Catálogo de precios
+
+La lista entregada se conserva íntegra en `docs/catalogo-precios-fuente.txt`. Es la única fuente comercial para los precios de `src/data/pricing.ts`: 24 productos, 13 categorías y 136 combinaciones, más las terminaciones adicionales de lona.
+
+Por indicación del cliente, solo se publican las 17 fichas que tienen imágenes. `visibleProducts` en `src/data/products.ts` controla las rutas y el menú Servicios. Las fichas usan `ProductInfo.astro` para conservar el diseño de Figma (nodo `1033:2504`), con Poppins, precios compactos en magenta, botones con borde y tamaños desplegables.
+
+«Catálogo y precios» no forma parte de la web actual: la plantilla se conserva en `src/components/product/PriceCatalog.astro`, fuera de las rutas públicas, junto con `CatalogPricing.astro`. Los nueve productos sin imágenes conservan todos sus precios en `src/data/pricing.ts`: tazas, vinilos, lona, fly banner, portabanners y canguro premium. Para incorporarlos más adelante, agregar sus imágenes y su ficha en `products.ts`. La lógica de precios sigue compartida en `src/scripts/catalog-pricing.ts`.
+
+Los importes se mantienen como texto para conservar exactamente los separadores y decimales entregados. `total` es el total publicado de la cantidad; `unitPrice` conserva el precio por unidad de la fuente. Por indicación del cliente, las tarjetas y fichas muestran el total del pack: se utiliza el total publicado o, si solo hay un unitario, se multiplica por la cantidad de esa combinación mediante `getCatalogTotal`. El cálculo usa centavos enteros y no modifica los datos originales. No se calculan cuotas, descuentos ni precios de cantidades intermedias. Las combinaciones ausentes muestran **Consultar**. Oversize y egresadito conservan sus fichas con precio a consultar, porque no tienen una tarifa específica en la fuente.
+
+`tests/pricing.test.mjs` compara cada combinación contra el documento original, controla productos duplicados, verifica los adicionales y prueba las consultas por cantidades o variantes no definidas. Ejecutar `npm run qa` después de actualizar los datos.
+
+## Tarjetas de Impresiones y recomendaciones
+
+`src/data/product-cards.ts` conserva los nueve diseños y su orden del nodo Figma `1144:2781`, con imágenes exportadas del archivo original y distintivos infantiles. Los precios mostrados corresponden a la selección inicial de la ficha y salen de `pricing.ts`; los packs muestran su importe total. Egresadito mantiene la consulta por no tener una tarifa específica.
+
+`ProductCarousel.astro` permite desplazamiento horizontal con flechas, teclado y gestos táctiles. Las flechas avanzan una tarjeta, se desactivan en los extremos y respetan la preferencia de movimiento reducido. Las recomendaciones priorizan la misma categoría y excluyen el producto actual. Solo se enlazan productos publicados con imágenes.
+
+La composición de Impresiones sigue el nodo `974:1922`: encabezado alineado con la primera tarjeta, título vertical a la izquierda y tres tarjetas visibles en escritorio. El título, el encabezado y el carrusel ocupan áreas separadas de una grilla, con altura automática para que los textos y los controles no se superpongan al cambiar el ancho. En móvil, el título tiene una fila propia. Los nueve productos del nodo `1144:2781` se recorren dentro de esa misma composición.

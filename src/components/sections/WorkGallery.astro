@@ -268,6 +268,7 @@ const initialWorks = galleryCategories[0].works;
 
 <style>
   .work-gallery {
+    --section-title-offset: 0rem;
     --work-heading-bottom: 0rem;
     position: relative;
     isolation: isolate;
@@ -280,11 +281,11 @@ const initialWorks = galleryCategories[0].works;
   .work-gallery__rail {
     position: absolute;
     bottom: var(--work-heading-bottom);
-    left: var(--editorial-rail-left);
+    left: calc(var(--section-title-inset) - var(--section-title-offset));
     z-index: 2;
     color: var(--color-cyan);
     font-family: var(--font-montserrat);
-    font-size: var(--vertical-title-font-size);
+    font-size: var(--section-title-rail-size);
     font-weight: var(--vertical-title-font-weight);
     letter-spacing: -0.045em;
     line-height: 1;
@@ -296,7 +297,7 @@ const initialWorks = galleryCategories[0].works;
   .work-gallery__title {
     position: absolute;
     bottom: var(--work-heading-bottom);
-    left: clamp(5.5rem, 8.23vw, 9.875rem);
+    left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap));
     z-index: 2;
     color: var(--color-text);
     font-family: var(--font-montserrat);
@@ -555,6 +556,7 @@ const initialWorks = galleryCategories[0].works;
 
   @media (min-width: 40.0625rem) and (max-width: 110rem) {
     .work-gallery {
+      --section-title-offset: 1.5rem;
       width: calc(100% - 3rem);
       height: 58.9375rem;
       margin-inline: auto;
@@ -603,8 +605,8 @@ const initialWorks = galleryCategories[0].works;
       font-size: 0.875rem;
     }
 
-    .work-gallery__rail { left: 0; bottom: 0; font-size: 3rem; }
-    .work-gallery__title { left: 3.6875rem; bottom: 0; font-size: 2.25rem; line-height: 1.05; }
+    .work-gallery__rail { left: calc(var(--section-title-inset) - var(--section-title-offset)); bottom: 0; font-size: var(--section-title-rail-size); }
+    .work-gallery__title { left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap)); bottom: 0; font-size: 2.25rem; line-height: 1.05; }
   }
 
   @media (min-width: 40.0625rem) and (max-width: 52rem) {
@@ -618,6 +620,7 @@ const initialWorks = galleryCategories[0].works;
 
   @media (max-width: 40rem) {
     .work-gallery {
+      --section-title-offset: 0.75rem;
       width: calc(100% - 1.5rem);
       height: auto;
       min-height: 75.5rem;
@@ -670,8 +673,8 @@ const initialWorks = galleryCategories[0].works;
     .work-gallery__media--5 { grid-column: 3 / span 2; grid-row: 3; }
 
     .work-gallery__cta { display: none; }
-    .work-gallery__rail { left: 0; bottom: 3rem; font-size: 2rem; }
-    .work-gallery__title { left: 2.75rem; bottom: 3rem; font-size: 1.25rem; line-height: 1.05; }
+    .work-gallery__rail { left: calc(var(--section-title-inset) - var(--section-title-offset)); bottom: 3rem; font-size: var(--section-title-rail-size); }
+    .work-gallery__title { left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap)); bottom: 3rem; font-size: 1.25rem; line-height: 1.05; }
 
     .work-lightbox__close { top: 1.5rem; right: 1rem; }
     .work-lightbox__frame {
@@ -684,4 +687,14 @@ const initialWorks = galleryCategories[0].works;
     .work-lightbox__close,
     .work-gallery__media::after { transition: none; }
   }
+
+  @media (min-width: 40.0625rem) and (max-width: 52rem) {
+    .work-gallery { height: 67rem; }
+    .work-gallery__content { left: var(--section-content-start); width: calc(100% - var(--section-content-start) - 1.5rem); }
+  }
+  @media (max-width: 40rem) {
+    .work-gallery__content { width: calc(100% - var(--section-content-start)); margin-left: var(--section-content-start); }
+    .work-gallery { padding-bottom: 14rem; }
+  }
+
 </style>

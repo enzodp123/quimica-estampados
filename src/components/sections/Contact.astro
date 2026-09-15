@@ -179,6 +179,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
 
 <style>
   .contact {
+    --section-title-offset: 0rem;
     --contact-heading-bottom: 6.25rem;
     position: relative;
     isolation: isolate;
@@ -191,11 +192,11 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
   .contact__rail {
     position: absolute;
     bottom: var(--contact-heading-bottom);
-    left: var(--editorial-rail-left);
+    left: calc(var(--section-title-inset) - var(--section-title-offset));
     z-index: 2;
     color: var(--color-magenta);
     font-family: var(--font-montserrat);
-    font-size: var(--vertical-title-font-size);
+    font-size: var(--section-title-rail-size);
     font-weight: var(--vertical-title-font-weight);
     letter-spacing: -0.045em;
     line-height: 1;
@@ -207,7 +208,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
   .contact__title {
     position: absolute;
     bottom: var(--contact-heading-bottom);
-    left: var(--editorial-title-left);
+    left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap));
     z-index: 2;
     color: var(--color-text);
     font-family: var(--font-montserrat);
@@ -593,6 +594,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
 
   @media (min-width: 40.0625rem) and (max-width: 110rem) {
     .contact {
+      --section-title-offset: 1.5rem;
       width: calc(100% - 3rem);
       height: 69rem;
       min-height: 0;
@@ -643,8 +645,8 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
     .contact__socials a { min-height: 3rem; font-size: 0.75rem; }
     .contact__map { height: 14.5rem; margin-top: 3rem; }
 
-    .contact__rail { left: 0; bottom: 0; font-size: 3rem; }
-    .contact__title { left: 3.875rem; bottom: 0; font-size: 2.25rem; line-height: 1.05; }
+    .contact__rail { left: calc(var(--section-title-inset) - var(--section-title-offset)); bottom: 0; font-size: var(--section-title-rail-size); }
+    .contact__title { left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap)); bottom: 0; font-size: 2.25rem; line-height: 1.05; }
   }
 
   @media (min-width: 40.0625rem) and (max-width: 52rem) {
@@ -689,6 +691,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
 
   @media (max-width: 40rem) {
     .contact {
+      --section-title-offset: 0.75rem;
       width: calc(100% - 1.5rem);
       height: auto;
       min-height: 126.8125rem;
@@ -736,7 +739,17 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
     .contact__socials a { min-height: 3rem; font-size: 0.75rem; }
     .contact__map { width: 100%; height: 17rem; margin-top: 0; }
 
-    .contact__rail { left: 0; bottom: 3rem; font-size: 2rem; }
-    .contact__title { left: 2.75rem; bottom: 3rem; font-size: 1.25rem; line-height: 1.05; }
+    .contact__rail { left: calc(var(--section-title-inset) - var(--section-title-offset)); bottom: 3rem; font-size: var(--section-title-rail-size); }
+    .contact__title { left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap)); bottom: 3rem; font-size: 1.25rem; line-height: 1.05; }
   }
+
+  @media (min-width: 40.0625rem) and (max-width: 52rem) {
+    .contact__content { left: var(--section-content-start); width: calc(100% - var(--section-content-start) - 1.5rem); }
+  }
+  @media (max-width: 40rem) {
+    .contact__content { width: calc(100% - var(--section-content-start)); margin-left: var(--section-content-start); }
+    .contact__submit { max-width: 100%; }
+    .contact__info-block a { overflow-wrap: anywhere; }
+  }
+
 </style>

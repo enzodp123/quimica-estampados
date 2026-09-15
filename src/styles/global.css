@@ -5,7 +5,7 @@ html { background: var(--color-background); scroll-padding-top: calc(var(--heade
 
 body {
   overflow-x: hidden;
-  background: radial-gradient(circle at 20% 8%, rgba(0, 191, 232, .025), transparent 20%), var(--color-background);
+  background: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-primary);
   line-height: 1.5;
@@ -37,6 +37,9 @@ body {
 ::selection { color: #070707; background: var(--color-yellow); }
 
 .container { width: min(calc(100% - (var(--container-padding) * 2)), var(--container-width)); margin-inline: auto; }
+:where(.product-showcase, .services, .industrial, .work-gallery, .about, .contact, .brands, .faq-section) {
+  --section-content-start: calc(var(--hero-title-start) - var(--section-title-offset, 0rem));
+}
 .section { position: relative; padding-block: var(--section-spacing); }
 
 .section-grid {

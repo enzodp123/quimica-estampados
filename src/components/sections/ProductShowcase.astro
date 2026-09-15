@@ -96,6 +96,7 @@ const products = printingCards.map(({ product, name, description, image, badge }
 
 <style>
   .product-showcase {
+    --section-title-offset: 0rem;
     --font-jetbrains-mono: var(--font-poppins);
     --font-montserrat: var(--font-poppins);
     --background-text-inset: 3.416875rem 0 3.4625rem 5.0625rem;
@@ -321,7 +322,7 @@ const products = printingCards.map(({ product, name, description, image, badge }
     z-index: 1;
     color: rgba(17, 159, 218, 0.8);
     font-family: var(--font-montserrat);
-    font-size: clamp(3rem, 3.75vw, 4.5rem);
+    font-size: var(--section-title-rail-size);
     font-weight: var(--vertical-title-font-weight);
     letter-spacing: -0.045em;
     line-height: 1;
@@ -332,13 +333,13 @@ const products = printingCards.map(({ product, name, description, image, badge }
 
   .product-showcase__rail--left {
     bottom: 0;
-    left: 3.6458%;
+    left: calc(var(--section-title-inset) - var(--section-title-offset));
   }
 
   .product-showcase__title {
     position: absolute;
     bottom: 0;
-    left: 8.3854%;
+    left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap));
     color: var(--color-text);
     font-family: var(--font-montserrat);
     font-size: clamp(2.25rem, 2.5vw, 3rem);
@@ -358,11 +359,11 @@ const products = printingCards.map(({ product, name, description, image, badge }
     }
 
     .product-showcase__rail--left {
-      left: var(--editorial-rail-left);
+      left: calc(var(--section-title-inset) - var(--section-title-offset));
     }
 
     .product-showcase__title {
-      left: var(--editorial-title-left);
+      left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap));
       font-size: 2.5rem;
     }
   }
@@ -416,12 +417,13 @@ const products = printingCards.map(({ product, name, description, image, badge }
       align-self: end;
     }
 
-    .product-showcase__rail--left { left: 3.25rem; }
-    .product-showcase__title { left: 8rem; }
+    .product-showcase__rail--left { left: calc(var(--section-title-inset) - var(--section-title-offset)); }
+    .product-showcase__title { left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap)); }
   }
 
   @media (min-width: 40.0625rem) and (max-width: 80rem) {
     .product-showcase {
+      --section-title-offset: 1.5rem;
       width: calc(100% - 3rem);
       height: 52.625rem;
       min-height: 52.625rem;
@@ -493,13 +495,13 @@ const products = printingCards.map(({ product, name, description, image, badge }
 
     .product-showcase__rail {
       bottom: 0;
-      left: 1.75rem;
-      font-size: 4rem;
+      left: calc(var(--section-title-inset) - var(--section-title-offset));
+      font-size: var(--section-title-rail-size);
     }
 
     .product-showcase__title {
       bottom: 0;
-      left: 5.6875rem;
+      left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap));
       font-size: 2.5rem;
     }
 
@@ -507,6 +509,7 @@ const products = printingCards.map(({ product, name, description, image, badge }
 
   @media (max-width: 40rem) {
     .product-showcase {
+      --section-title-offset: 0.75rem;
       width: calc(100% - 1.5rem);
       height: auto;
       min-height: 58.1875rem;
@@ -583,14 +586,14 @@ const products = printingCards.map(({ product, name, description, image, badge }
 
     .product-showcase__rail {
       bottom: 3.125rem;
-      left: 0;
+      left: calc(var(--section-title-inset) - var(--section-title-offset));
       display: block;
-      font-size: 2rem;
+      font-size: var(--section-title-rail-size);
     }
 
     .product-showcase__title {
       bottom: 3.125rem;
-      left: 1.6875rem;
+      left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap));
       display: block;
       font-size: 1.25rem;
       line-height: 1.05;
@@ -622,4 +625,9 @@ const products = printingCards.map(({ product, name, description, image, badge }
     .product-showcase__controls { position: static; order: 2; width: 100%; margin-top: 1rem; }
     .product-showcase__header > p { max-width: none; }
   }
+
+  @media (max-width: 40rem) {
+    .product-showcase__content { width: calc(100% - var(--section-content-start)); margin-left: var(--section-content-start); }
+  }
+
 </style>

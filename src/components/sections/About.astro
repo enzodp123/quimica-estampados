@@ -38,6 +38,7 @@ import localImage from "../../assets/images/nuestrahistoria.png";
 
 <style>
   .about {
+    --section-title-offset: 0rem;
     --about-heading-bottom: 0;
     --background-text-top: 41.945%;
     position: relative;
@@ -51,11 +52,11 @@ import localImage from "../../assets/images/nuestrahistoria.png";
   .about__rail {
     position: absolute;
     bottom: var(--about-heading-bottom);
-    left: 3.6458%;
+    left: calc(var(--section-title-inset) - var(--section-title-offset));
     z-index: 2;
     color: var(--color-yellow);
     font-family: var(--font-montserrat);
-    font-size: var(--vertical-title-font-size);
+    font-size: var(--section-title-rail-size);
     font-weight: var(--vertical-title-font-weight);
     letter-spacing: -0.045em;
     line-height: 1;
@@ -67,7 +68,7 @@ import localImage from "../../assets/images/nuestrahistoria.png";
   .about__title {
     position: absolute;
     bottom: var(--about-heading-bottom);
-    left: 8.2292%;
+    left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap));
     z-index: 2;
     color: var(--color-text);
     font-family: var(--font-montserrat);
@@ -211,6 +212,7 @@ import localImage from "../../assets/images/nuestrahistoria.png";
 
   @media (min-width: 40.0625rem) and (max-width: 110rem) {
     .about {
+      --section-title-offset: 1.5rem;
       width: calc(100% - 3rem);
       height: 60rem;
       margin-inline: auto;
@@ -245,8 +247,8 @@ import localImage from "../../assets/images/nuestrahistoria.png";
     .about__line { left: 14.5%; bottom: 2.0625rem; width: 71%; }
     .about__photo { width: 100%; aspect-ratio: 462.4 / 578; }
 
-    .about__rail { left: 0; bottom: 0; font-size: 3rem; }
-    .about__title { left: 3.6875rem; bottom: 0; font-size: 2.25rem; line-height: 1.05; }
+    .about__rail { left: calc(var(--section-title-inset) - var(--section-title-offset)); bottom: 0; font-size: var(--section-title-rail-size); }
+    .about__title { left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap)); bottom: 0; font-size: 2.25rem; line-height: 1.05; }
   }
 
   @media (min-width: 40.0625rem) and (max-width: 52rem) {
@@ -274,6 +276,7 @@ import localImage from "../../assets/images/nuestrahistoria.png";
 
   @media (max-width: 40rem) {
     .about {
+      --section-title-offset: 0.75rem;
       width: calc(100% - 1.5rem);
       height: auto;
       min-height: 79.234375rem;
@@ -307,7 +310,15 @@ import localImage from "../../assets/images/nuestrahistoria.png";
     .about__line { left: 9.8%; bottom: 2.0625rem; width: 80.3%; }
     .about__photo { width: 100%; aspect-ratio: 584 / 730; }
 
-    .about__rail { left: 0; bottom: 3rem; font-size: 2rem; }
-    .about__title { left: 2.75rem; bottom: 3rem; font-size: 1.25rem; line-height: 1.05; }
+    .about__rail { left: calc(var(--section-title-inset) - var(--section-title-offset)); bottom: 3rem; font-size: var(--section-title-rail-size); }
+    .about__title { left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap)); bottom: 3rem; font-size: 1.25rem; line-height: 1.05; }
   }
+
+  @media (min-width: 40.0625rem) and (max-width: 52rem) {
+    .about__content { left: var(--section-content-start); width: calc(100% - var(--section-content-start) - 1.5rem); }
+  }
+  @media (max-width: 40rem) {
+    .about__content { width: calc(100% - var(--section-content-start)); margin-left: var(--section-content-start); }
+  }
+
 </style>

@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import mainProduct from "../../assets/images/hero-shirt.png";
+import mainProduct from "../../assets/images/remera_home_blanca.png";
 import smallHoodie from "../../assets/images/hero-hoodie.png";
 import cap from "../../assets/images/hero-cap.png";
 import BackgroundText from "../shared/BackgroundText.astro";
@@ -57,7 +57,7 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
         loading="eager"
         fetchpriority="high"
         widths={[480, 720, 960, 1200]}
-        sizes="(max-width: 40rem) 92vw, (max-width: 64rem) 60vw, 32vw"
+        sizes="(max-width: 40rem) 15.125rem, (max-width: 80rem) 24.75rem, 39.0625vw"
       />
       <Image
         class="hero__hoodie"
@@ -65,7 +65,7 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
         alt=""
         loading="eager"
         widths={[160, 240, 320, 480]}
-        sizes="(max-width: 40rem) 28vw, (max-width: 64rem) 18vw, 13vw"
+        sizes="(max-width: 80rem) 13.0625rem, 19.7396vw"
       />
       <Image
         class="hero__cap"
@@ -73,7 +73,7 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
         alt=""
         loading="eager"
         widths={[240, 360, 480, 640, 800]}
-        sizes="(max-width: 40rem) 42vw, (max-width: 64rem) 28vw, 18vw"
+        sizes="13.0208vw"
       />
     </div>
 
@@ -235,12 +235,15 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
     pointer-events: none;
   }
 
-  .hero__visual img {
+  .hero__visual :where(img) {
     position: absolute;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0px 0px 2px rgb(255, 255, 255));
-  
+    filter:
+      drop-shadow(1px 0 0 #fff)
+      drop-shadow(-1px 0 0 #fff)
+      drop-shadow(0 1px 0 #fff)
+      drop-shadow(0 -1px 0 #fff);
   }
 
   .hero__shirt {
@@ -249,7 +252,6 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
     left: 50%;
     width: 39.0625%;
     transform: translate(-50%, -50%);
-    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.7));
   }
 
   .hero__hoodie {
@@ -286,7 +288,9 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
     font-family: var(--font-jetbrains-mono);
     font-size: clamp(0.625rem, 0.7292vw, 0.875rem);
     letter-spacing: 1.4px;
-    white-space: nowrap;
+    line-height: 1.4;
+    text-align: center;
+    white-space: normal;
   }
 
   .hero__actions .button::before,

@@ -406,6 +406,7 @@ const brands = [
   }
 
   .brands__trusted-heading {
+    left: calc(var(--section-title-inset) - var(--brands-gutter));
     position: relative;
     height: 8.75rem;
     display: flex;
@@ -418,7 +419,7 @@ const brands = [
     left: 0;
     color: var(--color-cyan);
     font-family: var(--font-montserrat);
-    font-size: 4.5rem;
+    font-size: var(--section-title-rail-size);
     font-weight: 700;
     letter-spacing: -0.05em;
     line-height: 1;
@@ -428,7 +429,7 @@ const brands = [
   }
 
   .brands__trusted-heading h3 {
-    margin-left: 4rem;
+    margin-left: calc(var(--section-title-rail-size) + var(--section-title-gap));
     padding-bottom: 2.2rem;
     color: var(--color-text);
     font-family: var(--font-montserrat);
@@ -555,13 +556,13 @@ const brands = [
     .brands__trusted { display: contents; }
     .brands__trusted-heading {
       position: absolute;
-      left: 0;
+      left: calc(var(--section-title-inset) - 1.5rem);
       bottom: 0;
       width: 48.566%;
       height: 13.75rem;
     }
-    .brands__trusted-heading > span { bottom: 0; left: 0; font-size: 3rem; }
-    .brands__trusted-heading h3 { margin-left: 4.4375rem; padding-bottom: 0; font-size: 2.25rem; line-height: 1.05; }
+    .brands__trusted-heading > span { bottom: 0; left: 0; font-size: var(--section-title-rail-size); }
+    .brands__trusted-heading h3 { margin-left: calc(var(--section-title-rail-size) + var(--section-title-gap)); padding-bottom: 0; font-size: 2.25rem; line-height: 1.05; }
     .brands__logos {
       position: absolute;
       right: -1.537%;
@@ -659,18 +660,18 @@ const brands = [
     .brands__logos :global(img) { width: 7.5rem; height: 7.5rem; }
 
     .brands__trusted-heading {
-      position: static;
+      position: relative;
       order: 2;
       width: 100%;
       height: 8.25rem;
       display: flex;
       align-items: end;
-      gap: 0.5rem;
+      gap: var(--section-title-gap);
     }
 
     .brands__trusted-heading > span {
       position: static;
-      font-size: 3rem;
+      font-size: var(--section-title-rail-size);
     }
 
     .brands__trusted-heading h3 {
@@ -773,14 +774,29 @@ const brands = [
 
     .brands__trusted-heading {
       order: 2;
+      left: 0;
       width: 100%;
       height: 9.1875rem;
       min-height: 0;
       display: flex;
       align-items: end;
-      gap: 0.3125rem;
+      gap: var(--section-title-gap);
     }
-    .brands__trusted-heading > span { position: static; display: block; font-size: 2rem; }
+    .brands__trusted-heading > span { position: static; display: block; font-size: var(--section-title-rail-size); }
     .brands__trusted-heading h3 { margin: 0; padding: 0; font-size: 1.25rem; line-height: 1.05; }
   }
+
+  .brands { --section-title-offset: 0rem; }
+  @media (min-width: 40.0625rem) and (max-width: 110rem) {
+    .brands { --section-title-offset: 1.5rem; }
+  }
+  @media (min-width: 40.0625rem) and (max-width: 52rem) {
+    .brands__header, .brands__body { left: var(--section-content-start); width: calc(100% - var(--section-content-start) - 1.5rem); }
+    .brands__logos { width: calc(100% - var(--section-content-start)); margin-left: var(--section-content-start); }
+  }
+  @media (max-width: 40rem) {
+    .brands { --section-title-offset: 0.75rem; }
+    .brands__header, .brands__body, .brands__logos { width: calc(100% - var(--section-content-start)); margin-left: var(--section-content-start); }
+  }
+
 </style>

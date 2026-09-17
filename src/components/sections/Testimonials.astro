@@ -2,13 +2,8 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import BackgroundText from "../shared/BackgroundText.astro";
+import BrandCarousel from "../shared/BrandCarousel.astro";
 import brandImage from "../../assets/images/img1_marcas.png";
-import brand1 from "../../assets/images/marca1.png";
-import brand2 from "../../assets/images/marca2.png";
-import brand3 from "../../assets/images/marca3.png";
-import brand4 from "../../assets/images/marca4.png";
-import brand5 from "../../assets/images/marca5.png";
-import brand6 from "../../assets/images/marca6.png";
 
 const testimonials = [
   {
@@ -25,14 +20,6 @@ const testimonials = [
   },
 ];
 
-const brands = [
-  { src: brand1, alt: "Weber Panadería" },
-  { src: brand2, alt: "Toys Victoria" },
-  { src: brand3, alt: "FitMe Sportwear" },
-  { src: brand4, alt: "La Fonda de Orly" },
-  { src: brand5, alt: "Morfi" },
-  { src: brand6, alt: "Unidad Educativa N.º 38 Sagrada Familia" },
-];
 ---
 
 <section id="marcas" class="brands" aria-labelledby="brands-heading" data-figma-node="1131:2432">
@@ -99,10 +86,8 @@ const brands = [
       <span aria-hidden="true">Marcas</span>
       <h3>Que confiaron<br />en nosotros</h3>
     </div>
-    <div class="brands__logos" role="group" aria-label="Marcas que trabajan con Química Estampados">
-      {brands.map(({ src, alt }) => (
-        <Image src={src} alt={alt} widths={[160, 240, 320]} sizes="(max-width: 40rem) 40vw, 10vw" loading="lazy" />
-      ))}
+    <div class="brands__logos">
+      <BrandCarousel />
     </div>
   </div>
 </section>
@@ -441,17 +426,9 @@ const brands = [
   }
 
   .brands__logos {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    align-items: center;
-    gap: clamp(1rem, 2vw, 2.4rem);
-  }
-
-  .brands__logos :global(img) {
-    width: 100%;
-    height: clamp(3.3rem, 5vw, 6rem);
+    min-width: 0;
+    height: 10rem;
     display: block;
-    object-fit: contain;
   }
 
   @media (min-width: 40.0625rem) and (max-width: 110rem) {
@@ -570,20 +547,11 @@ const brands = [
       width: 91.086%;
       height: 10rem;
       padding: 0 6.455% 0 0;
-      display: grid;
-      grid-template-columns: repeat(6, 10rem);
-      gap: 3.5rem;
-      overflow-x: auto;
-      overscroll-behavior-inline: contain;
-      scroll-snap-type: inline proximity;
-      scrollbar-width: none;
-      border: 0.0625rem solid rgba(240, 237, 230, 0.1);
+      display: block;
     }
-    .brands__logos::-webkit-scrollbar { display: none; }
-    .brands__logos :global(img) { width: 10rem; height: 10rem; scroll-snap-align: start; }
   }
 
-  @media (min-width: 40.0625rem) and (max-width: 52rem) {
+  @media (min-width: 40.0625rem) and (max-width: 64rem) {
     .brands { height: 100rem; }
 
     .brands__header {
@@ -653,11 +621,7 @@ const brands = [
       width: 100%;
       height: 8.5rem;
       padding-right: 3rem;
-      grid-template-columns: repeat(6, 7.5rem);
-      gap: 2.5rem;
     }
-
-    .brands__logos :global(img) { width: 7.5rem; height: 7.5rem; }
 
     .brands__trusted-heading {
       position: relative;
@@ -760,17 +724,8 @@ const brands = [
       width: 100%;
       height: 8.5rem;
       padding-right: 0;
-      display: grid;
-      grid-template-columns: repeat(6, 7.5rem);
-      gap: 1.5rem;
-      overflow-x: auto;
-      overscroll-behavior-inline: contain;
-      scroll-snap-type: inline proximity;
-      scrollbar-width: none;
-      border: 0.0625rem solid rgba(240, 237, 230, 0.1);
+      display: block;
     }
-    .brands__logos::-webkit-scrollbar { display: none; }
-    .brands__logos :global(img) { width: 7.5rem; height: 7.5rem; scroll-snap-align: start; }
 
     .brands__trusted-heading {
       order: 2;
@@ -790,13 +745,46 @@ const brands = [
   @media (min-width: 40.0625rem) and (max-width: 110rem) {
     .brands { --section-title-offset: 1.5rem; }
   }
-  @media (min-width: 40.0625rem) and (max-width: 52rem) {
+  @media (min-width: 40.0625rem) and (max-width: 64rem) {
     .brands__header, .brands__body { left: var(--section-content-start); width: calc(100% - var(--section-content-start) - 1.5rem); }
     .brands__logos { width: calc(100% - var(--section-content-start)); margin-left: var(--section-content-start); }
   }
   @media (max-width: 40rem) {
     .brands { --section-title-offset: 0.75rem; }
     .brands__header, .brands__body, .brands__logos { width: calc(100% - var(--section-content-start)); margin-left: var(--section-content-start); }
+  }
+
+  @media (max-width: 64rem) {
+    .brands { height: auto; min-height: 0; padding-block: 3rem; }
+    .brands__header, .brands__body, .brands__trusted { position: relative; inset: auto; transform: none; }
+    .brands__body { max-width: 40rem; margin-top: 2rem; align-items: flex-start; gap: 1.5rem; }
+    .brands__testimonials {
+      position: static;
+      width: 100%;
+      max-width: none;
+      height: auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+      overflow: visible;
+    }
+    .brands__testimonials .brands__value {
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      margin: 0;
+      padding: 1.5rem;
+      gap: 1.25rem;
+    }
+    .brands__testimonial { height: auto; min-height: 0; margin-top: 0; }
+    .brands__value-line-slot { min-height: 1rem; }
+    .brands__pagination { display: none; }
+    .brands__cta { width: 100%; height: auto; padding: 1.5rem; }
+    .brands__cta a { width: 100%; min-width: 0; text-align: center; }
+    .brands__trusted { margin-top: 2.5rem; }
+  }
+  @media (min-width: 40.0625rem) and (max-width: 64rem) {
+    .brands__header, .brands__body { margin-left: var(--section-content-start); }
   }
 
 </style>

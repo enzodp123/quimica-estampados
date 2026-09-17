@@ -644,4 +644,49 @@ const services = [
     .services__content { width: calc(100% - var(--section-content-start)); margin-left: var(--section-content-start); }
   }
 
+  @media (max-width: 80rem) {
+    .services { height: auto; min-height: 0; padding: 3rem 0 12rem; }
+    .services__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: calc(100% - var(--section-content-start) - 1.5rem);
+      margin-left: var(--section-content-start);
+    }
+    .services__intro { width: 100%; min-height: 0; padding: 0; margin-bottom: 2rem; }
+    .services__grid {
+      position: static;
+      width: 100%;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      overflow: visible;
+      align-items: stretch;
+    }
+    .services__grid .service-card {
+      display: block;
+      grid-column: auto;
+      order: initial;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      margin: 0;
+    }
+    .service-card__body { min-height: 0; }
+    .services__extras {
+      position: static;
+      width: 100%;
+      margin: 2rem 0 0;
+      gap: 1.5rem;
+    }
+    .service-extra { min-width: 0; height: auto; margin-top: 0; }
+    .services__rail, .services__title { bottom: 3rem; }
+  }
+  @media (max-width: 40rem) {
+    .services__content { width: calc(100% - var(--section-content-start)); }
+    .services__grid, .services__extras { max-width: 25rem; grid-template-columns: minmax(0, 1fr); }
+    .services__grid .service-card__visual { height: clamp(12rem, 50vw, 16rem); }
+  }
+
 </style>

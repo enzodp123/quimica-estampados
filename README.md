@@ -33,8 +33,8 @@ Todas las variables son públicas porque Astro las incorpora al cliente durante 
 | Variable | Uso | Comportamiento si queda vacía |
 | --- | --- | --- |
 | `PUBLIC_CONTACT_FORM_ENDPOINT` | Endpoint HTTP de Formspree, Basin o una API propia. | El formulario abre un email precompletado; los datos no se descartan. |
-| `PUBLIC_WHATSAPP_NUMBER` | Número internacional, solo dígitos, usado por `wa.me`. | Usa provisionalmente `5491126249300`. Debe confirmarse antes de publicar. |
-| `PUBLIC_WHATSAPP_DISPLAY` | Texto visible del teléfono. | Usa provisionalmente `+54 9 11 2624-9300`. |
+| `PUBLIC_WHATSAPP_NUMBER` | Número internacional, solo dígitos, usado por `wa.me`. | Confirmado: `5493431234567`. |
+| `PUBLIC_WHATSAPP_DISPLAY` | Texto visible del teléfono. | Confirmado: `+54 9 343 123 4567`. |
 | `PUBLIC_INSTAGRAM_URL` | Perfil oficial de Instagram. | Se muestra la referencia visual sin un enlace muerto. |
 | `PUBLIC_FACEBOOK_URL` | Página oficial de Facebook. | Se muestra la referencia visual sin un enlace muerto. |
 | `PUBLIC_DEVELOPER_URL` | URL asociada al crédito `@binadevs`. | El crédito se muestra sin enlace. |
@@ -169,13 +169,13 @@ La implementación conserva cada identificador en atributos `data-figma-node` o 
 - [ ] Revisar Lighthouse en producción y acordar una política de caché para los assets de `/_astro/`.
 - [ ] Definir aviso de privacidad si el formulario definitivo almacena datos personales o incorpora analítica.
 
+Datos de contacto confirmados: WhatsApp `+54 9 343 123 4567` (`5493431234567` para los enlaces) y email `quimicaestampados@gmail.com`.
+
 ## Datos pendientes de confirmación
 
 El repositorio usa valores funcionales para poder probar el flujo completo, pero los siguientes puntos no deben considerarse aprobados comercialmente:
 
-- WhatsApp provisional: `5491126249300` / `+54 9 11 2624-9300`.
 - Dirección normalizada: `65 Alem, Victoria, Entre Ríos`; en el diseño también aparecía `66 Alem`.
-- Email visible y receptor alternativo: `quimicaestampados@gmail.com`.
 - Endpoint real del formulario, perfiles sociales, URL del crédito y dominio canónico.
 - Condiciones de envío y plazos de producción no incluidos en la lista de precios.
 - Copys donde se corrigieron inconsistencias evidentes del diseño; deben recibir aprobación final del cliente.

@@ -14,6 +14,7 @@ import "@fontsource/poppins/800.css";
 import "@fontsource/poppins/900.css";
 import logo from "../assets/icons/logo-quimica.svg";
 import { siteConfig } from "../data/site";
+import FloatingActions from "../components/shared/FloatingActions.astro";
 
 interface Props {
   title?: string;
@@ -69,9 +70,10 @@ const structuredData = {
     <title>{title}</title>
     <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)}></script>
   </head>
-  <body class:list={{ "product-route": Astro.url.pathname.startsWith("/productos/") }}>
+  <body id="page-top" class:list={{ "product-route": Astro.url.pathname.startsWith("/productos/") }}>
     <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
     <slot />
+    <FloatingActions />
   </body>
 </html>
 

@@ -1,0 +1,287 @@
+{
+  "timestamp": "2026-09-15T21:38:11.775Z",
+  "baseUrl": "http://127.0.0.1:60614",
+  "testSummary": {
+    "total": 36,
+    "passed": 36,
+    "failed": 0
+  },
+  "tests": [
+    {
+      "name": "Sin scroll horizontal en Mobile Mini (320px)",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Sin scroll horizontal en Mobile Standard (iPhone/Pixel) (390px)",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Sin scroll horizontal en Tablet Portrait (iPad Mini/Air) (768px)",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Sin scroll horizontal en Tablet Landscape / Laptop (1024px)",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Sin scroll horizontal en Desktop Standard (HD) (1280px)",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Sin scroll horizontal en Desktop Large (FullHD/Mac) (1440px)",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Navegación Header: enlace directo hacia #inicio",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Navegación Header: enlace directo hacia #trabajos",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Navegación Header: enlace directo hacia #nosotros",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Navegación Header: enlace directo hacia #contacto",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Navegación Footer: enlace hacia sección #servicios",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Header Desktop: Botón Servicios despliega menú de categorías",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Mobile: Apertura de menú móvil (botón hamburguesa)",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Mobile: Despliegue de submenú Servicios dentro del menú móvil",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Mobile: Cierre accesible de menú móvil con tecla Escape",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Carrusel de productos: Flecha siguiente avanza posición",
+      "passed": true,
+      "details": {
+        "before": 0,
+        "after": 410
+      }
+    },
+    {
+      "name": "Carrusel de productos: Flecha anterior retrocede posición",
+      "passed": true,
+      "details": {
+        "before": 410,
+        "after": 0
+      }
+    },
+    {
+      "name": "Carrusel de productos: Navegación accesible con teclado (ArrowRight)",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Carrusel de Marcas: Renderiza logos de clientes",
+      "passed": true,
+      "details": {
+        "count": 64
+      }
+    },
+    {
+      "name": "Galería de trabajos: Filtros de categoría interactivos (Textil, Calcos, Papelería, etc.)",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Galería de trabajos: Apertura de Lightbox al clickear imagen",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Galería de trabajos: Cierre de Lightbox con botón de cerrar",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Sección FAQ cuenta con preguntas configuradas",
+      "passed": true,
+      "details": {
+        "count": 8
+      }
+    },
+    {
+      "name": "FAQ: Cambio de pregunta y respuesta sincronizada al clickear tab",
+      "passed": true,
+      "details": {
+        "selected": "¿Si no tengo un diseño, ustedes lo realizan?",
+        "panelQuestion": "¿Si no tengo un diseño, ustedes lo realizan?"
+      }
+    },
+    {
+      "name": "Formulario de contacto: Bloqueo de envío cuando campos requeridos están vacíos",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Formulario de contacto: Validación correcta con datos válidos completados",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Formulario de contacto: Procesamiento de envío y preparación hacia WhatsApp",
+      "passed": true,
+      "details": {
+        "statusText": "¡Listo! Te redirigimos a WhatsApp para enviar tu consulta.",
+        "redirectedUrl": "https://wa.me/5493431234567?text=%C2%A1Hola%20Qu%C3%ADmica%2"
+      }
+    },
+    {
+      "name": "Botón \"Volver arriba\": Desplaza la pantalla a la cima (Y=0)",
+      "passed": true,
+      "details": {
+        "finalScrollY": 0
+      }
+    },
+    {
+      "name": "Botón flotante de WhatsApp: Enlace válido con número internacional",
+      "passed": true,
+      "details": {
+        "href": "https://wa.me/5493431234567"
+      }
+    },
+    {
+      "name": "Ficha de producto: Actualización dinámica de precio al seleccionar pack/cantidad",
+      "passed": true,
+      "details": {
+        "initialPrice": "$152.500",
+        "updatedPrice": "$32.000"
+      }
+    },
+    {
+      "name": "Ficha de producto: El botón de consulta de WhatsApp actualiza el mensaje con el precio y variante activa",
+      "passed": true,
+      "details": {
+        "messagePreview": "Hola, quisiera consultar por Buzo cuello redondo. 1 unidad. Cantidad: 1. Precio:"
+      }
+    },
+    {
+      "name": "Ficha de producto: Click en miniatura cambia la imagen principal",
+      "passed": true,
+      "details": {
+        "initialSrc": "/_astro/main.DEbw3uQu_qzgny.webp",
+        "newSrc": "/_astro/main.crv5k1CR_Gm7Ca.webp"
+      }
+    },
+    {
+      "name": "Ficha de producto: Carrusel de relacionados excluye el producto actual",
+      "passed": true,
+      "details": {
+        "relatedCount": 8,
+        "excludesSelf": true
+      }
+    },
+    {
+      "name": "Página 404: Muestra mensaje 404 y botón de retorno al Home",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Generación de capturas de pantalla de alta resolución (Desktop, Tablet, Mobile, Ficha, 404)",
+      "passed": true,
+      "details": {
+        "screenshotsGenerated": [
+          "home-desktop-1440.png",
+          "home-tablet-768.png",
+          "home-mobile-390.png",
+          "product-desktop-1440.png",
+          "product-mobile-390.png",
+          "page-404-desktop.png",
+          "work-gallery-lightbox.png",
+          "faq-expanded.png",
+          "contact-section.png"
+        ]
+      }
+    },
+    {
+      "name": "Cero errores no controlados de JavaScript en consola",
+      "passed": true,
+      "details": {
+        "errors": []
+      }
+    }
+  ],
+  "overflowAudit": [
+    {
+      "viewport": "Mobile Mini",
+      "width": 320,
+      "hasOverflow": false,
+      "scrollWidth": 320,
+      "docWidth": 320,
+      "culprits": []
+    },
+    {
+      "viewport": "Mobile Standard (iPhone/Pixel)",
+      "width": 390,
+      "hasOverflow": false,
+      "scrollWidth": 390,
+      "docWidth": 390,
+      "culprits": []
+    },
+    {
+      "viewport": "Tablet Portrait (iPad Mini/Air)",
+      "width": 768,
+      "hasOverflow": false,
+      "scrollWidth": 768,
+      "docWidth": 768,
+      "culprits": []
+    },
+    {
+      "viewport": "Tablet Landscape / Laptop",
+      "width": 1024,
+      "hasOverflow": false,
+      "scrollWidth": 1024,
+      "docWidth": 1024,
+      "culprits": []
+    },
+    {
+      "viewport": "Desktop Standard (HD)",
+      "width": 1280,
+      "hasOverflow": false,
+      "scrollWidth": 1280,
+      "docWidth": 1280,
+      "culprits": []
+    },
+    {
+      "viewport": "Desktop Large (FullHD/Mac)",
+      "width": 1440,
+      "hasOverflow": false,
+      "scrollWidth": 1440,
+      "docWidth": 1440,
+      "culprits": []
+    }
+  ],
+  "consoleErrors": []
+}

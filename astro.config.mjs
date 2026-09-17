@@ -8,6 +8,7 @@ export default defineConfig({
     icon({
       include: {
         lucide: [
+          'arrow-up',
           'badge-check',
           'truck',
           'layers-3',

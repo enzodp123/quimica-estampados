@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import { brandLogos } from "../../data/brands";
+---
+
+<div class="brand-carousel" data-brand-carousel data-figma-node="1159:2042">
+  <ul
+    id="brand-logo-track"
+    class="brand-carousel__track"
+    data-product-track
+    aria-label="Marcas que trabajan con Química Estampados"
+    tabindex="0"
+  >
+    {brandLogos.map(({ image, name, figmaNode }) => (
+      <li class="brand-carousel__item" data-product-card data-figma-node={figmaNode}>
+        <Image src={image} alt={name} widths={[160, 320]} sizes="(max-width: 40rem) 120px, 160px" loading="lazy" />
+      </li>
+    ))}
+  </ul>
+  <button type="button" class="brand-carousel__pause" data-brand-pause aria-label="Pausar carrusel de marcas" aria-pressed="false" aria-controls="brand-logo-track" hidden>
+    <span aria-hidden="true" data-brand-pause-symbol>Ⅱ</span>
+  </button>
+</div>
+
+<script>
+  import { initBrandCarousels } from "../../scripts/brand-carousel";
+  initBrandCarousels();
+  document.addEventListener("astro:page-load", () => initBrandCarousels());
+</script>
+
+<style>
+  .brand-carousel { position: relative; width: 100%; height: 100%; min-width: 0; }
+  .brand-carousel__track {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .brand-carousel[data-autoplay-ready] .brand-carousel__track { scroll-snap-type: none; }
+  .brand-carousel__track::-webkit-scrollbar { display: none; }
+  .brand-carousel__track:focus-visible { outline-offset: -2px; }
+  .brand-carousel__item { flex: 0 0 10rem; width: 10rem; height: 100%; max-height: 10rem; scroll-snap-align: start; }
+  .brand-carousel__item img { width: 100%; height: 100%; object-fit: contain; }
+  .brand-carousel__pause { position: absolute; right: 0; bottom: 0; width: 2.75rem; height: 2.75rem; padding: 0; border: 0; color: var(--color-text); background: var(--color-background); font-size: 1rem; cursor: pointer; }
+  .brand-carousel__pause:hover { color: var(--color-cyan); }
+  @media (max-width: 40rem) {
+    .brand-carousel__item { flex-basis: 7.5rem; width: 7.5rem; max-height: 7.5rem; }
+  }
+</style>

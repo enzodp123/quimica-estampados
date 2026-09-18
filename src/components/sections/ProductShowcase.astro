@@ -657,4 +657,16 @@ const products = printingCards.map(({ product, name, description, image, badge }
     .product-showcase__controls { justify-content: flex-start; }
   }
 
+
+  .product-showcase { height: auto; min-height: 0; padding-block: var(--section-block-padding); display: flex; flex-direction: column; }
+  .product-showcase__content { order: 1; display: flex; flex-direction: column; width: calc(100% - var(--section-content-start) - 1.5rem); margin-left: var(--section-content-start); }
+  .product-showcase__header { position: static; width: 100%; margin: 0 0 var(--card-gap); order: 0; }
+  .product-showcase__dots { position: static; margin-bottom: 0.75rem; }
+  .product-showcase__header > p { position: static; width: 100%; max-width: none; }
+  .product-grid { --product-gap: var(--card-gap); position: relative; inset: auto; width: 100%; gap: var(--card-gap); }
+  .product-showcase__controls { position: static; width: 100%; margin-top: var(--card-gap); }
+  .product-showcase__title { position: relative; bottom: auto; order: 2; width: fit-content; margin-top: var(--section-content-gap); }
+  .product-showcase__rail { bottom: var(--section-block-padding); }
+  @media (max-width: 40rem) { .product-showcase__content { width: calc(100% - var(--section-content-start)); } }
+
 </style>

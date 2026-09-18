@@ -752,4 +752,26 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
     .contact__info-block a { overflow-wrap: anywhere; }
   }
 
+
+  .contact { height: auto; min-height: 0; padding-block: var(--section-block-padding); display: flex; flex-direction: column; }
+  .contact__content { position: relative; inset: auto; order: 1; width: calc(100% - var(--section-content-start) - 1.5rem); margin: 0 0 0 var(--section-content-start); padding: 0; }
+  .contact__header { width: 100%; min-height: 0; margin-bottom: var(--card-gap); }
+  .contact__layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--card-gap); }
+  .contact__form { width: 100%; min-width: 0; min-height: 0; padding: 1.5rem; gap: var(--card-gap); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact__submit { grid-column: 1 / -1; justify-self: center; margin-inline: auto; }
+  .contact__form-status:empty { display: none; }
+  .contact__form-line { position: static; grid-column: 1 / -1; width: 50%; justify-self: center; margin-top: 0.5rem; }
+  .contact__aside { width: 100%; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--card-gap); align-items: start; }
+  .contact__info-block, .contact__hours, .contact__socials { grid-column: 1; margin: 0; min-height: 0; }
+  .contact__socials { grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 1fr); }
+  .contact__map { grid-column: 2; grid-row: 1 / 4; width: 100%; height: 100%; min-height: 18rem; margin: 0; }
+  .contact__title { position: relative; bottom: auto; order: 2; width: fit-content; max-width: calc(100% - var(--section-content-start)); margin-top: var(--section-content-gap); }
+  .contact__rail { bottom: var(--section-block-padding); }
+  @media (max-width: 40rem) {
+    .contact__content { width: calc(100% - var(--section-content-start)); }
+    .contact__aside, .contact__form { grid-template-columns: minmax(0, 1fr); }
+    .contact__map { grid-column: 1; grid-row: auto; height: 17rem; min-height: 0; }
+    .contact__socials { grid-template-columns: 3rem minmax(0, 1fr); }
+  }
+
 </style>

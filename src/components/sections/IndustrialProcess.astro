@@ -244,18 +244,19 @@ const process = [
       --section-title-offset: 1.5rem;
       width: calc(100% - 3rem);
       height: auto;
-      min-height: 78rem;
+      min-height: 0;
       margin-inline: auto;
-      padding: 4.5rem 0 11rem;
+      padding: 3.5rem 0 5rem;
+      overflow: clip;
     }
 
     .industrial__stage {
-      width: calc(100% - 10rem);
-      margin-left: 8rem;
+      width: calc(100% - 7rem);
+      margin-left: 5.5rem;
       display: grid;
-      grid-template-columns: minmax(16rem, 0.72fr) minmax(24rem, 1fr);
+      grid-template-columns: minmax(16rem, 0.75fr) minmax(22rem, 1fr);
       align-items: start;
-      gap: clamp(2rem, 4vw, 4.5rem);
+      gap: clamp(1.5rem, 2.5vw, 3rem);
     }
 
     .process-list {
@@ -306,27 +307,27 @@ const process = [
     .process-step__card > p { font-size: 1rem; line-height: 1.625; }
 
     .industrial__image-wrap {
-      position: relative;
-      top: auto;
+      position: sticky;
+      top: 5.5rem;
       left: auto;
       width: 100%;
       height: auto;
-      margin-top: clamp(6rem, 10vw, 10rem);
-      aspect-ratio: 7 / 8;
+      margin-top: 0;
+      aspect-ratio: 4 / 5;
       overflow: hidden;
     }
 
     .industrial__image { height: 100%; object-fit: cover; }
 
-    .industrial__rail { left: calc(var(--section-title-inset) - var(--section-title-offset)); bottom: 3rem; font-size: var(--section-title-rail-size); }
-    .industrial__title { left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap)); bottom: 3rem; font-size: 2.25rem; line-height: 1.05; }
+    .industrial__rail { left: calc(var(--section-title-inset) - var(--section-title-offset)); bottom: 2rem; font-size: var(--section-title-rail-size); }
+    .industrial__title { left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap)); bottom: 2rem; font-size: 2.25rem; line-height: 1.05; }
   }
 
   @media (min-width: 40.0625rem) and (max-width: 56rem) {
     .industrial {
       height: auto;
       min-height: 0;
-      padding: 5rem 0 10rem;
+      padding: 3rem 0 5rem;
     }
 
     .industrial__stage {
@@ -334,14 +335,14 @@ const process = [
       margin-left: 0;
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
+      gap: 1.5rem;
     }
 
     .industrial__image-wrap {
       position: relative;
       top: auto;
       left: auto;
-      width: 70%;
+      width: min(85%, 32rem);
       max-width: none;
       margin-top: 0;
       margin-inline: auto;
@@ -351,9 +352,9 @@ const process = [
       position: relative;
       top: auto;
       left: auto;
-      width: 82%;
+      width: min(92%, 36rem);
       height: auto;
-      margin: 2.5rem auto 0;
+      margin: 1rem auto 0;
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
@@ -407,7 +408,7 @@ const process = [
     .industrial__stage {
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
+      gap: 1.5rem;
     }
 
     .industrial__image-wrap {
@@ -478,10 +479,43 @@ const process = [
 
   @media (max-width: 40rem) {
     .industrial__stage { width: calc(100% - var(--section-content-start)); margin-left: var(--section-content-start); }
-    .industrial { min-height: 0; padding-bottom: 12rem; }
+    .industrial { min-height: 0; padding-bottom: 5.5rem; }
     .industrial__image-wrap, .process-list { width: 100%; margin-inline: 0; }
     .process-step__card { padding: 1.25rem; }
     .process-step__heading h3 { line-height: 1.4; }
   }
 
+
+  .process-list { gap: var(--card-gap); }
+  .process-step__card > p { margin-top: var(--card-copy-gap); }
+  @media (max-width: 110rem) {
+    .industrial { height: auto; min-height: 0; padding-block: var(--section-block-padding); display: flex; flex-direction: column; }
+    .industrial__stage { order: 1; gap: var(--card-gap); }
+    .industrial__title { position: relative; bottom: auto; order: 2; width: fit-content; margin-top: var(--section-content-gap); }
+    .industrial__rail { bottom: var(--section-block-padding); }
+  }
+
+
+  @media (min-width: 110.0625rem) {
+    .industrial { height: auto; min-height: 0; padding-block: var(--section-block-padding); display: flex; flex-direction: column; }
+    .industrial__stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); width: calc(100% - var(--section-content-start) - 1.5rem); margin-left: var(--section-content-start); gap: var(--card-gap); order: 1; }
+    .industrial__image-wrap, .process-list { position: relative; inset: auto; width: 100%; }
+    .industrial__title { position: relative; bottom: auto; order: 2; width: fit-content; margin-top: var(--section-content-gap); }
+    .industrial__rail { bottom: var(--section-block-padding); }
+  }
+  .industrial__stage {
+    width: calc(100% - var(--section-content-start) - 1.5rem);
+    margin-left: var(--section-content-start);
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  }
+  .process-list, .process-step__card { min-width: 0; }
+  .process-step__heading h3 { overflow-wrap: anywhere; }
+  @media (max-width: 64rem) {
+    .industrial__stage { display: flex; flex-direction: column; }
+    .industrial__image-wrap { position: relative; top: auto; width: min(100%, 32rem); margin: 0; }
+    .process-list { width: 100%; margin: 0; }
+  }
+  @media (max-width: 40rem) {
+    .industrial__stage { width: calc(100% - var(--section-content-start)); }
+  }
 </style>

@@ -461,21 +461,24 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
 
     .hero__visual .hero__shirt {
       top: 6.5rem;
-      left: calc(50% + 3.75rem);
-      width: 24.75rem;
-      height: 29.0625rem;
-      object-fit: cover;
+      left: calc(50% + clamp(1rem, 3vw, 3.75rem));
+      width: clamp(17rem, 28vw, 24.75rem);
+      height: auto;
+      aspect-ratio: 24.75 / 29;
+      object-fit: contain;
       object-position: center;
       transform: translateX(-50%);
     }
 
     .hero__hoodie {
-      top: 25.125rem;
-      right: 2.0625rem;
+      z-index: 3;
+      top: clamp(20rem, 36vw, 25.125rem);
+      right: clamp(1rem, 2.5vw, 2.0625rem);
       left: auto;
-      width: 13.0625rem;
-      height: 16.5rem;
-      object-fit: cover;
+      width: clamp(9.5rem, 15vw, 13.0625rem);
+      height: auto;
+      aspect-ratio: 13 / 16.5;
+      object-fit: contain;
     }
 
     .hero__cap { display: none; }

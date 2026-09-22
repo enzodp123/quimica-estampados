@@ -41,7 +41,7 @@ export const fullAddress = [
 
 export const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(fullAddress)}&output=embed`;
 
-export const whatsappUrl = (message?: string) => {
+export const whatsappUrl = (message = "Hola, vengo desde la web de Química Estampados. Quisiera consultar por estampados y productos personalizados.") => {
   const base = `https://wa.me/${siteConfig.whatsapp.number}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 };

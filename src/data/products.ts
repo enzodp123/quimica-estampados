@@ -104,6 +104,7 @@ export interface Product {
   sizeLabel?: string;
   sizeValue?: string;
   sizeGuide?: string;
+  womensSizeGuide?: string;
   description: string;
   sizeTable?: string[];
   gallery: ImageMetadata[];
@@ -159,6 +160,7 @@ export const products: Product[] = [
     sizeLabel: "Talles",
     sizeValue: "Del 1 al 10",
     sizeGuide: "/images/talles/remera-unisex.webp",
+    womensSizeGuide: "/images/talles/remera-dama.webp",
     description: `Remera manga corta: ${apparelDescription}`,
     gallery: [unisexMain, unisexDetail2, unisexDetail3],
   },
@@ -269,6 +271,7 @@ export const products: Product[] = [
     sizeLabel: "Talles",
     sizeValue: "Del 1 al 6",
     sizeGuide: "/images/talles/chomba-algodon.webp",
+    womensSizeGuide: "/images/talles/chomba-dama.webp",
     description: "Chomba de algodón peinado, con cuello polo y botones. Terminaciones premium, tapacostura en cuello y refuerzo en hombros.",
     gallery: [chombaAlgodonMain, chombaAlgodon1, chombaAlgodon2, chombaAlgodon3, chombaAlgodon4],
   },
@@ -324,6 +327,7 @@ export const products: Product[] = [
     options: [{ label: "Tipo: piqué de algodón", values: [{ label: "Algodón peinado", href: "/productos/chomba-algodon/" }, { label: "Piqué de algodón", active: true, href: "/productos/chomba-pique/" }] }],
     colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
     sizeGuide: "/images/talles/chomba-pique.webp",
+    womensSizeGuide: "/images/talles/chomba-dama.webp",
     description: "Chomba de piqué de algodón, con cuello polo y botones. Terminaciones premium, tapacostura en cuello y refuerzo en hombros.",
     gallery: [chombaPiqueMain, chombaPique1, chombaPique2, chombaPique3, chombaPique4],
   },

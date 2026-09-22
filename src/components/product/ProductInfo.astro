@@ -77,9 +77,9 @@ const contact = whatsappUrl(`Hola, quisiera consultar por ${product.title}. ${de
         {product.colorLabel && <div><h2>{product.colorLabel}</h2><div class="color-swatches" role="group" aria-label={product.colorLabel} data-product-choice-group>{product.colors?.map((color, index) => <button type="button" class:list={{ "is-active": index === 0 }} style={`--swatch:${color}`} data-product-choice aria-label={`${product.colorLabel}, opción ${index + 1}`} aria-pressed={index === 0 ? "true" : "false"}></button>)}</div></div>}
         {product.sizeValue && <div>
           <h2>{product.sizeLabel ?? "Material"}</h2>
-          <p>{product.sizeLabel === "Talles" && !product.sizeGuide ? "Consultar" : product.sizeValue}</p>
+          {!product.womensSizeGuide && <p>{product.sizeLabel === "Talles" && !product.sizeGuide ? "Consultar" : product.sizeValue}</p>}
           {product.sizeLabel === "Talles" && product.sizeGuide && (
-            <SizeGuide src={product.sizeGuide} title={product.seoTitle ?? product.title} />
+            <SizeGuide src={product.sizeGuide} title={product.seoTitle ?? product.title} womensSrc={product.womensSizeGuide} sizeRange={product.sizeValue} />
           )}
         </div>}
       </>}

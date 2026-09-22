@@ -1,12 +1,22 @@
 ---
 import galleryClose from "../../assets/icons/gallery-close.svg";
 
-interface Props { src: string; title: string; }
-const { src, title } = Astro.props;
+interface Props { src: string; title: string; womensSrc?: string; sizeRange?: string; }
+const { src, title, womensSrc, sizeRange } = Astro.props;
+const guides = womensSrc
+  ? [{ src, label: "Hombre / Unisex", range: sizeRange }, { src: womensSrc, label: "Mujer", range: "Del 1 al 5" }]
+  : [{ src, label: "Ver tabla de talles", range: undefined }];
 ---
 
 <div class="size-guide">
-  <a href={src} data-size-guide-open aria-haspopup="dialog" aria-controls="size-guide-dialog">Ver tabla de talles</a>
+  <div class="size-guide__links">
+    {guides.map((guide) => (
+      <a href={guide.src} data-size-guide-open data-guide-title={`${title} — ${guide.label}`} aria-label={womensSrc ? `Ver tabla de talles: ${guide.label}` : "Ver tabla de talles"} aria-haspopup="dialog" aria-controls="size-guide-dialog">
+        <span>{guide.label}</span>
+        {guide.range && <small>{guide.range}</small>}
+      </a>
+    ))}
+  </div>
   <dialog id="size-guide-dialog" class="size-lightbox" aria-label={`Tabla de talles: ${title}`}>
     <button class="size-lightbox__close" type="button" aria-label="Cerrar tabla de talles">
       <img src={galleryClose.src} width="32" height="32" alt="" />
@@ -17,31 +27,40 @@ const { src, title } = Astro.props;
 
 <script>
   document.querySelectorAll<HTMLElement>(".size-guide").forEach((guide) => {
-    const trigger = guide.querySelector<HTMLAnchorElement>("[data-size-guide-open]");
+    const triggers = guide.querySelectorAll<HTMLAnchorElement>("[data-size-guide-open]");
     const dialog = guide.querySelector<HTMLDialogElement>("dialog");
+    const image = guide.querySelector<HTMLImageElement>(".size-lightbox__image");
     const close = guide.querySelector<HTMLButtonElement>("button");
-    if (!trigger || !dialog || !close) return;
-    trigger.addEventListener("click", (event) => {
+    if (!dialog || !close || !image) return;
+    let activeTrigger: HTMLAnchorElement | undefined;
+    triggers.forEach((trigger) => trigger.addEventListener("click", (event) => {
       event.preventDefault();
+      activeTrigger = trigger;
+      image.src = trigger.href;
+      image.alt = `Tabla de talles y medidas de ${trigger.dataset.guideTitle}`;
+      dialog.setAttribute("aria-label", `Tabla de talles: ${trigger.dataset.guideTitle}`);
       dialog.showModal();
       document.documentElement.classList.add("has-open-size-guide");
       close.focus();
-    });
+    }));
     close.addEventListener("click", () => dialog.close());
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) dialog.close();
     });
     dialog.addEventListener("close", () => {
       document.documentElement.classList.remove("has-open-size-guide");
-      trigger.focus({ preventScroll: true });
+      activeTrigger?.focus({ preventScroll: true });
     });
   });
 </script>
 
 <style>
   .size-guide { margin-top: 0.75rem; }
-  .size-guide > a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--color-magenta); font-size: 0.8125rem; text-decoration: underline; text-underline-offset: 0.2em; }
-  .size-guide > a:hover { color: var(--color-text); }
+  .size-guide__links { display: flex; gap: 1.5rem; }
+  .size-guide__links a { display: flex; flex-direction: column; justify-content: center; gap: 0.25rem; min-height: 2.75rem; color: var(--color-magenta); font-size: 0.8125rem; }
+  .size-guide__links a span { text-decoration: underline; text-underline-offset: 0.2em; }
+  .size-guide__links a small { color: var(--color-text); font-size: 0.75rem; }
+  .size-guide__links a:hover { color: var(--color-text); }
   .size-lightbox { position: fixed; inset: 0; z-index: 100; width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 4.5rem 1rem 1.5rem; overflow: hidden; border: 0; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(16.5px); }
   .size-lightbox:not([open]) { display: none; }
   .size-lightbox[open] { display: grid; place-items: center; }

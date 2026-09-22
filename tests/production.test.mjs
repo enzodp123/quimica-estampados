@@ -153,7 +153,7 @@ test("todos los enlaces internos apuntan a rutas y anclas existentes", () => {
     for (const href of hrefs) {
       if (/^(?:https?:|mailto:|tel:)/i.test(href)) continue;
       const url = new URL(href, `https://qa.local${currentRoute}`);
-      if (extname(url.pathname).toLowerCase() === ".pdf") {
+      if ([".pdf", ".webp", ".png", ".jpg", ".jpeg", ".svg"].includes(extname(url.pathname).toLowerCase())) {
         const documentPath = resolve(distRoot, decodeURIComponent(url.pathname).slice(1));
         assert.ok(documentPath.startsWith(`${distRoot}${sep}`));
         assert.ok(existsSync(documentPath), `${currentRoute} → ${href}`);

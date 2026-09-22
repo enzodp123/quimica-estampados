@@ -103,6 +103,7 @@ export interface Product {
   colors?: string[];
   sizeLabel?: string;
   sizeValue?: string;
+  sizeGuide?: string;
   description: string;
   sizeTable?: string[];
   gallery: ImageMetadata[];
@@ -157,6 +158,7 @@ export const products: Product[] = [
     colors: ["#f2f2ef", "#585858", "#f0ede6"],
     sizeLabel: "Talles",
     sizeValue: "Del 1 al 10",
+    sizeGuide: "/images/talles/remera-unisex.webp",
     description: `Remera manga corta: ${apparelDescription}`,
     gallery: [unisexMain, unisexDetail2, unisexDetail3],
   },
@@ -227,6 +229,7 @@ export const products: Product[] = [
     colors: ["#efefec", "#545454", "#0e0e0e"],
     sizeLabel: "Talles",
     sizeValue: "Del 4 al 18",
+    sizeGuide: "/images/talles/remera-nino.webp",
     description: `Remera infantil: ${apparelDescription}`,
     gallery: [ninoMain, nino1, nino2],
   },
@@ -264,7 +267,8 @@ export const products: Product[] = [
     colorLabel: "Colores flash",
     colors: ["#efefec", "#545454", "#0e0e0e"],
     sizeLabel: "Talles",
-    sizeValue: "Del 1 al 5",
+    sizeValue: "Del 1 al 6",
+    sizeGuide: "/images/talles/chomba-algodon.webp",
     description: "Chomba de algodón peinado, con cuello polo y botones. Terminaciones premium, tapacostura en cuello y refuerzo en hombros.",
     gallery: [chombaAlgodonMain, chombaAlgodon1, chombaAlgodon2, chombaAlgodon3, chombaAlgodon4],
   },
@@ -278,7 +282,8 @@ export const products: Product[] = [
     priceSelection: { quantity: "x5" },
     packLabel: "Packs de buzos",
     price: catalogPrice("buzo-cuello-redondo", { quantity: "x5" }),
-    options: [], colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Consultar",
+    options: [], colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
+    sizeGuide: "/images/talles/buzo-cuello-redondo.webp",
     description: "Buzo de cuello redondo en algodón frizado, personalizable y con terminaciones reforzadas.",
     gallery: [buzoRedondoMain, buzoRedondo1, buzoRedondo2, buzoRedondo3],
   },
@@ -288,6 +293,7 @@ export const products: Product[] = [
     pricingId: "canguro-adulto", priceSelection: { quantity: "x5" }, price: catalogPrice("canguro-adulto", { quantity: "x5" }),
     options: [],
     colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
+    sizeGuide: "/images/talles/buzo-canguro.webp",
     description: "Buzo canguro frizado con capucha, bolsillo delantero y terminaciones reforzadas.",
     gallery: [canguroMain, canguro1, canguro2, canguro3],
   },
@@ -296,7 +302,8 @@ export const products: Product[] = [
     figmaNodes: ["834:713"], ticker: true, breadcrumb: "Inicio > Infantil", title: "Buzo canguro niño", packLabel: "Packs de buzo canguro niño",
     pricingId: "canguro-infantil", priceSelection: { quantity: "x5" }, price: catalogPrice("canguro-infantil", { quantity: "x5" }),
     options: [],
-    colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 4 al 18",
+    colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 8 al 16",
+    sizeGuide: "/images/talles/buzo-canguro-nino.webp",
     description: "Buzo canguro infantil con capucha, bolsillo delantero y superficie personalizable.",
     gallery: [canguroNinoMain, canguroNino1, canguroNino2, canguroNino3],
   },
@@ -305,7 +312,8 @@ export const products: Product[] = [
     figmaNodes: ["835:2180"], ticker: true, breadcrumb: "Inicio > Camperas", title: "Campera con capucha", packLabel: "Packs de campera premium",
     pricingId: "campera", priceSelection: { quantity: "x5" }, price: catalogPrice("campera", { quantity: "x5" }),
     options: [],
-    colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Consultar",
+    colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
+    sizeGuide: "/images/talles/campera-capucha.webp",
     description: "Campera con capucha y cierre frontal, preparada para personalización textil.",
     gallery: [camperaMain, campera1],
   },
@@ -315,6 +323,7 @@ export const products: Product[] = [
     pricingId: "chomba-pique", priceSelection: { quantity: "x5" }, packLabel: "Packs de chombas", price: catalogPrice("chomba-pique", { quantity: "x5" }),
     options: [{ label: "Tipo: piqué de algodón", values: [{ label: "Algodón peinado", href: "/productos/chomba-algodon/" }, { label: "Piqué de algodón", active: true, href: "/productos/chomba-pique/" }] }],
     colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
+    sizeGuide: "/images/talles/chomba-pique.webp",
     description: "Chomba de piqué de algodón, con cuello polo y botones. Terminaciones premium, tapacostura en cuello y refuerzo en hombros.",
     gallery: [chombaPiqueMain, chombaPique1, chombaPique2, chombaPique3, chombaPique4],
   },

@@ -74,7 +74,16 @@ const contact = whatsappUrl(`Hola, quisiera consultar por ${product.title}. ${de
     <div class="product-info__attributes">
       {isCalco ? <div><h2>Bases</h2><p>Consultar opciones disponibles</p></div> : <>
         {product.colorLabel && <div><h2>{product.colorLabel}</h2><div class="color-swatches" role="group" aria-label={product.colorLabel} data-product-choice-group>{product.colors?.map((color, index) => <button type="button" class:list={{ "is-active": index === 0 }} style={`--swatch:${color}`} data-product-choice aria-label={`${product.colorLabel}, opción ${index + 1}`} aria-pressed={index === 0 ? "true" : "false"}></button>)}</div></div>}
-        {product.sizeValue && <div><h2>{product.sizeLabel ?? "Material"}</h2><p>{product.sizeValue}</p></div>}
+        {product.sizeValue && <div>
+          <h2>{product.sizeLabel ?? "Material"}</h2>
+          <p>{product.sizeValue}</p>
+          {product.sizeLabel === "Talles" && (
+            <div class="product-size-guide">
+              <a href="/documentos/tabla-de-talles-quimica-estampados.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver tabla de talles en PDF (abre en otra pestaña)">Ver tabla de talles (PDF)</a>
+              <a href="/documentos/tabla-de-talles-quimica-estampados.pdf" download>Descargar tabla</a>
+            </div>
+          )}
+        </div>}
       </>}
     </div>
   )}
@@ -96,6 +105,9 @@ const contact = whatsappUrl(`Hola, quisiera consultar por ${product.title}. ${de
 </script>
 
 <style>
+  .product-size-guide { margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
+  .product-size-guide a { display: inline-flex; align-items: center; min-height: 2.75rem; max-width: 100%; color: var(--color-magenta); font-size: 0.8125rem; text-decoration: underline; text-underline-offset: 0.2em; }
+  .product-size-guide a:hover { color: var(--color-text); }
   .product-info { min-width: 0; font-family: var(--font-poppins); }
   .product-info [hidden] { display: none; }
   .product-info__breadcrumb { margin-bottom: 1.25rem; font: 500 1rem/1.5 var(--font-poppins); color: #ffffffb3; }

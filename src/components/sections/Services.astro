@@ -232,9 +232,12 @@ const services = [
   }
 
   .service-extra--cyan { margin-top: 3rem; }
-  .service-extra h3 { color: var(--color-yellow); }
+  .service-extra--cyan h3,
+  .service-extra--cyan .service-extra__detail strong { color: var(--color-cyan); }
+  .service-extra--magenta h3,
+  .service-extra--magenta .service-extra__detail strong { color: var(--color-magenta); }
   .service-extra__detail { margin-bottom: 1.5rem; }
-  .service-extra__detail strong { display: block; color: var(--color-yellow); font-weight: 400; }
+  .service-extra__detail strong { display: block; font-weight: 400; }
 
   .service-extra--cyan:hover,
   .service-extra--cyan:focus-within {
@@ -262,6 +265,16 @@ const services = [
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+  }
+
+  .service-extra--cyan a {
+    color: var(--color-cyan);
+    border-color: var(--color-cyan);
+  }
+
+  .service-extra--magenta a {
+    color: var(--color-magenta);
+    border-color: var(--color-magenta);
   }
 
   .service-extra a::before,
@@ -690,21 +703,65 @@ const services = [
   }
 
 
-  .services { height: auto; min-height: 0; padding-block: var(--section-block-padding); }
-  .services__content { display: flex; flex-direction: column; align-items: stretch; width: calc(100% - var(--section-content-start) - 1.5rem); margin-left: var(--section-content-start); }
-  .services__grid { position: static; width: 100%; max-width: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--card-gap); overflow: visible; align-items: stretch; }
-  .services__grid .service-card { display: block; width: 100%; height: auto; min-height: 0; margin: 0; grid-column: auto; order: initial; }
-  .service-card__body { min-height: 0; padding: 1.25rem; }
-  .service-card p, .service-extra p { margin-top: var(--card-copy-gap); }
-  .services__extras { position: static; width: 100%; max-width: none; margin-top: var(--card-gap); gap: var(--card-gap); }
-  .service-extra { min-height: 0; margin-top: 0; }
-  .service-extra a { max-width: 100%; }
-  .services__title { position: static; width: fit-content; margin-top: var(--section-content-gap); }
-  .services__rail { bottom: var(--section-block-padding); }
-  @media (max-width: 110rem) { .services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 40rem) {
-    .services__content { width: calc(100% - var(--section-content-start)); }
-    .services__grid { grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 56.0625rem) and (max-width: 80rem) {
+    .services {
+      height: auto;
+      min-height: 70rem;
+      padding: 3rem 0 10rem;
+    }
+
+    .services__content {
+      display: block;
+      width: calc(100% - var(--section-content-start) - 1.5rem);
+      margin-left: var(--section-content-start);
+    }
+
+    .services__grid {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      overflow: visible;
+    }
+
+    .services__grid .service-card,
+    .service-card--1,
+    .service-card--2,
+    .service-card--3,
+    .service-card--4 {
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      margin-top: 0;
+    }
+
+    .service-card--1,
+    .service-card--3 { margin-top: 3.25rem; }
+    .service-card__visual,
+    .service-card--1 .service-card__visual,
+    .service-card--2 .service-card__visual,
+    .service-card--3 .service-card__visual,
+    .service-card--4 .service-card__visual { height: clamp(10rem, 19vw, 14rem); }
+    .service-card__body { min-height: 8.5rem; padding: 1rem 0.8rem 1.25rem; }
+    .service-card h3 { font-size: 0.8rem; }
+    .service-card p { font-size: 0.68rem; line-height: 1.45; }
+
+    .services__extras {
+      position: relative;
+      top: auto;
+      left: 32%;
+      width: 68%;
+      margin-top: 2.5rem;
+      gap: 1.25rem;
+    }
+
+    .service-extra { min-height: 13rem; padding: 1rem; }
+    .service-extra h3 { font-size: 0.8rem; }
+    .service-extra p { font-size: 0.68rem; line-height: 1.45; }
+    .service-extra a { width: 8rem; min-height: 2.25rem; font-size: 0.6rem; }
   }
 
 </style>

@@ -88,7 +88,6 @@ const contact = whatsappUrl(`Hola, quisiera consultar por ${product.title}. ${de
 
   <div class="product-info__actions">
     <a class="product-action product-action--quote" href={contact} data-price-contact data-product-title={product.title} target="_blank" rel="noreferrer">Cotizar producto</a>
-    <a class="product-action" href={contact} data-price-contact data-product-title={product.title} target="_blank" rel="noreferrer">Consultar producto</a>
   </div>
   <div class="product-info__notices">
     {notes.map((note, index) => <p><img src={index === 0 ? layers.src : badge.src} alt="" width="28" height="28" />{note}</p>)}

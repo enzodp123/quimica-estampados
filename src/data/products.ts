@@ -12,27 +12,15 @@ import oversizeDetail3 from "../assets/products/remera-oversize/detail-3.png";
 import unisexMain from "../assets/products/remera-unisex/main.png";
 import unisexDetail2 from "../assets/products/remera-unisex/detail-2.png";
 import unisexDetail3 from "../assets/products/remera-unisex/detail-3.png";
-import calcosPapelHero from "../assets/products/shared-calco.png";
-import calcosPapelMain from "../assets/products/calcos-papel/figma-thumb-1.png";
-import calcosPapel1 from "../assets/products/calcos-papel/figma-thumb-2.png";
-import calcosPapel2 from "../assets/products/calcos-papel/figma-thumb-3.png";
-import calcosPapel3 from "../assets/products/calcos-papel/figma-thumb-3.png";
-import calcosViniloMain from "../assets/products/calcos-vinilo/main.png";
-import calcosVinilo1 from "../assets/products/calcos-vinilo/detail-1.png";
-import calcosVinilo2 from "../assets/products/calcos-vinilo/detail-2.png";
-import calcosVinilo3 from "../assets/products/calcos-vinilo/detail-3.png";
-import calcosDtfMain from "../assets/products/calcos-dtf-uv/main.png";
-import calcosDtf1 from "../assets/products/calcos-dtf-uv/detail-1.png";
-import calcosDtf2 from "../assets/products/calcos-dtf-uv/detail-2.png";
-import calcosDtf3 from "../assets/products/calcos-dtf-uv/detail-3.png";
-import gorraMain from "../assets/products/gorra-trucker/main.png";
-import gorra1 from "../assets/products/gorra-trucker/detail-1.png";
-import gorra2 from "../assets/products/gorra-trucker/detail-2.png";
-import gorra3 from "../assets/products/gorra-trucker/detail-3.png";
+import calcosPapelMain from "../assets/products/calcos-papel/design-2026.png";
+import calcosViniloMain from "../assets/products/calcos-vinilo/design-2026.png";
+import calcosDtfMain from "../assets/products/calcos-dtf-uv/design-2026.png";
+import gorraFront from "../assets/products/gorra-trucker/front-2026.png";
+import gorraMain from "../assets/products/gorra-trucker/angled-2026.png";
 import ninoMain from "../assets/products/remera-nino/main.png";
 import nino1 from "../assets/products/remera-nino/detail-1.png";
 import nino2 from "../assets/products/remera-nino/detail-2.png";
-import egresaditoMain from "../assets/products/remera-egresadito/main.png";
+import egresaditoMain from "../assets/products/remera-egresadito/design-2026.png";
 import egresadito1 from "../assets/products/remera-egresadito/detail-1.png";
 import egresadito2 from "../assets/products/remera-egresadito/detail-2.png";
 import egresadito3 from "../assets/products/remera-egresadito/detail-3.png";
@@ -165,9 +153,9 @@ export const products: Product[] = [
     gallery: [unisexMain, unisexDetail2, unisexDetail3],
   },
   ...[
-    ["calcos-papel", "1033:2504", "Papel", calcosPapelMain, calcosPapel1, calcosPapel2, calcosPapel3],
-    ["calcos-vinilo", "1039:3107", "Vinilo troquelado", calcosViniloMain, calcosVinilo1, calcosVinilo2, calcosVinilo3],
-    ["calcos-dtf-uv", "1039:3362", "DTF UV", calcosDtfMain, calcosDtf1, calcosDtf2, calcosDtf3],
+    ["calcos-papel", "1033:2504", "Papel", calcosPapelMain],
+    ["calcos-vinilo", "1039:3107", "Vinilo troquelado", calcosViniloMain],
+    ["calcos-dtf-uv", "1039:3362", "DTF UV", calcosDtfMain],
   ].map(([slug, node, type, ...gallery]): Product => {
     const pricingId: "calcos-papel" | "calcos-vinilo" | "calcos-dtf-uv" =
       slug as "calcos-papel" | "calcos-vinilo" | "calcos-dtf-uv";
@@ -185,7 +173,6 @@ export const products: Product[] = [
     priceSelection,
     packLabel: "Packs de calcos",
     price: catalogPrice(pricingId, priceSelection),
-    heroImage: pricingId === "calcos-papel" ? calcosPapelHero : undefined,
     options: [
       {
         label: `Tipo de calco: ${type}`,
@@ -214,7 +201,7 @@ export const products: Product[] = [
     sizeLabel: "Talles",
     sizeValue: "Regulable",
     description: "Gorra trucker con frente personalizable, visera curva y ajuste posterior regulable.",
-    gallery: [gorraMain, gorra1, gorra2, gorra3],
+    gallery: [gorraMain, gorraFront],
   },
   {
     slug: "remera-nino",
@@ -287,17 +274,17 @@ export const products: Product[] = [
     price: catalogPrice("buzo-cuello-redondo", { quantity: "x5" }),
     options: [], colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
     sizeGuide: "/images/talles/buzo-cuello-redondo.webp",
-    description: "Buzo de cuello redondo en algodón frizado, personalizable y con terminaciones reforzadas.",
+    description: "Buzo de cuello redondo en algodón frisado, personalizable y con terminaciones reforzadas.",
     gallery: [buzoRedondoMain, buzoRedondo1, buzoRedondo2, buzoRedondo3],
   },
   {
     slug: "buzo-canguro",
-    figmaNodes: ["835:1452"], ticker: true, breadcrumb: "Inicio > Buzos", title: "Buzo canguro frizado", packLabel: "Packs de buzos",
+    figmaNodes: ["835:1452"], ticker: true, breadcrumb: "Inicio > Buzos", title: "Buzo canguro frisado", packLabel: "Packs de buzos",
     pricingId: "canguro-adulto", priceSelection: { quantity: "x5" }, price: catalogPrice("canguro-adulto", { quantity: "x5" }),
     options: [],
     colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
     sizeGuide: "/images/talles/buzo-canguro.webp",
-    description: "Buzo canguro frizado con capucha, bolsillo delantero y terminaciones reforzadas.",
+    description: "Buzo canguro frisado con capucha, bolsillo delantero y terminaciones reforzadas.",
     gallery: [canguroMain, canguro1, canguro2, canguro3],
   },
   {

@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import BackgroundText from "../shared/BackgroundText.astro";
 import localImage from "../../assets/images/nuestrahistoria.png";
+import { siteConfig } from "../../data/site";
 ---
 
 <section id="nosotros" class="about" aria-labelledby="about-heading" data-figma-node="1031:1666">
@@ -19,7 +20,7 @@ import localImage from "../../assets/images/nuestrahistoria.png";
       <p>Desde <strong>2016</strong> ofrecemos soluciones para emprendedores, marcas, empresas e instituciones, combinando producción, creatividad y asesoramiento.</p>
       <p>Acompañando cada proyecto desde la idea inicial hasta el producto final, tenemos un enfoque orientado a la calidad, la atención personalizada y la búsqueda de resultados que potencien la identidad de cada cliente.</p>
 
-      <a class="about__cta" href="#contacto">Conocenos más</a>
+      <a class="about__cta" href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer">Conocenos más</a>
       <span class="about__line" aria-hidden="true"></span>
     </article>
 

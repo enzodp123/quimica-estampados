@@ -1,7 +1,16 @@
 import assert from "node:assert/strict";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import test from "node:test";
-import { catalogList, findCatalogPrice, formatCatalogPrice, priceCatalog, resolveCatalogPrice } from "../src/data/pricing.ts";
+import { catalogList, findCatalogPrice, formatCatalogPrice, getCatalogComparisonTotal, priceCatalog, resolveCatalogPrice } from "../src/data/pricing.ts";
+
+test("el importe tachado suma 21% al pack sin modificar su precio", () => {
+  const entry = resolveCatalogPrice("buzo-cuello-redondo", { quantity: "x5" });
+  assert.equal(getCatalogComparisonTotal(entry), "$184.525");
+  assert.equal(formatCatalogPrice(entry), "$152.500");
+  assert.equal(getCatalogComparisonTotal({ selections: {}, total: "$1.234,56" }), "$1.493,82");
+  assert.equal(getCatalogComparisonTotal(undefined), undefined);
+  assert.equal(getCatalogComparisonTotal({ selections: {}, requiresConsultation: true, total: "$100" }), undefined);
+});
 
 // Verificar contra el texto entregado, sin generar expectativas desde los datos del sitio.
 const source = readFileSync(new URL("../docs/catalogo-precios-fuente.txt", import.meta.url), "utf8")

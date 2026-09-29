@@ -4,9 +4,7 @@ export function initBrandCarousels() {
   document.querySelectorAll<HTMLElement>("[data-brand-carousel]").forEach((carousel) => {
     if (carousel.dataset.autoplayReady) return;
     const track = carousel.querySelector<HTMLElement>("[data-product-track]");
-    const pause = carousel.querySelector<HTMLButtonElement>("[data-brand-pause]");
-    const symbol = pause?.querySelector<HTMLElement>("[data-brand-pause-symbol]");
-    if (!track || !pause || !symbol || !track.children.length) return;
+    if (!track || !track.children.length) return;
 
     // La copia visual une el final con el inicio; la lista accesible mantiene 32 marcas.
     const originals = Array.from(track.children) as HTMLElement[];
@@ -25,7 +23,6 @@ export function initBrandCarousels() {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const mobile = window.matchMedia("(max-width: 40rem)");
     let paused = motion.matches;
-    let hovered = false;
     let touching = false;
     let visible = false;
     let interacting = false;
@@ -37,8 +34,8 @@ export function initBrandCarousels() {
 
     const canRun = () => {
       const focus = document.activeElement;
-      const focused = focus !== pause && focus !== null && carousel.contains(focus);
-      return !paused && !hovered && !touching && !focused && !interacting && visible && !document.hidden && cycleWidth > 0;
+      const focused = focus !== null && carousel.contains(focus);
+      return !paused && !touching && !focused && !interacting && visible && !document.hidden && cycleWidth > 0;
     };
     const animate = (time: number) => {
       frame = 0;
@@ -68,18 +65,7 @@ export function initBrandCarousels() {
       syncAnimation();
       interactionTimer = window.setTimeout(() => { interacting = false; syncAnimation(); }, 1200);
     };
-    const updatePause = () => {
-      pause.setAttribute("aria-pressed", String(paused));
-      pause.setAttribute("aria-label", paused ? "Reanudar carrusel de marcas" : "Pausar carrusel de marcas");
-      symbol.textContent = paused ? "▶" : "Ⅱ";
-      syncAnimation();
-    };
-    pause.hidden = false;
-    updatePause();
-    pause.addEventListener("click", () => { paused = !paused; updatePause(); }, options);
-    motion.addEventListener("change", () => { paused = motion.matches; updatePause(); }, options);
-    carousel.addEventListener("pointerenter", (event) => { if (event.pointerType === "mouse") hovered = true; syncAnimation(); }, options);
-    carousel.addEventListener("pointerleave", () => { hovered = false; syncAnimation(); }, options);
+    motion.addEventListener("change", () => { paused = motion.matches; syncAnimation(); }, options);
     carousel.addEventListener("pointerdown", () => { touching = true; syncAnimation(); }, options);
     const endTouch = () => { if (touching) { touching = false; allowManualScroll(); } };
     window.addEventListener("pointerup", endTouch, options);

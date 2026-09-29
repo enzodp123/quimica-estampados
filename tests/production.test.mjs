@@ -64,7 +64,7 @@ test("el home conserva todas las secciones y contenidos clave del diseño", () =
     "Cada detalle cuenta",
     "Otra Cultura",
     "Veterinaria Pocas Pulgas",
-    "Lucia Novello",
+    "Maillen Sánchez",
     "¿Listo para ser la próxima marca?",
     "Resolvemos tus dudas",
   ];
@@ -83,6 +83,10 @@ test("los listados de productos no muestran círculos de paginación", () => {
 });
 
 test("las secciones usan layouts seguros entre tablet y desktop compacto", () => {
+  // ProductShowcase delegates card sizing to the shared carousel.
+  const carousel = readFileSync(resolve(projectRoot, "src/components/product/ProductCarousel.astro"), "utf8");
+  assert.match(carousel, /@media \(max-width: 110\.0*rem\)|@media \(max-width: 110rem\)/);
+
   const tabletComponents = [
     "src/components/layout/Hero.astro",
     "src/components/sections/Benefits.astro",
@@ -118,7 +122,6 @@ test("las secciones usan layouts seguros entre tablet y desktop compacto", () =>
   }
 
   for (const component of [
-    "src/components/sections/ProductShowcase.astro",
     "src/components/sections/Services.astro",
   ]) {
     const source = readFileSync(resolve(projectRoot, component), "utf8");

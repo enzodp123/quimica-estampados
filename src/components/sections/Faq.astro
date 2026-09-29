@@ -6,19 +6,16 @@ const questions = [
   {
     figmaNodes: ["736:1066"],
     question: "¿Si no tengo un diseño, ustedes lo realizan?",
-    title: "Calidad que se mantiene con el tiempo",
     answer: ["¡Sí! Hacemos diseño gráfico de todo tipo, incluida la creación de logos desde cero o su digitalización a partir de una foto."],
   },
   {
     figmaNodes: ["736:1053", "738:1203"],
     question: "¿Sólo hacen estampado textil en remeras, buzos y camperas?",
-    title: "Calidad que se mantiene con el tiempo",
     answer: ["No, realizamos estampados y personalizaciones en otros productos o telas también para diferentes proyectos."],
   },
   {
     figmaNodes: ["737:1105"],
     question: "¿Cómo tengo que enviarte el diseño?",
-    title: "Calidad que se mantiene con el tiempo",
     answer: [
       "Primero nos ponemos en contacto y nos comentás qué tenés. Si es un archivo editable y vectorial, mucho mejor (.AI, .EPS o .PDF).",
       "Si no, enviá lo que tengas (.JPG o .PNG) con la mejor resolución posible, idealmente 300 DPI o más, por WhatsApp o email.",
@@ -27,7 +24,6 @@ const questions = [
   {
     figmaNodes: ["737:1122"],
     question: "¿Qué demora tienen en entregas?",
-    title: "Calidad que se mantiene con el tiempo",
     answer: [
       "Todo depende de si ya tenés un diseño o hay que realizarlo desde cero, de la cantidad del pedido y del color de las prendas.",
       "Para pedidos menores a 100 prendas, el estimado es de 4 o 5 días para negro, blanco o gris con stock permanente, y de 10 a 12 días para colores especiales.",
@@ -36,7 +32,6 @@ const questions = [
   {
     figmaNodes: ["737:1136"],
     question: "¿Qué telas trabajan?",
-    title: "Calidad que se mantiene con el tiempo",
     answer: [
       "En remeras trabajamos algodón peinado 24.1 de muy buena calidad, con terminaciones premium, tapacostura en el cuello y refuerzo de costura en hombros.",
       "En buzos y camperas usamos algodón peinado o semipeinado con frisa clásica o invisible.",
@@ -45,7 +40,6 @@ const questions = [
   {
     figmaNodes: ["737:1150", "737:1164"],
     question: "¿Qué estampados realizan?",
-    title: "Calidad que se mantiene con el tiempo",
     answer: [
       "Realizamos sublimación, vinilo y DTF textil.",
       "En prendas de algodón utilizamos principalmente DTF textil por su versatilidad creativa, calidad de impresión y durabilidad en los lavados.",
@@ -54,13 +48,11 @@ const questions = [
   {
     figmaNodes: ["738:1190"],
     question: "¿Tienen local físico?",
-    title: "Calidad que se mantiene con el tiempo",
     answer: ["Sí, tenemos local físico en 65 Alem, Victoria, Entre Ríos, y hacemos envíos a todo el país."],
   },
   {
     figmaNodes: ["738:1177"],
     question: "¿Tienen descuento por cantidad?",
-    title: "Calidad que se mantiene con el tiempo",
     answer: ["Podés consultar los precios de cada pack en la ficha de cada producto. Para cantidades no publicadas, te preparamos una cotización personalizada por WhatsApp."],
   },
 ];
@@ -83,7 +75,7 @@ const initialQuestion = questions[initialQuestionIndex];
 
   <div class="faq-content">
     <div class="faq-list" role="tablist" aria-label="Preguntas frecuentes" aria-orientation="vertical">
-      {questions.map(({ figmaNodes, question, title, answer }, index) => (
+      {questions.map(({ figmaNodes, question, answer }, index) => (
         <button
           id={`faq-tab-${index}`}
           class:list={["faq-list__item", { "is-active": index === initialQuestionIndex }]}
@@ -93,7 +85,6 @@ const initialQuestion = questions[initialQuestionIndex];
           aria-controls="faq-answer-panel"
           tabindex={index === initialQuestionIndex ? 0 : -1}
           data-faq-tab
-          data-faq-title={title}
           data-faq-answer={JSON.stringify(answer)}
           data-figma-nodes={figmaNodes.join(",")}
         >
@@ -112,8 +103,7 @@ const initialQuestion = questions[initialQuestionIndex];
       data-figma-nodes={initialQuestion.figmaNodes.join(",")}
     >
       <Icon name="lucide:external-link" aria-hidden="true" />
-      <p class="faq-card__question">{initialQuestion.question}</p>
-      <h3>{initialQuestion.title}</h3>
+      <h3 class="faq-card__question">{initialQuestion.question}</h3>
       <div class="faq-card__answer">
         {initialQuestion.answer.map((paragraph) => <p>{paragraph}</p>)}
       </div>
@@ -131,7 +121,6 @@ const initialQuestion = questions[initialQuestionIndex];
   const faqTabs = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-faq-tab]"));
   const faqPanel = document.querySelector<HTMLElement>("#faq-answer-panel");
   const faqQuestion = faqPanel?.querySelector<HTMLElement>(".faq-card__question");
-  const faqTitle = faqPanel?.querySelector<HTMLElement>("h3");
   const faqAnswer = faqPanel?.querySelector<HTMLElement>(".faq-card__answer");
 
   const selectFaq = (tab: HTMLButtonElement, moveFocus = false) => {
@@ -145,7 +134,6 @@ const initialQuestion = questions[initialQuestionIndex];
     if (faqPanel) faqPanel.setAttribute("aria-labelledby", tab.id);
     if (faqPanel) faqPanel.dataset.figmaNodes = tab.dataset.figmaNodes ?? "";
     if (faqQuestion) faqQuestion.textContent = tab.textContent?.trim() ?? "";
-    if (faqTitle) faqTitle.textContent = tab.dataset.faqTitle ?? "";
     if (faqAnswer) {
       const paragraphs = JSON.parse(tab.dataset.faqAnswer ?? "[]") as string[];
       faqAnswer.replaceChildren(...paragraphs.map((paragraph) => {
@@ -158,7 +146,15 @@ const initialQuestion = questions[initialQuestionIndex];
   };
 
   faqTabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => selectFaq(tab));
+    tab.addEventListener("click", () => {
+      selectFaq(tab);
+      if (window.matchMedia("(max-width: 40rem)").matches) {
+        faqPanel?.scrollIntoView({
+          block: "start",
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+        });
+      }
+    });
     tab.addEventListener("keydown", (event) => {
       let nextIndex: number | undefined;
 
@@ -284,6 +280,7 @@ const initialQuestion = questions[initialQuestionIndex];
 
   .faq-list__item.is-active {
     color: #f2f2ef;
+    border-color: var(--color-yellow);
     background: rgba(19, 19, 19, 0.72);
   }
 
@@ -315,25 +312,15 @@ const initialQuestion = questions[initialQuestionIndex];
 
   .faq-card__question {
     margin-top: clamp(1.5rem, 1.8vw, 2.15rem);
-    color: #dededb;
+    color: var(--color-yellow);
     font-family: var(--font-jetbrains-mono);
     font-size: clamp(0.6875rem, 0.6771vw, 0.8125rem);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: 1.2308;
+    line-height: 1.5;
     text-transform: uppercase;
   }
 
-  .faq-card h3 {
-    margin-top: clamp(0.8rem, 0.9vw, 1.05rem);
-    color: var(--color-yellow);
-    font-family: var(--font-jetbrains-mono);
-    font-size: clamp(0.875rem, 1.0417vw, 1.25rem);
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    line-height: 1.4;
-    text-transform: uppercase;
-  }
 
   .faq-card__answer {
     margin-top: clamp(0.65rem, 0.72vw, 0.86rem);
@@ -442,7 +429,6 @@ const initialQuestion = questions[initialQuestionIndex];
     .faq-list__item { min-height: 3rem; padding-inline: 0.8125rem; font-size: 0.875rem; }
     .faq-card { width: 100%; min-height: 22.5rem; margin-top: 1.0625rem; padding: 3.0625rem 2.0625rem; }
     .faq-card__question { font-size: 0.8125rem; }
-    .faq-card h3 { font-size: 1rem; line-height: 1.75; }
     .faq-card__answer { font-size: 1rem; line-height: 1.5; }
 
     .faq-label { left: calc(var(--section-title-inset) - var(--section-title-offset)); bottom: 0; height: 15.25rem; }
@@ -500,7 +486,6 @@ const initialQuestion = questions[initialQuestionIndex];
     .faq-list__item { min-height: 3rem; padding-inline: 0.4375rem; font-size: 0.8125rem; }
     .faq-card { width: 100%; min-height: 20.5rem; margin: 0; padding: 1.5625rem 0.8125rem 2.0625rem; }
     .faq-card__question { font-size: 0.8125rem; }
-    .faq-card h3 { font-size: 1rem; line-height: 1.75; }
     .faq-card__answer { font-size: 1rem; line-height: 1.5; }
 
     .faq-label {
@@ -537,8 +522,18 @@ const initialQuestion = questions[initialQuestionIndex];
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   }
   .faq-list, .faq-card { min-width: 0; }
-  .faq-card { min-height: 0; margin: 0; padding: 1.5rem; }
-  .faq-card__line { margin-top: 1.25rem; max-width: 100%; }
+  .faq-card {
+    align-self: start;
+    min-height: 23rem;
+    margin: 0;
+    padding: clamp(1.5rem, 2.5vw, 3rem) clamp(1.25rem, 2vw, 2.25rem);
+  }
+  .faq-card__line {
+    flex-shrink: 0;
+    margin-top: auto;
+    max-width: 100%;
+  }
+  .faq-card__answer { padding-bottom: 3rem; }
   .faq-label { position: relative; bottom: auto; height: auto; width: fit-content; margin-top: var(--section-content-gap); gap: 0; }
   .faq-label > span { position: absolute; bottom: 0; }
   .faq-label h3 { margin-left: calc(var(--section-title-rail-size) + var(--section-title-gap)); }

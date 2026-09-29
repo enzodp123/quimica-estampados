@@ -31,16 +31,17 @@ import logo31 from "../assets/brands/31.png";
 import logo32 from "../assets/brands/32.png";
 import logo33 from "../assets/brands/33.png";
 
+// Incluye las siete versiones actualizadas de Testing entregadas en el ZIP.
 // Logos exportados del frame 1159:2042, en el orden del diseño.
 export const brandLogos = [
   { image: logo1, name: "Constructora CBC", figmaNode: "1159:2014" },
   { image: logo2, name: "Otra Cultura", figmaNode: "1159:2020" },
-  { image: logo3, name: "Riddles", figmaNode: "1159:2008" },
+  { image: logo3, name: "Riddles", figmaNode: "1224:690" },
   { image: logo4, name: "Peluquería", figmaNode: "1159:2026" },
   { image: logo5, name: "María Rosa Pastelería", figmaNode: "1159:2021" },
-  { image: logo6, name: "Fiorella Garibaldi Studio", figmaNode: "1159:2015" },
+  { image: logo6, name: "Fiorella Garibaldi Studio", figmaNode: "1221:686" },
   { image: logo7, name: "Dock’s", figmaNode: "1159:2027" },
-  { image: logo8, name: "El Varón Carnes", figmaNode: "1159:2028" },
+  { image: logo8, name: "El Varón Carnes", figmaNode: "1221:687" },
   { image: logo9, name: "FitMe Sportwear", figmaNode: "1159:2016" },
   { image: logo10, name: "Weber Panadería", figmaNode: "1159:2022" },
   { image: logo11, name: "Romisel", figmaNode: "1159:2009" },
@@ -52,17 +53,17 @@ export const brandLogos = [
   { image: logo17, name: "Ilusión Óptica", figmaNode: "1159:2030" },
   { image: logo18, name: "Libra", figmaNode: "1159:2019" },
   { image: logo19, name: "InterPartes", figmaNode: "1159:2031" },
-  { image: logo20, name: "Marca con logo circular oscuro", figmaNode: "1159:2011" },
+  { image: logo20, name: "Tecno.Vic", figmaNode: "1229:697" },
   { image: logo21, name: "Tienda Plaza Moreno", figmaNode: "1159:2025" },
   { image: logo22, name: "The Black Food Truck", figmaNode: "1159:2012" },
-  { image: logo24, name: "Estética vehicular", figmaNode: "1159:2043" },
+  { image: logo24, name: "Jamil Estética Vehicular", figmaNode: "1228:696" },
   { image: logo25, name: "JP Texturados", figmaNode: "1159:2044" },
   { image: logo26, name: "Kinexa", figmaNode: "1159:2045" },
   { image: logo27, name: "La Fonda de Orly", figmaNode: "1159:2046" },
   { image: logo28, name: "Los Bastos", figmaNode: "1159:2047" },
-  { image: logo29, name: "Miel Barto", figmaNode: "1159:2048" },
+  { image: logo29, name: "Miel Barto", figmaNode: "1227:695" },
   { image: logo30, name: "Mini Súper", figmaNode: "1159:2049" },
   { image: logo31, name: "Morfi", figmaNode: "1159:2050" },
-  { image: logo32, name: "Esperanza Panadería y Confitería", figmaNode: "1159:2051" },
+  { image: logo32, name: "Esperanza Panadería y Confitería", figmaNode: "1225:691" },
   { image: logo33, name: "Veterinaria Pocas Pulgas", figmaNode: "1159:2052" },
 ];

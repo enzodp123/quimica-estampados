@@ -7,14 +7,15 @@ interface Props {
   id: string;
   label: string;
   cards: ProductCardData[];
+  figmaNode?: string;
 }
 
-const { id, label, cards } = Astro.props;
+const { id, label, cards, figmaNode } = Astro.props;
 const trackId = `${id}-track`;
 ---
 
 <div class="product-carousel" data-product-carousel>
-  <section id={trackId} class="product-carousel__track" data-product-track aria-label={label} aria-roledescription="carrusel" tabindex="0">
+  <section id={trackId} class="product-carousel__track" data-product-track data-figma-node={figmaNode} aria-label={label} aria-roledescription="carrusel" tabindex="0">
     {cards.map((card) => <ProductCard card={card} />)}
   </section>
   <div class="product-carousel__controls" data-carousel-controls hidden>
@@ -43,6 +44,7 @@ const trackId = `${id}-track`;
     grid-template-rows: auto;
     grid-auto-columns: calc((100% - var(--product-gap) * 2) / 3);
     gap: var(--product-gap);
+    padding-block: 0.5rem;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     scroll-behavior: smooth;

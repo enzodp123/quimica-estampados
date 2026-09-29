@@ -2,25 +2,16 @@
 import { Image } from "astro:assets";
 import mainProduct from "../../assets/images/remera_home_blanca.png";
 import smallHoodie from "../../assets/images/hero-hoodie.png";
-import cap from "../../assets/images/hero-cap.png";
+import cap from "../../assets/products/gorra-trucker/angled-2026.png";
 import BackgroundText from "../shared/BackgroundText.astro";
 
-const tickerItems = Array(7).fill("Dale vida a tu marca");
+import BrandTicker from "../shared/BrandTicker.astro";
 ---
 
 <section id="inicio" class="hero">
   <BackgroundText />
 
-  <div class="hero__ticker" aria-hidden="true">
-    <div class="hero__ticker-track">
-      <div class="hero__ticker-group">
-        {tickerItems.map((item) => <span>{item}</span>)}
-      </div>
-      <div class="hero__ticker-group">
-        {tickerItems.map((item) => <span>{item}</span>)}
-      </div>
-    </div>
-  </div>
+  <BrandTicker />
 
   <div class="hero__grid">
     <div class="hero__intro">
@@ -57,7 +48,7 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
         loading="eager"
         fetchpriority="high"
         widths={[480, 720, 960, 1200]}
-        sizes="(max-width: 40rem) 15.125rem, (max-width: 80rem) 24.75rem, 39.0625vw"
+        sizes="(max-width: 40rem) 12.875rem, (max-width: 80rem) 21rem, 31.25vw"
       />
       <Image
         class="hero__hoodie"
@@ -96,44 +87,6 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
     overflow: hidden;
     background: var(--color-background);
     border-bottom: 1px solid var(--color-border);
-  }
-
-  .hero__ticker {
-    position: absolute;
-    inset: 11px 0 auto;
-    z-index: 4;
-    overflow: hidden;
-    color: rgba(255, 255, 255, 0.4);
-    font-family: var(--font-jetbrains-mono);
-    font-size: 0.875rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    line-height: 1;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .hero__ticker-track {
-    width: max-content;
-    display: flex;
-    align-items: center;
-    animation: ticker-scroll 70s linear infinite;
-    will-change: transform;
-  }
-
-  .hero__ticker-group {
-    width: max-content;
-    flex: 0 0 auto;
-    padding-right: 60px;
-    display: flex;
-    align-items: center;
-    gap: 60px;
-  }
-
-  @keyframes ticker-scroll {
-    to {
-      transform: translateX(-50%);
-    }
   }
 
   .hero__grid {
@@ -250,7 +203,7 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
     z-index: 2;
     top: 50%;
     left: 50%;
-    width: 39.0625%;
+    width: 31.25%;
     transform: translate(-50%, -50%);
   }
 
@@ -326,8 +279,6 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
       min-height: 0;
     }
 
-    .hero__ticker { font-size: 0.625rem; }
-    .hero__ticker-group { padding-right: 2.5rem; gap: 2.5rem; }
 
     .hero__grid {
       position: relative;
@@ -408,105 +359,66 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
   }
 
   @media (min-width: 40.0625rem) and (max-width: 80rem) {
-    .hero {
-      height: 57.3125rem;
-      min-height: 57.3125rem;
-    }
-
+    .hero { height: auto; min-height: 0; }
     .hero__grid {
-      position: absolute;
-      inset: 0;
+      position: relative;
+      inset: auto;
       width: 100%;
-      height: 100%;
-      padding: 0;
-      display: block;
-    }
-
-    .hero__intro {
-      position: absolute;
-      top: 5.5rem;
-      left: 0;
-      width: 56%;
-      height: 43.75rem;
+      height: auto;
+      padding: 4rem 1.5rem 2rem 0;
       display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      grid-template-areas: "intro visual" "actions actions";
+      gap: 2rem 1rem;
+      align-items: center;
+    }
+    .hero__intro {
+      position: static;
+      width: 100%;
+      height: auto;
       grid-template-columns: 5.5rem minmax(0, 1fr);
-      grid-template-rows: 33.75rem 8.625rem;
+      grid-template-rows: auto auto;
       column-gap: 0.5rem;
-      row-gap: 1.375rem;
+      row-gap: 1.5rem;
     }
-
-    .hero__rail {
-      width: 5.5rem;
-      height: 33.75rem;
-      font-size: 4rem;
-    }
-
-    h1 {
-      align-self: end;
-      font-size: 3rem;
-      line-height: 1.25;
-    }
-
-    .hero__list {
-      width: min(34rem, calc(100vw - 2.75rem));
-      margin-left: 1.375rem;
-      font-size: 0.875rem;
-      line-height: 1.25;
-    }
-
-    .hero__visual {
-      position: absolute;
-      inset: 0;
-    }
-
+    .hero__rail { width: 5.5rem; height: auto; font-size: 3rem; }
+    h1 { align-self: end; font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1.1; }
+    .hero__list { width: auto; height: auto; margin: 0 0 0 1.5rem; gap: 1rem; font-size: 0.75rem; line-height: 1.5; }
+    .hero__visual { position: relative; inset: auto; min-width: 0; width: 100%; height: clamp(25rem, 45vw, 30rem); }
     .hero__visual .hero__shirt {
-      top: 6.5rem;
-      left: calc(50% + clamp(1rem, 3vw, 3.75rem));
-      width: clamp(17rem, 28vw, 24.75rem);
+      top: 0;
+      left: 50%;
+      width: min(100%, 21rem);
       height: auto;
       aspect-ratio: 24.75 / 29;
       object-fit: contain;
-      object-position: center;
       transform: translateX(-50%);
     }
-
     .hero__hoodie {
-      z-index: 3;
-      top: clamp(20rem, 36vw, 25.125rem);
-      right: clamp(1rem, 2.5vw, 2.0625rem);
+      top: auto;
+      bottom: 0;
+      right: 0;
       left: auto;
-      width: clamp(9.5rem, 15vw, 13.0625rem);
+      width: min(48%, 10rem);
       height: auto;
       aspect-ratio: 13 / 16.5;
       object-fit: contain;
     }
-
     .hero__cap { display: none; }
-
     .hero__actions {
-      position: absolute;
-      right: 15.2344%;
-      bottom: 1.8125rem;
-      left: auto;
-      width: 59.1797%;
-      margin: 0;
+      position: relative;
+      inset: auto;
+      width: calc(100% - 6rem);
+      max-width: 38rem;
+      margin: 0 0 0 6rem;
       display: flex;
       transform: none;
+      justify-self: start;
     }
   }
 
   @media (max-width: 40rem) {
-
-    .hero__ticker {
-      inset: 0.625rem 0 auto;
-      font-size: 0.875rem;
-      line-height: normal;
-    }
-
-    .hero__ticker-group {
-      padding-right: 3.75rem;
-      gap: 3.75rem;
-    }
 
     .hero__grid {
       width: calc(100% - 1.5rem);
@@ -578,9 +490,9 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
     .hero__visual .hero__shirt {
       top: 2.1875rem;
       left: 50%;
-      width: 15.125rem;
-      height: 20.75rem;
-      object-fit: cover;
+      width: 12.875rem;
+      height: 17.6875rem;
+      object-fit: contain;
       object-position: center;
       transform: translateX(-50%);
     }
@@ -611,9 +523,5 @@ const tickerItems = Array(7).fill("Dale vida a tu marca");
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .hero__ticker-track {
-      animation: none;
-    }
-  }
+
 </style>

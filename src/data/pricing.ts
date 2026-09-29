@@ -365,6 +365,19 @@ export const getCatalogTotal = (entry?: CatalogPrice): string | undefined => {
 
 export const formatCatalogPrice = (entry?: CatalogPrice): string => getCatalogTotal(entry) ?? "Consultar";
 
+// Importe secundario de las tarjetas: total del pack más un 21%.
+export const getCatalogComparisonTotal = (entry?: CatalogPrice): string | undefined => {
+  const total = getCatalogTotal(entry);
+  const amount = total?.match(/^\$(\d+(?:\.\d{3})*)(?:,(\d{1,2}))?$/);
+  if (!amount) return undefined;
+  const cents = Number(amount[1].replaceAll(".", "")) * 100 + Number((amount[2] ?? "").padEnd(2, "0"));
+  if (!Number.isSafeInteger(cents * 121)) return undefined;
+  const comparisonCents = Math.round(cents * 121 / 100);
+  const whole = Math.floor(comparisonCents / 100).toLocaleString("es-AR");
+  const decimals = comparisonCents % 100;
+  return `$${whole}${decimals ? `,${String(decimals).padStart(2, "0")}` : ""}`;
+};
+
 export const describeCatalogSelection = (catalog: CatalogProduct, selection: Record<string, string>): string =>
   catalog.variants.map(({ key, options }) => options.find(({ value }) => value === selection[key])?.label ?? "Consultar").join(" · ");
 

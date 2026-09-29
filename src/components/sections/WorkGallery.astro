@@ -1,6 +1,7 @@
 ---
 import { Image, getImage } from "astro:assets";
 import BackgroundText from "../shared/BackgroundText.astro";
+import { siteConfig } from "../../data/site";
 import work1 from "../../assets/works/textil/1.jpeg";
 import work2 from "../../assets/works/textil/2.png";
 import work3 from "../../assets/works/textil/3.jpeg";
@@ -205,7 +206,7 @@ const initialWorks = galleryCategories[0].works;
       </section>
     ))}
 
-    <a class="work-gallery__cta" href="#contacto">Ver más trabajos</a>
+    <a class="work-gallery__cta" href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer">Ver más trabajos</a>
   </div>
 
   <dialog class="work-lightbox" data-work-lightbox aria-label="Vista ampliada del trabajo">
@@ -215,6 +216,9 @@ const initialWorks = galleryCategories[0].works;
     <div class="work-lightbox__frame">
       <img class="work-lightbox__image" data-work-lightbox-image src={initialWorks[4].lightboxSrc} alt={initialWorks[4].label} />
     </div>
+    <button class="work-lightbox__arrow work-lightbox__arrow--previous" type="button" data-work-previous aria-label="Ver imagen anterior">&#8592;</button>
+    <button class="work-lightbox__arrow work-lightbox__arrow--next" type="button" data-work-next aria-label="Ver imagen siguiente">&#8594;</button>
+    <p class="work-lightbox__status" data-work-status aria-live="polite" aria-atomic="true"></p>
   </dialog>
 </section>
 
@@ -224,6 +228,36 @@ const initialWorks = galleryCategories[0].works;
   const workLightboxClose = workLightbox?.querySelector<HTMLButtonElement>("[data-work-lightbox-close]");
   const workFilters = document.querySelectorAll<HTMLButtonElement>("[data-work-filter]");
   const workPanels = document.querySelectorAll<HTMLElement>("[data-work-panel]");
+  const workStatus = workLightbox?.querySelector<HTMLElement>("[data-work-status]");
+  let activeImages: HTMLButtonElement[] = [];
+  let activeIndex = 0;
+  let imageRequest = 0;
+  let openingImage: HTMLButtonElement | undefined;
+
+  const showWorkImage = async (index: number) => {
+    if (!workLightbox || !workLightboxImage || !activeImages.length) return;
+    activeIndex = (index + activeImages.length) % activeImages.length;
+    const selectedIndex = activeIndex;
+    const item = activeImages[selectedIndex];
+    const request = ++imageRequest;
+    const image = new window.Image();
+    image.src = item.dataset.imageSrc ?? "";
+    try {
+      await image.decode();
+    } catch {
+      // Keep the current image visible if the next one cannot be loaded.
+      return;
+    }
+    if (request !== imageRequest) return;
+    workLightboxImage.src = image.src;
+    workLightboxImage.alt = item.dataset.imageAlt ?? "Trabajo realizado";
+    if (workStatus) workStatus.textContent = `${selectedIndex + 1} / ${activeImages.length}`;
+    if (!workLightbox.open) {
+      document.documentElement.classList.add("has-open-lightbox");
+      workLightbox.showModal();
+      workLightboxClose?.focus({ preventScroll: true });
+    }
+  };
 
   const selectWorkCategory = (category: string) => {
     workFilters.forEach((filter) => {
@@ -243,26 +277,35 @@ const initialWorks = galleryCategories[0].works;
   });
 
   const closeWorkLightbox = () => {
+    imageRequest++;
     workLightbox?.close();
   };
 
   document.querySelectorAll<HTMLButtonElement>("[data-work-image]").forEach((item) => {
     item.addEventListener("click", () => {
-      if (!workLightbox || !workLightboxImage) return;
-      workLightboxImage.src = item.dataset.imageSrc ?? "";
-      workLightboxImage.alt = item.dataset.imageAlt ?? "Trabajo realizado";
-      workLightbox.showModal();
-      document.documentElement.classList.add("has-open-lightbox");
-      workLightboxClose?.focus();
+      openingImage = item;
+      activeImages = Array.from(item.closest("[data-work-panel]")?.querySelectorAll<HTMLButtonElement>("[data-work-image]") ?? []);
+      void showWorkImage(activeImages.indexOf(item));
     });
   });
 
   workLightboxClose?.addEventListener("click", closeWorkLightbox);
+  workLightbox?.querySelector("[data-work-previous]")?.addEventListener("click", () => void showWorkImage(activeIndex - 1));
+  workLightbox?.querySelector("[data-work-next]")?.addEventListener("click", () => void showWorkImage(activeIndex + 1));
+  workLightbox?.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      void showWorkImage(activeIndex + (event.key === "ArrowLeft" ? -1 : 1));
+    }
+  });
+  workLightbox?.addEventListener("cancel", () => { imageRequest++; });
   workLightbox?.addEventListener("click", (event) => {
     if (event.target === workLightbox) closeWorkLightbox();
   });
   workLightbox?.addEventListener("close", () => {
+    imageRequest++;
     document.documentElement.classList.remove("has-open-lightbox");
+    openingImage?.focus({ preventScroll: true });
   });
 </script>
 
@@ -390,8 +433,9 @@ const initialWorks = galleryCategories[0].works;
   }
 
   .work-gallery__filters button.is-active {
-    color: var(--color-text);
-    background: rgba(19, 19, 19, 0.72);
+    color: var(--color-cyan);
+    border-color: var(--color-cyan);
+    background: rgba(0, 191, 232, 0.12);
   }
 
   @media (min-width: 64.0625rem) and (max-width: 80rem) {
@@ -437,7 +481,6 @@ const initialWorks = galleryCategories[0].works;
     inset: 0;
     z-index: 1;
     background: rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(2px);
     transition: opacity var(--transition);
     pointer-events: none;
   }
@@ -469,7 +512,6 @@ const initialWorks = galleryCategories[0].works;
     overflow: hidden;
     border: 0;
     background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(16.5px);
   }
 
   .work-lightbox:not([open]) { display: none; }
@@ -481,7 +523,6 @@ const initialWorks = galleryCategories[0].works;
 
   .work-lightbox::backdrop {
     background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(16.5px);
   }
 
   .work-lightbox__close {
@@ -504,23 +545,45 @@ const initialWorks = galleryCategories[0].works;
   .work-lightbox__close img { width: 100%; height: 100%; display: block; }
 
   .work-lightbox__frame {
-    width: min(34.01vw, 40.8125rem);
-    height: min(63.28dvh, 42rem);
-    padding: 0.125rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
     overflow: hidden;
     background: rgba(19, 19, 19, 0.5);
     border: 0.125rem solid var(--color-cyan);
-    backdrop-filter: blur(2px);
   }
 
   .work-lightbox__image {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
+    max-width: min(34.01vw, 40.8125rem);
+    max-height: min(63.28dvh, 42rem);
     display: block;
-    object-fit: cover;
+    object-fit: contain;
   }
 
+  :global(html) { scrollbar-gutter: stable; }
   :global(html.has-open-lightbox) { overflow: hidden; }
+
+  .work-lightbox__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--color-cyan);
+    background: #101010;
+    color: var(--color-cyan);
+    font-size: 1.75rem;
+    cursor: pointer;
+  }
+  .work-lightbox__arrow--previous { left: 5.63%; }
+  .work-lightbox__arrow--next { right: 5.63%; }
+  .work-lightbox__arrow:hover { background: var(--color-cyan); color: #050505; }
+  .work-lightbox__status { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: #fff; }
 
   .work-gallery__media--1 { grid-column: 1 / span 4; grid-row: 1; }
   .work-gallery__media--2 { grid-column: 5 / span 3; grid-row: 1; }
@@ -672,14 +735,16 @@ const initialWorks = galleryCategories[0].works;
     .work-gallery__media--4 { grid-column: 1 / span 2; grid-row: 3; }
     .work-gallery__media--5 { grid-column: 3 / span 2; grid-row: 3; }
 
-    .work-gallery__cta { display: none; }
+    .work-gallery__cta { display: flex; }
     .work-gallery__rail { left: calc(var(--section-title-inset) - var(--section-title-offset)); bottom: 3rem; font-size: var(--section-title-rail-size); }
     .work-gallery__title { left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap)); bottom: 3rem; font-size: 1.25rem; line-height: 1.05; }
 
     .work-lightbox__close { top: 1.5rem; right: 1rem; }
-    .work-lightbox__frame {
-      width: calc(100vw - 2rem);
-      height: min(72dvh, 42rem);
+    .work-lightbox__arrow { top: auto; bottom: 1rem; transform: none; }
+    .work-lightbox__close { width: 2.75rem; height: 2.75rem; }
+    .work-lightbox__image {
+      max-width: calc(100vw - 2rem - 0.25rem);
+      max-height: min(72dvh, 42rem);
     }
   }
 

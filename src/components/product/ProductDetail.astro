@@ -5,6 +5,7 @@ import { getRecommendationCards } from "../../data/product-cards";
 import ProductCarousel from "./ProductCarousel.astro";
 import { priceCatalog, type CatalogProduct } from "../../data/pricing";
 import ProductInfo from "./ProductInfo.astro";
+import BrandTicker from "../shared/BrandTicker.astro";
 
 interface Props {
   product: Product;
@@ -21,13 +22,7 @@ const heroImage = product.heroImage ? await getImage({ src: product.heroImage, w
 const relatedProducts = getRecommendationCards(product);
 ---
 
-{product.ticker && (
-  <aside class="product-ticker" aria-label="Dale vida a tu marca">
-    <div class="product-ticker__track">
-      {Array.from({ length: 9 }, () => <span>Dale vida a tu marca</span>)}
-    </div>
-  </aside>
-)}
+{product.ticker && <BrandTicker variant="product" />}
 
 <main
   id="main-content"
@@ -101,24 +96,10 @@ const relatedProducts = getRecommendationCards(product);
     });
   });
 
-  document.querySelectorAll<HTMLElement>("[data-product-choice-group]").forEach((group) => {
-    const choices = group.querySelectorAll<HTMLButtonElement>("[data-product-choice]");
-    choices.forEach((choice) => {
-      choice.addEventListener("click", () => {
-        choices.forEach((item) => {
-          const active = item === choice;
-          item.classList.toggle("is-active", active);
-          item.setAttribute("aria-pressed", String(active));
-        });
-      });
-    });
-  });
-
 </script>
 
 <style>
-  .product-ticker { height: 2.625rem; overflow: hidden; color: #ffffff66; background: var(--color-background); font: 700 0.875rem/1.5 var(--font-poppins); letter-spacing: 0.0625rem; text-transform: uppercase; }
-  .product-ticker__track { display: flex; align-items: center; justify-content: center; gap: 3.75rem; min-width: max-content; height: 100%; white-space: nowrap; }
+  .product-page { --font-jetbrains-mono: "JetBrains Mono", "Courier New", monospace; }
   .product-page { padding: 4.1875rem 0 7rem; background: var(--color-background); }
   .product-hero, .product-description, .related { width: min(calc(100% - 6rem), 87.3125rem); margin-inline: auto; }
   .product-hero { display: grid; grid-template-columns: minmax(0, 1.342fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
@@ -132,7 +113,7 @@ const relatedProducts = getRecommendationCards(product);
   .product-gallery__main img { width: 100%; height: 100%; object-fit: contain; }
   .product-gallery__main.is-photo img { object-fit: cover; }
   .product-description { margin-top: 2rem; }
-  .product-description h2, .related h2 { margin: 0; border-left: 2px solid var(--color-magenta); padding-left: 1.125rem; color: var(--color-magenta); font: 400 1rem/1 var(--font-poppins); letter-spacing: 0.075rem; text-transform: uppercase; }
+  .product-description h2, .related h2 { margin: 0; border-left: 2px solid var(--color-magenta); padding-left: 1.125rem; color: var(--color-magenta); font: 500 1rem/1 var(--font-jetbrains-mono); letter-spacing: 0.075rem; text-transform: uppercase; }
   .product-description > div > p { max-width: 45.25rem; margin-top: 1rem; color: #ffffffb3; font: 400 1rem/1.5 var(--font-poppins); }
   .size-guide { max-width: 45.25rem; margin-top: 1.25rem; color: #ffffffb3; font: 400 0.875rem/1.5 var(--font-poppins); }
   .size-guide summary { cursor: pointer; color: var(--color-magenta); }
@@ -149,5 +130,5 @@ const relatedProducts = getRecommendationCards(product);
   
   @media (max-width: 80rem) { .product-hero, .product-description, .related { width: calc(100% - 3rem); } .product-hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem; } .product-gallery { grid-template-columns: 6.25rem minmax(0, 1fr); gap: 1.25rem; } .product-gallery__thumbs { padding: 0.75rem; gap: 1rem; } .product-gallery__thumb { width: 4.625rem; height: 4.625rem; flex-basis: 4.625rem; }   }
   @media (max-width: 56rem) { .product-hero { grid-template-columns: 1fr; gap: 2rem; } .product-gallery { width: 100%; grid-template-columns: 6.25rem minmax(0, 1fr); } .product-gallery__main { max-height: 36rem; }  }
-  @media (max-width: 40rem) { .product-page { padding: 1.5rem 0 4rem; } .product-hero, .product-description, .related { width: calc(100% - 2rem); } .product-ticker { font-size: 0.7rem; } .product-gallery { display: flex; flex-direction: column-reverse; gap: 0.75rem; } .product-gallery__main { width: 100%; aspect-ratio: 1; } .product-gallery__thumbs { max-width: 100%; flex-direction: row; overflow-x: auto; overflow-y: hidden; gap: 0.75rem; }  }
+  @media (max-width: 40rem) { .product-page { padding: 1.5rem 0 4rem; } .product-hero, .product-description, .related { width: calc(100% - 2rem); } .product-gallery { display: flex; flex-direction: column-reverse; gap: 0.75rem; } .product-gallery__main { width: 100%; aspect-ratio: 1; } .product-gallery__thumbs { max-width: 100%; flex-direction: row; overflow-x: auto; overflow-y: hidden; gap: 0.75rem; }  }
 </style>

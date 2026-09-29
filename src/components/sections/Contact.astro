@@ -333,7 +333,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
 
   .contact__form textarea {
     min-height: 7.75rem;
-    resize: vertical;
+    resize: none;
   }
 
   .contact__form input:focus,
@@ -451,6 +451,21 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+  }
+
+  .contact__socials a {
+    transition: color var(--transition), border-color var(--transition), background-color var(--transition);
+  }
+
+  .contact__socials a:hover,
+  .contact__socials a:focus-visible {
+    color: var(--color-magenta);
+    border-color: var(--color-magenta);
+    background-color: rgb(236 0 140 / 12%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact__socials a { transition: none; }
   }
 
   .contact__socials span { padding: 0; justify-content: center; }

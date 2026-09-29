@@ -1,6 +1,6 @@
 ---
 import logo from "../../assets/icons/logo-quimica.svg";
-import { siteConfig } from "../../data/site";
+import { siteConfig, whatsappUrl } from "../../data/site";
 
 const year = new Date().getFullYear();
 ---
@@ -19,10 +19,14 @@ const year = new Date().getFullYear();
 
     <nav class="footer__column" aria-label="Servicios">
       <h3>Servicios</h3>
-      <a href="/#servicios">Sublimación</a>
-      <a href="/#servicios">DTF</a>
+      <a href={whatsappUrl("Hola, quisiera consultar por sublimación.")} target="_blank" rel="noopener noreferrer">Sublimación</a>
+      <a href="/#impresiones">Estampado textil / DTF</a>
       <a href="/productos/calcos-papel/">Calcos</a>
-      <a href="/#servicios">Corpóreos</a>
+      <a href="/productos/tarjetas-personales/">Tarjetas personales</a>
+      <a href="/productos/folletos/">Folletos</a>
+      <a href="/productos/etiquetas/">Etiquetas</a>
+      <a href="/#gran-formato">Impresión de gran formato</a>
+      <a href="/#corporeos">Corpóreos en Polifan</a>
     </nav>
 
     <nav class="footer__column" aria-label="Empresa">
@@ -61,7 +65,7 @@ const year = new Date().getFullYear();
   <div class="footer__bottom" data-figma-node="1031:2128">
     <p><strong>© {year} Química Estampados.</strong> Todos los derechos reservados.</p>
     <p>
-      Desarrollado por
+      Desarrollado por{" "}
       {siteConfig.developer.url ? (
         <a href={siteConfig.developer.url} target="_blank" rel="noreferrer">{siteConfig.developer.label}</a>
       ) : (
@@ -73,7 +77,7 @@ const year = new Date().getFullYear();
 
 <style>
   .footer {
-    height: 24.104375rem;
+    height: auto;
     min-height: 24.104375rem;
     padding-top: 1.8125rem;
     background: var(--color-background);
@@ -83,7 +87,7 @@ const year = new Date().getFullYear();
   .footer__grid { width: calc(100% - 12.5rem); margin-inline: auto; }
 
   .footer__grid {
-    height: 16.416875rem;
+    min-height: 16.416875rem;
     display: grid;
     grid-template-columns: 35.6977% 22.9069% 19.5349% 21.8605%;
     gap: 0;
@@ -91,6 +95,7 @@ const year = new Date().getFullYear();
   }
 
   .footer__brand { align-self: start; }
+  .footer__grid > * { min-width: 0; }
   .footer__column { align-self: start; margin-top: 2.0209375rem; }
   .footer__grid > .footer__column:first-of-type { padding-left: 3.625rem; }
 
@@ -194,6 +199,11 @@ const year = new Date().getFullYear();
     color: #f0f0ed;
     font-size: 1rem;
     line-height: 1;
+  }
+
+  .footer__contact > a > span:first-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .footer__bottom {

@@ -365,7 +365,7 @@ import BrandTicker from "../shared/BrandTicker.astro";
       inset: auto;
       width: 100%;
       height: auto;
-      padding: 4rem 1.5rem 2rem 0;
+      padding: 4rem 1.5rem 2rem;
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       grid-template-rows: auto auto;
@@ -377,14 +377,15 @@ import BrandTicker from "../shared/BrandTicker.astro";
       position: static;
       width: 100%;
       height: auto;
-      grid-template-columns: 5.5rem minmax(0, 1fr);
+      grid-template-columns: 3.25rem minmax(0, 1fr);
       grid-template-rows: auto auto;
       column-gap: 0.5rem;
       row-gap: 1.5rem;
     }
-    .hero__rail { width: 5.5rem; height: auto; font-size: 3rem; }
-    h1 { align-self: end; font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1.1; }
-    .hero__list { width: auto; height: auto; margin: 0 0 0 1.5rem; gap: 1rem; font-size: 0.75rem; line-height: 1.5; }
+    .hero__rail { width: auto; height: auto; justify-self: center; font-size: 3rem; white-space: nowrap; }
+    h1 { align-self: end; font-size: clamp(1.75rem, 3.4vw, 2.75rem); line-height: 1.1; }
+    .hero__headline > span { white-space: nowrap; }
+    .hero__list { width: auto; height: auto; margin: 0; gap: 1rem; font-size: 0.75rem; line-height: 1.5; }
     .hero__visual { position: relative; inset: auto; min-width: 0; width: 100%; height: clamp(25rem, 45vw, 30rem); }
     .hero__visual .hero__shirt {
       top: 0;
@@ -395,16 +396,7 @@ import BrandTicker from "../shared/BrandTicker.astro";
       object-fit: contain;
       transform: translateX(-50%);
     }
-    .hero__hoodie {
-      top: auto;
-      bottom: 0;
-      right: 0;
-      left: auto;
-      width: min(48%, 10rem);
-      height: auto;
-      aspect-ratio: 13 / 16.5;
-      object-fit: contain;
-    }
+    .hero__hoodie { display: none; }
     .hero__cap { display: none; }
     .hero__actions {
       position: relative;

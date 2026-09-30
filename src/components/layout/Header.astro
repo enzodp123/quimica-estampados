@@ -1,6 +1,6 @@
 ---
 import logo from "../../assets/icons/logo-quimica.svg";
-import { siteConfig } from "../../data/site";
+import { siteConfig, whatsappUrl } from "../../data/site";
 import { catalogList } from "../../data/pricing";
 import { visibleProducts } from "../../data/products";
 
@@ -96,6 +96,8 @@ const serviceGroups = [
                 </ul>
               </li>
             ))}
+            <li><a href={whatsappUrl("Hola, quisiera consultar por corpóreos en polifan.")} target="_blank" rel="noopener noreferrer">Corpóreos en Polifan</a></li>
+            <li><a href={whatsappUrl("Hola, quisiera consultar por impresión de gran formato.")} target="_blank" rel="noopener noreferrer">Impresión de gran formato</a></li>
           </ul>
         </li>
         <li><a class="nav-link" href="/#trabajos">Trabajos</a></li>

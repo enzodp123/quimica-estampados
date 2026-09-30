@@ -1,6 +1,7 @@
 ---
 import { getImage } from "astro:assets";
 import type { Product } from "../../data/products";
+import { outlinedGarmentSlugs } from "../../data/garment-outlines";
 import { getRecommendationCards } from "../../data/product-cards";
 import ProductCarousel from "./ProductCarousel.astro";
 import { priceCatalog, type CatalogProduct } from "../../data/pricing";
@@ -12,6 +13,7 @@ interface Props {
 }
 
 const { product } = Astro.props;
+const hasGarmentOutline = outlinedGarmentSlugs.has(product.slug);
 const isPhotoProduct = product.slug === "remera-oversize";
 const catalog: CatalogProduct = priceCatalog[product.pricingId];
 const gallery = await Promise.all(product.gallery.map(async (image) => ({
@@ -38,10 +40,11 @@ const relatedProducts = getRecommendationCards(product);
             type="button"
             data-gallery-thumb
             data-src={image.main.src}
+            data-garment-outline={hasGarmentOutline && index === 0 ? "true" : "false"}
             aria-label={`Ver imagen ${index + 1} de ${product.title}`}
             aria-pressed={index === 0 ? "true" : "false"}
           >
-            <img src={image.thumb.src} alt="" loading={index === 0 ? "eager" : "lazy"} />
+            <img class:list={{ "has-garment-outline": hasGarmentOutline && index === 0 }} src={image.thumb.src} alt="" loading={index === 0 ? "eager" : "lazy"} />
           </button>
         ))}
       </div>
@@ -49,6 +52,7 @@ const relatedProducts = getRecommendationCards(product);
       <div class:list={["product-gallery__main", { "is-photo": isPhotoProduct }]}>
         <img
           data-gallery-main
+          class:list={{ "has-garment-outline": hasGarmentOutline }}
           src={heroImage.src}
           alt={product.title}
           fetchpriority="high"
@@ -86,7 +90,10 @@ const relatedProducts = getRecommendationCards(product);
     const thumbs = gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-thumb]");
     thumbs.forEach((thumb) => {
       thumb.addEventListener("click", () => {
-        if (mainImage && thumb.dataset.src) mainImage.src = thumb.dataset.src;
+        if (mainImage && thumb.dataset.src) {
+          mainImage.src = thumb.dataset.src;
+          mainImage.classList.toggle("has-garment-outline", thumb.dataset.garmentOutline === "true");
+        }
         thumbs.forEach((item) => {
           const active = item === thumb;
           item.classList.toggle("is-active", active);
@@ -111,6 +118,10 @@ const relatedProducts = getRecommendationCards(product);
   .product-gallery__thumb:focus-visible { outline-color: var(--color-magenta); }
   .product-gallery__main { aspect-ratio: 1; min-width: 0; overflow: hidden; background: var(--color-background); }
   .product-gallery__main img { width: 100%; height: 100%; object-fit: contain; }
+  .has-garment-outline {
+    filter: drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff)
+      drop-shadow(0 1px 0 #fff) drop-shadow(0 -1px 0 #fff);
+  }
   .product-gallery__main.is-photo img { object-fit: cover; }
   .product-description { margin-top: 2rem; }
   .product-description h2, .related h2 { margin: 0; border-left: 2px solid var(--color-magenta); padding-left: 1.125rem; color: var(--color-magenta); font: 500 1rem/1 var(--font-jetbrains-mono); letter-spacing: 0.075rem; text-transform: uppercase; }

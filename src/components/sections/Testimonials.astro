@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components";
 import BackgroundText from "../shared/BackgroundText.astro";
 import BrandCarousel from "../shared/BrandCarousel.astro";
 import brandImage from "../../assets/images/img1_marcas.png";
+import chevron from "../../assets/icons/product-chevron.svg";
 
 const testimonials = [
   {
@@ -51,16 +52,12 @@ const testimonials = [
     </div>
 
     <div class="brands__pagination" role="group" aria-label="Elegir testimonio">
-      {testimonials.map(({ author }, index) => (
-        <button
-          type="button"
-          aria-label={`Mostrar testimonio de ${author}`}
-          aria-controls="testimonial-track"
-          aria-current={index === 0 ? "true" : "false"}
-          data-testimonial-dot
-          data-index={index}
-        ></button>
-      ))}
+      <button type="button" aria-label="Testimonio anterior" aria-controls="testimonial-track" data-testimonial-previous disabled>
+        <img src={chevron.src} width="24" height="24" alt="" />
+      </button>
+      <button type="button" aria-label="Testimonio siguiente" aria-controls="testimonial-track" data-testimonial-next>
+        <img src={chevron.src} width="24" height="24" alt="" />
+      </button>
     </div>
 
     <aside class="brands__cta" aria-label="Propuesta de productos personalizados">
@@ -95,10 +92,14 @@ const testimonials = [
 <script>
   const testimonialCarousel = document.querySelector<HTMLElement>("[data-testimonial-carousel]");
   const testimonialCards = Array.from(document.querySelectorAll<HTMLElement>("[data-testimonial-card]"));
-  const testimonialDots = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-testimonial-dot]"));
+  const testimonialPrevious = document.querySelector<HTMLButtonElement>("[data-testimonial-previous]");
+  const testimonialNext = document.querySelector<HTMLButtonElement>("[data-testimonial-next]");
+  let currentTestimonial = 0;
 
   const selectTestimonial = (index: number, shouldScroll = true) => {
-    testimonialDots.forEach((dot, dotIndex) => dot.setAttribute("aria-current", String(dotIndex === index)));
+    currentTestimonial = index;
+    if (testimonialPrevious) testimonialPrevious.disabled = index === 0;
+    if (testimonialNext) testimonialNext.disabled = index === testimonialCards.length - 1;
     if (shouldScroll && testimonialCarousel) {
       testimonialCarousel.scrollTo({
         left: testimonialCarousel.clientWidth * index,
@@ -107,8 +108,11 @@ const testimonials = [
     }
   };
 
-  testimonialDots.forEach((dot) => {
-    dot.addEventListener("click", () => selectTestimonial(Number(dot.dataset.index ?? 0)));
+  testimonialPrevious?.addEventListener("click", () => {
+    selectTestimonial(Math.max(0, currentTestimonial - 1));
+  });
+  testimonialNext?.addEventListener("click", () => {
+    selectTestimonial(Math.min(testimonialCards.length - 1, currentTestimonial + 1));
   });
 
   let testimonialScrollFrame = 0;
@@ -200,20 +204,23 @@ const testimonials = [
   .brands__pagination { display: none; }
 
   .brands__pagination button {
-    width: 0.625rem;
-    height: 0.625rem;
+    width: 3rem;
+    height: 3rem;
     padding: 0;
-    border: 0;
-    border-radius: 50%;
-    background: #fff;
+    display: grid;
+    place-items: center;
+    border: 1px solid #353534;
+    background: #13131380;
     cursor: pointer;
+    transition: border-color var(--transition), opacity var(--transition);
   }
 
-  .brands__pagination button[aria-current="true"] {
-    width: 0.75rem;
-    height: 0.75rem;
-    background: var(--color-cyan);
-  }
+  .brands__pagination button img { width: 1.5rem; height: 1.5rem; }
+  [data-testimonial-previous] img { transform: rotate(90deg); }
+  [data-testimonial-next] img { transform: rotate(-90deg); }
+  .brands__pagination button:hover:not(:disabled),
+  .brands__pagination button:focus-visible { border-color: var(--color-cyan); }
+  .brands__pagination button:disabled { opacity: 0.3; cursor: default; }
 
   .brands__value {
     min-width: 0;
@@ -495,25 +502,10 @@ const testimonials = [
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.25rem;
+      gap: 0.75rem;
       transform: translateX(-50%);
     }
 
-    .brands__pagination button {
-      width: 0.625rem;
-      height: 0.625rem;
-      padding: 0;
-      border: 0;
-      border-radius: 50%;
-      background: #fff;
-      cursor: pointer;
-    }
-
-    .brands__pagination button[aria-current="true"] {
-      width: 0.75rem;
-      height: 0.75rem;
-      background: var(--color-cyan);
-    }
     .brands__cta {
       position: absolute;
       top: 17rem;

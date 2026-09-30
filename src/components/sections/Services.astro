@@ -706,7 +706,7 @@ const services = [
   @media (min-width: 56.0625rem) and (max-width: 80rem) {
     .services {
       height: auto;
-      min-height: 70rem;
+      min-height: 0;
       padding: 3rem 0 10rem;
     }
 
@@ -725,6 +725,7 @@ const services = [
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 0.75rem;
       overflow: visible;
+      align-items: start;
     }
 
     .services__grid .service-card,
@@ -738,8 +739,8 @@ const services = [
       margin-top: 0;
     }
 
-    .service-card--1,
-    .service-card--3 { margin-top: 3.25rem; }
+    .services__grid .service-card--1,
+    .services__grid .service-card--3 { margin-top: 3.25rem; }
     .service-card__visual,
     .service-card--1 .service-card__visual,
     .service-card--2 .service-card__visual,
@@ -759,6 +760,7 @@ const services = [
     }
 
     .service-extra { min-height: 13rem; padding: 1rem; }
+    .service-extra--cyan { margin-top: 3rem; }
     .service-extra h3 { font-size: 0.8rem; }
     .service-extra p { font-size: 0.68rem; line-height: 1.45; }
     .service-extra a { width: 8rem; min-height: 2.25rem; font-size: 0.6rem; }

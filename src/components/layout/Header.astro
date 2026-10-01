@@ -1,5 +1,5 @@
 ---
-import logo from "../../assets/icons/logo-quimica.svg";
+import logo from "../../assets/icons/logo-quimica-horizontal.svg";
 import { siteConfig, whatsappUrl } from "../../data/site";
 import { catalogList } from "../../data/pricing";
 import { visibleProducts } from "../../data/products";
@@ -50,7 +50,7 @@ const serviceGroups = [
       href="/#inicio"
       class="brand"
       aria-label="Química Estampados, ir al inicio"
-      ><img src={logo.src} width="48" height="48" alt="" /></a
+      ><img src={logo.src} width={logo.width} height={logo.height} alt="" /></a
     >
     <button
       class="menu-toggle"
@@ -291,8 +291,8 @@ const serviceGroups = [
       padding var(--transition);
   }
   .brand img {
-    width: 80px;
-    height: 80px;   
+    width: 248px;
+    height: auto;
     display: block;
     transition:
       width var(--transition),
@@ -309,8 +309,8 @@ const serviceGroups = [
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   }
   .site-header.is-scrolled .brand img {
-    width: 58px;
-    height: 58px;
+    width: 180px;
+    height: auto;
   }
   .main-nav {
     display: flex;
@@ -463,8 +463,8 @@ const serviceGroups = [
       padding-inline: 32px;
     }
     .brand img {
-      width: 64px;
-      height: 64px;
+      width: 200px;
+      height: auto;
     }
     .nav-list {
       gap: 20px;
@@ -532,8 +532,8 @@ const serviceGroups = [
       padding-bottom: 24px;
     }
     .brand img {
-      width: 60px;
-      height: 60px;
+      width: 186px;
+      height: auto;
     }
     .site-header.is-scrolled .nav-shell {
       height: 82px;
@@ -541,8 +541,8 @@ const serviceGroups = [
       padding: 10px 12px 12px;
     }
     .site-header.is-scrolled .brand img {
-      width: 60px;
-      height: 60px;
+      width: 186px;
+      height: auto;
     }
     .menu-toggle {
       display: block;

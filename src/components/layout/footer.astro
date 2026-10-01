@@ -1,5 +1,5 @@
 ---
-import logo from "../../assets/icons/logo-quimica.svg";
+import logo from "../../assets/icons/logo-quimica-horizontal.svg";
 import { siteConfig, whatsappUrl } from "../../data/site";
 
 const year = new Date().getFullYear();
@@ -8,7 +8,7 @@ const year = new Date().getFullYear();
 <footer class="footer" data-figma-node="1031:2067">
   <div class="footer__grid">
     <div class="footer__brand">
-      <img src={logo.src} width="76" height="76" alt="Química Estampados" />
+      <img src={logo.src} width={logo.width} height={logo.height} alt="Química Estampados" />
       <h2>Química Estampados</h2>
       <p>
         Estudio creativo <strong>especializado</strong> en estampados<br />
@@ -100,8 +100,8 @@ const year = new Date().getFullYear();
   .footer__grid > .footer__column:first-of-type { padding-left: 3.625rem; }
 
   .footer__brand img {
-    width: clamp(3.5rem, 4vw, 4.75rem);
-    height: clamp(3.5rem, 4vw, 4.75rem);
+    width: min(100%, 16rem);
+    height: auto;
   }
 
   .footer__brand h2 {
@@ -231,7 +231,7 @@ const year = new Date().getFullYear();
   }
 
   @media (min-width: 64.0625rem) {
-    .footer__brand img { width: 5rem; height: 5rem; }
+    .footer__brand img { width: min(100%, 16rem); height: auto; }
     .footer__brand h2 { margin-top: 1.5rem; }
     .footer__brand > p { max-width: 35.6875rem; margin-top: 1.5rem; font-size: 1rem; }
     .footer__dots { margin-top: 1.5rem; }
@@ -259,7 +259,7 @@ const year = new Date().getFullYear();
     .footer__grid > .footer__column:first-of-type { padding-left: 0; }
 
     .footer__brand { grid-column: 1 / -1; }
-    .footer__brand img { width: 5rem; height: 5rem; }
+    .footer__brand img { width: min(100%, 16rem); height: auto; }
     .footer__brand h2 { margin-top: 1.5rem; font-size: 1.5rem; }
     .footer__brand > p { max-width: 35.6875rem; margin-top: 1.5rem; font-size: 1rem; }
     .footer__brand > p br { display: none; }
@@ -308,8 +308,8 @@ const year = new Date().getFullYear();
     }
 
     .footer__brand img {
-      width: 5rem;
-      height: 5rem;
+      width: min(100%, 16rem);
+      height: auto;
     }
 
     .footer__brand h2 {

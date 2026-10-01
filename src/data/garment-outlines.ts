@@ -1,4 +1,5 @@
 export const outlinedGarmentSlugs = new Set([
+  "gorra-trucker",
   "remera-unisex",
   "remera-nino",
   "chomba-algodon",

@@ -1,7 +1,7 @@
 ---
 interface Props { variant?: "hero" | "product"; }
 const { variant = "hero" } = Astro.props;
-const items = Array(7).fill("Dale vida a tu marca");
+const items = Array(24).fill("Dale vida a tu marca");
 ---
 
 <div class:list={["brand-ticker", `brand-ticker--${variant}`]} aria-hidden="true">
@@ -16,6 +16,7 @@ const items = Array(7).fill("Dale vida a tu marca");
 
 <style>
   .brand-ticker {
+    --ticker-gap: clamp(1.25rem, 2vw, 1.75rem);
     overflow: hidden;
     color: rgba(255, 255, 255, 0.4);
     font-family: var(--font-jetbrains-mono);
@@ -28,17 +29,15 @@ const items = Array(7).fill("Dale vida a tu marca");
   }
   .brand-ticker--hero { position: absolute; inset: 11px 0 auto; z-index: 4; }
   .brand-ticker--product { height: 2.625rem; display: flex; align-items: center; background: var(--color-background); }
-  .brand-ticker__track { width: max-content; display: flex; align-items: center; animation: ticker-scroll 70s linear infinite; will-change: transform; }
-  .brand-ticker__group { width: max-content; flex: 0 0 auto; padding-right: 60px; display: flex; align-items: center; gap: 60px; }
+  .brand-ticker__track { width: max-content; display: flex; align-items: center; animation: ticker-scroll 240s linear infinite; will-change: transform; }
+  .brand-ticker__group { width: max-content; flex: 0 0 auto; padding-right: var(--ticker-gap); display: flex; align-items: center; gap: var(--ticker-gap); }
   @keyframes ticker-scroll { to { transform: translateX(-50%); } }
   @media (max-width: 80rem) {
     .brand-ticker { font-size: 0.625rem; }
-    .brand-ticker__group { padding-right: 2.5rem; gap: 2.5rem; }
   }
   @media (max-width: 40rem) {
     .brand-ticker--hero { inset: 0.625rem 0 auto; }
     .brand-ticker { font-size: 0.875rem; line-height: normal; }
-    .brand-ticker__group { padding-right: 3.75rem; gap: 3.75rem; }
   }
   @media (prefers-reduced-motion: reduce) { .brand-ticker__track { animation: none; } }
 </style>

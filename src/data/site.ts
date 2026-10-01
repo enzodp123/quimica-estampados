@@ -41,6 +41,11 @@ export const fullAddress = [
 
 export const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(fullAddress)}&output=embed`;
 
+export const serviceConsultationMessages = {
+  corporeos: "¡Hola! Vi los corpóreos en polifan en la web de Química Estampados y me gustaría pedir un presupuesto para un logo o letras personalizadas. ¿Qué información necesitan para cotizar las medidas, la cantidad y la terminación?",
+  granFormato: "¡Hola! Vi el servicio de impresión de gran formato en la web de Química Estampados y quisiera pedir un presupuesto. ¿Me pueden asesorar sobre el material adecuado para mi proyecto y qué medidas y datos necesitan para cotizarlo?",
+} as const;
+
 export const whatsappUrl = (message = "Hola, vengo desde la web de Química Estampados. Quisiera consultar por estampados y productos personalizados.") => {
   const base = `https://wa.me/${siteConfig.whatsapp.number}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;

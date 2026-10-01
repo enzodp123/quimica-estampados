@@ -5,7 +5,7 @@ import cards from "../../assets/services/tarjetas-personales.png";
 import folletos from "../../assets/services/folletos.png";
 import labels from "../../assets/services/etiquetas.png";
 import BackgroundText from "../shared/BackgroundText.astro";
-import { whatsappUrl } from "../../data/site";
+import { serviceConsultationMessages, whatsappUrl } from "../../data/site";
 
 const services = [
   {
@@ -86,13 +86,13 @@ const services = [
         <h3>Corpóreos en Polifan</h3>
         <p>Letras, logos y diseños realizados en polifan, ideales para destacar tu marca en vidrieras, locales, eventos y espacios comerciales.</p>
         <p class="service-extra__detail"><strong>¿Querés cotizar el tuyo?</strong> El presupuesto se realiza de manera personalizada según las medidas, cantidad, diseño y terminación</p>
-        <a href={whatsappUrl("Hola, quisiera consultar por corpóreos en polifan.")} target="_blank" rel="noreferrer">Consultar</a>
+        <a href={whatsappUrl(serviceConsultationMessages.corporeos)} target="_blank" rel="noopener noreferrer">Consultar</a>
       </article>
       <article id="gran-formato" class="service-extra service-extra--magenta">
         <h3>Impresión de gran formato</h3>
         <p>Impresión de alta calidad para vidrieras, locales, vehículos, cartelería y diferentes proyectos comerciales. Trabajamos con distintos tipos de materiales según la superficie, el uso y el resultado que quieras lograr.</p>
         <p class="service-extra__detail"><strong>Cada proyecto es diferente.</strong> Te asesoramos sobre cada material y cotizamos según las medidas, la cantidad y las características de cada trabajo.</p>
-        <a href={whatsappUrl("Hola, quisiera consultar por impresión de gran formato.")} target="_blank" rel="noreferrer">Consultar</a>
+        <a href={whatsappUrl(serviceConsultationMessages.granFormato)} target="_blank" rel="noopener noreferrer">Consultar</a>
       </article>
     </div>
 

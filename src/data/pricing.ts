@@ -293,7 +293,7 @@ export const priceCatalog = {
     prices: apparelPrices([[1, "$25.000"], [5, "$24.000"], [10, "$23.000"], [20, "$22.000"], [50, "$20.000"]]), notes: apparelNotes,
   },
   "chomba-algodon": {
-    id: "chomba-algodon", name: "Chomba algodón peinado 24.1", category: "Chombas", description: "Cuello polo y botones.",
+    id: "chomba-algodon", name: "Chomba algodón peinado", category: "Chombas", description: "Cuello polo y botones.",
     variants: [{ key: "quantity", label: "Cantidad", options: quantityChoices(1, 5, 10) }], sizes: ["Del 1 al 5"],
     prices: apparelPrices([[1, "$30.000"], [5, "$28.500"], [10, "$27.000"]]), notes: [...apparelNotes, "Consultar por solo logo chico adelante."],
   },

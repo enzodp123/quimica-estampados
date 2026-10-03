@@ -1,13 +1,13 @@
 import type { ImageMetadata } from "astro";
 import { productBySlug, type Product } from "./products";
 import { priceCatalog } from "./pricing";
-import crewneck from "../assets/products/shared-buzo.png";
-import hoodie from "../assets/images/hero-hoodie.png";
-import cap from "../assets/products/gorra-trucker/angled-2026.png";
-import jacket from "../assets/products/printing/campera-capucha.png";
-import shirt from "../assets/products/printing/remera-unisex.png";
-import polo from "../assets/products/printing/chomba-pique.png";
-import graduate from "../assets/products/remera-egresadito/design-2026.png";
+import crewneck from "../assets/products/shared-buzo.webp";
+import hoodie from "../assets/images/hero-hoodie.webp";
+import cap from "../assets/products/gorra-trucker/angled-2026.webp";
+import jacket from "../assets/products/printing/campera-capucha.webp";
+import shirt from "../assets/products/printing/remera-unisex.webp";
+import polo from "../assets/products/printing/chomba-pique.webp";
+import graduate from "../assets/products/remera-egresadito/design-2026.webp";
 
 export interface ProductCardData {
   product: Product;

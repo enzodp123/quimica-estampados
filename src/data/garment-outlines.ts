@@ -6,6 +6,7 @@ export const outlinedGarmentSlugs = new Set([
   "chomba-pique",
   "buzo-cuello-redondo",
   "buzo-canguro",
+  "buzo-canguro-premium",
   "buzo-canguro-nino",
   "campera-capucha",
 ]);

@@ -1,6 +1,6 @@
 # Química Estampados
 
-Sitio institucional y catálogo estático de Química Estampados, implementado con Astro a partir de 36 referencias de Figma. Incluye la página principal, 17 fichas de producto, una página 404, interacciones del catálogo, formulario de contacto con alternativa por email y controles automáticos orientados a producción.
+Sitio institucional y catálogo estático de Química Estampados, implementado con Astro a partir de 36 referencias de Figma. Incluye la página principal, 18 fichas de producto, una página 404, interacciones del catálogo, formulario de contacto con alternativa por email y controles automáticos orientados a producción.
 
 ## Requisitos y puesta en marcha
 
@@ -65,7 +65,7 @@ El workflow `.github/workflows/qa.yml` ejecuta el mismo control con Node 22 en c
 
 La suite de `tests/production.test.mjs` verifica el resultado estático, no solo el código fuente:
 
-- generación del home, las 17 rutas de producto y la página 404;
+- generación del home, las 18 rutas de producto y la página 404;
 - idioma, metadatos esenciales, un único `main` y `h1`, y enlace para saltar al contenido;
 - títulos únicos en páginas indexables;
 - ausencia de enlaces o formularios con destino `#` y de texto corrupto;
@@ -73,7 +73,7 @@ La suite de `tests/production.test.mjs` verifica el resultado estático, no solo
 - presencia de las 36 referencias Figma en el HTML generado;
 - presupuesto máximo de 35 MiB para `dist/`.
 
-El script `scripts/prune-dist-assets.mjs` se ejecuta después del build y elimina exclusivamente PNG generados que no estén referenciados desde `dist/`; no modifica los originales de `src/assets/`.
+Las imágenes raster de `src/assets/` se mantienen en WebP. El script `scripts/prune-dist-assets.mjs` se ejecuta después del build y elimina imágenes raster generadas (incluidos los WebP originales) que no estén referenciadas desde `dist/`; no modifica los archivos de `src/assets/`.
 
 ## Arquitectura
 
@@ -91,7 +91,7 @@ src/
 ├── layouts/MainLayout.astro   Metadatos, JSON-LD y estructura común
 ├── pages/
 │   ├── index.astro            Home
-│   ├── productos/[slug].astro Rutas estáticas de las 17 fichas
+│   ├── productos/[slug].astro Rutas estáticas de las 18 fichas
 │   └── 404.astro              Página de error
 └── styles/                    Reset, variables y estilos globales
 
@@ -124,6 +124,7 @@ La implementación conserva cada identificador en atributos `data-figma-node` o 
 | `/productos/remera-egresadito/` | `861:2182` |
 | `/productos/buzo-cuello-redondo/` | `825:979` |
 | `/productos/buzo-canguro/` | `835:1452` |
+| `/productos/buzo-canguro-premium/` | Fotos entregadas en el ZIP de productos |
 | `/productos/buzo-canguro-nino/` | `834:713` |
 | `/productos/campera-capucha/` | `835:2180` |
 | `/productos/chomba-pique/` | `1059:1017` |
@@ -186,9 +187,9 @@ Hasta completar esos datos, el proyecto está preparado para QA y preproducción
 
 La lista entregada se conserva íntegra en `docs/catalogo-precios-fuente.txt`. Es la única fuente comercial para los precios de `src/data/pricing.ts`: 24 productos, 13 categorías y 136 combinaciones, más las terminaciones adicionales de lona.
 
-Por indicación del cliente, solo se publican las 17 fichas que tienen imágenes. `visibleProducts` en `src/data/products.ts` controla las rutas y el menú Servicios. Las fichas usan `ProductInfo.astro` para conservar el diseño de Figma (nodo `1033:2504`), con Poppins, precios compactos en magenta, botones con borde y tamaños desplegables.
+Por indicación del cliente, solo se publican las 18 fichas que tienen imágenes. `visibleProducts` en `src/data/products.ts` controla las rutas y el menú Servicios. Las fichas usan `ProductInfo.astro` para conservar el diseño de Figma (nodo `1033:2504`), con Poppins, precios compactos en magenta, botones con borde y tamaños desplegables.
 
-«Catálogo y precios» no forma parte de la web actual: la plantilla se conserva en `src/components/product/PriceCatalog.astro`, fuera de las rutas públicas, junto con `CatalogPricing.astro`. Los nueve productos sin imágenes conservan todos sus precios en `src/data/pricing.ts`: tazas, vinilos, lona, fly banner, portabanners y canguro premium. Para incorporarlos más adelante, agregar sus imágenes y su ficha en `products.ts`. La lógica de precios sigue compartida en `src/scripts/catalog-pricing.ts`.
+«Catálogo y precios» no forma parte de la web actual: la plantilla se conserva en `src/components/product/PriceCatalog.astro`, fuera de las rutas públicas, junto con `CatalogPricing.astro`. Los ocho productos sin imágenes conservan todos sus precios en `src/data/pricing.ts`: tazas, vinilos, lona, fly banner y portabanners. Para incorporarlos más adelante, agregar sus imágenes y su ficha en `products.ts`. La lógica de precios sigue compartida en `src/scripts/catalog-pricing.ts`.
 
 Los importes se mantienen como texto para conservar exactamente los separadores y decimales entregados. `total` es el total publicado de la cantidad; `unitPrice` conserva el precio por unidad de la fuente. Por indicación del cliente, las tarjetas y fichas muestran el total del pack: se utiliza el total publicado o, si solo hay un unitario, se multiplica por la cantidad de esa combinación mediante `getCatalogTotal`. El cálculo usa centavos enteros y no modifica los datos originales. No se calculan cuotas, descuentos ni precios de cantidades intermedias. Las combinaciones ausentes muestran **Consultar**. Oversize y egresadito conservan sus fichas con precio a consultar, porque no tienen una tarifa específica en la fuente.
 
@@ -201,3 +202,7 @@ Los importes se mantienen como texto para conservar exactamente los separadores 
 `ProductCarousel.astro` permite desplazamiento horizontal con flechas, teclado y gestos táctiles. Las flechas avanzan una tarjeta, se desactivan en los extremos y respetan la preferencia de movimiento reducido. Las recomendaciones priorizan la misma categoría y excluyen el producto actual. Solo se enlazan productos publicados con imágenes.
 
 La composición de Impresiones sigue el nodo `974:1922`: encabezado alineado con la primera tarjeta, título vertical a la izquierda y tres tarjetas visibles en escritorio. El título, el encabezado y el carrusel ocupan áreas separadas de una grilla, con altura automática para que los textos y los controles no se superpongan al cambiar el ancho. En móvil, el título tiene una fila propia. Los nueve productos del nodo `1144:2781` se recorren dentro de esa misma composición.
+
+Las fotos de las galerías textiles corresponden a las carpetas de cada producto del ZIP entregado, incluidas las variantes de chomba y los canguros adulto, niño y premium. Las fichas de impresión utilizan las fotos de servicios y trabajos correspondientes, sin detalles de indumentaria. El canguro premium dispone de su propia ficha y de los precios de `canguro-premium` en el catálogo.
+
+Las 24 fotos del ZIP de calidad original se conservan en WebP sin pérdida, con sus dimensiones originales (2055–6188 px de ancho). Las tres miniaturas de 100×100 px sin un original correspondiente se retiraron de las galerías. Las imágenes ampliadas se generan con hasta 1200 px en su lado menor, sin aumentar la resolución del archivo fuente.

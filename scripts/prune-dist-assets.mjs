@@ -14,6 +14,7 @@ const walk = (directory) => readdirSync(directory, { withFileTypes: true }).flat
 });
 
 const textExtensions = new Set([".html", ".css", ".js", ".json", ".xml", ".txt"]);
+const imageExtensions = new Set([".png", ".jpg", ".jpeg", ".webp", ".avif", ".gif"]);
 const generatedFiles = walk(distRoot);
 const references = generatedFiles
   .filter((path) => textExtensions.has(extname(path).toLowerCase()))
@@ -25,7 +26,7 @@ let removedBytes = 0;
 
 for (const path of generatedFiles) {
   if (!path.startsWith(`${assetsRoot}${sep}`)) continue;
-  if (extname(path).toLowerCase() !== ".png") continue;
+  if (!imageExtensions.has(extname(path).toLowerCase())) continue;
 
   const publicPath = `/${relative(distRoot, path).split(sep).join("/")}`;
   if (references.includes(publicPath)) continue;
@@ -36,4 +37,4 @@ for (const path of generatedFiles) {
 }
 
 const removedMegabytes = (removedBytes / 1024 / 1024).toFixed(1);
-console.log(`Assets: se eliminaron ${removedFiles} PNG sin referencias (${removedMegabytes} MiB).`);
+console.log(`Assets: se eliminaron ${removedFiles} imágenes sin referencias (${removedMegabytes} MiB).`);

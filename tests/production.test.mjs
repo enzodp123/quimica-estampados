@@ -27,12 +27,12 @@ const routeMap = new Map(pages.map((page) => [routeFor(page.path), page]));
 
 const extract = (html, pattern) => [...html.matchAll(pattern)].map((match) => match[1]);
 
-test("genera el home, las 17 fichas con imágenes y una página 404", () => {
-  assert.equal(documentPages.length, 18);
+test("genera el home, las 18 fichas con imágenes y una página 404", () => {
+  assert.equal(documentPages.length, 19);
   assert.ok(routeMap.has("/"));
   assert.equal(routeMap.has("/productos/"), false);
   assert.ok(routeMap.has("/404.html"));
-  assert.equal([...routeMap.keys()].filter((route) => route.startsWith("/productos/") && route !== "/productos/").length, 17);
+  assert.equal([...routeMap.keys()].filter((route) => route.startsWith("/productos/") && route !== "/productos/").length, 18);
 });
 
 test("cada documento tiene metadatos y landmarks básicos", () => {
@@ -46,6 +46,27 @@ test("cada documento tiene metadatos y landmarks básicos", () => {
     assert.match(html, /class="skip-link"\s+href="#main-content"/i, path);
     assert.doesNotMatch(html, /href="#"|action="#"/i, path);
     assert.doesNotMatch(html, /Ã.|Â.|â€|�/, path);
+  }
+});
+
+test("las galerías distinguen los productos y los servicios muestran trabajos de impresión", () => {
+  const gallerySources = (slug) => extract(
+    routeMap.get(`/productos/${slug}/`)?.html ?? "",
+    /<button\b[^>]*data-gallery-thumb[^>]*data-src="([^"]+)"/g,
+  );
+  assert.notDeepEqual(gallerySources("chomba-algodon").slice(0, -1), gallerySources("chomba-pique").slice(0, -1));
+  assert.equal(gallerySources("gorra-trucker").length, 3);
+  for (const [slug, count] of [["buzo-canguro", 2], ["buzo-canguro-nino", 3], ["buzo-canguro-premium", 2]]) {
+    assert.equal(gallerySources(slug).length, count, slug);
+  }
+  assert.notDeepEqual(gallerySources("buzo-canguro").slice(0, -1), gallerySources("buzo-canguro-nino").slice(0, -1));
+  assert.notDeepEqual(gallerySources("buzo-canguro").slice(0, -1), gallerySources("buzo-canguro-premium").slice(0, -1));
+  assert.match(routeMap.get("/productos/buzo-canguro-premium/").html, /href="\/images\/talles\/buzo-canguro-premium\.webp"/);
+  const garmentDetails = new Set(gallerySources("remera-oversize").slice(1));
+  for (const slug of ["calcos-papel", "calcos-vinilo", "calcos-dtf-uv", "tarjetas-personales", "folletos", "etiquetas"]) {
+    const sources = gallerySources(slug);
+    assert.ok(sources.length > 0, slug);
+    assert.ok(sources.every((source) => !garmentDetails.has(source)), `${slug}: sin detalles de prendas`);
   }
 });
 

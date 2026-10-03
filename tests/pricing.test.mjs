@@ -138,7 +138,8 @@ test("el catálogo se conserva sin publicar y el menú solo enlaza fichas con im
   const published = readdirSync(new URL("../dist/productos/", import.meta.url), { withFileTypes: true })
     .filter((entry) => entry.isDirectory()).map((entry) => `/productos/${entry.name}/`);
   assert.deepEqual(destinations.sort(), published.sort());
-  const hidden = ["taza-ceramica", "taza-plastica", "vinilo-sin-troquelar", "vinilo-troquelado", "lona-front", "fly-banner-gota", "portabanner-clasico", "portabanner-roll-up", "canguro-premium"];
+  assert.ok(destinations.includes("/productos/buzo-canguro-premium/"));
+  const hidden = ["taza-ceramica", "taza-plastica", "vinilo-sin-troquelar", "vinilo-troquelado", "lona-front", "fly-banner-gota", "portabanner-clasico", "portabanner-roll-up"];
   for (const id of hidden) {
     assert.ok(priceCatalog[id]?.prices.length, `${id}: conservar los precios`);
     assert.ok(!nav.includes(id), `${id}: oculto en el menú`);

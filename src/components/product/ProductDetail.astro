@@ -14,13 +14,14 @@ interface Props {
 
 const { product } = Astro.props;
 const hasGarmentOutline = outlinedGarmentSlugs.has(product.slug);
-const isPhotoProduct = product.slug === "remera-oversize";
+const isPhotoProduct = product.slug === "remera-oversize" || Boolean(product.heroImage && product.gallery[0] !== product.heroImage);
 const catalog: CatalogProduct = priceCatalog[product.pricingId];
 const gallery = await Promise.all(product.gallery.map(async (image) => ({
-  main: await getImage({ src: image, width: Math.min(1200, image.width), format: "webp", quality: 82 }),
+  main: await getImage({ src: image, width: Math.min(image.width, Math.ceil(1200 * Math.max(1, image.width / image.height))), format: "webp", quality: 82 }),
   thumb: await getImage({ src: image, width: Math.min(180, image.width), format: "webp", quality: 78 }),
+  hasGarmentOutline: hasGarmentOutline && image === product.heroImage,
 })));
-const heroImage = product.heroImage ? await getImage({ src: product.heroImage, width: Math.min(1200, product.heroImage.width), format: "webp", quality: 82 }) : gallery[0].main;
+const mainImage = gallery[0].main;
 const relatedProducts = getRecommendationCards(product);
 ---
 
@@ -40,11 +41,11 @@ const relatedProducts = getRecommendationCards(product);
             type="button"
             data-gallery-thumb
             data-src={image.main.src}
-            data-garment-outline={hasGarmentOutline && (index === 0 || product.slug === "gorra-trucker") ? "true" : "false"}
+            data-garment-outline={image.hasGarmentOutline ? "true" : "false"}
             aria-label={`Ver imagen ${index + 1} de ${product.title}`}
             aria-pressed={index === 0 ? "true" : "false"}
           >
-            <img class:list={{ "has-garment-outline": hasGarmentOutline && (index === 0 || product.slug === "gorra-trucker") }} src={image.thumb.src} alt="" loading={index === 0 ? "eager" : "lazy"} />
+            <img class:list={{ "has-garment-outline": image.hasGarmentOutline }} src={image.thumb.src} alt="" loading={index === 0 ? "eager" : "lazy"} />
           </button>
         ))}
       </div>
@@ -52,8 +53,8 @@ const relatedProducts = getRecommendationCards(product);
       <div class:list={["product-gallery__main", { "is-photo": isPhotoProduct }]}>
         <img
           data-gallery-main
-          class:list={{ "has-garment-outline": hasGarmentOutline }}
-          src={heroImage.src}
+          class:list={{ "has-garment-outline": gallery[0].hasGarmentOutline }}
+          src={mainImage.src}
           alt={product.title}
           fetchpriority="high"
         />

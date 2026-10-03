@@ -6,60 +6,57 @@ import {
   type PriceCatalogId,
 } from "./pricing";
 
-import oversizeMain from "../assets/products/remera-oversize/main.png";
-import oversizeDetail2 from "../assets/products/remera-oversize/detail-2.png";
-import oversizeDetail3 from "../assets/products/remera-oversize/detail-3.png";
-import unisexMain from "../assets/products/remera-unisex/main.png";
-import unisexDetail2 from "../assets/products/remera-unisex/detail-2.png";
-import unisexDetail3 from "../assets/products/remera-unisex/detail-3.png";
-import calcosPapelMain from "../assets/products/calcos-papel/design-2026.png";
-import calcosViniloMain from "../assets/products/calcos-vinilo/design-2026.png";
-import calcosDtfMain from "../assets/products/calcos-dtf-uv/design-2026.png";
-import gorraFront from "../assets/products/gorra-trucker/front-2026.png";
-import gorraMain from "../assets/products/gorra-trucker/angled-2026.png";
-import ninoMain from "../assets/products/remera-nino/main.png";
-import nino1 from "../assets/products/remera-nino/detail-1.png";
-import nino2 from "../assets/products/remera-nino/detail-2.png";
-import egresaditoMain from "../assets/products/remera-egresadito/design-2026.png";
-import egresadito1 from "../assets/products/remera-egresadito/detail-1.png";
-import egresadito2 from "../assets/products/remera-egresadito/detail-2.png";
-import egresadito3 from "../assets/products/remera-egresadito/detail-3.png";
-import chombaAlgodonMain from "../assets/products/chomba-algodon/main.png";
-import chombaAlgodon1 from "../assets/products/chomba-algodon/detail-1.png";
-import chombaAlgodon2 from "../assets/products/chomba-algodon/detail-2.png";
-import chombaAlgodon3 from "../assets/products/chomba-algodon/detail-3.png";
-import chombaAlgodon4 from "../assets/products/chomba-algodon/detail-4.png";
-import buzoRedondoMain from "../assets/products/buzo-cuello-redondo/main.png";
-import buzoRedondo1 from "../assets/products/buzo-cuello-redondo/detail-1.png";
-import buzoRedondo2 from "../assets/products/buzo-cuello-redondo/detail-2.png";
-import buzoRedondo3 from "../assets/products/buzo-cuello-redondo/detail-3.png";
-import canguroMain from "../assets/products/buzo-canguro/main.png";
-import canguro1 from "../assets/products/buzo-canguro/detail-1.png";
-import canguro2 from "../assets/products/buzo-canguro/detail-2.png";
-import canguro3 from "../assets/products/buzo-canguro/detail-3.png";
-import canguroNinoMain from "../assets/products/buzo-canguro-nino/main.png";
-import canguroNino1 from "../assets/products/buzo-canguro-nino/detail-1.png";
-import canguroNino2 from "../assets/products/buzo-canguro-nino/detail-2.png";
-import canguroNino3 from "../assets/products/buzo-canguro-nino/detail-3.png";
-import camperaMain from "../assets/products/campera-capucha/main.png";
-import campera1 from "../assets/products/campera-capucha/detail-1.png";
-import chombaPiqueMain from "../assets/products/chomba-pique/main.png";
-import chombaPique1 from "../assets/products/chomba-pique/detail-1.png";
-import chombaPique2 from "../assets/products/chomba-pique/detail-2.png";
-import chombaPique3 from "../assets/products/chomba-pique/detail-3.png";
-import chombaPique4 from "../assets/products/chomba-pique/detail-4.png";
-import folletosMain from "../assets/products/folletos/main.png";
-import folletos1 from "../assets/products/folletos/detail-1.png";
-import folletos2 from "../assets/products/folletos/detail-2.png";
-import folletos3 from "../assets/products/folletos/detail-3.png";
-import tarjetasMain from "../assets/products/tarjetas-personales/main.png";
-import tarjetas1 from "../assets/products/tarjetas-personales/detail-1.png";
-import tarjetas2 from "../assets/products/tarjetas-personales/detail-2.png";
-import tarjetas3 from "../assets/products/tarjetas-personales/detail-3.png";
-import etiquetasMain from "../assets/products/etiquetas/main.png";
-import etiquetas1 from "../assets/products/etiquetas/detail-1.png";
-import etiquetas2 from "../assets/products/etiquetas/detail-2.png";
-import etiquetas3 from "../assets/products/etiquetas/detail-3.png";
+import oversizeMain from "../assets/products/remera-oversize/main.webp";
+import oversizeDetail2 from "../assets/products/remera-oversize/detail-2.webp";
+import oversizeDetail3 from "../assets/products/remera-oversize/detail-3.webp";
+import unisexMain from "../assets/products/remera-unisex/main.webp";
+import unisexDetail1 from "../assets/products/remera-unisex/detail-1.webp";
+import unisexDetail2 from "../assets/products/remera-unisex/detail-2.webp";
+import gorraMain from "../assets/products/gorra-trucker/angled-2026.webp";
+import gorra1 from "../assets/products/gorra-trucker/detail-1.webp";
+import gorra3 from "../assets/products/gorra-trucker/detail-3.webp";
+import ninoMain from "../assets/products/remera-nino/main.webp";
+import nino1 from "../assets/products/remera-nino/detail-1.webp";
+import nino2 from "../assets/products/remera-nino/detail-2.webp";
+import egresaditoMain from "../assets/products/remera-egresadito/design-2026.webp";
+import egresadito1 from "../assets/products/remera-egresadito/detail-1.webp";
+import egresadito2 from "../assets/products/remera-egresadito/detail-2.webp";
+import egresadito3 from "../assets/products/remera-egresadito/detail-3.webp";
+import chombaAlgodonMain from "../assets/products/chomba-algodon/main.webp";
+import chombaAlgodon1 from "../assets/products/chomba-algodon/detail-1.webp";
+import chombaAlgodon2 from "../assets/products/chomba-algodon/detail-2.webp";
+import chombaAlgodon3 from "../assets/products/chomba-algodon/detail-3.webp";
+import chombaAlgodon4 from "../assets/products/chomba-algodon/detail-4.webp";
+import buzoRedondoMain from "../assets/products/buzo-cuello-redondo/main.webp";
+import buzoRedondo1 from "../assets/products/buzo-cuello-redondo/detail-1.webp";
+import buzoRedondo2 from "../assets/products/buzo-cuello-redondo/detail-2.webp";
+import canguroMain from "../assets/products/buzo-canguro/main.webp";
+import canguro1 from "../assets/products/buzo-canguro/detail-1.webp";
+import canguroNinoMain from "../assets/products/buzo-canguro-nino/main.webp";
+import canguroNino1 from "../assets/products/buzo-canguro-nino/detail-1.webp";
+import canguroNino2 from "../assets/products/buzo-canguro-nino/detail-2.webp";
+import camperaMain from "../assets/products/campera-capucha/main.webp";
+import campera1 from "../assets/products/campera-capucha/detail-1.webp";
+import campera2 from "../assets/products/campera-capucha/detail-2.webp";
+import chombaPiqueMain from "../assets/products/chomba-pique/main.webp";
+import chombaPique1 from "../assets/products/chomba-pique/detail-1.webp";
+import chombaPique2 from "../assets/products/chomba-pique/detail-2.webp";
+import chombaPique3 from "../assets/products/chomba-pique/detail-3.webp";
+import folletosMain from "../assets/services/folletos.webp";
+import tarjetasMain from "../assets/services/tarjetas-personales.webp";
+import etiquetasMain from "../assets/services/etiquetas.webp";
+
+import canguroPremium1 from "../assets/products/buzo-canguro-premium/detail-1.webp";
+import calcosPhoto from "../assets/services/calcos.webp";
+import calcosPhoto1 from "../assets/works/calcos/1.webp";
+import calcosPhoto2 from "../assets/works/calcos/2.webp";
+import calcosPhoto3 from "../assets/works/calcos/3.webp";
+import calcosPhoto4 from "../assets/works/calcos/4.webp";
+import calcosPhoto5 from "../assets/works/calcos/5.webp";
+import tarjetasPhoto1 from "../assets/works/papeleria/1.webp";
+import tarjetasPhoto2 from "../assets/works/papeleria/2.webp";
+import tarjetasPhoto3 from "../assets/works/papeleria/3.webp";
+import tarjetasPhoto4 from "../assets/works/papeleria/4.webp";
 
 export interface ProductChoice {
   label: string;
@@ -150,13 +147,14 @@ export const products: Product[] = [
     sizeGuide: "/images/talles/remera-unisex.webp",
     womensSizeGuide: "/images/talles/remera-dama.webp",
     description: `Remera manga corta: ${apparelDescription}`,
-    gallery: [unisexMain, unisexDetail2, unisexDetail3],
+    heroImage: unisexMain,
+    gallery: [unisexDetail1, unisexDetail2, unisexMain],
   },
   ...[
-    ["calcos-papel", "1033:2504", "Papel", calcosPapelMain],
-    ["calcos-vinilo", "1039:3107", "Vinilo troquelado", calcosViniloMain],
-    ["calcos-dtf-uv", "1039:3362", "DTF UV", calcosDtfMain],
-  ].map(([slug, node, type, ...gallery]): Product => {
+    ["calcos-papel", "1033:2504", "Papel"],
+    ["calcos-vinilo", "1039:3107", "Vinilo troquelado"],
+    ["calcos-dtf-uv", "1039:3362", "DTF UV"],
+  ].map(([slug, node, type]): Product => {
     const pricingId: "calcos-papel" | "calcos-vinilo" | "calcos-dtf-uv" =
       slug as "calcos-papel" | "calcos-vinilo" | "calcos-dtf-uv";
     const priceSelection = { size: "xs", quantity: "x100" };
@@ -182,7 +180,7 @@ export const products: Product[] = [
     sizeTable: calcoSizeTable,
     description:
       "Calcos personalizados. Seleccioná el tipo, tamaño y cantidad para consultar los precios.",
-    gallery: gallery as ImageMetadata[],
+    gallery: slug === "calcos-papel" ? [calcosPhoto, calcosPhoto1, calcosPhoto5] : slug === "calcos-vinilo" ? [calcosPhoto2, calcosPhoto3] : [calcosPhoto4],
   });
   }) as Product[],
   {
@@ -201,7 +199,8 @@ export const products: Product[] = [
     sizeLabel: "Talles",
     sizeValue: "Regulable",
     description: "Gorra trucker con frente personalizable, visera curva y ajuste posterior regulable.",
-    gallery: [gorraMain, gorraFront],
+    heroImage: gorraMain,
+    gallery: [gorra1, gorra3, gorraMain],
   },
   {
     slug: "remera-nino",
@@ -220,7 +219,8 @@ export const products: Product[] = [
     sizeValue: "Del 4 al 18",
     sizeGuide: "/images/talles/remera-nino.webp",
     description: `Remera infantil: ${apparelDescription}`,
-    gallery: [ninoMain, nino1, nino2],
+    heroImage: ninoMain,
+    gallery: [nino1, nino2, ninoMain],
   },
   {
     slug: "remera-egresadito",
@@ -239,7 +239,8 @@ export const products: Product[] = [
     sizeLabel: "Talles",
     sizeValue: "Consultar",
     description: `Remera infantil: ${apparelDescription}`,
-    gallery: [egresaditoMain, egresadito1, egresadito2, egresadito3],
+    heroImage: egresaditoMain,
+    gallery: [egresadito1, egresadito2, egresadito3, egresaditoMain],
   },
   {
     slug: "chomba-algodon",
@@ -260,7 +261,8 @@ export const products: Product[] = [
     sizeGuide: "/images/talles/chomba-algodon.webp",
     womensSizeGuide: "/images/talles/chomba-dama.webp",
     description: "Chomba de algodón peinado, con cuello polo y botones. Terminaciones premium, tapacostura en cuello y refuerzo en hombros.",
-    gallery: [chombaAlgodonMain, chombaAlgodon1, chombaAlgodon2, chombaAlgodon3, chombaAlgodon4],
+    heroImage: chombaAlgodonMain,
+    gallery: [chombaAlgodon1, chombaAlgodon2, chombaAlgodon3, chombaAlgodon4, chombaAlgodonMain],
   },
   {
     slug: "buzo-cuello-redondo",
@@ -275,7 +277,8 @@ export const products: Product[] = [
     options: [], colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
     sizeGuide: "/images/talles/buzo-cuello-redondo.webp",
     description: "Buzo de cuello redondo en algodón frisado, personalizable y con terminaciones reforzadas.",
-    gallery: [buzoRedondoMain, buzoRedondo1, buzoRedondo2, buzoRedondo3],
+    heroImage: buzoRedondoMain,
+    gallery: [buzoRedondo1, buzoRedondo2, buzoRedondoMain],
   },
   {
     slug: "buzo-canguro",
@@ -285,7 +288,19 @@ export const products: Product[] = [
     colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
     sizeGuide: "/images/talles/buzo-canguro.webp",
     description: "Buzo canguro frisado con capucha, bolsillo delantero y terminaciones reforzadas.",
-    gallery: [canguroMain, canguro1, canguro2, canguro3],
+    heroImage: canguroMain,
+    gallery: [canguro1, canguroMain],
+  },
+  {
+    slug: "buzo-canguro-premium",
+    figmaNodes: [], ticker: true, breadcrumb: "Inicio > Buzos", title: "Buzo canguro frisado premium", packLabel: "Packs de buzos premium",
+    pricingId: "canguro-premium", priceSelection: { quantity: "x5" }, price: catalogPrice("canguro-premium", { quantity: "x5" }),
+    options: [],
+    sizeLabel: "Talles", sizeValue: "Del 1 al 5",
+    sizeGuide: "/images/talles/buzo-canguro-premium.webp",
+    description: "Buzo canguro de frisa invisible, con capucha forrada, ojales y cordón.",
+    heroImage: canguroMain,
+    gallery: [canguroPremium1, canguroMain],
   },
   {
     slug: "buzo-canguro-nino",
@@ -295,7 +310,8 @@ export const products: Product[] = [
     colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 8 al 16",
     sizeGuide: "/images/talles/buzo-canguro-nino.webp",
     description: "Buzo canguro infantil con capucha, bolsillo delantero y superficie personalizable.",
-    gallery: [canguroNinoMain, canguroNino1, canguroNino2, canguroNino3],
+    heroImage: canguroNinoMain,
+    gallery: [canguroNino1, canguroNino2, canguroNinoMain],
   },
   {
     slug: "campera-capucha",
@@ -305,7 +321,8 @@ export const products: Product[] = [
     colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
     sizeGuide: "/images/talles/campera-capucha.webp",
     description: "Campera con capucha y cierre frontal, preparada para personalización textil.",
-    gallery: [camperaMain, campera1],
+    heroImage: camperaMain,
+    gallery: [campera1, campera2, camperaMain],
   },
   {
     slug: "chomba-pique",
@@ -316,7 +333,8 @@ export const products: Product[] = [
     sizeGuide: "/images/talles/chomba-pique.webp",
     womensSizeGuide: "/images/talles/chomba-dama.webp",
     description: "Chomba de piqué de algodón, con cuello polo y botones. Terminaciones premium, tapacostura en cuello y refuerzo en hombros.",
-    gallery: [chombaPiqueMain, chombaPique1, chombaPique2, chombaPique3, chombaPique4],
+    heroImage: chombaPiqueMain,
+    gallery: [chombaPique1, chombaPique2, chombaPique3, chombaPiqueMain],
   },
   {
     slug: "folletos",
@@ -324,7 +342,7 @@ export const products: Product[] = [
     pricingId: "folletos", priceSelection: { format: "estandar", side: "simple", quantity: "x100" },
     price: catalogPrice("folletos", { format: "estandar", side: "simple", quantity: "x100" }),
     options: [],
-    sizeValue: "Papel ilustración, terminación brillante o matelina, hasta 120 gr", description: "Folletos impresos en alta definición, disponibles en simple o doble faz y distintos gramajes.", gallery: [folletosMain, folletos1, folletos2, folletos3],
+    sizeValue: "Papel ilustración, terminación brillante o matelina, hasta 120 gr", description: "Folletos impresos en alta definición, disponibles en simple o doble faz y distintos gramajes.", gallery: [folletosMain],
   },
   {
     slug: "tarjetas-personales",
@@ -332,7 +350,7 @@ export const products: Product[] = [
     pricingId: "tarjetas-personales", priceSelection: { side: "simple", quantity: "x100" },
     price: catalogPrice("tarjetas-personales", { side: "simple", quantity: "x100" }),
     options: [],
-    sizeValue: "Papel terminación mate o brillante, hasta 250 g", description: "Tarjetas personales impresas en alta definición, disponibles en simple o doble faz y diferentes terminaciones.", gallery: [tarjetasMain, tarjetas1, tarjetas2, tarjetas3],
+    sizeValue: "Papel terminación mate o brillante, hasta 250 g", description: "Tarjetas personales impresas en alta definición, disponibles en simple o doble faz y diferentes terminaciones.", gallery: [tarjetasMain, tarjetasPhoto1, tarjetasPhoto2, tarjetasPhoto3, tarjetasPhoto4],
   },
   {
     slug: "etiquetas",
@@ -340,7 +358,7 @@ export const products: Product[] = [
     pricingId: "etiquetas", priceSelection: { size: "xs", quantity: "x100" },
     price: catalogPrice("etiquetas", { size: "xs", quantity: "x100" }),
     options: [],
-    description: "Etiquetas personalizadas para prendas, packaging y productos. Impresión nítida y terminaciones profesionales.", gallery: [etiquetasMain, etiquetas1, etiquetas2, etiquetas3],
+    description: "Etiquetas personalizadas para prendas, packaging y productos. Impresión nítida y terminaciones profesionales.", gallery: [etiquetasMain],
   },
 ];
 

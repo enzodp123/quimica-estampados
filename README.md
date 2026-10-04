@@ -1,208 +1,194 @@
-# Química Estampados
+﻿<p align="center">
+  <img src="docs/assets/readme-banner.svg" alt="Química Estampados — Tu marca, idea y negocio" width="100%">
+</p>
 
-Sitio institucional y catálogo estático de Química Estampados, implementado con Astro a partir de 36 referencias de Figma. Incluye la página principal, 18 fichas de producto, una página 404, interacciones del catálogo, formulario de contacto con alternativa por email y controles automáticos orientados a producción.
+<p align="center">
+  <a href="https://github.com/enzodp123/quimica-estampados/actions/workflows/qa.yml"><img src="https://github.com/enzodp123/quimica-estampados/actions/workflows/qa.yml/badge.svg" alt="Estado del workflow de QA"></a>
+  <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-7-BC52EE?style=flat-square&amp;logo=astro&amp;logoColor=white" alt="Astro 7"></a>
+  <a href="package.json"><img src="https://img.shields.io/badge/TypeScript-6-3178C6?style=flat-square&amp;logo=typescript&amp;logoColor=white" alt="TypeScript 6"></a>
+  <a href="package.json"><img src="https://img.shields.io/badge/Node.js-%E2%89%A5%2022.12-5FA04E?style=flat-square&amp;logo=nodedotjs&amp;logoColor=white" alt="Node.js 22.12 o posterior"></a>
+</p>
 
-## Requisitos y puesta en marcha
+<p align="center">
+  <strong>Impresión textil, productos personalizados y soluciones gráficas.</strong><br>
+  Sitio institucional y catálogo de Química Estampados, Victoria, Entre Ríos, Argentina.
+</p>
 
-- Node.js 22.12 o posterior.
-- npm, usando el `package-lock.json` versionado.
+<p align="center">
+  <a href="#funciones">Funciones</a> ·
+  <a href="#desarrollo-local">Desarrollo local</a> ·
+  <a href="#configuración">Configuración</a> ·
+  <a href="#calidad">Calidad</a> ·
+  <a href="docs/referencias-figma.md">Diseño en Figma</a>
+</p>
+
+---
+
+## El proyecto
+
+Una experiencia visual con fondo oscuro, acentos magenta, cian y amarillo, y el producto como protagonista. El sitio reúne la presentación de la marca, sus servicios, trabajos realizados y un catálogo de **18 fichas de producto**, con consultas directas por WhatsApp.
+
+Construido con **Astro, TypeScript y CSS**, genera páginas estáticas y utiliza JavaScript para las interacciones. Los componentes, el contenido comercial y la lógica de precios se organizan por separado para facilitar el mantenimiento.
+
+## Funciones
+
+- **Catálogo de productos:** indumentaria, calcos, folletos, tarjetas personales y etiquetas, con galerías, opciones y guías de talles según el producto.
+- **Precios por selección:** importes según cantidad y variante, total del pack y estado «Consultar» cuando no existe una tarifa definida.
+- **Galería de trabajos:** categorías de textil, calcos, papelería, gran formato y corpóreos, con imágenes ampliables.
+- **Carruseles y recomendaciones:** productos destacados y relacionados, con controles de navegación y desplazamiento táctil.
+- **Contacto:** consultas precompletadas por WhatsApp, formulario con endpoint HTTP opcional, email y mapa de ubicación.
+- **Diseño adaptable:** navegación móvil, preguntas frecuentes desplegables y estilos para distintos tamaños de pantalla.
+- **Accesibilidad y metadatos:** enlace para saltar al contenido, controles por teclado, soporte de movimiento reducido, etiquetas Open Graph y datos estructurados `LocalBusiness`.
+
+## Tecnologías
+
+| Tecnología | Uso |
+| --- | --- |
+| Astro 7 | Componentes `.astro`, rutas y generación estática. |
+| TypeScript 6 | Tipos del catálogo y lógica de las interacciones. |
+| CSS | Variables de diseño, estilos globales y estilos de componentes. |
+| Astro Icon + Lucide | Iconografía de la interfaz. |
+| Fontsource | Fuentes Poppins, Montserrat y JetBrains Mono alojadas en el sitio. |
+| Node Test Runner + HTML Validate | Pruebas y validación del resultado de producción. |
+| GitHub Actions | Ejecución automática de QA en pushes y pull requests. |
+
+## Desarrollo local
+
+**Requisitos:** Node.js **22.12 o posterior** y npm. El repositorio incluye `package-lock.json` para instalar las versiones fijadas.
 
 ```bash
+git clone https://github.com/enzodp123/quimica-estampados.git
+cd quimica-estampados
 npm ci
 ```
 
-Copiar `.env.example` como `.env` y completar los datos comerciales. Luego iniciar el entorno local:
+Copiá `.env.example` a `.env`:
 
-```bash
-npm run dev
+```powershell
+# Windows / PowerShell
+Copy-Item .env.example .env
 ```
 
-El sitio queda disponible, por defecto, en `http://localhost:4321`. Para sesiones de desarrollo automatizadas o persistentes se debe usar el modo en segundo plano de Astro:
+```bash
+# macOS / Linux
+cp .env.example .env
+```
+
+Iniciá el servidor en segundo plano, siguiendo las instrucciones de [AGENTS.md](AGENTS.md):
 
 ```bash
 npx astro dev --background
+```
+
+El sitio se sirve por defecto en **http://localhost:4321**. Para administrar el servidor:
+
+```bash
 npx astro dev status
 npx astro dev logs
 npx astro dev stop
 ```
 
-## Variables de entorno
+## Configuración
 
-Todas las variables son públicas porque Astro las incorpora al cliente durante el build. No guardar secretos ni credenciales en ellas.
+Los datos de marca, dirección, email y enlaces se centralizan en [`src/data/site.ts`](src/data/site.ts). Las siguientes variables permiten configurar las integraciones desde `.env`:
 
-| Variable | Uso | Comportamiento si queda vacía |
-| --- | --- | --- |
-| `PUBLIC_CONTACT_FORM_ENDPOINT` | Endpoint HTTP de Formspree, Basin o una API propia. | El formulario abre un email precompletado; los datos no se descartan. |
-| `PUBLIC_WHATSAPP_NUMBER` | Número internacional, solo dígitos, usado por `wa.me`. | Confirmado: `5493431234567`. |
-| `PUBLIC_WHATSAPP_DISPLAY` | Texto visible del teléfono. | Confirmado: `+54 9 343 123 4567`. |
-| `PUBLIC_INSTAGRAM_URL` | Perfil oficial de Instagram. | Se muestra la referencia visual sin un enlace muerto. |
-| `PUBLIC_FACEBOOK_URL` | Página oficial de Facebook. | Se muestra la referencia visual sin un enlace muerto. |
-| `PUBLIC_DEVELOPER_URL` | URL asociada al crédito `@binadevs`. | El crédito se muestra sin enlace. |
-
-Los valores por defecto y la identidad centralizada están en `src/data/site.ts`. El email `quimicaestampados@gmail.com` y la dirección `65 Alem, Victoria, Entre Ríos` también se administran allí.
-
-## Scripts
-
-| Comando | Función |
+| Variable | Descripción |
 | --- | --- |
-| `npm run dev` | Servidor local con recarga en vivo. |
-| `npm run check` | Valida Astro y TypeScript. |
-| `npm run build` | Genera `dist/` y ejecuta el posprocesado de assets. |
-| `npm run validate:html` | Valida el HTML generado con `html-validate`. Requiere un build previo. |
-| `npm test` | Ejecuta las pruebas de producción sobre `dist/`. Requiere un build previo. |
-| `npm run qa` | Ejecuta, en orden, tipos, build, validación HTML y pruebas. |
-| `npm run preview` | Sirve localmente el build ya generado. |
+| `PUBLIC_WHATSAPP_NUMBER` | Número internacional para `wa.me`, solo dígitos. |
+| `PUBLIC_WHATSAPP_DISPLAY` | Teléfono con el formato que se muestra en la interfaz. |
+| `PUBLIC_CONTACT_FORM_ENDPOINT` | Endpoint que recibe el formulario mediante `POST`. Si queda vacío, se abre WhatsApp con la consulta precompletada. |
+| `PUBLIC_INSTAGRAM_URL` | URL del perfil de Instagram. |
+| `PUBLIC_FACEBOOK_URL` | URL de la página de Facebook. |
+| `PUBLIC_DEVELOPER_URL` | Enlace opcional del crédito de desarrollo `@binadevs`. |
 
-Antes de abrir un pull request o publicar, el comando de referencia es:
+Estas variables usan el prefijo `PUBLIC_`: no deben contener secretos. Al cambiar su configuración, generá nuevamente el build para actualizar el sitio publicado.
+
+## Comandos
+
+| Comando | Descripción |
+| --- | --- |
+| `npx astro dev --background` | Inicia el servidor de desarrollo en segundo plano. |
+| `npm run check` | Comprueba los tipos de Astro y TypeScript. |
+| `npm run build` | Genera `dist/` y elimina imágenes generadas sin referencias. |
+| `npm run preview` | Sirve el build localmente para revisarlo. |
+| `npm run validate:html` | Valida el HTML de `dist/`; requiere un build previo. |
+| `npm test` | Ejecuta las pruebas de precios, carruseles y producción; requiere un build previo. |
+| `npm run qa` | Ejecuta tipos, build, validación HTML y pruebas, en ese orden. |
+
+## Estructura
+
+```text
+quimica-estampados/
+├── .github/workflows/       QA automatizado
+├── docs/                   Fuente de precios y referencias de diseño
+├── public/                 Archivos públicos y guías de talles
+├── scripts/                Posprocesado del build y herramientas de QA
+├── src/
+│   ├── assets/             Imágenes, logos e iconos
+│   ├── components/
+│   │   ├── layout/         Header, hero y footer
+│   │   ├── product/        Fichas, precios, galerías y carruseles
+│   │   ├── sections/       Secciones de la página principal
+│   │   └── shared/         Elementos compartidos
+│   ├── data/               Productos, precios y configuración de marca
+│   ├── layouts/            Estructura HTML, metadatos y datos estructurados
+│   ├── pages/              Inicio, productos/[slug] y página 404
+│   ├── scripts/            Interacciones del navegador
+│   └── styles/             Reset, variables y estilos globales
+└── tests/                  Pruebas automatizadas
+```
+
+## Productos y precios
+
+| Archivo | Responsabilidad |
+| --- | --- |
+| [`src/data/products.ts`](src/data/products.ts) | Fichas, slugs, imágenes, opciones y referencias Figma. |
+| [`src/data/pricing.ts`](src/data/pricing.ts) | Tarifas, variantes, cantidades y cálculo de totales. |
+| [`src/data/product-cards.ts`](src/data/product-cards.ts) | Productos destacados y recomendaciones. |
+| [`docs/catalogo-precios-fuente.txt`](docs/catalogo-precios-fuente.txt) | Documento comercial de referencia para las tarifas. |
+
+Las rutas `/productos/[slug]/` se generan desde `visibleProducts`, que publica únicamente fichas con imágenes. Para incorporar un producto, agregá sus assets y su definición con un `slug` único; si tiene tarifas, vinculá su registro de precios y la selección inicial.
+
+Los precios conservan el formato de la fuente comercial. La interfaz muestra el total publicado del pack o lo calcula a partir del precio unitario y la cantidad, usando centavos enteros. Las combinaciones sin tarifa muestran **Consultar**. Las plantillas `PriceCatalog.astro` y `CatalogPricing.astro` se conservan como componentes, sin una página pública de catálogo general.
+
+## Calidad
+
+El control completo se ejecuta con:
 
 ```bash
 npm run qa
 ```
 
-El workflow `.github/workflows/qa.yml` ejecuta el mismo control con Node 22 en cada push y pull request.
+La suite verifica las rutas generadas, metadatos, títulos únicos, enlaces internos, anclas, assets, integridad de precios y navegación de carruseles. También comprueba las **36 referencias de Figma** en el HTML y un presupuesto máximo de **35 MiB** para `dist/`.
 
-## Qué comprueba QA
+El [workflow de GitHub Actions](.github/workflows/qa.yml) ejecuta este mismo control con Node.js 22 en cada push y pull request.
 
-La suite de `tests/production.test.mjs` verifica el resultado estático, no solo el código fuente:
+<details>
+<summary><strong>QA visual y pruebas en navegador</strong></summary>
 
-- generación del home, las 18 rutas de producto y la página 404;
-- idioma, metadatos esenciales, un único `main` y `h1`, y enlace para saltar al contenido;
-- títulos únicos en páginas indexables;
-- ausencia de enlaces o formularios con destino `#` y de texto corrupto;
-- integridad de rutas internas, anclas y assets locales;
-- presencia de las 36 referencias Figma en el HTML generado;
-- presupuesto máximo de 35 MiB para `dist/`.
+Las capturas y el reporte local se conservan en [`qa-reports/`](qa-reports/). El comando `npm run test:e2e` requiere un build previo y una configuración local adicional: el script actual importa Playwright desde `.tmp-visual/node_modules/` y utiliza Chrome instalado en `C:/Program Files/Google/Chrome/Application/chrome.exe`. No forma parte de `npm run qa` ni del workflow de CI.
 
-Las imágenes raster de `src/assets/` se mantienen en WebP. El script `scripts/prune-dist-assets.mjs` se ejecuta después del build y elimina imágenes raster generadas (incluidos los WebP originales) que no estén referenciadas desde `dist/`; no modifica los archivos de `src/assets/`.
+</details>
 
-## Arquitectura
+## Build y publicación
 
-```text
-src/
-├── assets/                    Imágenes y SVG fuente
-├── components/
-│   ├── layout/                Header, hero y footer
-│   ├── product/               Ficha reutilizable de producto
-│   ├── sections/              Secciones del home
-│   └── shared/                Elementos visuales compartidos
-├── data/
-│   ├── products.ts            Contenido, opciones, precios, galerías y nodos Figma
-│   └── site.ts                Datos comerciales y enlaces centralizados
-├── layouts/MainLayout.astro   Metadatos, JSON-LD y estructura común
-├── pages/
-│   ├── index.astro            Home
-│   ├── productos/[slug].astro Rutas estáticas de las 18 fichas
-│   └── 404.astro              Página de error
-└── styles/                    Reset, variables y estilos globales
-
-public/                        Archivos servidos sin transformación
-scripts/                       Posprocesado seguro del build
-tests/                         Pruebas del artefacto de producción
+```bash
+npm run qa
+npm run preview
 ```
 
-Los productos y sus variantes se definen una sola vez en `src/data/products.ts`. La ruta dinámica genera las páginas estáticas desde esos datos; para agregar un producto deben incorporarse sus imágenes, su registro de contenido, su `slug` único y sus referencias Figma.
+El resultado publicable está en **`dist/`** y puede servirse desde un hosting estático. El posprocesado elimina imágenes raster generadas que no se utilizan, sin modificar los assets fuente.
 
-## Trazabilidad de los 36 nodos Figma
+Configurá el dominio definitivo mediante la opción `site` de [`astro.config.mjs`](astro.config.mjs) para generar las URLs canónicas. Antes de publicar, revisá los datos comerciales, precios y enlaces, probá el flujo de contacto y configurá la página 404 en el hosting.
 
-Archivo de diseño: [Cliente Estampados — Sitio Web](https://www.figma.com/design/jJAimgKVZatklPzSXvg8sh/Cliente-Estampados---Sitio-Web--copia-).
+## Diseño
 
-La implementación conserva cada identificador en atributos `data-figma-node` o `data-figma-nodes`. La prueba de producción falla si falta cualquiera de las 36 referencias recibidas.
+La implementación toma como referencia el archivo [Cliente Estampados — Sitio Web](https://www.figma.com/design/jJAimgKVZatklPzSXvg8sh/Cliente-Estampados---Sitio-Web--copia-). El detalle de pantallas, estados e identificadores se conserva en [`docs/referencias-figma.md`](docs/referencias-figma.md).
 
-### Página principal y productos
+---
 
-| Pantalla o ruta | Referencias Figma |
-| --- | --- |
-| Home `/` | `1031:1215` |
-| `/productos/calcos-papel/` | `1033:2504` |
-| `/productos/calcos-vinilo/` | `1039:3107` |
-| `/productos/calcos-dtf-uv/` | `1039:3362` |
-| `/productos/gorra-trucker/` | `1060:1260` |
-| `/productos/remera-nino/` | `861:1632` |
-| `/productos/remera-unisex/` | `642:1797`, `642:2027`, `642:3737` |
-| `/productos/remera-oversize/` | `642:3220`, `642:2986`, `655:982` |
-| `/productos/chomba-algodon/` | `835:2670` |
-| `/productos/remera-egresadito/` | `861:2182` |
-| `/productos/buzo-cuello-redondo/` | `825:979` |
-| `/productos/buzo-canguro/` | `835:1452` |
-| `/productos/buzo-canguro-premium/` | Fotos entregadas en el ZIP de productos |
-| `/productos/buzo-canguro-nino/` | `834:713` |
-| `/productos/campera-capucha/` | `835:2180` |
-| `/productos/chomba-pique/` | `1059:1017` |
-| `/productos/folletos/` | `1060:1507` |
-| `/productos/tarjetas-personales/` | `1095:2870` |
-| `/productos/etiquetas/` | `1096:3136` |
-
-### Estados de “Nuestros trabajos”
-
-| Estado | Referencia Figma |
-| --- | --- |
-| Textil, incluido en el home | `1031:1215` |
-| Calcos | `1032:2174` |
-| Papelería | `1033:2254` |
-| Gran formato | `1033:2334` |
-| Corpóreos | `1033:2414` |
-
-### Estados de preguntas frecuentes
-
-| Pregunta o estado | Referencias Figma |
-| --- | --- |
-| No tengo diseño | `736:1066` |
-| ¿Realizan solo el textil? | `736:1053`, `738:1203` |
-| ¿Cómo envío mi diseño? | `737:1105` |
-| Demora del pedido | `737:1122` |
-| Telas disponibles | `737:1136` |
-| Tipos de estampado | `737:1150`, `737:1164` |
-| ¿Tienen local? | `738:1190` |
-| Descuentos por cantidad | `738:1177` |
-
-## Checklist de publicación
-
-- [ ] Confirmar teléfono y texto visible de WhatsApp; probar todos los CTA desde un teléfono real.
-- [ ] Confirmar email, dirección comercial y la discrepancia original entre `65 Alem` y `66 Alem`.
-- [ ] Definir el endpoint definitivo del formulario y comprobar éxito, error, validación y recepción de mensajes.
-- [ ] Completar las URLs oficiales de Instagram, Facebook y, si corresponde, del crédito de desarrollo.
-- [ ] Confirmar precios, cuotas, descuentos, cantidades mínimas, tiempos de producción y costos de envío.
-- [ ] Aprobar los textos corregidos respecto de Figma, especialmente calcos, gorras, buzos, folletos y tarjetas.
-- [ ] Definir el dominio público mediante la opción `site` de `astro.config.mjs`, necesaria para emitir la URL canónica.
-- [ ] Ejecutar `npm ci` y `npm run qa` en un entorno limpio; no publicar si algún control falla.
-- [ ] Revisar visualmente desktop, tablet y mobile contra Figma, incluida navegación por teclado, modales, carruseles, filtros y preguntas frecuentes.
-- [ ] Probar el build con `npm run preview`, HTTPS, redirecciones, ruta 404 y enlaces externos en el hosting definitivo.
-- [ ] Revisar Lighthouse en producción y acordar una política de caché para los assets de `/_astro/`.
-- [ ] Definir aviso de privacidad si el formulario definitivo almacena datos personales o incorpora analítica.
-
-Datos de contacto confirmados: WhatsApp `+54 9 343 123 4567` (`5493431234567` para los enlaces) y email `quimicaestampados@gmail.com`.
-
-## Datos pendientes de confirmación
-
-El repositorio usa valores funcionales para poder probar el flujo completo, pero los siguientes puntos no deben considerarse aprobados comercialmente:
-
-- Dirección normalizada: `65 Alem, Victoria, Entre Ríos`; en el diseño también aparecía `66 Alem`.
-- Endpoint real del formulario, perfiles sociales, URL del crédito y dominio canónico.
-- Condiciones de envío y plazos de producción no incluidos en la lista de precios.
-- Copys donde se corrigieron inconsistencias evidentes del diseño; deben recibir aprobación final del cliente.
-
-Hasta completar esos datos, el proyecto está preparado para QA y preproducción, pero no para una publicación comercial definitiva.
-
-## Catálogo de precios
-
-La lista entregada se conserva íntegra en `docs/catalogo-precios-fuente.txt`. Es la única fuente comercial para los precios de `src/data/pricing.ts`: 24 productos, 13 categorías y 136 combinaciones, más las terminaciones adicionales de lona.
-
-Por indicación del cliente, solo se publican las 18 fichas que tienen imágenes. `visibleProducts` en `src/data/products.ts` controla las rutas y el menú Servicios. Las fichas usan `ProductInfo.astro` para conservar el diseño de Figma (nodo `1033:2504`), con Poppins, precios compactos en magenta, botones con borde y tamaños desplegables.
-
-«Catálogo y precios» no forma parte de la web actual: la plantilla se conserva en `src/components/product/PriceCatalog.astro`, fuera de las rutas públicas, junto con `CatalogPricing.astro`. Los ocho productos sin imágenes conservan todos sus precios en `src/data/pricing.ts`: tazas, vinilos, lona, fly banner y portabanners. Para incorporarlos más adelante, agregar sus imágenes y su ficha en `products.ts`. La lógica de precios sigue compartida en `src/scripts/catalog-pricing.ts`.
-
-Los importes se mantienen como texto para conservar exactamente los separadores y decimales entregados. `total` es el total publicado de la cantidad; `unitPrice` conserva el precio por unidad de la fuente. Por indicación del cliente, las tarjetas y fichas muestran el total del pack: se utiliza el total publicado o, si solo hay un unitario, se multiplica por la cantidad de esa combinación mediante `getCatalogTotal`. El cálculo usa centavos enteros y no modifica los datos originales. No se calculan cuotas, descuentos ni precios de cantidades intermedias. Las combinaciones ausentes muestran **Consultar**. Oversize y egresadito conservan sus fichas con precio a consultar, porque no tienen una tarifa específica en la fuente.
-
-`tests/pricing.test.mjs` compara cada combinación contra el documento original, controla productos duplicados, verifica los adicionales y prueba las consultas por cantidades o variantes no definidas. Ejecutar `npm run qa` después de actualizar los datos.
-
-## Tarjetas de Impresiones y recomendaciones
-
-`src/data/product-cards.ts` conserva los nueve diseños y su orden del nodo Figma `1144:2781`, con imágenes exportadas del archivo original y distintivos infantiles. Los precios mostrados corresponden a la selección inicial de la ficha y salen de `pricing.ts`; los packs muestran su importe total. Egresadito mantiene la consulta por no tener una tarifa específica.
-
-`ProductCarousel.astro` permite desplazamiento horizontal con flechas, teclado y gestos táctiles. Las flechas avanzan una tarjeta, se desactivan en los extremos y respetan la preferencia de movimiento reducido. Las recomendaciones priorizan la misma categoría y excluyen el producto actual. Solo se enlazan productos publicados con imágenes.
-
-La composición de Impresiones sigue el nodo `974:1922`: encabezado alineado con la primera tarjeta, título vertical a la izquierda y tres tarjetas visibles en escritorio. El título, el encabezado y el carrusel ocupan áreas separadas de una grilla, con altura automática para que los textos y los controles no se superpongan al cambiar el ancho. En móvil, el título tiene una fila propia. Los nueve productos del nodo `1144:2781` se recorren dentro de esa misma composición.
-
-Las fotos de las galerías textiles corresponden a las carpetas de cada producto del ZIP entregado, incluidas las variantes de chomba y los canguros adulto, niño y premium. Las fichas de impresión utilizan las fotos de servicios y trabajos correspondientes, sin detalles de indumentaria. El canguro premium dispone de su propia ficha y de los precios de `canguro-premium` en el catálogo.
-
-Las 24 fotos del ZIP de calidad original se conservan en WebP sin pérdida, con sus dimensiones originales (2055–6188 px de ancho). Las tres miniaturas de 100×100 px sin un original correspondiente se retiraron de las galerías. Las imágenes ampliadas se generan con hasta 1200 px en su lado menor, sin aumentar la resolución del archivo fuente.
+<p align="center">
+  <strong>Química Estampados</strong><br>
+  Tu marca, idea y negocio.<br>
+  <sub>Desarrollo: @binadevs</sub>
+</p>

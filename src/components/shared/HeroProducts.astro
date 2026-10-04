@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { visibleProducts } from "../../data/products";
 import { outlinedGarmentSlugs } from "../../data/garment-outlines";
+import { priceCatalog } from "../../data/pricing";
 import shirt from "../../assets/images/remera_home_blanca.webp";
 import hoodie from "../../assets/images/hero-hoodie.webp";
 import cap from "../../assets/products/gorra-trucker/angled-2026.webp";
@@ -9,10 +10,12 @@ import type { ImageMetadata } from "astro";
 
 // The basic shirt appears once; sizes and colors share its hero slide.
 const shirtVariants = new Set(["remera-oversize", "remera-nino"]);
+const garmentCategories = new Set(["Remeras", "Chombas", "Buzos", "Gorras"]);
 const opening = ["buzo-canguro", "remera-unisex", "gorra-trucker"];
 const products = [
   ...opening.map((slug) => visibleProducts.find((product) => product.slug === slug)!),
-  ...visibleProducts.filter((product) => !opening.includes(product.slug) && !shirtVariants.has(product.slug)),
+  ...visibleProducts.filter((product) => garmentCategories.has(priceCatalog[product.pricingId].category)
+    && !opening.includes(product.slug) && !shirtVariants.has(product.slug)),
 ];
 const heroImages: Record<string, ImageMetadata> = {
   "buzo-canguro": hoodie,

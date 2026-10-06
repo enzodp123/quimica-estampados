@@ -768,6 +768,9 @@ const initialWorks = galleryCategories[0].works;
   .work-gallery__title { position: relative; bottom: auto; order: 2; width: fit-content; margin-top: var(--section-content-gap); }
   .work-gallery__rail { bottom: var(--section-block-padding); }
   .work-gallery__grid, .work-gallery__mosaic { gap: var(--card-gap); }
-  @media (max-width: 40rem) { .work-gallery__content { width: calc(100% - var(--section-content-start)); } }
+  @media (max-width: 40rem) {
+    .work-gallery__content { width: calc(100% - var(--section-content-start)); }
+    .work-gallery__title { margin-top: 0.9375rem; }
+  }
 
 </style>

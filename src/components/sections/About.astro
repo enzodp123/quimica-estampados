@@ -282,7 +282,7 @@ import { siteConfig } from "../../data/site";
       height: auto;
       min-height: 79.234375rem;
       margin-inline: auto;
-      padding: 3rem 0 12rem;
+      padding: 3rem 0 7rem;
     }
 
     .about__content {
@@ -297,7 +297,8 @@ import { siteConfig } from "../../data/site";
 
     .about__card {
       width: 100%;
-      min-height: 32.5rem;
+      height: auto;
+      min-height: 0;
       margin: 0;
       padding: 3.0625rem 2.0625rem 2.0625rem;
       aspect-ratio: auto;
@@ -320,6 +321,13 @@ import { siteConfig } from "../../data/site";
   }
   @media (max-width: 40rem) {
     .about__content { width: calc(100% - var(--section-content-start)); margin-left: var(--section-content-start); }
+  }
+
+  @media (max-width: 40rem) {
+    .about { min-height: 0; padding-bottom: 3rem; display: flex; flex-direction: column; }
+    .about__content { order: 1; }
+    .about__title { position: relative; bottom: auto; order: 2; width: fit-content; margin-top: -2.5rem; }
+    .about__rail { bottom: 3rem; }
   }
 
 

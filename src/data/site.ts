@@ -9,7 +9,7 @@ export const siteConfig = {
   description: "Estampados, impresión textil y soluciones gráficas para marcas.",
   email: "quimicaestampados@gmail.com",
   address: {
-    street: "65 Alem",
+    street: "Alem 65",
     city: "Victoria",
     province: "Entre Ríos",
     country: "Argentina",
@@ -39,8 +39,8 @@ export const fullAddress = [
   siteConfig.address.province,
 ].join(", ");
 
-// URL de Google Maps confirmada para el mapa embebido del formulario.
-export const mapEmbedUrl = "https://www.google.com/maps?ll=-32.620068,-60.157082&z=16&t=m&hl=es-ES&gl=US&mapclient=embed&q=Alem+65+E3153+Victoria+Entre+R%C3%ADos";
+// Mapa embebido centrado en el local de Química Estampados.
+export const mapEmbedUrl = "https://www.google.com/maps?q=-32.6200847%2C-60.1570559&z=17&output=embed";
 
 export const serviceConsultationMessages = {
   corporeos: "¡Hola! Vi los corpóreos en polifan en la web de Química Estampados y me gustaría pedir un presupuesto para un logo o letras personalizadas. ¿Qué información necesitan para cotizar las medidas, la cantidad y la terminación?",

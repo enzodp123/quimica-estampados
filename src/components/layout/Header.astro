@@ -219,6 +219,10 @@ const serviceGroups = [
 
 <style>
   .site-header {
+    /* Las fichas de producto usan Poppins en su contenido; el navbar conserva
+       la tipografía editorial de la navegación principal en todas las rutas. */
+    --font-display: "JetBrains Mono", "Courier New", monospace;
+    --font-jetbrains-mono: "JetBrains Mono", "Courier New", monospace;
     position: relative;
     z-index: 20;
     height: 154px;
@@ -405,7 +409,7 @@ const serviceGroups = [
     color: #e6e6e6;
     background: transparent;
     border: 0;
-    font-family: var(--font-poppins);
+    font-family: var(--font-jetbrains-mono);
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.04em;

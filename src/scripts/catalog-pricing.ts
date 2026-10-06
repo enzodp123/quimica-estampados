@@ -1,4 +1,4 @@
-import { describeCatalogSelection, findCatalogPrice, formatCatalogPrice, getCatalogTotal, type CatalogProduct } from "../data/pricing";
+import { describeCatalogSelection, findCatalogPrice, formatCatalogPrice, getCatalogComparisonTotal, getCatalogTotal, type CatalogProduct } from "../data/pricing";
 
 export function initCatalogPricing() {
   document.querySelectorAll<HTMLElement>("[data-catalog-pricing]").forEach((root) => {
@@ -26,7 +26,9 @@ export function initCatalogPricing() {
       const selectionLabel = describeCatalogSelection(catalog, selected);
       const amount = formatCatalogPrice(entry);
       const total = getCatalogTotal(entry);
+      const comparison = getCatalogComparisonTotal(entry) ?? "";
       updateText("[data-product-price]", amount);
+      updateText("[data-product-comparison]", comparison, true);
       updateText("[data-price-label]", `${total ? "Total" : "Precio"} · ${selectionLabel}`);
       updateText("[data-price-kind]", total ? "total" : "", true);
       updateText("[data-product-installments]", entry?.installments ?? "", true);

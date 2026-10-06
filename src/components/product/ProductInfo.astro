@@ -1,7 +1,7 @@
 ---
 import type { Product } from "../../data/products";
 import SizeGuide from "./SizeGuide.astro";
-import { priceCatalog, resolveCatalogPrice, formatCatalogPrice, getCatalogTotal, describeCatalogSelection, type CatalogProduct } from "../../data/pricing";
+import { priceCatalog, resolveCatalogPrice, formatCatalogPrice, getCatalogComparisonTotal, getCatalogTotal, describeCatalogSelection, type CatalogProduct } from "../../data/pricing";
 import { whatsappUrl } from "../../data/site";
 import truck from "../../assets/icons/product-truck.svg";
 import layers from "../../assets/icons/product-layers.svg";
@@ -25,6 +25,7 @@ const contact = whatsappUrl(`Hola, quisiera consultar por ${product.title}. ${de
   <p class="product-info__pack-label">{product.packLabel}</p>
   <div class="product-info__pricing" aria-live="polite" aria-atomic="true">
     <div class="product-info__price-row"><strong data-product-price>{formatCatalogPrice(entry)}</strong><span data-price-kind hidden={!getCatalogTotal(entry)}>total</span></div>
+    <s class="product-info__comparison" data-product-comparison hidden={!getCatalogComparisonTotal(entry)}>{getCatalogComparisonTotal(entry)}</s>
     <p data-product-installments hidden={!entry?.installments}>{entry?.installments}</p>
     <p data-price-note hidden={!entry?.note}>{entry?.note}</p>
   </div>
@@ -110,6 +111,7 @@ const contact = whatsappUrl(`Hola, quisiera consultar por ${product.title}. ${de
   .product-info__pricing { margin-top: 0.625rem; font: 500 1rem/1.5 var(--font-poppins); color: #ffffffb3; }
   .product-info__price-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
   .product-info__price-row strong { color: var(--color-magenta); font: 700 1.375rem/1.4 var(--font-jetbrains-mono); }
+  .product-info__comparison { display: block; width: fit-content; margin-top: 0.125rem; color: #ffffff80; font: 500 0.9375rem/1.4 var(--font-poppins); }
   .product-info__pricing > p { margin-top: 0.25rem; }
   .product-selector { min-width: 0; margin: 1.25rem 0 0; padding: 0; border: 0; }
   .product-selector legend { font-family: var(--font-jetbrains-mono); margin-bottom: 1.5rem; padding: 0; color: #fff; font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; }

@@ -537,6 +537,13 @@ const initialQuestion = questions[initialQuestionIndex];
   .faq-label { position: relative; bottom: auto; height: auto; width: fit-content; margin-top: var(--section-content-gap); gap: 0; }
   .faq-label > span { position: absolute; bottom: 0; }
   .faq-label h3 { margin-left: calc(var(--section-title-rail-size) + var(--section-title-gap)); }
+  /* Las columnas de FAQ son compactas: mantener el cuerpo de las tarjetas
+     en una escala editorial, sin que compita con los títulos de sección. */
+  @media (min-width: 52.0625rem) {
+    .faq-list__item { font-size: 0.75rem; line-height: 1.25; }
+    .faq-card__question { font-size: 0.75rem; line-height: 1.4; }
+    .faq-card__answer { font-size: 0.9375rem; line-height: 1.45; }
+  }
   @media (max-width: 52rem) {
     .faq-content { grid-template-columns: minmax(0, 1fr); }
   }

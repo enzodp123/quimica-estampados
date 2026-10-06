@@ -54,13 +54,13 @@ test("las galerías distinguen los productos y los servicios muestran trabajos d
     routeMap.get(`/productos/${slug}/`)?.html ?? "",
     /<button\b[^>]*data-gallery-thumb[^>]*data-src="([^"]+)"/g,
   );
-  assert.notDeepEqual(gallerySources("chomba-algodon").slice(0, -1), gallerySources("chomba-pique").slice(0, -1));
+  assert.notDeepEqual(gallerySources("chomba-algodon"), gallerySources("chomba-pique"));
   assert.equal(gallerySources("gorra-trucker").length, 3);
   for (const [slug, count] of [["buzo-canguro", 2], ["buzo-canguro-nino", 3], ["buzo-canguro-premium", 2]]) {
     assert.equal(gallerySources(slug).length, count, slug);
   }
-  assert.notDeepEqual(gallerySources("buzo-canguro").slice(0, -1), gallerySources("buzo-canguro-nino").slice(0, -1));
-  assert.notDeepEqual(gallerySources("buzo-canguro").slice(0, -1), gallerySources("buzo-canguro-premium").slice(0, -1));
+  assert.notDeepEqual(gallerySources("buzo-canguro"), gallerySources("buzo-canguro-nino"));
+  assert.notDeepEqual(gallerySources("buzo-canguro"), gallerySources("buzo-canguro-premium"));
   assert.match(routeMap.get("/productos/buzo-canguro-premium/").html, /href="\/images\/talles\/buzo-canguro-premium\.webp"/);
   const garmentDetails = new Set(gallerySources("remera-oversize").slice(1));
   for (const slug of ["calcos-papel", "calcos-vinilo", "calcos-dtf-uv", "tarjetas-personales", "folletos", "etiquetas"]) {

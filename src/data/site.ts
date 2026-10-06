@@ -39,7 +39,8 @@ export const fullAddress = [
   siteConfig.address.province,
 ].join(", ");
 
-export const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(fullAddress)}&output=embed`;
+// URL de Google Maps confirmada para el mapa embebido del formulario.
+export const mapEmbedUrl = "https://www.google.com/maps?ll=-32.620068,-60.157082&z=16&t=m&hl=es-ES&gl=US&mapclient=embed&q=Alem+65+E3153+Victoria+Entre+R%C3%ADos";
 
 export const serviceConsultationMessages = {
   corporeos: "¡Hola! Vi los corpóreos en polifan en la web de Química Estampados y me gustaría pedir un presupuesto para un logo o letras personalizadas. ¿Qué información necesitan para cotizar las medidas, la cantidad y la terminación?",

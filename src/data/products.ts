@@ -42,17 +42,22 @@ import chombaPiqueMain from "../assets/products/chomba-pique/main.webp";
 import chombaPique1 from "../assets/products/chomba-pique/detail-1.webp";
 import chombaPique2 from "../assets/products/chomba-pique/detail-2.webp";
 import chombaPique3 from "../assets/products/chomba-pique/detail-3.webp";
-import folletosMain from "../assets/services/folletos.webp";
+import folletosMain from "../assets/products/folletos/1.webp";
+import folletosDetail2 from "../assets/products/folletos/2.webp";
+import folletosDetail3 from "../assets/products/folletos/3.webp";
 import tarjetasMain from "../assets/services/tarjetas-personales.webp";
 import etiquetasMain from "../assets/services/etiquetas.webp";
 
 import canguroPremium1 from "../assets/products/buzo-canguro-premium/detail-1.webp";
-import calcosPhoto from "../assets/services/calcos.webp";
-import calcosPhoto1 from "../assets/works/calcos/1.webp";
-import calcosPhoto2 from "../assets/works/calcos/2.webp";
-import calcosPhoto3 from "../assets/works/calcos/3.webp";
-import calcosPhoto4 from "../assets/works/calcos/4.webp";
-import calcosPhoto5 from "../assets/works/calcos/5.webp";
+import calcosDtf1 from "../assets/products/calcos-dtf-uv/1.webp";
+import calcosDtf2 from "../assets/products/calcos-dtf-uv/2.webp";
+import calcosDtf3 from "../assets/products/calcos-dtf-uv/3.webp";
+import calcosVinilo1 from "../assets/products/calcos-vinilo/1.webp";
+import calcosVinilo2 from "../assets/products/calcos-vinilo/2.webp";
+import calcosVinilo3 from "../assets/products/calcos-vinilo/3.webp";
+import calcosPapel1 from "../assets/products/calcos-papel/1.webp";
+import calcosPapel2 from "../assets/products/calcos-papel/2.webp";
+import calcosPapel3 from "../assets/products/calcos-papel/3.webp";
 import tarjetasPhoto1 from "../assets/works/papeleria/1.webp";
 import tarjetasPhoto2 from "../assets/works/papeleria/2.webp";
 import tarjetasPhoto3 from "../assets/works/papeleria/3.webp";
@@ -180,7 +185,11 @@ export const products: Product[] = [
     sizeTable: calcoSizeTable,
     description:
       "Calcos personalizados. Seleccioná el tipo, tamaño y cantidad para consultar los precios.",
-    gallery: slug === "calcos-papel" ? [calcosPhoto, calcosPhoto1, calcosPhoto5] : slug === "calcos-vinilo" ? [calcosPhoto2, calcosPhoto3] : [calcosPhoto4],
+    gallery: slug === "calcos-papel"
+      ? [calcosPapel1, calcosPapel2, calcosPapel3]
+      : slug === "calcos-vinilo"
+        ? [calcosVinilo1, calcosVinilo2, calcosVinilo3]
+        : [calcosDtf1, calcosDtf2, calcosDtf3],
   });
   }) as Product[],
   {
@@ -342,7 +351,7 @@ export const products: Product[] = [
     pricingId: "folletos", priceSelection: { format: "estandar", side: "simple", quantity: "x100" },
     price: catalogPrice("folletos", { format: "estandar", side: "simple", quantity: "x100" }),
     options: [],
-    sizeValue: "Papel ilustración, terminación brillante o matelina, hasta 120 gr", description: "Folletos impresos en alta definición, disponibles en simple o doble faz y distintos gramajes.", gallery: [folletosMain],
+    sizeValue: "Papel ilustración, terminación brillante o matelina, hasta 120 gr", description: "Folletos impresos en alta definición, disponibles en simple o doble faz y distintos gramajes.", gallery: [folletosMain, folletosDetail2, folletosDetail3],
   },
   {
     slug: "tarjetas-personales",

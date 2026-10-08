@@ -5,6 +5,11 @@ import BackgroundText from "../shared/BackgroundText.astro";
 import BrandCarousel from "../shared/BrandCarousel.astro";
 import brandImage from "../../assets/images/img1_marcas.webp";
 import chevron from "../../assets/icons/product-chevron.svg";
+import googleLogo from "../../assets/icons/google-brand.svg";
+import reviewStar from "../../assets/icons/google-review-star.svg";
+import reviewChevron from "../../assets/icons/google-review-chevron.svg";
+
+const googleReviewUrl = "https://www.google.com/maps/place/Qu%C3%ADmica+Estampados/@-32.6200847,-60.1570559,17z/data=!3m1!4b1!4m6!3m5!1s0x95b6c3005d342925:0x42120c707aa2add6!8m2!3d-32.6200847!4d-60.1570559!16s%2Fg%2F11z8r56ym7?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D";
 
 const testimonials = [
   {
@@ -42,11 +47,22 @@ const testimonials = [
               <Icon name="lucide:circle-user-round" aria-hidden="true" />
               <span>{author}</span>
             </figcaption>
+            <p class="brands__review-source">
+              <img src={googleLogo.src} width="13" height="13" alt="" />
+              <span>Reseña de Google - Agosto 2026</span>
+            </p>
+            <span class="brands__rating" role="img" aria-label="Calificación: 5 de 5 estrellas">
+              {Array.from({ length: 5 }, () => <img src={reviewStar.src} width="9" height="9" alt="" />)}
+            </span>
             <blockquote><p>{quote}</p></blockquote>
           </figure>
-          <span class="brands__value-line-slot" aria-hidden="true">
+          <div class="brands__value-line-slot">
             <span class="brands__value-line"></span>
-          </span>
+            <a class="brands__review-link" href={googleReviewUrl} target="_blank" rel="noopener noreferrer">
+              <span>Ver reseña en Google</span>
+              <img src={reviewChevron.src} width="13" height="13" alt="" />
+            </a>
+          </div>
         </article>
       ))}
     </div>
@@ -247,10 +263,10 @@ const testimonials = [
   }
 
   .brands__testimonial {
-    margin-top: auto;
+    margin-top: 0.75rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 0.625rem;
   }
 
   .brands__testimonial figcaption {
@@ -274,8 +290,23 @@ const testimonials = [
     stroke-width: 1.5;
   }
 
+  .brands__testimonial .brands__review-source {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-poppins);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .brands__review-source img { width: 0.8125rem; height: 0.8125rem; flex: 0 0 0.8125rem; }
+  .brands__rating { display: flex; align-items: center; gap: 0.25rem; }
+  .brands__rating img { width: 0.5625rem; height: 0.5625rem; display: block; }
+
   .brands__testimonial blockquote {
-    margin-top: clamp(0.7rem, 1.05vw, 1.25rem);
+    margin-top: 0;
   }
 
   .brands__testimonial p {
@@ -286,10 +317,14 @@ const testimonials = [
   }
 
   .brands__value-line-slot {
-    min-height: clamp(2.5rem, 3vw, 3.625rem);
+    min-height: 0;
+    margin-top: auto;
+    padding-top: 1rem;
     display: flex;
-    align-items: end;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    gap: 0.75rem;
   }
 
   .brands__value-line {
@@ -299,6 +334,21 @@ const testimonials = [
     background: var(--color-cyan);
   }
 
+  .brands__review-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.125rem;
+    color: #239bd7;
+    font-family: var(--font-poppins);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+
+  .brands__review-link img { width: 0.8125rem; height: 0.8125rem; }
+  .brands__review-link:hover, .brands__review-link:focus-visible { color: #56c6f5; text-decoration: underline; }
+
   @media (min-width: 64.0625rem) {
     .brands__dots { gap: 0.25rem; }
     .brands__dots span { width: 0.875rem; height: 0.875rem; }
@@ -306,10 +356,10 @@ const testimonials = [
     .brands__body { min-height: 38.5625rem; }
     .brands__value { height: 23.75rem; min-height: 23.75rem; padding: 3.0625rem 2.0625rem; }
     .brands__quote-icon { width: 1.5rem; height: 1.5rem; }
-    .brands__testimonial { height: 10.25rem; min-height: 10.25rem; }
+    .brands__testimonial { height: auto; min-height: 0; }
     .brands__testimonial figcaption { font-size: 1rem; line-height: 1.75; }
     .brands__testimonial p { font-size: 1rem; line-height: 1.5; }
-    .brands__value-line-slot { min-height: 3.625rem; }
+    .brands__value-line-slot { min-height: 0; }
     .brands__value-line { width: 10rem; }
   }
 
@@ -491,7 +541,7 @@ const testimonials = [
     }
 
     .brands__quote-icon { width: 1.5rem; height: 1.5rem; }
-    .brands__testimonial { min-height: 10.25rem; }
+    .brands__testimonial { min-height: 0; }
     .brands__testimonial figcaption { font-size: 1rem; line-height: 1.75; }
     .brands__testimonial p { font-size: 1rem; line-height: 1.5; }
     .brands__pagination {
@@ -768,8 +818,8 @@ const testimonials = [
       padding: 1.5rem;
       gap: 1.25rem;
     }
-    .brands__testimonial { height: auto; min-height: 0; margin-top: 0; }
-    .brands__value-line-slot { min-height: 1rem; }
+    .brands__testimonial { height: auto; min-height: 0; margin-top: 0.75rem; }
+    .brands__value-line-slot { min-height: 0; }
     .brands__pagination { display: none; }
     .brands__cta { width: 100%; height: auto; padding: 1.5rem; }
     .brands__cta a { width: 100%; min-width: 0; text-align: center; }

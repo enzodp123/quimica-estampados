@@ -26,7 +26,6 @@ const gallery = await Promise.all(galleryImages.map(async (image) => ({
   thumb: await getImage({ src: image, width: Math.min(180, image.width), format: "webp", quality: 78 }),
   hasGarmentOutline: hasGarmentOutline && image === product.heroImage,
 })));
-const mainImage = gallery[0].main;
 const relatedProducts = getRecommendationCards(product);
 ---
 
@@ -40,29 +39,40 @@ const relatedProducts = getRecommendationCards(product);
   <section class="product-hero" aria-labelledby="product-title">
     <div class="product-gallery" data-product-gallery>
       <div class="product-gallery__thumbs" role="group" aria-label="Galería del producto">
-        {gallery.map((image, index) => (
-          <button
-            class:list={["product-gallery__thumb", { "is-active": index === 0 }]}
-            type="button"
-            data-gallery-thumb
-            data-src={image.main.src}
-            data-garment-outline={image.hasGarmentOutline ? "true" : "false"}
-            aria-label={`Ver imagen ${index + 1} de ${product.title}`}
-            aria-pressed={index === 0 ? "true" : "false"}
-          >
-            <img class:list={{ "has-garment-outline": image.hasGarmentOutline }} src={image.thumb.src} alt="" loading={index === 0 ? "eager" : "lazy"} />
-          </button>
-        ))}
+        <button class="product-gallery__thumb-control" type="button" data-gallery-thumb-previous aria-label="Ver miniaturas anteriores" disabled>⌃</button>
+        <div class="product-gallery__thumb-track" data-gallery-thumb-track>
+          {gallery.map((image, index) => (
+            <button
+              class:list={["product-gallery__thumb", { "is-active": index === 0 }]}
+              type="button"
+              data-gallery-thumb
+              data-src={image.main.src}
+              data-garment-outline={image.hasGarmentOutline ? "true" : "false"}
+              aria-label={`Ver imagen ${index + 1} de ${product.title}`}
+              aria-pressed={index === 0 ? "true" : "false"}
+            >
+              <img class:list={{ "has-garment-outline": image.hasGarmentOutline }} src={image.thumb.src} alt="" loading={index === 0 ? "eager" : "lazy"} />
+            </button>
+          ))}
+        </div>
+        <button class="product-gallery__thumb-control" type="button" data-gallery-thumb-next aria-label="Ver miniaturas siguientes" disabled>⌄</button>
       </div>
 
       <div class:list={["product-gallery__main", { "is-photo": isPhotoProduct }]}>
-        <img
-          data-gallery-main
-          class:list={{ "has-garment-outline": gallery[0].hasGarmentOutline }}
-          src={mainImage.src}
-          alt={product.title}
-          fetchpriority="high"
-        />
+        <div class="product-gallery__track" data-gallery-track role="group" aria-label={`Imágenes de ${product.title}`} aria-roledescription="carrusel" tabindex="0">
+          {gallery.map((image, index) => (
+            <div class="product-gallery__slide" data-gallery-slide aria-label={`Imagen ${index + 1} de ${gallery.length}`}>
+              <img
+                class:list={{ "has-garment-outline": image.hasGarmentOutline }}
+                src={image.main.src}
+                alt={index === 0 ? product.title : `${product.title}, imagen ${index + 1}`}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchpriority={index === 0 ? "high" : undefined}
+              />
+            </div>
+          ))}
+        </div>
+        <p class="product-gallery__counter" aria-live="polite" aria-atomic="true"><span data-gallery-current>1</span>/{gallery.length}</p>
       </div>
     </div>
 
@@ -91,23 +101,156 @@ const relatedProducts = getRecommendationCards(product);
 </main>
 
 <script>
-  document.querySelectorAll<HTMLElement>("[data-product-gallery]").forEach((gallery) => {
-    const mainImage = gallery.querySelector<HTMLImageElement>("[data-gallery-main]");
-    const thumbs = gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-thumb]");
-    thumbs.forEach((thumb) => {
-      thumb.addEventListener("click", () => {
-        if (mainImage && thumb.dataset.src) {
-          mainImage.src = thumb.dataset.src;
-          mainImage.classList.toggle("has-garment-outline", thumb.dataset.garmentOutline === "true");
+  const initProductGalleries = () => document.querySelectorAll<HTMLElement>("[data-product-gallery]").forEach((gallery) => {
+    if (gallery.dataset.galleryReady) return;
+    gallery.dataset.galleryReady = "true";
+    const track = gallery.querySelector<HTMLElement>("[data-gallery-track]");
+    const thumbTrack = gallery.querySelector<HTMLElement>("[data-gallery-thumb-track]");
+    const thumbs = Array.from(gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-thumb]"));
+    const currentIndex = gallery.querySelector<HTMLElement>("[data-gallery-current]");
+    const thumbPrevious = gallery.querySelector<HTMLButtonElement>("[data-gallery-thumb-previous]");
+    const thumbNext = gallery.querySelector<HTMLButtonElement>("[data-gallery-thumb-next]");
+    if (!track || !thumbTrack || !thumbs.length || !currentIndex) return;
+
+    let settleFrame = 0;
+    const scrollToIndex = (index: number) => {
+      const target = Math.max(0, Math.min(index, thumbs.length - 1)) * track.clientWidth;
+      cancelAnimationFrame(settleFrame);
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || Math.abs(target - track.scrollLeft) < 1) {
+        track.classList.remove("is-settling");
+        track.scrollLeft = target;
+        return;
+      }
+      const start = track.scrollLeft;
+      const distance = target - start;
+      let startedAt = 0;
+      const duration = Math.min(700, Math.max(460, 430 + Math.abs(distance) / 3));
+      track.classList.add("is-settling");
+      const animate = (timestamp: number) => {
+        if (!startedAt) startedAt = timestamp;
+        const progress = Math.min((timestamp - startedAt) / duration, 1);
+        const eased = progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+        track.scrollLeft = start + distance * eased;
+        if (progress < 1) {
+          settleFrame = requestAnimationFrame(animate);
+        } else {
+          track.scrollLeft = target;
+          track.classList.remove("is-settling");
+          settleFrame = 0;
         }
-        thumbs.forEach((item) => {
-          const active = item === thumb;
-          item.classList.toggle("is-active", active);
-          item.setAttribute("aria-pressed", String(active));
-        });
+      };
+      settleFrame = requestAnimationFrame(animate);
+    };
+    const setActive = (index: number) => {
+      const active = Math.max(0, Math.min(index, thumbs.length - 1));
+      currentIndex.textContent = String(active + 1);
+      thumbs.forEach((thumb, thumbIndex) => {
+        const selected = thumbIndex === active;
+        thumb.classList.toggle("is-active", selected);
+        thumb.setAttribute("aria-pressed", String(selected));
+      });
+      const thumbRect = thumbs[active].getBoundingClientRect();
+      const thumbTrackRect = thumbTrack.getBoundingClientRect();
+      if (thumbRect.top < thumbTrackRect.top || thumbRect.bottom > thumbTrackRect.bottom || thumbRect.left < thumbTrackRect.left || thumbRect.right > thumbTrackRect.right) {
+        thumbs[active].scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
+      }
+    };
+    const activate = (index: number, scroll = false) => {
+      const active = Math.max(0, Math.min(index, thumbs.length - 1));
+      setActive(active);
+      if (scroll) scrollToIndex(active);
+    };
+    const updateActive = () => setActive(Math.round(track.scrollLeft / Math.max(1, track.clientWidth)));
+    thumbs.forEach((thumb, index) => {
+      thumb.addEventListener("click", () => {
+        activate(index, true);
       });
     });
+    track.addEventListener("scroll", updateActive, { passive: true });
+    let dragStartX = 0;
+    let dragStartScroll = 0;
+    let lastDragX = 0;
+    let lastDragAt = 0;
+    let dragVelocity = 0;
+    let activePointer: number | null = null;
+    track.addEventListener("pointerdown", (event) => {
+      cancelAnimationFrame(settleFrame);
+      settleFrame = 0;
+      track.classList.remove("is-settling");
+      if (event.pointerType !== "mouse" || event.button !== 0) return;
+      activePointer = event.pointerId;
+      dragStartX = event.clientX;
+      lastDragX = event.clientX;
+      lastDragAt = performance.now();
+      dragVelocity = 0;
+      dragStartScroll = track.scrollLeft;
+      track.classList.add("is-dragging");
+      track.setPointerCapture(event.pointerId);
+    });
+    track.addEventListener("pointermove", (event) => {
+      if (activePointer !== event.pointerId) return;
+      const distance = event.clientX - dragStartX;
+      if (Math.abs(distance) > 3) event.preventDefault();
+      track.scrollLeft = dragStartScroll - distance;
+      const now = performance.now();
+      const elapsed = Math.max(1, now - lastDragAt);
+      const instantVelocity = -(event.clientX - lastDragX) / elapsed;
+      dragVelocity = dragVelocity * 0.55 + instantVelocity * 0.45;
+      lastDragX = event.clientX;
+      lastDragAt = now;
+    });
+    const finishDrag = (event: PointerEvent) => {
+      if (activePointer !== event.pointerId) return;
+      if (track.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
+      activePointer = null;
+      track.classList.remove("is-dragging");
+      const width = Math.max(1, track.clientWidth);
+      const current = Math.round(track.scrollLeft / width);
+      const predicted = Math.round((track.scrollLeft + dragVelocity * 180) / width);
+      const target = Math.abs(dragVelocity) > 0.35
+        ? Math.max(current - 2, Math.min(current + 2, predicted))
+        : current;
+      scrollToIndex(target);
+    };
+    track.addEventListener("pointerup", finishDrag);
+    track.addEventListener("pointercancel", finishDrag);
+    track.addEventListener("keydown", (event) => {
+      if (event.target !== track) return;
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        activate(Math.round(track.scrollLeft / Math.max(1, track.clientWidth)) + (event.key === "ArrowRight" ? 1 : -1), true);
+      }
+    });
+    const updateThumbControls = () => {
+      const horizontal = getComputedStyle(thumbTrack).flexDirection === "row";
+      const position = horizontal ? thumbTrack.scrollLeft : thumbTrack.scrollTop;
+      const viewport = horizontal ? thumbTrack.clientWidth : thumbTrack.clientHeight;
+      const extent = horizontal ? thumbTrack.scrollWidth : thumbTrack.scrollHeight;
+      if (thumbPrevious) thumbPrevious.disabled = position <= 2;
+      if (thumbNext) thumbNext.disabled = position + viewport >= extent - 2;
+      if (thumbPrevious && thumbNext && extent <= viewport + 2) {
+        thumbPrevious.hidden = true;
+        thumbNext.hidden = true;
+      }
+    };
+    thumbPrevious?.addEventListener("click", () => {
+      const horizontal = getComputedStyle(thumbTrack).flexDirection === "row";
+      thumbTrack.scrollBy({ left: horizontal ? -thumbTrack.clientWidth * 0.75 : 0, top: horizontal ? 0 : -thumbTrack.clientHeight * 0.75, behavior: "smooth" });
+    });
+    thumbNext?.addEventListener("click", () => {
+      const horizontal = getComputedStyle(thumbTrack).flexDirection === "row";
+      thumbTrack.scrollBy({ left: horizontal ? thumbTrack.clientWidth * 0.75 : 0, top: horizontal ? 0 : thumbTrack.clientHeight * 0.75, behavior: "smooth" });
+    });
+    thumbTrack.addEventListener("scroll", updateThumbControls, { passive: true });
+    const observer = new ResizeObserver(updateThumbControls);
+    observer.observe(thumbTrack);
+    document.addEventListener("astro:before-swap", () => observer.disconnect(), { once: true });
+    updateThumbControls();
   });
+  initProductGalleries();
+  document.addEventListener("astro:page-load", initProductGalleries);
 
 </script>
 
@@ -116,19 +259,33 @@ const relatedProducts = getRecommendationCards(product);
   .product-page { padding: 4.1875rem 0 7rem; background: var(--color-background); }
   .product-hero, .product-description, .related { width: min(calc(100% - 6rem), 87.3125rem); margin-inline: auto; }
   .product-hero { display: grid; grid-template-columns: minmax(0, 1.342fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
-  .product-gallery { display: grid; grid-template-columns: 9.375rem minmax(0, 1fr); gap: 2rem; min-width: 0; }
-  .product-gallery__thumbs { align-self: start; padding: 1.5625rem; display: flex; flex-direction: column; gap: 1.4375rem; border: 1px solid #353534; background: #13131380; min-width: 0; overflow-x: hidden; overflow-y: auto; scrollbar-width: none; }
-  .product-gallery__thumbs::-webkit-scrollbar { display: none; }
+  .product-gallery { display: grid; grid-template-columns: 6.25rem minmax(0, 1fr); gap: 2rem; min-width: 0; }
+  .product-gallery__thumbs { align-self: start; height: 19.375rem; padding: 0.75rem; display: flex; flex-direction: column; gap: 0.75rem; border: 1px solid #353534; background: #13131380; min-width: 0; }
+  .product-gallery__thumb-track { min-height: 0; display: flex; flex: 1; flex-direction: column; gap: 0.75rem; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+  .product-gallery__thumb-track::-webkit-scrollbar { display: none; }
+  .product-gallery__thumb-control { width: 100%; min-height: 2rem; flex: 0 0 2rem; padding: 0; border: 1px solid #353534; background: transparent; color: #fff; cursor: pointer; }
+  .product-gallery__thumb-control:disabled { opacity: 0.4; cursor: default; }
+  .product-gallery__thumb-control[hidden] { display: none; }
   .product-gallery__thumb { max-width: 100%; width: 6.25rem; height: 6.25rem; flex: 0 0 6.25rem; padding: 0; border: 0; overflow: hidden; background: transparent; cursor: pointer; }
   .product-gallery__thumb img { width: 100%; height: 100%; object-fit: cover; }
-  .product-gallery__thumb:focus-visible { outline-color: var(--color-magenta); }
-  .product-gallery__main { aspect-ratio: 1; min-width: 0; overflow: hidden; background: var(--color-background); }
-  .product-gallery__main img { width: 100%; height: 100%; object-fit: contain; }
+  .product-gallery__thumb:focus-visible, .product-gallery__thumb-control:focus-visible { outline: 2px solid var(--color-magenta); outline-offset: 2px; }
+  .product-gallery__thumb.is-active { outline: 1px solid var(--color-magenta); outline-offset: 1px; }
+  .product-gallery__main { display: flex; flex-direction: column; aspect-ratio: 1; min-width: 0; overflow: hidden; background: var(--color-background); }
+  .product-gallery__track { width: 100%; min-height: 0; flex: 1; display: flex; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; scrollbar-width: none; touch-action: pan-x pan-y; }
+  .product-gallery__track::-webkit-scrollbar { display: none; }
+  .product-gallery__track:focus-visible { outline: 2px solid var(--color-magenta); outline-offset: -2px; }
+  .product-gallery__track { cursor: grab; user-select: none; }
+  .product-gallery__track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+  .product-gallery__track.is-settling { scroll-snap-type: none; }
+  .product-gallery__track.is-dragging img { pointer-events: none; }
+  .product-gallery__slide { width: 100%; height: 100%; flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; }
+  .product-gallery__slide img { width: 100%; height: 100%; object-fit: contain; }
+  .product-gallery__counter { min-width: 2.5rem; margin: 0.65rem auto 0; padding: 0.35rem 0.55rem; border: 1px solid #353534; background: #080808b8; color: #fff; font: 500 0.75rem/1 var(--font-jetbrains-mono); text-align: center; }
   .has-garment-outline {
     filter: drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff)
       drop-shadow(0 1px 0 #fff) drop-shadow(0 -1px 0 #fff);
   }
-  .product-gallery__main.is-photo img { object-fit: cover; }
+  .product-gallery__main.is-photo .product-gallery__slide img { object-fit: cover; }
   .product-description { margin-top: 2rem; }
   .product-description h2, .related h2 { margin: 0; border-left: 2px solid var(--color-magenta); padding-left: 1.125rem; color: var(--color-magenta); font: 500 1rem/1 var(--font-jetbrains-mono); letter-spacing: 0.075rem; text-transform: uppercase; }
   .product-description > div > p { max-width: 45.25rem; margin-top: 1rem; color: #ffffffb3; font: 400 1rem/1.5 var(--font-poppins); }
@@ -145,7 +302,7 @@ const relatedProducts = getRecommendationCards(product);
   
   
   
-  @media (max-width: 80rem) { .product-hero, .product-description, .related { width: calc(100% - 3rem); } .product-hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem; } .product-gallery { grid-template-columns: 6.25rem minmax(0, 1fr); gap: 1.25rem; } .product-gallery__thumbs { padding: 0.75rem; gap: 1rem; } .product-gallery__thumb { width: 4.625rem; height: 4.625rem; flex-basis: 4.625rem; }   }
+  @media (max-width: 80rem) { .product-hero, .product-description, .related { width: calc(100% - 3rem); } .product-hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem; } .product-gallery { grid-template-columns: 6.25rem minmax(0, 1fr); gap: 1.25rem; } .product-gallery__thumbs { padding: 0.75rem; gap: 0.75rem; } .product-gallery__thumb { width: 4.625rem; height: 4.625rem; flex-basis: 4.625rem; }   }
   @media (max-width: 56rem) { .product-hero { grid-template-columns: 1fr; gap: 2rem; } .product-gallery { width: 100%; grid-template-columns: 6.25rem minmax(0, 1fr); } .product-gallery__main { max-height: 36rem; }  }
-  @media (max-width: 40rem) { .product-page { padding: 1.5rem 0 4rem; } .product-hero, .product-description, .related { width: calc(100% - 2rem); } .product-gallery { display: flex; flex-direction: column-reverse; gap: 0.75rem; } .product-gallery__main { width: 100%; aspect-ratio: 1; } .product-gallery__thumbs { max-width: 100%; flex-direction: row; overflow-x: auto; overflow-y: hidden; gap: 0.75rem; }  }
+  @media (max-width: 40rem) { .product-page { padding: 1.5rem 0 4rem; } .product-hero, .product-description, .related { width: calc(100% - 2rem); } .product-gallery { display: flex; flex-direction: column-reverse; gap: 0.75rem; } .product-gallery__main { width: 100%; aspect-ratio: 1; } .product-gallery__thumbs { width: 100%; height: auto; flex-direction: row; align-items: center; overflow: hidden; gap: 0.5rem; } .product-gallery__thumb-track { min-width: 0; flex-direction: row; overflow-x: auto; overflow-y: hidden; gap: 0.5rem; } .product-gallery__thumb-control { width: 2rem; min-width: 2rem; height: 3rem; min-height: 3rem; flex: 0 0 2rem; } .product-gallery__thumb { width: 3.5rem; height: 3.5rem; flex: 0 0 3.5rem; } }
 </style>

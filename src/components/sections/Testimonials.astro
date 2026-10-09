@@ -15,14 +15,17 @@ const testimonials = [
   {
     author: "Otra Cultura",
     quote: "“Los chicos trabajan excelente, a nosotros nos hicieron toda la grafica y la ropa que usamos todos los días, de una calidad hermosa. los super recomiendo”",
+    url: "https://maps.app.goo.gl/tQfRpivCSfkKktCr7",
   },
   {
     author: "Veterinaria Pocas Pulgas",
     quote: "“Ese equipo la rompe toda! Son unos genios! Excelente calidad de diseños y materiales a un precio increíble. 100% recomendables“",
+    url: "https://maps.app.goo.gl/agnZ7er6UC1iYKFh9",
   },
   {
     author: "Maillen Sánchez",
     quote: "“El trabajo de los chicos es hermoso, e impecable. Tal cual lo pedí, personalizado y con excelente atención, predisposición y buena onda”",
+    url: "https://maps.app.goo.gl/7t6Xydhh89xjAdPK6",
   },
 ];
 
@@ -39,7 +42,7 @@ const testimonials = [
 
   <div class="brands__body">
     <div id="testimonial-track" class="brands__testimonials" data-testimonial-carousel>
-      {testimonials.map(({ author, quote }, index) => (
+      {testimonials.map(({ author, quote, url = googleReviewUrl }, index) => (
         <article class:list={["brands__value", `brands__value--${index + 1}`]} data-testimonial-card>
           <Icon class="brands__quote-icon" name="lucide:quote" aria-hidden="true" />
           <figure class="brands__testimonial">
@@ -58,7 +61,7 @@ const testimonials = [
           </figure>
           <div class="brands__value-line-slot">
             <span class="brands__value-line"></span>
-            <a class="brands__review-link" href={googleReviewUrl} target="_blank" rel="noopener noreferrer">
+            <a class="brands__review-link" href={url} target="_blank" rel="noopener noreferrer">
               <span>Ver reseña en Google</span>
               <img src={reviewChevron.src} width="13" height="13" alt="" />
             </a>

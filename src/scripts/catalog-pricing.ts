@@ -1,4 +1,4 @@
-import { describeCatalogSelection, findCatalogPrice, formatCatalogPrice, getCatalogComparisonTotal, getCatalogTotal, type CatalogProduct } from "../data/pricing";
+import { describeCatalogSelection, findCatalogPrice, formatCatalogPrice, getCatalogComparisonInstallments, getCatalogComparisonTotal, getCatalogTotal, type CatalogProduct } from "../data/pricing";
 
 export function initCatalogPricing() {
   document.querySelectorAll<HTMLElement>("[data-catalog-pricing]").forEach((root) => {
@@ -31,7 +31,7 @@ export function initCatalogPricing() {
       updateText("[data-product-comparison]", comparison, true);
       updateText("[data-price-label]", `${total ? "Total" : "Precio"} · ${selectionLabel}`);
       updateText("[data-price-kind]", total ? "total" : "", true);
-      updateText("[data-product-installments]", entry?.installments ?? "", true);
+      updateText("[data-product-installments]", getCatalogComparisonInstallments(entry) ?? "", true);
       updateText("[data-price-note]", entry?.note ?? "", true);
       const quantity = catalog.variants.find(({ key }) => key === "quantity")?.options.find(({ value }) => value === selected.quantity);
       updateText("[data-quantity-label]", quantity?.label ?? "Consultar");

@@ -15,7 +15,6 @@ La implementación conserva cada identificador en atributos `data-figma-node` o 
 | `/productos/gorra-trucker/` | `1060:1260` |
 | `/productos/remera-nino/` | `861:1632` |
 | `/productos/remera-unisex/` | `642:1797`, `642:2027`, `642:3737` |
-| `/productos/remera-oversize/` | `642:3220`, `642:2986`, `655:982` |
 | `/productos/chomba-algodon/` | `835:2670` |
 | `/productos/remera-egresadito/` | `861:2182` |
 | `/productos/buzo-cuello-redondo/` | `825:979` |

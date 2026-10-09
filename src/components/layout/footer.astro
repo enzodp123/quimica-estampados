@@ -67,7 +67,7 @@ const year = new Date().getFullYear();
     <p>
       Desarrollado por{" "}
       {siteConfig.developer.url ? (
-        <a href={siteConfig.developer.url} target="_blank" rel="noreferrer">{siteConfig.developer.label}</a>
+        <a href={siteConfig.developer.url} target="_blank" rel="noopener noreferrer">{siteConfig.developer.label}</a>
       ) : (
         <span>{siteConfig.developer.label}</span>
       )}

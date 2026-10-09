@@ -27,8 +27,8 @@ export const siteConfig = {
       "https://www.facebook.com/quimicaestampados/?locale=es_LA",
   },
   developer: {
-    label: "@binadevs",
-    url: import.meta.env.PUBLIC_DEVELOPER_URL || "",
+    label: "<Binadevs/>",
+    url: import.meta.env.PUBLIC_DEVELOPER_URL || "https://binadevs.com/",
   },
   contactFormEndpoint: import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || "",
 } as const;
@@ -40,7 +40,7 @@ export const fullAddress = [
 ].join(", ");
 
 // Mapa embebido centrado en el local de Química Estampados.
-export const mapEmbedUrl = "https://www.google.com/maps?q=-32.6200847%2C-60.1570559&z=17&output=embed";
+export const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d420.0602092917048!2d-60.15701844907793!3d-32.619994070106!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b6c3005d342925%3A0x42120c707aa2add6!2sQu%C3%ADmica%20Estampados!5e0!3m2!1ses-419!2sus!4v1791585460718!5m2!1ses-419!2sus";
 
 export const serviceConsultationMessages = {
   corporeos: "¡Hola! Vi los corpóreos en polifan en la web de Química Estampados y me gustaría pedir un presupuesto para un logo o letras personalizadas. ¿Qué información necesitan para cotizar las medidas, la cantidad y la terminación?",

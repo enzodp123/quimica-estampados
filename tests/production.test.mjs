@@ -27,12 +27,13 @@ const routeMap = new Map(pages.map((page) => [routeFor(page.path), page]));
 
 const extract = (html, pattern) => [...html.matchAll(pattern)].map((match) => match[1]);
 
-test("genera el home, las 18 fichas con imágenes y una página 404", () => {
-  assert.equal(documentPages.length, 19);
+test("genera el home, las 17 fichas con imágenes y una página 404", () => {
+  assert.equal(documentPages.length, 18);
   assert.ok(routeMap.has("/"));
   assert.equal(routeMap.has("/productos/"), false);
   assert.ok(routeMap.has("/404.html"));
-  assert.equal([...routeMap.keys()].filter((route) => route.startsWith("/productos/") && route !== "/productos/").length, 18);
+  assert.equal([...routeMap.keys()].filter((route) => route.startsWith("/productos/") && route !== "/productos/").length, 17);
+  assert.equal(routeMap.has("/productos/remera-oversize/"), false);
 });
 
 test("cada documento tiene metadatos y landmarks básicos", () => {
@@ -62,7 +63,10 @@ test("las galerías distinguen los productos y los servicios muestran trabajos d
   assert.notDeepEqual(gallerySources("buzo-canguro"), gallerySources("buzo-canguro-nino"));
   assert.notDeepEqual(gallerySources("buzo-canguro"), gallerySources("buzo-canguro-premium"));
   assert.match(routeMap.get("/productos/buzo-canguro-premium/").html, /href="\/images\/talles\/buzo-canguro-premium\.webp"/);
-  const garmentDetails = new Set(gallerySources("remera-oversize").slice(1));
+  const egresaditoSources = gallerySources("remera-egresadito");
+  assert.equal(egresaditoSources.length, 3);
+  assert.ok(egresaditoSources.every((source) => !source.includes("design-2026")));
+  const garmentDetails = new Set(gallerySources("remera-unisex").slice(1));
   for (const slug of ["calcos-papel", "calcos-vinilo", "calcos-dtf-uv", "tarjetas-personales", "folletos", "etiquetas"]) {
     const sources = gallerySources(slug);
     assert.ok(sources.length > 0, slug);
@@ -206,12 +210,12 @@ test("todos los assets locales referenciados existen", () => {
   }
 });
 
-test("los 36 nodos entregados tienen trazabilidad en el HTML", () => {
+test("los 33 nodos entregados tienen trazabilidad en el HTML", () => {
   const expectedNodes = [
     "1033:2504", "1039:3107", "1031:1215", "1060:1260", "861:1632", "642:1797",
     "835:2670", "861:2182", "825:979", "835:1452", "1039:3362", "1059:1017",
-    "835:2180", "834:713", "655:982", "642:3220", "1060:1507", "642:3737",
-    "642:2986", "642:2027", "1032:2174", "1033:2334", "1095:2870", "1033:2254",
+    "835:2180", "834:713", "1060:1507", "642:3737", "642:2027", "1032:2174",
+    "1033:2334", "1095:2870", "1033:2254",
     "1096:3136", "1033:2414", "737:1136", "737:1150", "737:1122", "737:1105",
     "736:1053", "736:1066", "737:1164", "738:1177", "738:1190", "738:1203",
   ];

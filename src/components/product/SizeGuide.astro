@@ -1,27 +1,57 @@
 ---
 import galleryClose from "../../assets/icons/gallery-close.svg";
 
-interface Props { src: string; title: string; womensSrc?: string; sizeRange?: string; }
+interface Props {
+  src: string;
+  title: string;
+  womensSrc?: string;
+  sizeRange?: string;
+}
+
 const { src, title, womensSrc, sizeRange } = Astro.props;
 const guides = womensSrc
-  ? [{ src, label: "Hombre / Unisex", range: sizeRange }, { src: womensSrc, label: "Mujer", range: "Del 1 al 5" }]
-  : [{ src, label: "Ver tabla de talles", range: undefined }];
+  ? [
+      { src, label: "Hombre / Unisex", range: sizeRange, kind: "unisex" },
+      { src: womensSrc, label: "Mujer", range: "Del 1 al 5", kind: "dama" },
+    ]
+  : [
+      { src, label: "Ver tabla de talles", range: undefined, kind: "unisex" },
+    ];
 ---
 
 <div class="size-guide">
   <div class="size-guide__links">
     {guides.map((guide) => (
-      <a href={guide.src} data-size-guide-open data-guide-title={`${title} — ${guide.label}`} aria-label={womensSrc ? `Ver tabla de talles: ${guide.label}` : "Ver tabla de talles"} aria-haspopup="dialog" aria-controls="size-guide-dialog">
-        <span>{guide.label}</span>
+      <a
+        href={guide.src}
+        data-size-guide-open
+        data-scroll-to-size={guide.kind}
+        data-guide-title={`${title} — ${guide.label}`}
+        aria-label={womensSrc ? `Ver tabla de talles: ${guide.label}` : "Ver tabla de talles"}
+        aria-haspopup="dialog"
+        aria-controls="size-guide-dialog"
+      >
+        <span class="size-guide__link-content">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21.3 15.3l-8.6-8.6a2 2 0 0 0-2.8 0L2.7 13.9a2 2 0 0 0 0 2.8l7.2 7.2a2 2 0 0 0 2.8 0l8.6-8.6a2 2 0 0 0 0-2.8z"></path>
+            <path d="m14.5 12.5 2-2"></path>
+            <path d="m11.5 9.5 2-2"></path>
+            <path d="m8.5 6.5 2-2"></path>
+          </svg>
+          <span class="size-guide__link-label">{guide.label}</span>
+        </span>
         {guide.range && <small>{guide.range}</small>}
       </a>
     ))}
   </div>
+
   <dialog id="size-guide-dialog" class="size-lightbox" aria-label={`Tabla de talles: ${title}`}>
     <button class="size-lightbox__close" type="button" aria-label="Cerrar tabla de talles">
       <img src={galleryClose.src} width="32" height="32" alt="" />
     </button>
-    <img class="size-lightbox__image" src={src} alt={`Tabla de talles y medidas de ${title}`} loading="lazy" />
+    <div class="size-lightbox__dialog-body">
+      <img class="size-lightbox__image" src={src} alt={`Tabla de talles y medidas de ${title}`} loading="lazy" />
+    </div>
   </dialog>
 </div>
 
@@ -29,24 +59,31 @@ const guides = womensSrc
   document.querySelectorAll<HTMLElement>(".size-guide").forEach((guide) => {
     const triggers = guide.querySelectorAll<HTMLAnchorElement>("[data-size-guide-open]");
     const dialog = guide.querySelector<HTMLDialogElement>("dialog");
-    const image = guide.querySelector<HTMLImageElement>(".size-lightbox__image");
+    const image = guide.querySelector<HTMLImageElement>( ".size-lightbox__image");
     const close = guide.querySelector<HTMLButtonElement>("button");
     if (!dialog || !close || !image) return;
+
     let activeTrigger: HTMLAnchorElement | undefined;
-    triggers.forEach((trigger) => trigger.addEventListener("click", (event) => {
-      event.preventDefault();
-      activeTrigger = trigger;
-      image.src = trigger.href;
-      image.alt = `Tabla de talles y medidas de ${trigger.dataset.guideTitle}`;
-      dialog.setAttribute("aria-label", `Tabla de talles: ${trigger.dataset.guideTitle}`);
-      dialog.showModal();
-      document.documentElement.classList.add("has-open-size-guide");
-      close.focus();
-    }));
+
+    triggers.forEach((trigger) =>
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+        activeTrigger = trigger;
+        image.src = trigger.href;
+        image.alt = `Tabla de talles y medidas de ${trigger.dataset.guideTitle}`;
+        dialog.setAttribute("aria-label", `Tabla de talles: ${trigger.dataset.guideTitle}`);
+        dialog.showModal();
+        document.documentElement.classList.add("has-open-size-guide");
+        close.focus();
+      })
+    );
+
     close.addEventListener("click", () => dialog.close());
+
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) dialog.close();
     });
+
     dialog.addEventListener("close", () => {
       document.documentElement.classList.remove("has-open-size-guide");
       activeTrigger?.focus({ preventScroll: true });
@@ -55,20 +92,173 @@ const guides = womensSrc
 </script>
 
 <style>
-  .size-guide { margin-top: 0.75rem; }
-  .size-guide__links { display: flex; gap: 1.5rem; }
-  .size-guide__links a { display: flex; flex-direction: column; justify-content: center; gap: 0.25rem; min-height: 2.75rem; color: var(--color-magenta); font-size: 0.8125rem; }
-  .size-guide__links a span { text-decoration: underline; text-underline-offset: 0.2em; }
-  .size-guide__links a small { color: var(--color-text); font-size: 0.75rem; }
-  .size-guide__links a:hover { color: var(--color-text); }
-  .size-lightbox { position: fixed; inset: 0; z-index: 100; width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 4.5rem 1rem 1.5rem; overflow: hidden; border: 0; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(16.5px); }
-  .size-lightbox:not([open]) { display: none; }
-  .size-lightbox[open] { display: grid; place-items: center; }
-  .size-lightbox::backdrop { background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(16.5px); }
-  .size-lightbox__close { position: absolute; top: 1.5rem; right: 5.63%; z-index: 2; width: 2rem; height: 2rem; padding: 0; border: 0; background: transparent; cursor: pointer; }
-  .size-lightbox__close img { display: block; width: 100%; height: 100%; }
-  .size-lightbox__close:focus-visible { outline: 2px solid var(--color-cyan); outline-offset: 0.35rem; }
-  .size-lightbox__image { display: block; width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 6rem); border: 2px solid var(--color-cyan); background: white; object-fit: contain; }
-  :global(html.has-open-size-guide) { overflow: hidden; }
-  @media (max-width: 40rem) { .size-lightbox__close { right: 1rem; } }
+  .size-guide {
+    margin-top: 0.75rem;
+  }
+
+  .size-guide__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    align-items: center;
+  }
+
+  .size-guide__links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.375rem;
+    padding: 0.4rem 0.85rem;
+    color: #fff;
+    background: rgba(227, 14, 127, 0.08);
+    border: 1px solid rgba(227, 14, 127, 0.45);
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    font-family: var(--font-jetbrains-mono);
+    text-decoration: none;
+    transition: all 180ms ease;
+  }
+
+  .size-guide__link-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .size-guide__link-content svg {
+    color: var(--color-magenta);
+    flex-shrink: 0;
+    transition: transform 180ms ease;
+  }
+
+  .size-guide__link-label {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .size-guide__links a small {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75rem;
+    padding-left: 0.4rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .size-guide__links a:hover {
+    background: var(--color-magenta);
+    border-color: var(--color-magenta);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(227, 14, 127, 0.35);
+  }
+
+  .size-guide__links a:hover .size-guide__link-content svg {
+    color: #fff;
+    transform: rotate(-10deg);
+  }
+
+  .size-guide__links a:hover small {
+    color: rgba(255, 255, 255, 0.9);
+    border-left-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .size-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 3rem 1.5rem;
+    overflow: hidden;
+    border: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(14px);
+    opacity: 0;
+    transform: scale(0.97);
+    transition: opacity 240ms ease, transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .size-lightbox:not([open]) {
+    display: none;
+  }
+
+  .size-lightbox[open] {
+    display: grid;
+    place-items: center;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .size-lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+  }
+
+  .size-lightbox__close {
+    position: absolute;
+    top: 1.5rem;
+    right: 5.63%;
+    z-index: 2;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: 0;
+    background: rgba(20, 20, 20, 0.8);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 180ms ease, background-color 180ms ease;
+  }
+
+  .size-lightbox__close:hover {
+    transform: scale(1.1);
+    background: var(--color-magenta);
+  }
+
+  .size-lightbox__close img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .size-lightbox__close:focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 0.35rem;
+  }
+
+  .size-lightbox__dialog-body {
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .size-lightbox__image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: calc(100dvh - 6rem);
+    border: 2px solid var(--color-cyan);
+    border-radius: 6px;
+    background: white;
+    object-fit: contain;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  }
+
+  :global(html.has-open-size-guide) {
+    overflow: hidden;
+  }
+
+  @media (max-width: 40rem) {
+    .size-lightbox__close {
+      right: 1rem;
+      top: 1rem;
+    }
+    .size-lightbox {
+      padding: 4rem 1rem 1.5rem;
+    }
+  }
 </style>

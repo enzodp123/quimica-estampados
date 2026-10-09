@@ -1,13 +1,16 @@
 import assert from "node:assert/strict";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import test from "node:test";
-import { catalogList, findCatalogPrice, formatCatalogPrice, getCatalogComparisonTotal, priceCatalog, resolveCatalogPrice } from "../src/data/pricing.ts";
+import { catalogList, findCatalogPrice, formatCatalogPrice, getCatalogComparisonInstallments, getCatalogComparisonTotal, priceCatalog, resolveCatalogPrice } from "../src/data/pricing.ts";
 
 test("el importe tachado suma 21% al pack sin modificar su precio", () => {
   const entry = resolveCatalogPrice("buzo-cuello-redondo", { quantity: "x5" });
   assert.equal(getCatalogComparisonTotal(entry), "$184.525");
+  assert.equal(getCatalogComparisonInstallments(entry), "o 3 cuotas de $61.508,33");
   assert.equal(formatCatalogPrice(entry), "$152.500");
   assert.equal(getCatalogComparisonTotal({ selections: {}, total: "$1.234,56" }), "$1.493,82");
+  assert.equal(getCatalogComparisonInstallments({ selections: {}, total: "$120.000" }), "o 3 cuotas de $48.400");
+  assert.equal(getCatalogComparisonInstallments(undefined), undefined);
   assert.equal(getCatalogComparisonTotal(undefined), undefined);
   assert.equal(getCatalogComparisonTotal({ selections: {}, requiresConsultation: true, total: "$100" }), undefined);
 });
@@ -172,8 +175,8 @@ test("cada ficha inicia con los selectores y el precio de la misma combinación"
     assert.doesNotMatch(html, /data-price-unit|Precio por unidad|c\/u/, file.name);
     if (!consultOnly) assert.ok(expected, `${file.name}: opción inicial definida`);
     const installmentTag = html.match(/<p[^>]+data-product-installments[^>]*>([^<]*)<\/p>/);
-    assert.equal(installmentTag[1], expected?.installments ?? "", file.name);
-    assert.equal(/\bhidden\b/.test(installmentTag[0]), !expected?.installments, file.name);
+    assert.equal(installmentTag[1], getCatalogComparisonInstallments(expected) ?? "", file.name);
+    assert.equal(/\bhidden\b/.test(installmentTag[0]), !getCatalogComparisonInstallments(expected), file.name);
     assert.doesNotMatch(html, /sin interés|<del\b/, file.name);
   }
 });

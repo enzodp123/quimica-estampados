@@ -6,9 +6,6 @@ import {
   type PriceCatalogId,
 } from "./pricing";
 
-import oversizeMain from "../assets/products/remera-oversize/main.webp";
-import oversizeDetail2 from "../assets/products/remera-oversize/detail-2.webp";
-import oversizeDetail3 from "../assets/products/remera-oversize/detail-3.webp";
 import unisexMain from "../assets/products/remera-unisex/main.webp";
 import unisexDetail1 from "../assets/products/remera-unisex/detail-1.webp";
 import unisexDetail2 from "../assets/products/remera-unisex/detail-2.webp";
@@ -116,24 +113,6 @@ const calcoTypeChoices: ProductChoice[] = [
 ];
 
 export const products: Product[] = [
-  {
-    slug: "remera-oversize",
-    figmaNodes: ["642:3220", "642:2986", "655:982"],
-    breadcrumb: "Inicio > Pack de Remeras",
-    title: "Remera oversize personalizable",
-    pricingId: "remeras-adulto",
-    priceSelection: { quantity: "x5" },
-    packLabel: "Packs de remeras",
-    price: "Consultar",
-    requiresConsultation: true,
-    options: [],
-    colorLabel: "Colores flash",
-    colors: ["#f2f2ef", "#585858", "#f0ede6"],
-    sizeLabel: "Talles",
-    sizeValue: "Consultar",
-    description: `Remera manga corta: ${apparelDescription}`,
-    gallery: [oversizeMain, oversizeDetail2, oversizeDetail3],
-  },
   {
     slug: "remera-unisex",
     figmaNodes: ["642:1797", "642:2027", "642:3737"],
@@ -246,7 +225,8 @@ export const products: Product[] = [
     colorLabel: "Colores flash",
     colors: ["#efefec", "#545454", "#0e0e0e"],
     sizeLabel: "Talles",
-    sizeValue: "Consultar",
+    sizeValue: "Del 4 al 18",
+    sizeGuide: "/images/talles/remera-nino.webp",
     description: `Remera infantil: ${apparelDescription}`,
     heroImage: egresaditoMain,
     gallery: [egresadito1, egresadito2, egresadito3, egresaditoMain],

@@ -1,7 +1,7 @@
 ---
 import type { Product } from "../../data/products";
 import SizeGuide from "./SizeGuide.astro";
-import { priceCatalog, resolveCatalogPrice, formatCatalogPrice, getCatalogComparisonTotal, getCatalogTotal, describeCatalogSelection, type CatalogProduct } from "../../data/pricing";
+import { priceCatalog, resolveCatalogPrice, formatCatalogPrice, getCatalogComparisonTotal, getCatalogComparisonInstallments, getCatalogTotal, describeCatalogSelection, type CatalogProduct } from "../../data/pricing";
 import { whatsappUrl } from "../../data/site";
 import truck from "../../assets/icons/product-truck.svg";
 import layers from "../../assets/icons/product-layers.svg";
@@ -26,10 +26,11 @@ const contact = whatsappUrl(`Hola, quisiera consultar por ${product.title}. ${de
   <div class="product-info__pricing" aria-live="polite" aria-atomic="true">
     <div class="product-info__price-row"><strong data-product-price>{formatCatalogPrice(entry)}</strong><span data-price-kind hidden={!getCatalogTotal(entry)}>total</span></div>
     <s class="product-info__comparison" data-product-comparison hidden={!getCatalogComparisonTotal(entry)}>{getCatalogComparisonTotal(entry)}</s>
-    <p data-product-installments hidden={!entry?.installments}>{entry?.installments}</p>
+    
+    <p data-product-installments hidden={!getCatalogComparisonInstallments(entry)}>{getCatalogComparisonInstallments(entry)}</p>
     <p data-price-note hidden={!entry?.note}>{entry?.note}</p>
   </div>
-
+  
   {product.options.map((option) => (
     <fieldset class="product-selector">
       <legend>{option.label}</legend>

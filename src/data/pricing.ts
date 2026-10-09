@@ -378,6 +378,18 @@ export const getCatalogComparisonTotal = (entry?: CatalogPrice): string | undefi
   return `$${whole}${decimals ? `,${String(decimals).padStart(2, "0")}` : ""}`;
 };
 
+export const getCatalogComparisonInstallments = (entry?: CatalogPrice): string | undefined => {
+  const comparison = getCatalogComparisonTotal(entry);
+  const amount = comparison?.match(/^\$(\d+(?:\.\d{3})*)(?:,(\d{1,2}))?$/);
+  if (!amount) return undefined;
+  const cents = Number(amount[1].replaceAll(".", "")) * 100 + Number((amount[2] ?? "").padEnd(2, "0"));
+  const installmentCents = Math.round(cents / 3);
+  const whole = Math.floor(installmentCents / 100).toLocaleString("es-AR");
+  const decimals = installmentCents % 100;
+  const value = `$${whole}${decimals ? `,${String(decimals).padStart(2, "0")}` : ""}`;
+  return `o 3 cuotas de ${value}`;
+};
+
 export const describeCatalogSelection = (catalog: CatalogProduct, selection: Record<string, string>): string =>
   catalog.variants.map(({ key, options }) => options.find(({ value }) => value === selection[key])?.label ?? "Consultar").join(" · ");
 

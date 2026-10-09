@@ -25,7 +25,7 @@ type CardDesign = Omit<ProductCardData, "product"> & { slug: string };
 const printingDesigns: CardDesign[] = [
   { slug: "buzo-cuello-redondo", name: "Buzo cuello redondo", description: "Terminaciones premium", image: crewneck, highlighted: true },
   { slug: "buzo-canguro", name: "Buzo canguro frisado", description: "Terminaciones premium", image: hoodie },
-  { slug: "gorra-trucker", name: "Gorra visera", description: "Truckers sublimadas o con DTF", image: cap },
+  { slug: "gorra-trucker", name: "Gorra visera", description: "Gorras trucker sublimadas o con DTF", image: cap },
   { slug: "campera-capucha", name: "Campera con capucha", description: "Frisa clásica con capucha, bolsillos y cierre", image: jacket, highlighted: true },
   { slug: "remera-unisex", name: "Remera unisex", description: "Algodón premium peinado 24.1", image: shirt },
   { slug: "chomba-pique", name: "Chomba", description: "Piqué de algodón", image: polo },

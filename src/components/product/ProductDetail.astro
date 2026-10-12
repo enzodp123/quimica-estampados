@@ -244,7 +244,7 @@ const relatedProducts = getRecommendationCards(product);
   <section class="product-description" aria-labelledby="description-heading">
     <div>
       <h2 id="description-heading">Descripción</h2>
-      <p>{product.requiresConsultation ? product.description : catalog.description ?? product.description}</p>
+      <p>{product.description || catalog.description}</p>
     </div>
     {product.sizeTable && (
       <details class="size-guide">

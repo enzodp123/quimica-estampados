@@ -101,6 +101,8 @@ export interface Product {
 const apparelDescription =
   "Algodón peinado 24.1 con terminaciones premium como tapacostura en el cuello y refuerzo de costura en hombros.";
 
+const defaultProductDescription = "Remera manga corta: Algodón peinado 24.1 con terminaciones premium como tapa costura en el cuello y refuerzo de costura en hombros.";
+
 const catalogPrice = (pricingId: PriceCatalogId, selection: Record<string, string>) =>
   formatCatalogPrice(resolveCatalogPrice(pricingId, selection));
 
@@ -142,7 +144,11 @@ export const products: Product[] = [
     const pricingId: "calcos-papel" | "calcos-vinilo" | "calcos-dtf-uv" =
       slug as "calcos-papel" | "calcos-vinilo" | "calcos-dtf-uv";
     const priceSelection = { size: "xs", quantity: "x100" };
-    
+    const descriptionByType: Record<string, string> = {
+      Papel: "Calco de Papel: Son aptas interior/exterior, impresas con tintas ecosolventes, colores vibrantes, resistentes al agua. Se pueden usar en: vidrieras, vehículos, cartelería, packaging, objetos y diferentes superficies.",
+      "Vinilo troquelado": "Calcos de vinilo troquelado, ideales para superficies lisas y acabados duraderos.",
+      "DTF UV": "Calcos DTF UV, ideales para superficies rígidas y acabados resistentes al uso exterior.",
+    };
 
     return ({
     slug: slug as string,
@@ -162,8 +168,7 @@ export const products: Product[] = [
       },
     ],
     sizeTable: calcoSizeTable,
-    description:
-      "Calcos personalizados. Seleccioná el tipo, tamaño y cantidad para consultar los precios.",
+    description: descriptionByType[type as string] ?? defaultProductDescription,
     gallery: slug === "calcos-papel"
       ? [calcosPapel1, calcosPapel2, calcosPapel3]
       : slug === "calcos-vinilo"
@@ -186,7 +191,7 @@ export const products: Product[] = [
     colors: ["#efefec", "#545454", "#0e0e0e"],
     sizeLabel: "Talles",
     sizeValue: "Regulable",
-    description: "Truckers sublimadas o con DTF",
+    description: "Gorras Truckers: Truckers sublimadas o con DTF",
     heroImage: gorraMain,
     gallery: [gorra1, gorra3, gorraMain],
   },
@@ -331,7 +336,7 @@ export const products: Product[] = [
     pricingId: "folletos", priceSelection: { format: "estandar", side: "simple", quantity: "x100" },
     price: catalogPrice("folletos", { format: "estandar", side: "simple", quantity: "x100" }),
     options: [],
-    sizeValue: "Papel ilustración, terminación brillante o matelina, hasta 120 gr", description: "Folletos impresos con diseño claro y acabado profesional.", gallery: [folletosMain, folletosDetail2, folletosDetail3],
+    sizeValue: "Papel ilustración, terminación brillante o matelina, hasta 120 gr", description: "Folletos con diseño claro y acabado profesional.", gallery: [folletosMain, folletosDetail2, folletosDetail3],
   },
   {
     slug: "tarjetas-personales",
@@ -339,7 +344,7 @@ export const products: Product[] = [
     pricingId: "tarjetas-personales", priceSelection: { side: "simple", quantity: "x100" },
     price: catalogPrice("tarjetas-personales", { side: "simple", quantity: "x100" }),
     options: [],
-    sizeValue: "Papel terminación mate o brillante, hasta 250 g", description: "Tarjetas personales impresas en alta definición, ideales para presentar tu marca con un acabado profesional y elegante.", gallery: [tarjetasMain, tarjetasPhoto1, tarjetasPhoto2, tarjetasPhoto3, tarjetasPhoto4],
+    sizeValue: "Papel terminación mate o brillante, hasta 250 g", description: "Tarjetas con acabado premium para presentar tu marca con estilo.", gallery: [tarjetasMain, tarjetasPhoto1, tarjetasPhoto2, tarjetasPhoto3, tarjetasPhoto4],
   },
   {
     slug: "etiquetas",
@@ -347,7 +352,7 @@ export const products: Product[] = [
     pricingId: "etiquetas", priceSelection: { size: "xs", quantity: "x100" },
     price: catalogPrice("etiquetas", { size: "xs", quantity: "x100" }),
     options: [],
-    description: "Etiquetas personalizadas, durables y con estilo profesional.", gallery: [etiquetasMain],
+    description: "Etiquetas con acabado profesional y gran durabilidad.", gallery: [etiquetasMain],
   },
 ];
 

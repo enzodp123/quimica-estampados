@@ -23,15 +23,15 @@ type CardDesign = Omit<ProductCardData, "product"> & { slug: string };
 
 // Imágenes y orden del nodo 1144:2781. Los precios pertenecen a pricing.ts.
 const printingDesigns: CardDesign[] = [
-  { slug: "buzo-cuello-redondo", name: "Buzo cuello redondo", description: "Terminaciones premium", image: crewneck, highlighted: true },
-  { slug: "buzo-canguro", name: "Buzo canguro frisado", description: "Terminaciones premium", image: hoodie },
-  { slug: "gorra-trucker", name: "Gorra visera", description: "Truckers sublimadas o con DTF", image: cap },
-  { slug: "campera-capucha", name: "Campera con capucha", description: "Frisa clásica con capucha, bolsillos y cierre", image: jacket, highlighted: true },
-  { slug: "remera-unisex", name: "Remera unisex", description: "Algodón premium peinado 24.1", image: shirt },
-  { slug: "chomba-pique", name: "Chomba", description: "Piqué de algodón", image: polo },
-  { slug: "remera-nino", name: "Remera unisex", description: "Algodón premium peinado 24.1", image: shirt, badge: "Infantil" },
-  { slug: "remera-egresadito", name: "Remera egresadito", description: "Algodón premium peinado 24.1", image: graduate, highlighted: true },
-  { slug: "buzo-canguro-nino", name: "Buzo canguro frisado", description: "Terminaciones premium", image: hoodie, badge: "Infantil" },
+  { slug: "buzo-cuello-redondo", name: "Buzo cuello redondo", description: "Buzo cuello redondo de algodón con frisa clásica", image: crewneck, highlighted: true },
+  { slug: "buzo-canguro", name: "Buzo canguro frisado", description: "Canguro de algodón con frisa clásica", image: hoodie },
+  { slug: "gorra-trucker", name: "Gorra visera", description: "Gorras Truckers: Truckers sublimadas o con DTF", image: cap },
+  { slug: "campera-capucha", name: "Campera con capucha", description: "Campera de algodón frisa clásica con capucha y cierre", image: jacket, highlighted: true },
+  { slug: "remera-unisex", name: "Remera unisex", description: "Remera manga corta: algodón peinado 24.1", image: shirt },
+  { slug: "chomba-pique", name: "Chomba", description: "Piqué de algodón con cuello polo y botones", image: polo },
+  { slug: "remera-nino", name: "Remera unisex", description: "Remera manga corta: algodón peinado 24.1", image: shirt, badge: "Infantil" },
+  { slug: "remera-egresadito", name: "Remera egresadito", description: "Remera manga corta: algodón peinado 24.1", image: graduate, highlighted: true },
+  { slug: "buzo-canguro-nino", name: "Buzo canguro frisado", description: "Buzo canguro niño con frisa clásica", image: hoodie, badge: "Infantil" },
 ];
 
 export const printingCards: ProductCardData[] = printingDesigns.flatMap(({ slug, ...design }) => {

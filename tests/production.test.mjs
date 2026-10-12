@@ -27,6 +27,12 @@ const routeMap = new Map(pages.map((page) => [routeFor(page.path), page]));
 
 const extract = (html, pattern) => [...html.matchAll(pattern)].map((match) => match[1]);
 
+test("la descripción del producto tiene prioridad sobre la del catálogo de precios", () => {
+  const detailSource = readFileSync(resolve(projectRoot, "src/components/product/ProductDetail.astro"), "utf8");
+  assert.ok(detailSource.includes("product.description || catalog.description"));
+  assert.doesNotMatch(detailSource, /catalog\.description\s*\|\|\s*product\.description/);
+});
+
 test("genera el home, las 17 fichas con imágenes y una página 404", () => {
   assert.equal(documentPages.length, 18);
   assert.ok(routeMap.has("/"));

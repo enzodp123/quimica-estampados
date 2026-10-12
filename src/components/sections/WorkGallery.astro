@@ -176,7 +176,7 @@ const initialWorks = galleryCategories[0].works;
               data-image-alt={label}
               aria-label={`Ampliar ${label}`}
             >
-              <Image class="work-gallery__image" src={image} alt={label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 40vw" style={imagePosition ? `object-position: ${imagePosition};` : undefined} />
+              <Image class="work-gallery__image" src={image} alt={label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 40vw" quality={75} style={imagePosition ? `object-position: ${imagePosition};` : undefined} />
             </button>
           ))}
           {category.works.slice(2, 4).map(({ label, image, imagePosition }, index) => (
@@ -188,7 +188,7 @@ const initialWorks = galleryCategories[0].works;
               data-image-alt={label}
               aria-label={`Ampliar ${label}`}
             >
-              <Image class="work-gallery__image" src={image} alt={label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 40vw" style={imagePosition ? `object-position: ${imagePosition};` : undefined} />
+              <Image class="work-gallery__image" src={image} alt={label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 40vw" quality={75} style={imagePosition ? `object-position: ${imagePosition};` : undefined} />
             </button>
           ))}
         </div>
@@ -201,7 +201,7 @@ const initialWorks = galleryCategories[0].works;
           data-image-alt={category.works[4].label}
           aria-label={`Ampliar ${category.works[4].label}`}
         >
-          <Image class="work-gallery__image" src={category.works[4].image} alt={category.works[4].label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 28vw" style={category.works[4].imagePosition ? `object-position: ${category.works[4].imagePosition};` : undefined} />
+          <Image class="work-gallery__image" src={category.works[4].image} alt={category.works[4].label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 28vw" quality={75} style={category.works[4].imagePosition ? `object-position: ${category.works[4].imagePosition};` : undefined} />
         </button>
       </section>
     ))}

@@ -3,6 +3,7 @@ import logo from "../../assets/icons/logo-quimica-horizontal.svg";
 import { serviceConsultationMessages, siteConfig, whatsappUrl } from "../../data/site";
 import { catalogList } from "../../data/pricing";
 import { visibleProducts } from "../../data/products";
+import { printingCards } from "../../data/product-cards";
 
 const isProductRoute = Astro.url.pathname.startsWith("/productos/");
 const productLinks = new Map<string, string>(
@@ -10,9 +11,18 @@ const productLinks = new Map<string, string>(
     .map((product) => [product.pricingId, `/productos/${product.slug}/`]),
 );
 const visibleCatalog = catalogList.filter((product) => productLinks.has(product.id));
+const sweatshirtLabels = new Map<string, string>(
+  visibleProducts.filter((product) => product.slug.startsWith("buzo-")).map((product) => {
+    const card = printingCards.find((card) => card.product.slug === product.slug);
+    const label = card
+      ? `${card.name}${card.badge ? ` (${card.badge})` : ""}`
+      : product.title;
+    return [product.pricingId, label];
+  }),
+);
 const textileCategories = new Set(["Remeras", "Chombas", "Buzos", "Gorras"]);
 const catalogLink = (product: (typeof catalogList)[number]) => ({
-  label: product.name,
+  label: sweatshirtLabels.get(product.id) ?? product.name,
   href: productLinks.get(product.id)!,
 });
 const serviceGroups = [

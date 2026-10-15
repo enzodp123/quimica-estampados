@@ -7,7 +7,7 @@ import { printingCards } from "../../data/product-cards";
 <section id="impresiones" class="product-showcase" aria-labelledby="products-heading" data-figma-node="974:1922">
   <BackgroundText />
   <div class="product-showcase__rail" aria-hidden="true">Impresiones</div>
-  <h2 id="products-heading" class="product-showcase__title">DTF<br />textil</h2>
+  <h2 id="products-heading" class="product-showcase__title"><span>DTF<br />textil</span></h2>
   <div class="product-showcase__content">
     <header class="product-showcase__header">
       <div class="product-showcase__dots" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -31,6 +31,11 @@ import { printingCards } from "../../data/product-cards";
     background: var(--color-background);
   }
   .product-showcase__content { order: 1; width: calc(100% - var(--section-content-start) - 1.5rem); margin-left: var(--section-content-start); }
+  .product-showcase__content :global(.product-carousel__controls) {
+    position: absolute;
+    inset: auto 1.5rem var(--section-block-padding) var(--section-content-start);
+    margin-top: 0;
+  }
   .product-showcase__header { margin-bottom: var(--card-gap); color: var(--color-text); font-family: var(--font-poppins); text-transform: uppercase; }
   .product-showcase__dots { display: flex; gap: 0.25rem; margin-bottom: 0.75rem; }
   .product-showcase__dots span { width: 0.875rem; height: 0.875rem; border-radius: 50%; background: var(--color-cyan); }
@@ -46,7 +51,8 @@ import { printingCards } from "../../data/product-cards";
     writing-mode: vertical-rl; transform: rotate(180deg);
   }
   .product-showcase__title {
-    position: relative; order: 2; width: fit-content; margin-top: var(--section-content-gap);
+    position: relative; order: 2; width: fit-content; min-height: 3rem; margin-top: 0;
+    display: flex; align-items: flex-end;
     left: calc(var(--section-title-inset) - var(--section-title-offset) + var(--section-title-rail-size) + var(--section-title-gap));
     color: var(--color-text); font-family: var(--font-poppins); font-size: clamp(2.25rem, 2.5vw, 3rem);
     font-weight: 700; letter-spacing: -0.04em; line-height: 0.97; text-transform: uppercase;
@@ -58,7 +64,8 @@ import { printingCards } from "../../data/product-cards";
   @media (max-width: 40rem) {
     .product-showcase { --section-title-offset: 0.75rem; width: calc(100% - 1.5rem); margin-inline: auto; }
     .product-showcase__content { width: calc(100% - var(--section-content-start)); }
+    .product-showcase__content :global(.product-carousel__controls) { right: 0; }
     .product-showcase__header > p { font-size: 0.875rem; line-height: 1.5; }
-    .product-showcase__title { margin-top: 0.9375rem; font-size: 1.25rem; line-height: 1.05; }
+    .product-showcase__title { font-size: 1.25rem; line-height: 1.05; }
   }
 </style>

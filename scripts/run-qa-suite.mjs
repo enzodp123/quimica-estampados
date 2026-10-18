@@ -150,16 +150,16 @@ try {
     }
   }
 
-  // Enlace a servicios en Footer
+  // Enlace al servicio textil publicado en el Footer
   try {
-    const footerServicesLink = page.locator('.footer a[href="/#servicios"]').first();
+    const footerServicesLink = page.locator('.footer a[href="/#impresiones"]').first();
     await footerServicesLink.scrollIntoViewIfNeeded();
     await footerServicesLink.click();
     await page.waitForTimeout(300);
-    const servicesVisible = await page.locator('#servicios').isVisible();
-    recordTest('Navegación Footer: enlace hacia sección #servicios', servicesVisible);
+    const servicesVisible = await page.locator('#impresiones').isVisible();
+    recordTest('Navegación Footer: enlace hacia sección #impresiones', servicesVisible && new URL(page.url()).hash === '#impresiones');
   } catch (err) {
-    recordTest('Navegación Footer: enlace hacia sección #servicios', false, { error: err.message });
+    recordTest('Navegación Footer: enlace hacia sección #impresiones', false, { error: err.message });
   }
 
   // Menú desplegable Servicios en Desktop Header
@@ -412,16 +412,18 @@ try {
     const thumbs = page.locator('[data-gallery-thumb]');
     const thumbCount = await thumbs.count();
     if (thumbCount >= 2) {
-      const mainImg = page.locator('img[data-gallery-main]');
-      const initialSrc = await mainImg.getAttribute('src');
-
+      const initialSlide = await page.locator('[data-gallery-current]').textContent();
       await thumbs.nth(1).click();
-      await page.waitForTimeout(250);
-
-      const newSrc = await mainImg.getAttribute('src');
-      recordTest('Ficha de producto: Click en miniatura cambia la imagen principal', newSrc !== initialSrc, {
-        initialSrc: initialSrc?.slice(0, 40),
-        newSrc: newSrc?.slice(0, 40),
+      await page.waitForFunction(() => {
+        const slide = document.querySelectorAll('[data-gallery-slide]')[1];
+        const track = slide.closest('[data-gallery-track]').getBoundingClientRect();
+        const rect = slide.getBoundingClientRect();
+        return document.querySelector('[data-gallery-current]')?.textContent === '2'
+          && Math.abs(rect.left - track.left) < 2 && Math.abs(rect.right - track.right) < 2;
+      });
+      recordTest('Ficha de producto: Click en miniatura muestra la segunda imagen', initialSlide === '1', {
+        initialSlide,
+        currentSlide: await page.locator('[data-gallery-current]').textContent(),
       });
     }
 

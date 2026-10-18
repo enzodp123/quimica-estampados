@@ -1,0 +1,1508 @@
+[
+  {
+    "selector": "span",
+    "text": "Venta mayorista y minorista",
+    "size": 12,
+    "lineHeight": "16.2px"
+  },
+  {
+    "selector": "span.envios",
+    "text": "- Productos personalizados",
+    "size": 12,
+    "lineHeight": "16.2px"
+  },
+  {
+    "selector": "span",
+    "text": "Alem 65 - Victoria, Entre Ríos",
+    "size": 12,
+    "lineHeight": "16.2px"
+  },
+  {
+    "selector": "span",
+    "text": "Lo",
+    "size": 24,
+    "lineHeight": "25.92px"
+  },
+  {
+    "selector": "span",
+    "text": "que tu",
+    "size": 24,
+    "lineHeight": "25.92px"
+  },
+  {
+    "selector": "span",
+    "text": "marca",
+    "size": 24,
+    "lineHeight": "25.92px"
+  },
+  {
+    "selector": "span",
+    "text": "necesita",
+    "size": 24,
+    "lineHeight": "25.92px"
+  },
+  {
+    "selector": "li",
+    "text": "Diseño y personalización de productos para tu marca",
+    "size": 12,
+    "lineHeight": "16.8px"
+  },
+  {
+    "selector": "span.copy-desktop",
+    "text": "Estampados · Diseño · Impresión",
+    "size": 12,
+    "lineHeight": "16.8px"
+  },
+  {
+    "selector": "span.copy-desktop",
+    "text": "100 % algodón peinado 24.1",
+    "size": 12,
+    "lineHeight": "16.8px"
+  },
+  {
+    "selector": "a.button.button--primary",
+    "text": "Solicitar presupuesto",
+    "size": 14,
+    "lineHeight": "19.6px"
+  },
+  {
+    "selector": "a.button",
+    "text": "Ver trabajos realizados",
+    "size": 14,
+    "lineHeight": "19.6px"
+  },
+  {
+    "selector": "h2",
+    "text": "DTF de alta resolución",
+    "size": 14,
+    "lineHeight": "19.6875px"
+  },
+  {
+    "selector": "p",
+    "text": "Máxima definición y colores intensos.",
+    "size": 14,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "h2",
+    "text": "Logística",
+    "size": 14,
+    "lineHeight": "19.6875px"
+  },
+  {
+    "selector": "p",
+    "text": "Envíos rápidos a cualquier punto del país.",
+    "size": 14,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "h2",
+    "text": "Materiales premium",
+    "size": 14,
+    "lineHeight": "19.6875px"
+  },
+  {
+    "selector": "p",
+    "text": "Insumos de calidad para resultados duraderos.",
+    "size": 14,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "h2",
+    "text": "Atención personalizada",
+    "size": 14,
+    "lineHeight": "19.6875px"
+  },
+  {
+    "selector": "p",
+    "text": "Te acompañamos desde la idea hasta la entrega.",
+    "size": 14,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "h2",
+    "text": "Local físico",
+    "size": 14,
+    "lineHeight": "19.6875px"
+  },
+  {
+    "selector": "p",
+    "text": "Asesoramiento presencial para cada proyecto.",
+    "size": 14,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "span",
+    "text": "DTF",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "span",
+    "text": "textil",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p",
+    "text": "Impresiones DTF de alta calidad para emprendedores, marcas y empresas.",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h3",
+    "text": "Buzo cuello redondo",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Buzo cuello redondo de algodón con frisa clásica",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$152.500",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$184.525",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Buzo canguro frisado",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Canguro de algodón con frisa clásica",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$185.000",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$223.850",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Gorra trucker",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Gorras trucker sublimadas o estampadas con DTF",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X20",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X30",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X50",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$47.500",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$57.475",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Campera con capucha",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Campera de algodón con frisa clásica con capucha y cierre",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$215.000",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$260.150",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Remera unisex",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Remera de manga corta de algodón peinado 24.1",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X20",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X50",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$120.000",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$145.200",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Chomba",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Piqué de algodón con cuello polo y botones",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$165.000",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$199.650",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Remera infantil",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Remera de manga corta de algodón peinado 24.1",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X20",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X50",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$95.000",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$114.950",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Remera egresadito",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Remera de manga corta de algodón peinado 24.1",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Consultar packs disponibles",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "span.product-card__consult",
+    "text": "Consultar producto",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h3",
+    "text": "Buzo canguro infantil",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Buzo canguro infantil con frisa clásica",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$170.000",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$205.700",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": "Todo lo que tu marca necesita, en un solo lugar. Conocé nuestros servicios de impresión, estampado y comunicación visual.",
+    "size": 14,
+    "lineHeight": "21.7px"
+  },
+  {
+    "selector": "span.service-name",
+    "text": "Calcos",
+    "size": 16,
+    "lineHeight": "22.4px"
+  },
+  {
+    "selector": "p",
+    "text": "Calcos aptos para interior y exterior, impresos con tintas ecosolventes, de colores vibrantes y resistentes al agua.",
+    "size": 14,
+    "lineHeight": "23.8px"
+  },
+  {
+    "selector": "span.service-name",
+    "text": "Tarjetas personales",
+    "size": 16,
+    "lineHeight": "22.4px"
+  },
+  {
+    "selector": "p",
+    "text": "Terminación mate (sin brillo) o brillante. Ideales para profesionales, comercios y emprendimientos.",
+    "size": 14,
+    "lineHeight": "23.8px"
+  },
+  {
+    "selector": "span.service-name",
+    "text": "Folletos",
+    "size": 16,
+    "lineHeight": "22.4px"
+  },
+  {
+    "selector": "p",
+    "text": "Papel ilustración con terminación brillante o matelina, de hasta 120 g.",
+    "size": 14,
+    "lineHeight": "23.8px"
+  },
+  {
+    "selector": "span.service-name",
+    "text": "Etiquetas",
+    "size": 16,
+    "lineHeight": "22.4px"
+  },
+  {
+    "selector": "p",
+    "text": "Terminación mate (sin brillo) o brillante. Ideales para profesionales, comercios y emprendimientos.",
+    "size": 14,
+    "lineHeight": "23.8px"
+  },
+  {
+    "selector": "h3",
+    "text": "Corpóreos en Polifan",
+    "size": 16,
+    "lineHeight": "22.4px"
+  },
+  {
+    "selector": "p",
+    "text": "Letras, logos y diseños realizados en Polifan, ideales para destacar tu marca en vidrieras, locales, eventos y espacios comerciales.",
+    "size": 14,
+    "lineHeight": "23.8px"
+  },
+  {
+    "selector": "strong",
+    "text": "¿Querés cotizar el tuyo?",
+    "size": 14,
+    "lineHeight": "23.8px"
+  },
+  {
+    "selector": "p.service-extra__detail",
+    "text": "El presupuesto se realiza de manera personalizada según las medidas, la cantidad, el diseño y la terminación.",
+    "size": 14,
+    "lineHeight": "23.8px"
+  },
+  {
+    "selector": "a",
+    "text": "Consultar",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h3",
+    "text": "Impresión de gran formato",
+    "size": 16,
+    "lineHeight": "22.4px"
+  },
+  {
+    "selector": "p",
+    "text": "Impresión de alta calidad para vidrieras, locales, vehículos, cartelería y diferentes proyectos comerciales. Trabajamos con distintos tipos de materiales según la superficie, el uso y el resultado que quieras lograr.",
+    "size": 14,
+    "lineHeight": "23.8px"
+  },
+  {
+    "selector": "strong",
+    "text": "Cada proyecto es diferente.",
+    "size": 14,
+    "lineHeight": "23.8px"
+  },
+  {
+    "selector": "p.service-extra__detail",
+    "text": "Te asesoramos sobre cada material y cotizamos según las medidas, la cantidad y las características de cada trabajo.",
+    "size": 14,
+    "lineHeight": "23.8px"
+  },
+  {
+    "selector": "a",
+    "text": "Consultar",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h2.services__title",
+    "text": "Potenciamos",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h2.services__title",
+    "text": "tu marca",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h2.industrial__title",
+    "text": "Paso",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h2.industrial__title",
+    "text": "a paso",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "span.process-step__number",
+    "text": "01",
+    "size": 20,
+    "lineHeight": "20px"
+  },
+  {
+    "selector": "h3",
+    "text": "Datos del pedido",
+    "size": 16,
+    "lineHeight": "22.4px"
+  },
+  {
+    "selector": "p",
+    "text": "Contanos qué necesitás, qué cantidad y para qué proyecto. Te asesoramos de manera personalizada para definir juntos las mejores opciones y resolver todas tus dudas.",
+    "size": 14,
+    "lineHeight": "normal"
+  },
+  {
+    "selector": "span.process-step__number",
+    "text": "02",
+    "size": 20,
+    "lineHeight": "20px"
+  },
+  {
+    "selector": "h3",
+    "text": "Diseño",
+    "size": 16,
+    "lineHeight": "22.4px"
+  },
+  {
+    "selector": "p",
+    "text": "Podés enviarnos tu archivo en formato AI, CDR, PDF, EPS o SVG. También puede ser PNG en alta resolución.",
+    "size": 14,
+    "lineHeight": "normal"
+  },
+  {
+    "selector": "p.process-step__note",
+    "text": "Si no contás con un archivo listo para producción, ¡no hay problema! Nuestro equipo de diseño puede adaptarlo y crear tu diseño desde cero.",
+    "size": 12,
+    "lineHeight": "normal"
+  },
+  {
+    "selector": "span.process-step__number",
+    "text": "03",
+    "size": 20,
+    "lineHeight": "20px"
+  },
+  {
+    "selector": "h3",
+    "text": "Producción",
+    "size": 16,
+    "lineHeight": "22.4px"
+  },
+  {
+    "selector": "p",
+    "text": "Una vez aprobado el diseño, seleccionamos los materiales y la técnica de estampado o impresión más adecuada para tu proyecto. Nos ocupamos de cada detalle para lograr un producto de calidad.",
+    "size": 14,
+    "lineHeight": "normal"
+  },
+  {
+    "selector": "span.process-step__number",
+    "text": "04",
+    "size": 20,
+    "lineHeight": "20px"
+  },
+  {
+    "selector": "h3",
+    "text": "Envío",
+    "size": 16,
+    "lineHeight": "22.4px"
+  },
+  {
+    "selector": "p",
+    "text": "Coordinamos el envío según bulto y destino, para que recibas tu producto terminado en las mejores condiciones.",
+    "size": 14,
+    "lineHeight": "normal"
+  },
+  {
+    "selector": "h2.work-gallery__title",
+    "text": "Trabajos",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h2.work-gallery__title",
+    "text": "realizados",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h3",
+    "text": "Cada detalle cuenta",
+    "size": 20,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": "Desde prendas personalizadas hasta piezas gráficas y corporativas, cada trabajo está pensado para representar una marca con la mejor terminación posible.",
+    "size": 14,
+    "lineHeight": "23.996px"
+  },
+  {
+    "selector": "button.is-active",
+    "text": "Estampado textil",
+    "size": 12,
+    "lineHeight": "16.8px"
+  },
+  {
+    "selector": "button",
+    "text": "Calcos",
+    "size": 12,
+    "lineHeight": "16.8px"
+  },
+  {
+    "selector": "button",
+    "text": "Papelería",
+    "size": 12,
+    "lineHeight": "16.8px"
+  },
+  {
+    "selector": "button",
+    "text": "Impresión en gran formato",
+    "size": 12,
+    "lineHeight": "16.8px"
+  },
+  {
+    "selector": "button",
+    "text": "Corpóreos en Polifan",
+    "size": 12,
+    "lineHeight": "16.8px"
+  },
+  {
+    "selector": "a.work-gallery__cta",
+    "text": "Ver más trabajos",
+    "size": 14,
+    "lineHeight": "14px"
+  },
+  {
+    "selector": "h2.about__title",
+    "text": "Nuestra",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h2.about__title",
+    "text": "historia",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h3",
+    "text": "Química",
+    "size": 24,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "h3",
+    "text": "Estampados",
+    "size": 24,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.about__lead",
+    "text": "Somos una empresa especializada en estampados textiles y productos personalizados.",
+    "size": 14,
+    "lineHeight": "23.996px"
+  },
+  {
+    "selector": "p",
+    "text": "Desde",
+    "size": 14,
+    "lineHeight": "23.996px"
+  },
+  {
+    "selector": "strong",
+    "text": "2016",
+    "size": 14,
+    "lineHeight": "23.996px"
+  },
+  {
+    "selector": "p",
+    "text": "ofrecemos soluciones para emprendedores, marcas, empresas e instituciones, combinando producción, creatividad y asesoramiento.",
+    "size": 14,
+    "lineHeight": "23.996px"
+  },
+  {
+    "selector": "a.about__cta",
+    "text": "Conocenos más",
+    "size": 14,
+    "lineHeight": "14px"
+  },
+  {
+    "selector": "h2.contact__title",
+    "text": "Resolvemos",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h2.contact__title",
+    "text": "tus dudas",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h3",
+    "text": "Estamos para ayudarte",
+    "size": 20,
+    "lineHeight": "22px"
+  },
+  {
+    "selector": "p",
+    "text": "Resolvemos tus dudas sobre producción industrial y procesos",
+    "size": 16,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "p",
+    "text": "técnicos para optimizar tus pedidos.",
+    "size": 16,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "span",
+    "text": "Nombre",
+    "size": 14,
+    "lineHeight": "14px"
+  },
+  {
+    "selector": "span",
+    "text": "Correo electrónico",
+    "size": 14,
+    "lineHeight": "14px"
+  },
+  {
+    "selector": "span",
+    "text": "Servicio",
+    "size": 14,
+    "lineHeight": "14px"
+  },
+  {
+    "selector": "span",
+    "text": "Mensaje",
+    "size": 14,
+    "lineHeight": "14px"
+  },
+  {
+    "selector": "button.contact__submit",
+    "text": "Enviar",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h4",
+    "text": "Canales directos",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "span",
+    "text": "quimicaestampados@gmail.com",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "span",
+    "text": "WhatsApp: +54 9 343 123 4567",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h4",
+    "text": "Horarios",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": "Lunes a viernes",
+    "size": 16,
+    "lineHeight": "26.4px"
+  },
+  {
+    "selector": "p",
+    "text": "08:00 a 12:00 h",
+    "size": 16,
+    "lineHeight": "26.4px"
+  },
+  {
+    "selector": "p",
+    "text": "16:30 a 20:00 h",
+    "size": 16,
+    "lineHeight": "26.4px"
+  },
+  {
+    "selector": "a",
+    "text": "Instagram",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "a",
+    "text": "Facebook",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "h2",
+    "text": "Marcas que eligieron",
+    "size": 20,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h2",
+    "text": "trabajar con nosotros",
+    "size": 20,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": "Acompañamos a marcas de distintos rubros ofreciendo producción confiable",
+    "size": 16,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "p",
+    "text": "y acabados de alta calidad.",
+    "size": 16,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "span",
+    "text": "Otra Cultura",
+    "size": 16,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "span",
+    "text": "Reseña de Google · agosto de 2026",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "p",
+    "text": "“Los chicos trabajan excelente, a nosotros nos hicieron toda la gráfica y la ropa que usamos todos los días, de una calidad hermosa. Los superrecomiendo.”",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "span",
+    "text": "Ver reseña en Google",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "span",
+    "text": "Veterinaria Pocas Pulgas",
+    "size": 16,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "span",
+    "text": "Reseña de Google · agosto de 2026",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "p",
+    "text": "“¡Ese equipo la rompe toda! ¡Son unos genios! Excelente calidad de diseños y materiales a un precio increíble. 100 % recomendables.”",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "span",
+    "text": "Ver reseña en Google",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "span",
+    "text": "Maillen Sánchez",
+    "size": 16,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "span",
+    "text": "Reseña de Google · agosto de 2026",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "p",
+    "text": "“El trabajo de los chicos es hermoso e impecable. Tal cual lo pedí, personalizado y con excelente atención, predisposición y buena onda.”",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "span",
+    "text": "Ver reseña en Google",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h3",
+    "text": "¿Listo para ser la próxima marca?",
+    "size": 16,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "p",
+    "text": "Sumate a las empresas que ya confían en nuestro trabajo.",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": "Cada proyecto comienza con una idea y termina con un producto que representa tu marca.",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "a",
+    "text": "Pedir presupuesto",
+    "size": 14,
+    "lineHeight": "20.0004px"
+  },
+  {
+    "selector": "h3",
+    "text": "Que confiaron",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h3",
+    "text": "en nosotros",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h2",
+    "text": "Resolvemos tus dudas",
+    "size": 20,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": "Resolvemos tus dudas sobre producción industrial y procesos técnicos",
+    "size": 16,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "p",
+    "text": "para optimizar tus pedidos.",
+    "size": 16,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "span",
+    "text": "Si no tengo un diseño, ¿ustedes lo realizan?",
+    "size": 13,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "span",
+    "text": "¿Solo hacen estampado textil en remeras, buzos y camperas?",
+    "size": 13,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "span",
+    "text": "¿Cómo tengo que enviarles el diseño?",
+    "size": 13,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "span",
+    "text": "¿Cuánto demoran las entregas?",
+    "size": 13,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "span",
+    "text": "¿Qué telas trabajan?",
+    "size": 13,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "span",
+    "text": "¿Qué estampados realizan?",
+    "size": 13,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "span",
+    "text": "¿Tienen local físico?",
+    "size": 13,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "span",
+    "text": "¿Tienen descuento por cantidad?",
+    "size": 13,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "h3.faq-card__question",
+    "text": "¿Solo hacen estampado textil en remeras, buzos y camperas?",
+    "size": 13,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "p",
+    "text": "No, realizamos estampados y personalizaciones en otros productos o telas también para diferentes proyectos.",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Preguntas",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h3",
+    "text": "frecuentes",
+    "size": 20,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h2",
+    "text": "Química Estampados",
+    "size": 24,
+    "lineHeight": "28.8px"
+  },
+  {
+    "selector": "p",
+    "text": "Estudio creativo",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "strong",
+    "text": "especializado",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": "en estampados",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "strong",
+    "text": "personalizados",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": ", branding y",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "strong",
+    "text": "soluciones gráficas",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": ".",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Servicios",
+    "size": 16,
+    "lineHeight": "26px"
+  },
+  {
+    "selector": "a",
+    "text": "Sublimación",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Estampado textil / DTF",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Calcos",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Tarjetas personales",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Folletos",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Etiquetas",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Impresión de gran formato",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Corpóreos en Polifan",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "h3",
+    "text": "Empresa",
+    "size": 16,
+    "lineHeight": "26px"
+  },
+  {
+    "selector": "a",
+    "text": "Nosotros",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Proyectos",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Contacto",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "h3",
+    "text": "Contacto",
+    "size": 16,
+    "lineHeight": "26px"
+  },
+  {
+    "selector": "span",
+    "text": "Instagram",
+    "size": 12,
+    "lineHeight": "15.9996px"
+  },
+  {
+    "selector": "span.footer__arrow",
+    "text": "›",
+    "size": 16,
+    "lineHeight": "16px"
+  },
+  {
+    "selector": "span",
+    "text": "Facebook",
+    "size": 12,
+    "lineHeight": "15.9996px"
+  },
+  {
+    "selector": "span.footer__arrow",
+    "text": "›",
+    "size": 16,
+    "lineHeight": "16px"
+  },
+  {
+    "selector": "span",
+    "text": "quimicaestampados@gmail.com",
+    "size": 12,
+    "lineHeight": "15.9996px"
+  },
+  {
+    "selector": "span.footer__arrow",
+    "text": "›",
+    "size": 16,
+    "lineHeight": "16px"
+  },
+  {
+    "selector": "strong",
+    "text": "© 2026 Química Estampados.",
+    "size": 14,
+    "lineHeight": "17.0002px"
+  },
+  {
+    "selector": "p",
+    "text": "Todos los derechos reservados.",
+    "size": 14,
+    "lineHeight": "17.0002px"
+  },
+  {
+    "selector": "p",
+    "text": "Desarrollado por",
+    "size": 14,
+    "lineHeight": "17.0002px"
+  },
+  {
+    "selector": "a",
+    "text": "<Binadevs/>",
+    "size": 14,
+    "lineHeight": "17.0002px"
+  }
+]

@@ -1,0 +1,2011 @@
+[
+  {
+    "path": "/",
+    "width": 320,
+    "small": [
+      {
+        "selector": "span",
+        "text": "Venta mayorista y minorista",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "span.envios",
+        "text": "- Productos personalizados",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p",
+        "text": "Todo lo que tu marca necesita, en un solo lugar. Conocé nuestros servicios de impresión, estampado y comunicación visual.",
+        "size": 11,
+        "lineHeight": "17.05px"
+      },
+      {
+        "selector": "a.work-gallery__cta",
+        "text": "Ver más trabajos",
+        "size": 9.92,
+        "lineHeight": "9.92px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [
+      {
+        "selector": "button",
+        "text": "Impresión en gran formato",
+        "size": 12,
+        "lineHeight": "12px"
+      },
+      {
+        "selector": "h2",
+        "text": "Marcas que eligieron",
+        "size": 20,
+        "lineHeight": "21.666px"
+      },
+      {
+        "selector": "h2",
+        "text": "trabajar con nosotros",
+        "size": 20,
+        "lineHeight": "21.666px"
+      },
+      {
+        "selector": "h2",
+        "text": "Resolvemos tus dudas",
+        "size": 20,
+        "lineHeight": "21.666px"
+      }
+    ],
+    "scrollWidth": 305,
+    "clientWidth": 320
+  },
+  {
+    "path": "/",
+    "width": 390,
+    "small": [
+      {
+        "selector": "span",
+        "text": "Venta mayorista y minorista",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "span.envios",
+        "text": "- Productos personalizados",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p",
+        "text": "Todo lo que tu marca necesita, en un solo lugar. Conocé nuestros servicios de impresión, estampado y comunicación visual.",
+        "size": 11,
+        "lineHeight": "17.05px"
+      },
+      {
+        "selector": "a.work-gallery__cta",
+        "text": "Ver más trabajos",
+        "size": 9.92,
+        "lineHeight": "9.92px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [],
+    "scrollWidth": 375,
+    "clientWidth": 390
+  },
+  {
+    "path": "/",
+    "width": 768,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p",
+        "text": "Todo lo que tu marca necesita, en un solo lugar. Conocé nuestros servicios de impresión, estampado y comunicación visual.",
+        "size": 11,
+        "lineHeight": "17.05px"
+      },
+      {
+        "selector": "a.services__all-cta",
+        "text": "Todos los servicios",
+        "size": 11,
+        "lineHeight": "16.5px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [],
+    "scrollWidth": 753,
+    "clientWidth": 768
+  },
+  {
+    "path": "/",
+    "width": 1024,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p",
+        "text": "Son aptas interior/exterior, impresas con tintas ecosolventes, colores vibrantes, resistentes al agua.",
+        "size": 10.88,
+        "lineHeight": "15.776px"
+      },
+      {
+        "selector": "p",
+        "text": "Terminación mate (sin brillo) o brillante. Ideales para profesionales, comercios y emprendimientos.",
+        "size": 10.88,
+        "lineHeight": "15.776px"
+      },
+      {
+        "selector": "p",
+        "text": "Papel ilustración terminación brillante o matelina, hasta 120gr",
+        "size": 10.88,
+        "lineHeight": "15.776px"
+      },
+      {
+        "selector": "p",
+        "text": "Terminación mate (sin brillo) o brillante. Ideales para profesionales, comercios y emprendimientos.",
+        "size": 10.88,
+        "lineHeight": "15.776px"
+      },
+      {
+        "selector": "p",
+        "text": "Letras, logos y diseños realizados en polifan, ideales para destacar tu marca en vidrieras, locales, eventos y espacios comerciales.",
+        "size": 10.88,
+        "lineHeight": "15.776px"
+      },
+      {
+        "selector": "strong",
+        "text": "¿Querés cotizar el tuyo?",
+        "size": 10.88,
+        "lineHeight": "15.776px"
+      },
+      {
+        "selector": "p.service-extra__detail",
+        "text": "El presupuesto se realiza de manera personalizada según las medidas, cantidad, diseño y terminación",
+        "size": 10.88,
+        "lineHeight": "15.776px"
+      },
+      {
+        "selector": "a",
+        "text": "Consultar",
+        "size": 9.6,
+        "lineHeight": "14.4px"
+      },
+      {
+        "selector": "p",
+        "text": "Impresión de alta calidad para vidrieras, locales, vehículos, cartelería y diferentes proyectos comerciales. Trabajamos con distintos tipos de materiales según la superficie, el uso y el resultado que quieras lograr.",
+        "size": 10.88,
+        "lineHeight": "15.776px"
+      },
+      {
+        "selector": "strong",
+        "text": "Cada proyecto es diferente.",
+        "size": 10.88,
+        "lineHeight": "15.776px"
+      },
+      {
+        "selector": "p.service-extra__detail",
+        "text": "Te asesoramos sobre cada material y cotizamos según las medidas, la cantidad y las características de cada trabajo.",
+        "size": 10.88,
+        "lineHeight": "15.776px"
+      },
+      {
+        "selector": "a",
+        "text": "Consultar",
+        "size": 9.6,
+        "lineHeight": "14.4px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "button",
+        "text": "Corpóreos en polifan",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "work-gallery__filters work-gallery__filters--responsive"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 1009,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/",
+    "width": 1440,
+    "small": [
+      {
+        "selector": "li",
+        "text": "Diseño y personalización de productos para tu marca",
+        "size": 10.5005,
+        "lineHeight": "10.5005px"
+      },
+      {
+        "selector": "span.copy-desktop",
+        "text": "Estampados · Diseño · Impresión",
+        "size": 10.5005,
+        "lineHeight": "10.5005px"
+      },
+      {
+        "selector": "span.copy-desktop",
+        "text": "100% algodón peinado 24.1",
+        "size": 10.5005,
+        "lineHeight": "10.5005px"
+      },
+      {
+        "selector": "a.button.button--primary",
+        "text": "Solicitar presupuesto",
+        "size": 10.5005,
+        "lineHeight": "14.7007px"
+      },
+      {
+        "selector": "a.button",
+        "text": "Ver trabajos realizados",
+        "size": 10.5005,
+        "lineHeight": "14.7007px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [],
+    "scrollWidth": 1425,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/",
+    "width": 1920,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "a.work-gallery__cta",
+        "text": "Ver más trabajos",
+        "size": 9.92,
+        "lineHeight": "9.92px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "h2.about__title",
+        "text": "historia",
+        "size": 48,
+        "lineHeight": "47.04px",
+        "container": "about"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 1905,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/chomba-algodon/",
+    "width": 320,
+    "small": [
+      {
+        "selector": "span",
+        "text": "Venta mayorista y minorista",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "span.envios",
+        "text": "- Productos personalizados",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      },
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/chomba-algodon/",
+    "width": 390,
+    "small": [
+      {
+        "selector": "span",
+        "text": "Venta mayorista y minorista",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "span.envios",
+        "text": "- Productos personalizados",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      },
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/chomba-algodon/",
+    "width": 768,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      },
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/chomba-algodon/",
+    "width": 1024,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      },
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/chomba-algodon/",
+    "width": 1440,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      },
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/chomba-algodon/",
+    "width": 1920,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      },
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/calcos-papel/",
+    "width": 320,
+    "small": [
+      {
+        "selector": "span",
+        "text": "Venta mayorista y minorista",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "span.envios",
+        "text": "- Productos personalizados",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/calcos-papel/",
+    "width": 390,
+    "small": [
+      {
+        "selector": "span",
+        "text": "Venta mayorista y minorista",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "span.envios",
+        "text": "- Productos personalizados",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/calcos-papel/",
+    "width": 768,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/calcos-papel/",
+    "width": 1024,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/calcos-papel/",
+    "width": 1440,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/calcos-papel/",
+    "width": 1920,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/buzo-canguro-premium/",
+    "width": 320,
+    "small": [
+      {
+        "selector": "span",
+        "text": "Venta mayorista y minorista",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "span.envios",
+        "text": "- Productos personalizados",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/buzo-canguro-premium/",
+    "width": 390,
+    "small": [
+      {
+        "selector": "span",
+        "text": "Venta mayorista y minorista",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "span.envios",
+        "text": "- Productos personalizados",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/buzo-canguro-premium/",
+    "width": 768,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/buzo-canguro-premium/",
+    "width": 1024,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/buzo-canguro-premium/",
+    "width": 1440,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/buzo-canguro-premium/",
+    "width": 1920,
+    "small": [
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      },
+      {
+        "selector": "p.product-card__unit",
+        "text": "Venta por unidad",
+        "size": 10,
+        "lineHeight": "16px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "span",
+        "text": "Ampliar tabla",
+        "size": 12,
+        "lineHeight": "12px",
+        "container": "product-gallery__track"
+      }
+    ],
+    "cramped": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/404",
+    "width": 320,
+    "small": [
+      {
+        "selector": "span",
+        "text": "Venta mayorista y minorista",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "span.envios",
+        "text": "- Productos personalizados",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "a.button.button--primary",
+        "text": "Volver al inicio",
+        "size": 9.28,
+        "lineHeight": "9.28px"
+      },
+      {
+        "selector": "a.button.button--cyan",
+        "text": "Contactarnos",
+        "size": 9.28,
+        "lineHeight": "9.28px"
+      }
+    ],
+    "clipped": [
+      {
+        "selector": "h1",
+        "text": "no está estampada",
+        "size": 48,
+        "lineHeight": "44.16px",
+        "container": "BODY"
+      }
+    ],
+    "cramped": [
+      {
+        "selector": "h1",
+        "text": "Esta página",
+        "size": 48,
+        "lineHeight": "44.16px"
+      },
+      {
+        "selector": "h1",
+        "text": "no está estampada",
+        "size": 48,
+        "lineHeight": "44.16px"
+      }
+    ],
+    "scrollWidth": 325,
+    "clientWidth": 320
+  },
+  {
+    "path": "/404",
+    "width": 390,
+    "small": [
+      {
+        "selector": "span",
+        "text": "Venta mayorista y minorista",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "span.envios",
+        "text": "- Productos personalizados",
+        "size": 11,
+        "lineHeight": "14.85px"
+      },
+      {
+        "selector": "a.button.button--primary",
+        "text": "Volver al inicio",
+        "size": 9.28,
+        "lineHeight": "9.28px"
+      },
+      {
+        "selector": "a.button.button--cyan",
+        "text": "Contactarnos",
+        "size": 9.28,
+        "lineHeight": "9.28px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [
+      {
+        "selector": "h1",
+        "text": "no está estampada",
+        "size": 48,
+        "lineHeight": "44.16px"
+      }
+    ],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/404",
+    "width": 768,
+    "small": [
+      {
+        "selector": "a.button.button--primary",
+        "text": "Volver al inicio",
+        "size": 9.28,
+        "lineHeight": "9.28px"
+      },
+      {
+        "selector": "a.button.button--cyan",
+        "text": "Contactarnos",
+        "size": 9.28,
+        "lineHeight": "9.28px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/404",
+    "width": 1024,
+    "small": [
+      {
+        "selector": "a.button.button--primary",
+        "text": "Volver al inicio",
+        "size": 9.28,
+        "lineHeight": "9.28px"
+      },
+      {
+        "selector": "a.button.button--cyan",
+        "text": "Contactarnos",
+        "size": 9.28,
+        "lineHeight": "9.28px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/404",
+    "width": 1440,
+    "small": [
+      {
+        "selector": "a.button.button--primary",
+        "text": "Volver al inicio",
+        "size": 9.28,
+        "lineHeight": "9.28px"
+      },
+      {
+        "selector": "a.button.button--cyan",
+        "text": "Contactarnos",
+        "size": 9.28,
+        "lineHeight": "9.28px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [
+      {
+        "selector": "h1",
+        "text": "no está estampada",
+        "size": 112,
+        "lineHeight": "103.04px"
+      }
+    ],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/404",
+    "width": 1920,
+    "small": [
+      {
+        "selector": "a.button.button--primary",
+        "text": "Volver al inicio",
+        "size": 9.28,
+        "lineHeight": "9.28px"
+      },
+      {
+        "selector": "a.button.button--cyan",
+        "text": "Contactarnos",
+        "size": 9.28,
+        "lineHeight": "9.28px"
+      }
+    ],
+    "clipped": [],
+    "cramped": [
+      {
+        "selector": "h1",
+        "text": "no está estampada",
+        "size": 112,
+        "lineHeight": "103.04px"
+      }
+    ],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  }
+]

@@ -11,7 +11,7 @@ interface Props {
 const { src, title, womensSrc, sizeRange } = Astro.props;
 const guides = womensSrc
   ? [
-      { src, label: "Hombre / Unisex", range: sizeRange, kind: "unisex" },
+      { src, label: "Hombre / unisex", range: sizeRange, kind: "unisex" },
       { src: womensSrc, label: "Mujer", range: "Del 1 al 5", kind: "dama" },
     ]
   : [

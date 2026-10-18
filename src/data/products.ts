@@ -12,10 +12,11 @@ import unisexDetail2 from "../assets/products/remera-unisex/detail-2.webp";
 import gorraMain from "../assets/products/gorra-trucker/angled-2026.webp";
 import gorra1 from "../assets/products/gorra-trucker/detail-1.webp";
 import gorra3 from "../assets/products/gorra-trucker/detail-3.webp";
+import gorraPromo from "../assets/products/gorra-trucker/promo-25.webp";
 import ninoMain from "../assets/products/remera-nino/main.webp";
 import nino1 from "../assets/products/remera-nino/detail-1.webp";
 import nino2 from "../assets/products/remera-nino/detail-2.webp";
-import egresaditoMain from "../assets/products/remera-egresadito/design-2026.webp";
+import egresaditoMain from "../assets/products/remera-egresadito/eva.webp";
 import egresadito1 from "../assets/products/remera-egresadito/detail-1.webp";
 import egresadito2 from "../assets/products/remera-egresadito/detail-2.webp";
 import egresadito3 from "../assets/products/remera-egresadito/detail-3.webp";
@@ -29,6 +30,7 @@ import buzoRedondo1 from "../assets/products/buzo-cuello-redondo/detail-1.webp";
 import buzoRedondo2 from "../assets/products/buzo-cuello-redondo/detail-2.webp";
 import canguroMain from "../assets/products/buzo-canguro/main.webp";
 import canguro1 from "../assets/products/buzo-canguro/detail-1.webp";
+import canguro2 from "../assets/products/buzo-canguro/detail-2.webp";
 import canguroNinoMain from "../assets/products/buzo-canguro-nino/main.webp";
 import canguroNino1 from "../assets/products/buzo-canguro-nino/detail-1.webp";
 import canguroNino2 from "../assets/products/buzo-canguro-nino/detail-2.webp";
@@ -42,16 +44,20 @@ import chombaPique3 from "../assets/products/chomba-pique/detail-3.webp";
 import folletosMain from "../assets/products/folletos/1.webp";
 import folletosDetail2 from "../assets/products/folletos/2.webp";
 import folletosDetail3 from "../assets/products/folletos/3.webp";
+import folletosAprender from "../assets/products/folletos/aprender-jugando.webp";
 import tarjetasMain from "../assets/services/tarjetas-personales.webp";
 import etiquetasMain from "../assets/services/etiquetas.webp";
 
 import canguroPremium1 from "../assets/products/buzo-canguro-premium/detail-1.webp";
+import canguroPremium2 from "../assets/products/buzo-canguro-premium/detail-2.webp";
 import calcosDtf1 from "../assets/products/calcos-dtf-uv/1.webp";
 import calcosDtf2 from "../assets/products/calcos-dtf-uv/2.webp";
 import calcosDtf3 from "../assets/products/calcos-dtf-uv/3.webp";
+import calcosDtf4 from "../assets/products/calcos-dtf-uv/4.webp";
 import calcosVinilo1 from "../assets/products/calcos-vinilo/1.webp";
 import calcosVinilo2 from "../assets/products/calcos-vinilo/2.webp";
 import calcosVinilo3 from "../assets/products/calcos-vinilo/3.webp";
+import calcosVinilo4 from "../assets/products/calcos-vinilo/4.webp";
 import calcosPapel1 from "../assets/products/calcos-papel/1.webp";
 import calcosPapel2 from "../assets/products/calcos-papel/2.webp";
 import calcosPapel3 from "../assets/products/calcos-papel/3.webp";
@@ -101,7 +107,7 @@ export interface Product {
 const apparelDescription =
   "Algodón peinado 24.1 con terminaciones premium como tapacostura en el cuello y refuerzo de costura en hombros.";
 
-const defaultProductDescription = "Remera manga corta: Algodón peinado 24.1 con terminaciones premium como tapa costura en el cuello y refuerzo de costura en hombros.";
+const defaultProductDescription = "Remera de manga corta de algodón peinado 24.1, con terminaciones premium como tapacostura en el cuello y refuerzo de costura en los hombros.";
 
 const catalogPrice = (pricingId: PriceCatalogId, selection: Record<string, string>) =>
   formatCatalogPrice(resolveCatalogPrice(pricingId, selection));
@@ -119,7 +125,7 @@ export const products: Product[] = [
     slug: "remera-unisex",
     figmaNodes: ["642:1797", "642:2027", "642:3737"],
     ticker: true,
-    breadcrumb: "Inicio > Pack de Remeras",
+    breadcrumb: "Inicio > Packs de remeras",
     title: "Remera unisex",
     pricingId: "remeras-adulto",
     priceSelection: { quantity: "x5" },
@@ -132,7 +138,7 @@ export const products: Product[] = [
     sizeValue: "Del 1 al 10",
     sizeGuide: "/images/talles/remera-unisex.webp",
     womensSizeGuide: "/images/talles/remera-dama.webp",
-    description: "Remera manga corta: Algodón peinado 24.1 con terminaciones premium como tapa costura en el cuello y refuerzo de costura en hombros.",
+    description: "Remera de manga corta de algodón peinado 24.1, con terminaciones premium como tapacostura en el cuello y refuerzo de costura en los hombros.",
     heroImage: unisexMain,
     gallery: [unisexDetail1, unisexDetail2, unisexMain],
   },
@@ -144,8 +150,13 @@ export const products: Product[] = [
     const pricingId: "calcos-papel" | "calcos-vinilo" | "calcos-dtf-uv" =
       slug as "calcos-papel" | "calcos-vinilo" | "calcos-dtf-uv";
     const priceSelection = { size: "xs", quantity: "x100" };
+    const titleByType: Record<string, string> = {
+      Papel: "Calcos de papel adhesivo",
+      "Vinilo troquelado": "Calcos de vinilo troquelado",
+      "DTF UV": "Calcos DTF UV",
+    };
     const descriptionByType: Record<string, string> = {
-      Papel: "Calco de Papel: Son aptas interior/exterior, impresas con tintas ecosolventes, colores vibrantes, resistentes al agua. Se pueden usar en: vidrieras, vehículos, cartelería, packaging, objetos y diferentes superficies.",
+      Papel: "Calcos de papel aptos para interior y exterior, impresos con tintas ecosolventes, de colores vibrantes y resistentes al agua. Se pueden usar en vidrieras, vehículos, cartelería, packaging, objetos y diferentes superficies.",
       "Vinilo troquelado": "Calcos de vinilo troquelado, ideales para superficies lisas y acabados duraderos.",
       "DTF UV": "Calcos DTF UV, ideales para superficies rígidas y acabados resistentes al uso exterior.",
     };
@@ -155,8 +166,8 @@ export const products: Product[] = [
     figmaNodes: [node as string],
     ticker: true,
     breadcrumb: "Inicio > Servicios > Calcos",
-    title: "Calcos",
-    seoTitle: `Calcos ${type as string}`,
+    title: titleByType[type as string] ?? "Calcos",
+    seoTitle: titleByType[type as string] ?? "Calcos",
     pricingId,
     priceSelection,
     packLabel: "Packs de calcos",
@@ -172,15 +183,15 @@ export const products: Product[] = [
     gallery: slug === "calcos-papel"
       ? [calcosPapel1, calcosPapel2, calcosPapel3]
       : slug === "calcos-vinilo"
-        ? [calcosVinilo1, calcosVinilo2, calcosVinilo3]
-        : [calcosDtf1, calcosDtf2, calcosDtf3],
+        ? [calcosVinilo1, calcosVinilo2, calcosVinilo3, calcosVinilo4]
+        : [calcosDtf1, calcosDtf2, calcosDtf3, calcosDtf4],
   });
   }) as Product[],
   {
     slug: "gorra-trucker",
     figmaNodes: ["1060:1260"],
     ticker: true,
-    breadcrumb: "Inicio > Pack de Gorras",
+    breadcrumb: "Inicio > Packs de gorras",
     title: "Gorra trucker",
     pricingId: "gorra-trucker",
     priceSelection: { quantity: "x5" },
@@ -191,16 +202,16 @@ export const products: Product[] = [
     colors: ["#efefec", "#545454", "#0e0e0e"],
     sizeLabel: "Talles",
     sizeValue: "Regulable",
-    description: "Gorras Truckers: Truckers sublimadas o con DTF",
+    description: "Gorras trucker sublimadas o estampadas con DTF.",
     heroImage: gorraMain,
-    gallery: [gorra1, gorra3, gorraMain],
+    gallery: [gorra1, gorra3, gorraPromo, gorraMain],
   },
   {
     slug: "remera-nino",
     figmaNodes: ["861:1632"],
     ticker: true,
     breadcrumb: "Inicio > Infantil",
-    title: "Remera niño",
+    title: "Remera infantil",
     pricingId: "remeras-infantiles",
     priceSelection: { quantity: "x5" },
     packLabel: "Packs de remeras",
@@ -211,7 +222,7 @@ export const products: Product[] = [
     sizeLabel: "Talles",
     sizeValue: "Del 4 al 18",
     sizeGuide: "/images/talles/remera-nino.webp",
-    description: "Remera manga corta: Algodón peinado 24.1 con terminaciones premium como tapa costura en el cuello y refuerzo de costura en hombros.",
+    description: "Remera de manga corta de algodón peinado 24.1, con terminaciones premium como tapacostura en el cuello y refuerzo de costura en los hombros.",
     heroImage: ninoMain,
     gallery: [nino1, nino2, ninoMain],
   },
@@ -232,7 +243,7 @@ export const products: Product[] = [
     sizeLabel: "Talles",
     sizeValue: "Del 4 al 18",
     sizeGuide: "/images/talles/remera-nino.webp",
-    description: "Remera manga corta: Algodón peinado 24.1 con terminaciones premium como tapa costura en el cuello y refuerzo de costura en hombros.",
+    description: "Remera de manga corta de algodón peinado 24.1, con terminaciones premium como tapacostura en el cuello y refuerzo de costura en los hombros.",
     heroImage: egresaditoMain,
     gallery: [egresadito1, egresadito2, egresadito3, egresaditoMain],
   },
@@ -254,7 +265,7 @@ export const products: Product[] = [
     sizeValue: "Del 1 al 6",
     sizeGuide: "/images/talles/chomba-algodon.webp",
     womensSizeGuide: "/images/talles/chomba-dama.webp",
-    description: "Chomba: Piqué de algodón o algodón peinado, con cuello polo y botones.\nCon terminaciones premium: tapacostura en cuello y refuerzo en hombros\nPrecio correspondiente a estampado chico adelante y media espalda\n(Solo con logo chico adelante consultar)",
+    description: "Chomba de piqué de algodón o algodón peinado, con cuello polo y botones.\nTerminaciones premium: tapacostura en el cuello y refuerzo en los hombros.\nEl precio corresponde a un estampado chico adelante y media espalda.\nPara un estampado solo con logo chico adelante, consultanos.",
     heroImage: chombaAlgodonMain,
     gallery: [chombaAlgodon1, chombaAlgodon2, chombaAlgodon3, chombaAlgodon4, chombaAlgodonMain],
   },
@@ -283,7 +294,7 @@ export const products: Product[] = [
     sizeGuide: "/images/talles/buzo-canguro.webp",
     description: "Canguro de algodón con frisa: con terminaciones premium, tapacostura en el cuello y refuerzo de costura en hombros; precio correspondiente a estampado chico adelante y media espalda.",
     heroImage: canguroMain,
-    gallery: [canguro1, canguroMain],
+    gallery: [canguro1, canguro2, canguroMain],
   },
   {
     slug: "buzo-canguro-premium",
@@ -294,16 +305,16 @@ export const products: Product[] = [
     sizeGuide: "/images/talles/buzo-canguro-premium.webp",
     description: "Canguro de algodón con frisa: con terminaciones premium, tapacostura en el cuello y refuerzo de costura en hombros; precio correspondiente a estampado chico adelante y media espalda.",
     heroImage: canguroMain,
-    gallery: [canguroPremium1, canguroMain],
+    gallery: [canguroPremium1, canguroPremium2, canguroMain],
   },
   {
     slug: "buzo-canguro-nino",
-    figmaNodes: ["834:713"], ticker: true, breadcrumb: "Inicio > Infantil", title: "Buzo canguro niño", packLabel: "Packs de buzo canguro niño",
+    figmaNodes: ["834:713"], ticker: true, breadcrumb: "Inicio > Infantil", title: "Buzo canguro infantil", packLabel: "Packs de buzo canguro infantil",
     pricingId: "canguro-infantil", priceSelection: { quantity: "x5" }, price: catalogPrice("canguro-infantil", { quantity: "x5" }),
     options: [],
     colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 8 al 16",
     sizeGuide: "/images/talles/buzo-canguro-nino.webp",
-    description: "Buzo canguro niño: con terminaciones premium, tapacostura en el cuello y refuerzo de costura en hombros; precio correspondiente a estampado chico adelante y media espalda.",
+    description: "Buzo canguro infantil: con terminaciones premium, tapacostura en el cuello y refuerzo de costura en hombros; precio correspondiente a estampado chico adelante y media espalda.",
     heroImage: canguroNinoMain,
     gallery: [canguroNino1, canguroNino2, canguroNinoMain],
   },
@@ -326,7 +337,7 @@ export const products: Product[] = [
     colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
     sizeGuide: "/images/talles/chomba-pique.webp",
     womensSizeGuide: "/images/talles/chomba-dama.webp",
-    description: "Chomba: Piqué de algodón o algodón peinado, con cuello polo y botones.\nCon terminaciones premium: tapacostura en cuello y refuerzo en hombros\nPrecio correspondiente a estampado chico adelante y media espalda\n(Solo con logo chico adelante consultar)",
+    description: "Chomba de piqué de algodón o algodón peinado, con cuello polo y botones.\nTerminaciones premium: tapacostura en el cuello y refuerzo en los hombros.\nEl precio corresponde a un estampado chico adelante y media espalda.\nPara un estampado solo con logo chico adelante, consultanos.",
     heroImage: chombaPiqueMain,
     gallery: [chombaPique1, chombaPique2, chombaPique3, chombaPiqueMain],
   },
@@ -336,15 +347,15 @@ export const products: Product[] = [
     pricingId: "folletos", priceSelection: { format: "estandar", side: "simple", quantity: "x100" },
     price: catalogPrice("folletos", { format: "estandar", side: "simple", quantity: "x100" }),
     options: [],
-    sizeValue: "Papel ilustración, terminación brillante o matelina, hasta 120 gr", description: "Folletos con diseño claro y acabado profesional.", gallery: [folletosMain, folletosDetail2, folletosDetail3],
+    sizeValue: "Papel ilustración con terminación brillante o matelina, de hasta 120 g.", description: "Folletos con diseño claro y acabado profesional.", gallery: [folletosMain, folletosDetail2, folletosDetail3, folletosAprender],
   },
   {
     slug: "tarjetas-personales",
-    figmaNodes: ["1095:2870"], ticker: true, breadcrumb: "Inicio > Servicios > Tarjetas Personales", title: "Tarjetas personales", packLabel: "Packs de tarjetas personales",
+    figmaNodes: ["1095:2870"], ticker: true, breadcrumb: "Inicio > Servicios > Tarjetas personales", title: "Tarjetas personales", packLabel: "Packs de tarjetas personales",
     pricingId: "tarjetas-personales", priceSelection: { side: "simple", quantity: "x100" },
     price: catalogPrice("tarjetas-personales", { side: "simple", quantity: "x100" }),
     options: [],
-    sizeValue: "Papel terminación mate o brillante, hasta 250 g", description: "Tarjetas con acabado premium para presentar tu marca con estilo.", gallery: [tarjetasMain, tarjetasPhoto1, tarjetasPhoto2, tarjetasPhoto3, tarjetasPhoto4],
+    sizeValue: "Papel con terminación mate o brillante, de hasta 250 g.", description: "Tarjetas con acabado premium para presentar tu marca con estilo.", gallery: [tarjetasMain, tarjetasPhoto1, tarjetasPhoto2, tarjetasPhoto3, tarjetasPhoto4],
   },
   {
     slug: "etiquetas",

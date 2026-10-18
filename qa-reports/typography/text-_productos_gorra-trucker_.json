@@ -1,0 +1,806 @@
+[
+  {
+    "selector": "span",
+    "text": "Venta mayorista y minorista",
+    "size": 12,
+    "lineHeight": "16.2px"
+  },
+  {
+    "selector": "span.envios",
+    "text": "- Productos personalizados",
+    "size": 12,
+    "lineHeight": "16.2px"
+  },
+  {
+    "selector": "span",
+    "text": "Alem 65 - Victoria, Entre Ríos",
+    "size": 12,
+    "lineHeight": "16.2px"
+  },
+  {
+    "selector": "button.product-gallery__thumb-control",
+    "text": "⌃",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "button.product-gallery__thumb-control",
+    "text": "⌄",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "span",
+    "text": "1",
+    "size": 12,
+    "lineHeight": "12px"
+  },
+  {
+    "selector": "p.product-gallery__counter",
+    "text": "/3",
+    "size": 12,
+    "lineHeight": "12px"
+  },
+  {
+    "selector": "p.product-info__breadcrumb",
+    "text": "Inicio > Packs de gorras",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h1",
+    "text": "Gorra trucker",
+    "size": 24,
+    "lineHeight": "28.008px"
+  },
+  {
+    "selector": "p.product-info__pack-label",
+    "text": "Packs de gorra trucker",
+    "size": 18,
+    "lineHeight": "27px"
+  },
+  {
+    "selector": "strong",
+    "text": "$47.500",
+    "size": 22,
+    "lineHeight": "30.8px"
+  },
+  {
+    "selector": "span",
+    "text": "total",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "s.product-info__comparison",
+    "text": "$57.475",
+    "size": 15,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p",
+    "text": "o 3 cuotas de $19.158,33",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "legend",
+    "text": "Cantidad:",
+    "size": 13,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack x5",
+    "size": 13,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "button.product-chip",
+    "text": "X1",
+    "size": 14,
+    "lineHeight": "20px"
+  },
+  {
+    "selector": "button.product-chip.is-active",
+    "text": "X5",
+    "size": 14,
+    "lineHeight": "20px"
+  },
+  {
+    "selector": "button.product-chip",
+    "text": "X10",
+    "size": 14,
+    "lineHeight": "20px"
+  },
+  {
+    "selector": "button.product-chip",
+    "text": "X20",
+    "size": 14,
+    "lineHeight": "20px"
+  },
+  {
+    "selector": "button.product-chip",
+    "text": "X30",
+    "size": 14,
+    "lineHeight": "20px"
+  },
+  {
+    "selector": "button.product-chip",
+    "text": "X50",
+    "size": 14,
+    "lineHeight": "20px"
+  },
+  {
+    "selector": "p.product-info__shipping",
+    "text": "Consultar condiciones de envío",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h2",
+    "text": "Colores flash",
+    "size": 16,
+    "lineHeight": "16px"
+  },
+  {
+    "selector": "h2",
+    "text": "Talles",
+    "size": 16,
+    "lineHeight": "16px"
+  },
+  {
+    "selector": "p",
+    "text": "Consultar",
+    "size": 13,
+    "lineHeight": "19.5px"
+  },
+  {
+    "selector": "a.product-action",
+    "text": "Consultar producto",
+    "size": 14,
+    "lineHeight": "20px"
+  },
+  {
+    "selector": "p",
+    "text": "Para otras cantidades o personalizaciones, consultanos.",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h2",
+    "text": "Descripción",
+    "size": 16,
+    "lineHeight": "16px"
+  },
+  {
+    "selector": "p",
+    "text": "Gorras trucker sublimadas o estampadas con DTF.",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h2",
+    "text": "Otros productos",
+    "size": 16,
+    "lineHeight": "16px"
+  },
+  {
+    "selector": "h3",
+    "text": "Buzo cuello redondo",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Buzo cuello redondo de algodón con frisa clásica",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$152.500",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$184.525",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Buzo canguro frisado",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Canguro de algodón con frisa clásica",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$185.000",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$223.850",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Campera con capucha",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Campera de algodón con frisa clásica con capucha y cierre",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$215.000",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$260.150",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Remera unisex",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Remera de manga corta de algodón peinado 24.1",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X20",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X50",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$120.000",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$145.200",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Chomba",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Piqué de algodón con cuello polo y botones",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$165.000",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$199.650",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Remera infantil",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Remera de manga corta de algodón peinado 24.1",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X20",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X50",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$95.000",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$114.950",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Remera egresadito",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Remera de manga corta de algodón peinado 24.1",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Consultar packs disponibles",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "span.product-card__consult",
+    "text": "Consultar producto",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "h3",
+    "text": "Buzo canguro infantil",
+    "size": 18,
+    "lineHeight": "25.2px"
+  },
+  {
+    "selector": "p.product-card__description",
+    "text": "Buzo canguro infantil con frisa clásica",
+    "size": 14,
+    "lineHeight": "21px"
+  },
+  {
+    "selector": "p.product-card__unit",
+    "text": "Venta por unidad",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "p.product-card__pack-label",
+    "text": "Packs disponibles:",
+    "size": 12,
+    "lineHeight": "19.2px"
+  },
+  {
+    "selector": "li",
+    "text": "X5",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "li",
+    "text": "X10",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "span",
+    "text": "Pack desde",
+    "size": 12,
+    "lineHeight": "18px"
+  },
+  {
+    "selector": "strong",
+    "text": "$170.000",
+    "size": 20,
+    "lineHeight": "28px"
+  },
+  {
+    "selector": "s.product-card__comparison",
+    "text": "$205.700",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h2",
+    "text": "Química Estampados",
+    "size": 24,
+    "lineHeight": "28.8px"
+  },
+  {
+    "selector": "p",
+    "text": "Estudio creativo",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "strong",
+    "text": "especializado",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": "en estampados",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "strong",
+    "text": "personalizados",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": ", branding y",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "strong",
+    "text": "soluciones gráficas",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": ".",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Servicios",
+    "size": 16,
+    "lineHeight": "26px"
+  },
+  {
+    "selector": "a",
+    "text": "Sublimación",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Estampado textil / DTF",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Calcos",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Tarjetas personales",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Folletos",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Etiquetas",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Impresión de gran formato",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Corpóreos en Polifan",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "h3",
+    "text": "Empresa",
+    "size": 16,
+    "lineHeight": "26px"
+  },
+  {
+    "selector": "a",
+    "text": "Nosotros",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Proyectos",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Contacto",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "h3",
+    "text": "Contacto",
+    "size": 16,
+    "lineHeight": "26px"
+  },
+  {
+    "selector": "span",
+    "text": "Instagram",
+    "size": 12,
+    "lineHeight": "15.9996px"
+  },
+  {
+    "selector": "span.footer__arrow",
+    "text": "›",
+    "size": 16,
+    "lineHeight": "16px"
+  },
+  {
+    "selector": "span",
+    "text": "Facebook",
+    "size": 12,
+    "lineHeight": "15.9996px"
+  },
+  {
+    "selector": "span.footer__arrow",
+    "text": "›",
+    "size": 16,
+    "lineHeight": "16px"
+  },
+  {
+    "selector": "span",
+    "text": "quimicaestampados@gmail.com",
+    "size": 12,
+    "lineHeight": "15.9996px"
+  },
+  {
+    "selector": "span.footer__arrow",
+    "text": "›",
+    "size": 16,
+    "lineHeight": "16px"
+  },
+  {
+    "selector": "strong",
+    "text": "© 2026 Química Estampados.",
+    "size": 14,
+    "lineHeight": "17.0002px"
+  },
+  {
+    "selector": "p",
+    "text": "Todos los derechos reservados.",
+    "size": 14,
+    "lineHeight": "17.0002px"
+  },
+  {
+    "selector": "p",
+    "text": "Desarrollado por",
+    "size": 14,
+    "lineHeight": "17.0002px"
+  },
+  {
+    "selector": "a",
+    "text": "<Binadevs/>",
+    "size": 14,
+    "lineHeight": "17.0002px"
+  }
+]

@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-09-18T19:26:29.694Z",
-  "baseUrl": "http://127.0.0.1:63383",
+  "timestamp": "2026-10-18T11:06:17.060Z",
+  "baseUrl": "http://127.0.0.1:60888",
   "testSummary": {
     "total": 36,
     "passed": 36,
@@ -58,7 +58,7 @@
       "details": null
     },
     {
-      "name": "Navegación Footer: enlace hacia sección #servicios",
+      "name": "Navegación Footer: enlace hacia sección #impresiones",
       "passed": true,
       "details": null
     },
@@ -87,14 +87,14 @@
       "passed": true,
       "details": {
         "before": 0,
-        "after": 410
+        "after": 435
       }
     },
     {
       "name": "Carrusel de productos: Flecha anterior retrocede posición",
       "passed": true,
       "details": {
-        "before": 410,
+        "before": 435,
         "after": 0
       }
     },
@@ -136,8 +136,8 @@
       "name": "FAQ: Cambio de pregunta y respuesta sincronizada al clickear tab",
       "passed": true,
       "details": {
-        "selected": "¿Si no tengo un diseño, ustedes lo realizan?",
-        "panelQuestion": "¿Si no tengo un diseño, ustedes lo realizan?"
+        "selected": "Si no tengo un diseño, ¿ustedes lo realizan?",
+        "panelQuestion": "Si no tengo un diseño, ¿ustedes lo realizan?"
       }
     },
     {
@@ -155,7 +155,7 @@
       "passed": true,
       "details": {
         "statusText": "¡Listo! Te redirigimos a WhatsApp para enviar tu consulta.",
-        "redirectedUrl": "https://wa.me/5493431234567?text=%C2%A1Hola%20Qu%C3%ADmica%2"
+        "redirectedUrl": "https://wa.me/5493431234567?text=%C2%A1Hola%2C%20Qu%C3%ADmic"
       }
     },
     {
@@ -169,7 +169,7 @@
       "name": "Botón flotante de WhatsApp: Enlace válido con número internacional",
       "passed": true,
       "details": {
-        "href": "https://wa.me/5493431234567"
+        "href": "https://wa.me/5493431234567?text=Hola%2C%20vengo%20desde%20la%20web%20de%20Qu%C3%ADmica%20Estampados.%20Quisiera%20consultar%20por%20estampados%20y%20productos%20personalizados."
       }
     },
     {
@@ -188,11 +188,11 @@
       }
     },
     {
-      "name": "Ficha de producto: Click en miniatura cambia la imagen principal",
+      "name": "Ficha de producto: Click en miniatura muestra la segunda imagen",
       "passed": true,
       "details": {
-        "initialSrc": "/_astro/main.DEbw3uQu_qzgny.webp",
-        "newSrc": "/_astro/main.crv5k1CR_Gm7Ca.webp"
+        "initialSlide": "1",
+        "currentSlide": "2"
       }
     },
     {
@@ -238,7 +238,7 @@
       "viewport": "Mobile Mini",
       "width": 320,
       "hasOverflow": false,
-      "scrollWidth": 320,
+      "scrollWidth": 305,
       "docWidth": 320,
       "culprits": []
     },
@@ -246,7 +246,7 @@
       "viewport": "Mobile Standard (iPhone/Pixel)",
       "width": 390,
       "hasOverflow": false,
-      "scrollWidth": 390,
+      "scrollWidth": 375,
       "docWidth": 390,
       "culprits": []
     },
@@ -254,7 +254,7 @@
       "viewport": "Tablet Portrait (iPad Mini/Air)",
       "width": 768,
       "hasOverflow": false,
-      "scrollWidth": 768,
+      "scrollWidth": 753,
       "docWidth": 768,
       "culprits": []
     },
@@ -262,7 +262,7 @@
       "viewport": "Tablet Landscape / Laptop",
       "width": 1024,
       "hasOverflow": false,
-      "scrollWidth": 1024,
+      "scrollWidth": 1009,
       "docWidth": 1024,
       "culprits": []
     },
@@ -270,7 +270,7 @@
       "viewport": "Desktop Standard (HD)",
       "width": 1280,
       "hasOverflow": false,
-      "scrollWidth": 1280,
+      "scrollWidth": 1265,
       "docWidth": 1280,
       "culprits": []
     },
@@ -278,7 +278,7 @@
       "viewport": "Desktop Large (FullHD/Mac)",
       "width": 1440,
       "hasOverflow": false,
-      "scrollWidth": 1440,
+      "scrollWidth": 1425,
       "docWidth": 1440,
       "culprits": []
     }

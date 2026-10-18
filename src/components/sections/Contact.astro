@@ -7,7 +7,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
 <section id="contacto" class="contact" aria-labelledby="contact-heading" data-figma-node="1031:1735">
   <BackgroundText />
 
-  <div class="contact__rail" aria-hidden="true">Contáctanos</div>
+  <div class="contact__rail" aria-hidden="true">Contactanos</div>
   <h2 id="contact-heading" class="contact__title">Resolvemos<br />tus dudas</h2>
 
   <div class="contact__content">
@@ -32,25 +32,25 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
           <input type="text" name="name" placeholder="Tu nombre" autocomplete="name" required />
         </label>
         <label>
-          <span>Email</span>
+          <span>Correo electrónico</span>
           <input type="email" name="email" placeholder="hola@empresa.com" autocomplete="email" required />
         </label>
         <label class="contact__field--wide">
           <span>Servicio</span>
           <select name="project" required>
-            <option value="Estampado textil / Indumentaria">Estampado textil / Indumentaria</option>
+            <option value="Estampado textil / indumentaria">Estampado textil</option>
             <option value="Impresión DTF textil">Impresión DTF textil</option>
-            <option value="Calcos personalizados">Calcos personalizados</option>
+            <option value="Calcos personalizados">Calcos</option>
             <option value="Tarjetas personales">Tarjetas personales</option>
             <option value="Folletos y etiquetas">Folletos y etiquetas</option>
-            <option value="Corpóreos en Polifan">Corpóreos en Polifan</option>
-            <option value="Impresión en gran formato">Impresión en gran formato</option>
-            <option value="Otro / Consulta general">Otro / Consulta general</option>
+            <option value="Corpóreos en Polifan">Corpóreos (Polifan)</option>
+            <option value="Impresión en gran formato">Gran formato</option>
+            <option value="Otro / consulta general">Consulta general</option>
           </select>
         </label>
         <label class="contact__field--wide contact__message">
           <span>Mensaje</span>
-          <textarea name="message" rows="4" placeholder="Contanos detalles de cantidades, colores y superficies..." required></textarea>
+          <textarea name="message" rows="4" placeholder="Contanos detalles de cantidades, colores y superficies…" required></textarea>
         </label>
         <button class="contact__submit" type="submit">Enviar</button>
         <p class="contact__form-status" role="status" aria-live="polite" data-contact-status></p>
@@ -66,7 +66,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
 
         <section class="contact__info-block contact__hours">
           <h4>Horarios</h4>
-          <p>Lunes a viernes<br />08:00 a 12:00 hs<br />16:30 a 20:00 hs</p>
+          <p>Lunes a viernes<br />08:00 a 12:00 h<br />16:30 a 20:00 h</p>
         </section>
 
         <nav class="contact__socials" aria-label="Redes sociales">
@@ -139,11 +139,11 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
           if (contactStatus) contactStatus.textContent = "¡Gracias! Recibimos tu consulta y te responderemos pronto.";
         } else {
           const lines = [
-            "¡Hola Química Estampados! 👋",
+            "¡Hola, Química Estampados! 👋",
             "Quisiera hacer una consulta desde el sitio web:",
             "",
             `• Nombre: ${name}`,
-            `• Email: ${email}`,
+            `• Correo electrónico: ${email}`,
             `• Servicio de interés: ${project}`,
             "",
             "• Consulta:",
@@ -163,7 +163,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
           }
         }
       } catch {
-        if (contactStatus) contactStatus.textContent = "No pudimos procesar la consulta. Por favor escribinos directamente por WhatsApp.";
+        if (contactStatus) contactStatus.textContent = "No pudimos procesar la consulta. Por favor, escribinos directamente por WhatsApp.";
       } finally {
         if (contactSubmit) {
           contactSubmit.disabled = false;
@@ -312,11 +312,11 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
     border-radius: 0;
     outline: none;
     font-family: var(--font-poppins);
-    font-size: 0.72rem;
+    font-size: 0.875rem;
   }
 
   .contact__form input::placeholder,
-  .contact__form textarea::placeholder { color: #555; opacity: 1; }
+  .contact__form textarea::placeholder { color: #a3a3a0; opacity: 1; }
 
   .contact__form select {
     appearance: auto;
@@ -334,7 +334,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
 
   .contact__form textarea {
     min-height: 7.75rem;
-    resize: none;
+    resize: vertical;
   }
 
   .contact__form input:focus,
@@ -351,7 +351,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
     background: transparent;
     border: 0.0625rem solid var(--color-magenta);
     font-family: var(--font-jetbrains-mono);
-    font-size: 0.7rem;
+    font-size: 0.875rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -368,7 +368,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
     grid-column: 1 / -1;
     color: #b8b8b5;
     font-family: var(--font-poppins);
-    font-size: 0.72rem;
+    font-size: 0.875rem;
     line-height: 1.4;
   }
 
@@ -425,7 +425,7 @@ import { mapEmbedUrl, siteConfig, whatsappUrl } from "../../data/site";
   .contact__hours p {
     color: #d2d2d0;
     font-family: var(--font-poppins);
-    font-size: 0.7rem;
+    font-size: 0.875rem;
     line-height: 1.65;
   }
 

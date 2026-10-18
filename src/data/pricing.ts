@@ -43,11 +43,11 @@ export interface CatalogProduct {
 
 // Fuente comercial: docs/catalogo-precios-fuente.txt. No interpolar ni corregir importes.
 export const sizeChoices: CatalogChoice[] = [
-  { value: "xs", label: "XS", description: "Hasta 12 cm²", examples: ["3x3 cm", "3x4 cm", "2,5x5 cm", "5x2,5 cm"] },
-  { value: "chicas", label: "Chicas", description: "Hasta 25 cm²", examples: ["4x4 cm", "5x5 cm", "6x4 cm", "7x3 cm", "8x3 cm"] },
-  { value: "medianas", label: "Medianas", description: "Hasta 50 cm²", examples: ["6x6 cm", "7x7 cm", "6x8 cm", "12x4 cm", "10x5 cm"] },
-  { value: "grandes", label: "Grandes", description: "Hasta 75 cm²", examples: ["8x8 cm", "10x7 cm", "15x5 cm", "20x3,5 cm"] },
-  { value: "xl", label: "XL", description: "Hasta 100 cm²", examples: ["9x9 cm", "10x10 cm", "8x12 cm", "15x6 cm", "20x5 cm", "5x20 cm"] },
+  { value: "xs", label: "XS", description: "Hasta 12 cm²", examples: ["3 × 3 cm", "3 × 4 cm", "2,5 × 5 cm", "5 × 2,5 cm"] },
+  { value: "chicas", label: "Chicas", description: "Hasta 25 cm²", examples: ["4 × 4 cm", "5 × 5 cm", "6 × 4 cm", "7 × 3 cm", "8 × 3 cm"] },
+  { value: "medianas", label: "Medianas", description: "Hasta 50 cm²", examples: ["6 × 6 cm", "7 × 7 cm", "6 × 8 cm", "12 × 4 cm", "10 × 5 cm"] },
+  { value: "grandes", label: "Grandes", description: "Hasta 75 cm²", examples: ["8 × 8 cm", "10 × 7 cm", "15 × 5 cm", "20 × 3,5 cm"] },
+  { value: "xl", label: "XL", description: "Hasta 100 cm²", examples: ["9 × 9 cm", "10 × 10 cm", "8 × 12 cm", "15 × 6 cm", "20 × 5 cm", "5 × 20 cm"] },
 ];
 
 const quantityChoices = (...quantities: number[]): CatalogChoice[] =>
@@ -92,7 +92,7 @@ const apparelPrices = (values: Array<[number, string]>): CatalogPrice[] =>
 export const priceCatalog = {
   "calcos-vinilo": {
     id: "calcos-vinilo",
-    name: "Calcos vinilo troqueladas",
+    name: "Calcos de vinilo troquelado",
     category: "Calcos",
     variants: [
       { key: "size", label: "Tamaño", options: sizeChoices },
@@ -119,7 +119,7 @@ export const priceCatalog = {
   },
   "calcos-papel": {
     id: "calcos-papel",
-    name: "Calcos papel adhesivo",
+    name: "Calcos de papel adhesivo",
     category: "Calcos",
     variants: [
       { key: "size", label: "Tamaño", options: sizeChoices },
@@ -153,7 +153,7 @@ export const priceCatalog = {
     id: "tarjetas-personales",
     name: "Tarjetas personales",
     category: "Tarjetas",
-    description: "Papel terminación mate o brillante, hasta 250 gr.",
+    description: "Papel con terminación mate o brillante, de hasta 250 g.",
     variants: [
       { key: "side", label: "Impresión", options: [{ value: "simple", label: "Simple faz" }, { value: "doble", label: "Doble faz" }] },
       { key: "quantity", label: "Cantidad", options: quantityChoices(100, 300, 500) },
@@ -173,7 +173,7 @@ export const priceCatalog = {
     id: "etiquetas",
     name: "Etiquetas",
     category: "Etiquetas",
-    description: "Papel terminación mate o brillante, hasta 250 gr.",
+    description: "Papel con terminación mate o brillante, de hasta 250 g.",
     variants: [
       { key: "size", label: "Tamaño", options: sizeChoices },
       { key: "quantity", label: "Cantidad", options: quantityChoices(100, 300, 500) },
@@ -185,7 +185,7 @@ export const priceCatalog = {
     id: "folletos",
     name: "Folletos",
     category: "Folletos",
-    description: "Papel ilustración, terminación brillante o matelina, hasta 120 gr.",
+    description: "Papel ilustración con terminación brillante o matelina, de hasta 120 g.",
     variants: [
       { key: "format", label: "Medida", options: [{ value: "estandar", label: "Estándar 10 × 15 cm" }, { value: "chico", label: "Chico 7 × 10 cm" }] },
       { key: "side", label: "Impresión", options: [{ value: "simple", label: "Simple faz" }, { value: "doble", label: "Doble faz" }] },
@@ -209,7 +209,7 @@ export const priceCatalog = {
   },
   "gorra-trucker": {
     id: "gorra-trucker",
-    name: "Gorra Trucker",
+    name: "Gorra trucker",
     category: "Gorras",
     description: "Sublimada o con DTF.",
     variants: [{ key: "quantity", label: "Cantidad", options: quantityChoices(1, 5, 10, 20, 30, 50) }],
@@ -244,19 +244,19 @@ export const priceCatalog = {
   },
   "vinilo-sin-troquelar": {
     id: "vinilo-sin-troquelar", name: "Vinilo sin troquelar", category: "Vinilo", description: "Base blanca o transparente, sin troquelar.",
-    variants: [{ key: "measure", label: "Medida", options: ["0,50 × 0,50 mt", "0,50 × 1 mt", "1 × 1 mt", "1 × 2 mt", "1 × 3 mt"].map((label, index) => ({ value: `m${index + 1}`, label })) }],
+    variants: [{ key: "measure", label: "Medida", options: ["0,50 × 0,50 m", "0,50 × 1 m", "1 × 1 m", "1 × 2 m", "1 × 3 m"].map((label, index) => ({ value: `m${index + 1}`, label })) }],
     prices: ["$10.000", "$20.000", "$38.000", "$70.000", "$105.000"].map((total, index) => price({ measure: `m${index + 1}` }, 1, { total })),
     notes: ["Incluye digitalización básica y texto o logo ya existente.", "El diseño personalizado se cotiza aparte."],
   },
   "vinilo-troquelado": {
     id: "vinilo-troquelado", name: "Vinilo troquelado", category: "Vinilo", description: "Base blanca o transparente, troquelado.",
-    variants: [{ key: "measure", label: "Medida", options: ["0,50 × 0,50 mt", "0,50 × 1 mt", "1 × 1 mt", "1 × 2 mt"].map((label, index) => ({ value: `m${index + 1}`, label })) }],
+    variants: [{ key: "measure", label: "Medida", options: ["0,50 × 0,50 m", "0,50 × 1 m", "1 × 1 m", "1 × 2 m"].map((label, index) => ({ value: `m${index + 1}`, label })) }],
     prices: ["$13.000", "$26.000", "$49.000", "$88.000"].map((total, index) => price({ measure: `m${index + 1}` }, 1, { total })),
     notes: ["Incluye digitalización básica y texto, diseño o logo ya existente.", "El diseño personalizado se cotiza aparte en vinilos chicos."],
   },
   "lona-front": {
     id: "lona-front", name: "Lona front", category: "Lona", description: "Precio sin terminación.",
-    variants: [{ key: "measure", label: "Medida", options: ["0,50 × 0,50 mt", "0,50 × 1 mt", "1 × 1 mt", "1 × 2 mt", "1 × 3 mt"].map((label, index) => ({ value: `m${index + 1}`, label })) }],
+    variants: [{ key: "measure", label: "Medida", options: ["0,50 × 0,50 m", "0,50 × 1 m", "1 × 1 m", "1 × 2 m", "1 × 3 m"].map((label, index) => ({ value: `m${index + 1}`, label })) }],
     prices: ["$10.000", "$20.000", "$38.000", "$70.000", "$98.000"].map((total, index) => price({ measure: `m${index + 1}` }, 1, { total })),
     notes: ["Incluye digitalización básica y texto, diseño o logo ya existente.", "El diseño personalizado se cotiza aparte en lonas chicas."],
     extras: [

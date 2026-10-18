@@ -62,15 +62,18 @@ test("las galerías distinguen los productos y los servicios muestran trabajos d
     /<button\b[^>]*data-gallery-thumb[^>]*data-src="([^"]+)"/g,
   );
   assert.notDeepEqual(gallerySources("chomba-algodon"), gallerySources("chomba-pique"));
-  assert.equal(gallerySources("gorra-trucker").length, 3);
-  for (const [slug, count] of [["buzo-canguro", 2], ["buzo-canguro-nino", 3], ["buzo-canguro-premium", 2]]) {
+  assert.equal(gallerySources("gorra-trucker").length, 4);
+  assert.ok(gallerySources("gorra-trucker").some((source) => source.includes("promo-25")));
+  assert.ok(gallerySources("folletos").some((source) => source.includes("aprender-jugando")));
+  for (const [slug, count] of [["buzo-canguro", 3], ["buzo-canguro-nino", 3], ["buzo-canguro-premium", 3]]) {
     assert.equal(gallerySources(slug).length, count, slug);
   }
   assert.notDeepEqual(gallerySources("buzo-canguro"), gallerySources("buzo-canguro-nino"));
   assert.notDeepEqual(gallerySources("buzo-canguro"), gallerySources("buzo-canguro-premium"));
   assert.match(routeMap.get("/productos/buzo-canguro-premium/").html, /href="\/images\/talles\/buzo-canguro-premium\.webp"/);
   const egresaditoSources = gallerySources("remera-egresadito");
-  assert.equal(egresaditoSources.length, 3);
+  assert.equal(egresaditoSources.length, 4);
+  assert.ok(egresaditoSources[0].includes("eva."));
   assert.ok(egresaditoSources.every((source) => !source.includes("design-2026")));
   const garmentDetails = new Set(gallerySources("remera-unisex").slice(1));
   for (const slug of ["calcos-papel", "calcos-vinilo", "calcos-dtf-uv", "tarjetas-personales", "folletos", "etiquetas"]) {

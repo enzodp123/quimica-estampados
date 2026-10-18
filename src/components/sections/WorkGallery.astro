@@ -93,7 +93,7 @@ const workCategories: WorkCategory[] = [
   },
   {
     id: "corporeos",
-    label: "Corpóreos en polifan",
+    label: "Corpóreos en Polifan",
     figmaNode: "1033:2414",
     works: [
       { label: "Logo corpóreo para oficina", image: corporeos1 },
@@ -421,7 +421,7 @@ const initialWorks = galleryCategories[0].works;
     font-size: 0.875rem;
     font-weight: 700;
     letter-spacing: 0.075em;
-    line-height: 1;
+    line-height: 1.4;
     text-transform: uppercase;
     cursor: pointer;
   }
@@ -441,7 +441,7 @@ const initialWorks = galleryCategories[0].works;
   @media (min-width: 64.0625rem) and (max-width: 80rem) {
     .work-gallery__filters button {
       padding-inline: 0.9rem;
-      font-size: 0.68rem;
+      font-size: 0.75rem;
     }
   }
 
@@ -603,7 +603,7 @@ const initialWorks = galleryCategories[0].works;
     color: var(--color-cyan);
     border: 0.0625rem solid var(--color-cyan);
     font-family: var(--font-jetbrains-mono);
-    font-size: 0.62rem;
+    font-size: 0.875rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     line-height: 1;
@@ -643,10 +643,10 @@ const initialWorks = galleryCategories[0].works;
       margin-top: 2rem;
       display: flex;
       justify-content: flex-start;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       gap: 0.75rem;
       padding-bottom: 0.25rem;
-      overflow-x: auto;
+      overflow: visible;
       transform: none;
       scrollbar-width: thin;
     }

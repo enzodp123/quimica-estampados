@@ -1,0 +1,1142 @@
+[
+  {
+    "path": "/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 305,
+    "clientWidth": 320
+  },
+  {
+    "path": "/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 375,
+    "clientWidth": 390
+  },
+  {
+    "path": "/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 753,
+    "clientWidth": 768
+  },
+  {
+    "path": "/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1009,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1425,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1905,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/buzo-canguro/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/buzo-canguro/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/buzo-canguro/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/buzo-canguro/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/buzo-canguro/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/buzo-canguro/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/buzo-canguro-nino/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/buzo-canguro-nino/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/buzo-canguro-nino/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/buzo-canguro-nino/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/buzo-canguro-nino/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/buzo-canguro-nino/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/buzo-canguro-premium/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/buzo-canguro-premium/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/buzo-canguro-premium/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/buzo-canguro-premium/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/buzo-canguro-premium/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/buzo-canguro-premium/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/buzo-cuello-redondo/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/buzo-cuello-redondo/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/buzo-cuello-redondo/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/buzo-cuello-redondo/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/buzo-cuello-redondo/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/buzo-cuello-redondo/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/calcos-dtf-uv/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/calcos-dtf-uv/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/calcos-dtf-uv/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/calcos-dtf-uv/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/calcos-dtf-uv/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/calcos-dtf-uv/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/calcos-papel/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/calcos-papel/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/calcos-papel/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/calcos-papel/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/calcos-papel/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/calcos-papel/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/calcos-vinilo/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/calcos-vinilo/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/calcos-vinilo/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/calcos-vinilo/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/calcos-vinilo/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/calcos-vinilo/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/campera-capucha/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/campera-capucha/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/campera-capucha/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/campera-capucha/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/campera-capucha/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/campera-capucha/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/chomba-algodon/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/chomba-algodon/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/chomba-algodon/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/chomba-algodon/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/chomba-algodon/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/chomba-algodon/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/chomba-pique/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/chomba-pique/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/chomba-pique/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/chomba-pique/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/chomba-pique/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/chomba-pique/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/etiquetas/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/etiquetas/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/etiquetas/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/etiquetas/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/etiquetas/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/etiquetas/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/folletos/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/folletos/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/folletos/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/folletos/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/folletos/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/folletos/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/gorra-trucker/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/gorra-trucker/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/gorra-trucker/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/gorra-trucker/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/gorra-trucker/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/gorra-trucker/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/remera-egresadito/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/remera-egresadito/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/remera-egresadito/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/remera-egresadito/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/remera-egresadito/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/remera-egresadito/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/remera-nino/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/remera-nino/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/remera-nino/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/remera-nino/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/remera-nino/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/remera-nino/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/remera-unisex/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/remera-unisex/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/remera-unisex/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/remera-unisex/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/remera-unisex/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/remera-unisex/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/productos/tarjetas-personales/",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/productos/tarjetas-personales/",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/productos/tarjetas-personales/",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/productos/tarjetas-personales/",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/productos/tarjetas-personales/",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/productos/tarjetas-personales/",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  },
+  {
+    "path": "/404.html",
+    "width": 320,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 320,
+    "clientWidth": 320
+  },
+  {
+    "path": "/404.html",
+    "width": 390,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 390,
+    "clientWidth": 390
+  },
+  {
+    "path": "/404.html",
+    "width": 768,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "path": "/404.html",
+    "width": 1024,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "path": "/404.html",
+    "width": 1440,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440
+  },
+  {
+    "path": "/404.html",
+    "width": 1920,
+    "small": [],
+    "clipped": [],
+    "cramped": [],
+    "controls": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920
+  }
+]

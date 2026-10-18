@@ -10,7 +10,7 @@ import { serviceConsultationMessages, whatsappUrl } from "../../data/site";
 const services = [
   {
     name: "Calcos",
-    description: "Son aptas interior/exterior, impresas con tintas ecosolventes, colores vibrantes, resistentes al agua.",
+    description: "Calcos aptos para interior y exterior, impresos con tintas ecosolventes, de colores vibrantes y resistentes al agua.",
     image: stickers,
     imageAlt: "Calcos impresos a color para una marca gastronómica",
     imagePosition: "50% 50%",
@@ -26,7 +26,7 @@ const services = [
   },
   {
     name: "Folletos",
-    description: "Papel ilustración terminación brillante o matelina, hasta 120gr",
+    description: "Papel ilustración con terminación brillante o matelina, de hasta 120 g.",
     image: folletos,
     imageAlt: "Folletos personalizados impresos a color",
     imagePosition: "50% 50%",
@@ -84,8 +84,8 @@ const services = [
     <div class="services__extras">
       <article id="corporeos" class="service-extra service-extra--cyan">
         <h3>Corpóreos en Polifan</h3>
-        <p>Letras, logos y diseños realizados en polifan, ideales para destacar tu marca en vidrieras, locales, eventos y espacios comerciales.</p>
-        <p class="service-extra__detail"><strong>¿Querés cotizar el tuyo?</strong> El presupuesto se realiza de manera personalizada según las medidas, cantidad, diseño y terminación</p>
+        <p>Letras, logos y diseños realizados en Polifan, ideales para destacar tu marca en vidrieras, locales, eventos y espacios comerciales.</p>
+        <p class="service-extra__detail"><strong>¿Querés cotizar el tuyo?</strong> El presupuesto se realiza de manera personalizada según las medidas, la cantidad, el diseño y la terminación.</p>
         <a href={whatsappUrl(serviceConsultationMessages.corporeos)} target="_blank" rel="noopener noreferrer">Consultar</a>
       </article>
       <article id="gran-formato" class="service-extra service-extra--magenta">
@@ -432,7 +432,7 @@ const services = [
       color: var(--color-yellow);
       border: 0.0625rem solid var(--color-yellow);
       font-family: var(--font-jetbrains-mono);
-      font-size: 0.6875rem;
+      font-size: 0.875rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -457,7 +457,7 @@ const services = [
     .services__intro p {
       color: #e1e1df;
       font-family: var(--font-jetbrains-mono);
-      font-size: 0.6875rem;
+      font-size: 0.875rem;
       font-weight: 700;
       letter-spacing: 0.035em;
       line-height: 1.55;
@@ -571,7 +571,7 @@ const services = [
       max-width: 19.5rem;
       color: #e1e1df;
       font-family: var(--font-jetbrains-mono);
-      font-size: 0.6875rem;
+      font-size: 0.875rem;
       font-weight: 700;
       letter-spacing: 0.035em;
       line-height: 1.55;
@@ -725,8 +725,8 @@ const services = [
       left: auto;
       width: 100%;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.75rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
       overflow: visible;
       align-items: start;
     }
@@ -743,15 +743,15 @@ const services = [
     }
 
     .services__grid .service-card--1,
-    .services__grid .service-card--3 { margin-top: 3.25rem; }
+    .services__grid .service-card--3 { margin-top: 0; }
     .service-card__visual,
     .service-card--1 .service-card__visual,
     .service-card--2 .service-card__visual,
     .service-card--3 .service-card__visual,
     .service-card--4 .service-card__visual { height: clamp(10rem, 19vw, 14rem); }
     .service-card__body { min-height: 8.5rem; padding: 1rem 0.8rem 1.25rem; }
-    .service-card h3 { font-size: 0.8rem; }
-    .service-card p { font-size: 0.68rem; line-height: 1.45; }
+    .service-card h3 { font-size: 1rem; }
+    .service-card p { font-size: 0.875rem; line-height: 1.6; }
 
     .services__extras {
       position: relative;
@@ -764,9 +764,9 @@ const services = [
 
     .service-extra { min-height: 13rem; padding: 1rem; }
     .service-extra--cyan { margin-top: 3rem; }
-    .service-extra h3 { font-size: 0.8rem; }
-    .service-extra p { font-size: 0.68rem; line-height: 1.45; }
-    .service-extra a { width: 8rem; min-height: 2.25rem; font-size: 0.6rem; }
+    .service-extra h3 { font-size: 1rem; }
+    .service-extra p { font-size: 0.875rem; line-height: 1.6; }
+    .service-extra a { width: min(100%, 10rem); min-height: 2.75rem; font-size: 0.875rem; }
   }
 
   @media (min-width: 56.0625rem) {

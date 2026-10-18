@@ -37,7 +37,7 @@ test("Impresiones publica las nueve tarjetas del Figma en su orden y con precios
   const cards = getCards(content);
   assert.deepEqual(cards.map((match) => match[1]), featuredSlugs);
   assert.match(html, /data-figma-node="1144:2781"/);
-  assert.equal((content.match(/class="product-card__badge"/g) ?? []).length, 2);
+  assert.equal((content.match(/class="product-card__badge"/g) ?? []).length, 0);
   for (const card of cards) {
     assert.match(card[0], new RegExp(`href="/productos/${card[1]}/"`));
     assert.match(card[0], /<img\b[^>]*src="\/_astro\//);

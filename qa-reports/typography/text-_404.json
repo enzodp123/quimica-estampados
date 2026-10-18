@@ -1,0 +1,230 @@
+[
+  {
+    "selector": "span",
+    "text": "Venta mayorista y minorista",
+    "size": 12,
+    "lineHeight": "16.2px"
+  },
+  {
+    "selector": "span.envios",
+    "text": "- Productos personalizados",
+    "size": 12,
+    "lineHeight": "16.2px"
+  },
+  {
+    "selector": "span",
+    "text": "Alem 65 - Victoria, Entre Ríos",
+    "size": 12,
+    "lineHeight": "16.2px"
+  },
+  {
+    "selector": "p",
+    "text": "ERROR 404",
+    "size": 14,
+    "lineHeight": "14px"
+  },
+  {
+    "selector": "h1",
+    "text": "Esta página",
+    "size": 32,
+    "lineHeight": "35.84px"
+  },
+  {
+    "selector": "h1",
+    "text": "no está estampada",
+    "size": 32,
+    "lineHeight": "35.84px"
+  },
+  {
+    "selector": "p.not-found__copy",
+    "text": "El enlace puede haber cambiado. Volvé al inicio o escribinos para encontrar lo que necesitás.",
+    "size": 16,
+    "lineHeight": "27.2px"
+  },
+  {
+    "selector": "a.button.button--primary",
+    "text": "Volver al inicio",
+    "size": 12,
+    "lineHeight": "16.8px"
+  },
+  {
+    "selector": "a.button.button--cyan",
+    "text": "Contactarnos",
+    "size": 12,
+    "lineHeight": "16.8px"
+  },
+  {
+    "selector": "h2",
+    "text": "Química Estampados",
+    "size": 24,
+    "lineHeight": "28.8px"
+  },
+  {
+    "selector": "p",
+    "text": "Estudio creativo",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "strong",
+    "text": "especializado",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": "en estampados",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "strong",
+    "text": "personalizados",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": ", branding y",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "strong",
+    "text": "soluciones gráficas",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "p",
+    "text": ".",
+    "size": 16,
+    "lineHeight": "24px"
+  },
+  {
+    "selector": "h3",
+    "text": "Servicios",
+    "size": 16,
+    "lineHeight": "26px"
+  },
+  {
+    "selector": "a",
+    "text": "Sublimación",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Estampado textil / DTF",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Calcos",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Tarjetas personales",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Folletos",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Etiquetas",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Impresión de gran formato",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Corpóreos en Polifan",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "h3",
+    "text": "Empresa",
+    "size": 16,
+    "lineHeight": "26px"
+  },
+  {
+    "selector": "a",
+    "text": "Nosotros",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Proyectos",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "a",
+    "text": "Contacto",
+    "size": 14,
+    "lineHeight": "17.9998px"
+  },
+  {
+    "selector": "h3",
+    "text": "Contacto",
+    "size": 16,
+    "lineHeight": "26px"
+  },
+  {
+    "selector": "span",
+    "text": "Instagram",
+    "size": 12,
+    "lineHeight": "15.9996px"
+  },
+  {
+    "selector": "span",
+    "text": "Facebook",
+    "size": 12,
+    "lineHeight": "15.9996px"
+  },
+  {
+    "selector": "span",
+    "text": "quimicaestampados@gmail.com",
+    "size": 12,
+    "lineHeight": "15.9996px"
+  },
+  {
+    "selector": "strong",
+    "text": "© 2026 Química Estampados.",
+    "size": 14,
+    "lineHeight": "17.0002px"
+  },
+  {
+    "selector": "p",
+    "text": "Todos los derechos reservados.",
+    "size": 14,
+    "lineHeight": "17.0002px"
+  },
+  {
+    "selector": "p",
+    "text": "Desarrollado por",
+    "size": 14,
+    "lineHeight": "17.0002px"
+  },
+  {
+    "selector": "a",
+    "text": "<Binadevs/>",
+    "size": 14,
+    "lineHeight": "17.0002px"
+  }
+]

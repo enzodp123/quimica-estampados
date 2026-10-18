@@ -16,6 +16,7 @@
     "validate:html": "html-validate \"dist/**/*.html\"",
     "test": "node --test tests/*.test.mjs",
     "test:e2e": "node scripts/run-qa-suite.mjs",
+    "test:typography": "node scripts/audit-typography.mjs",
     "qa": "npm run check && npm run build && npm run validate:html && npm test"
   },
   "dependencies": {

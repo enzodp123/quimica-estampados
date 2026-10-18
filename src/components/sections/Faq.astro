@@ -5,25 +5,25 @@ import BackgroundText from "../shared/BackgroundText.astro";
 const questions = [
   {
     figmaNodes: ["736:1066"],
-    question: "¿Si no tengo un diseño, ustedes lo realizan?",
+    question: "Si no tengo un diseño, ¿ustedes lo realizan?",
     answer: ["¡Sí! Hacemos diseño gráfico de todo tipo, incluida la creación de logos desde cero o su digitalización a partir de una foto."],
   },
   {
     figmaNodes: ["736:1053", "738:1203"],
-    question: "¿Sólo hacen estampado textil en remeras, buzos y camperas?",
+    question: "¿Solo hacen estampado textil en remeras, buzos y camperas?",
     answer: ["No, realizamos estampados y personalizaciones en otros productos o telas también para diferentes proyectos."],
   },
   {
     figmaNodes: ["737:1105"],
-    question: "¿Cómo tengo que enviarte el diseño?",
+    question: "¿Cómo tengo que enviarles el diseño?",
     answer: [
       "Primero nos ponemos en contacto y nos comentás qué tenés. Si es un archivo editable y vectorial, mucho mejor (.AI, .EPS o .PDF).",
-      "Si no, enviá lo que tengas (.JPG o .PNG) con la mejor resolución posible, idealmente 300 DPI o más, por WhatsApp o email.",
+      "Si no, enviá lo que tengas (.JPG o .PNG) con la mejor resolución posible, idealmente 300 DPI o más, por WhatsApp o correo electrónico.",
     ],
   },
   {
     figmaNodes: ["737:1122"],
-    question: "¿Qué demora tienen en entregas?",
+    question: "¿Cuánto demoran las entregas?",
     answer: [
       "Todo depende de si ya tenés un diseño o hay que realizarlo desde cero, de la cantidad del pedido y del color de las prendas.",
       "Para pedidos menores a 100 prendas, el estimado es de 4 o 5 días para negro, blanco o gris con stock permanente, y de 10 a 12 días para colores especiales.",
@@ -220,7 +220,7 @@ const initialQuestion = questions[initialQuestionIndex];
     font-size: clamp(1.25rem, 1.875vw, 2.25rem);
     font-weight: 800;
     letter-spacing: -0.02em;
-    line-height: 1.0833;
+    line-height: 1.2;
     text-transform: uppercase;
   }
 
@@ -264,7 +264,7 @@ const initialQuestion = questions[initialQuestionIndex];
     font-size: clamp(0.75rem, 0.7292vw, 0.875rem);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: 1.1429;
+    line-height: 1.5;
     text-align: left;
     text-transform: uppercase;
     cursor: pointer;
@@ -370,7 +370,7 @@ const initialQuestion = questions[initialQuestionIndex];
     font-size: clamp(1.4rem, 1.875vw, 2.25rem);
     font-weight: 800;
     letter-spacing: -0.035em;
-    line-height: 1.0833;
+    line-height: 1.2;
     text-transform: uppercase;
   }
 
@@ -540,8 +540,8 @@ const initialQuestion = questions[initialQuestionIndex];
   /* Las columnas de FAQ son compactas: mantener el cuerpo de las tarjetas
      en una escala editorial, sin que compita con los títulos de sección. */
   @media (min-width: 52.0625rem) {
-    .faq-list__item { font-size: 0.75rem; line-height: 1.25; }
-    .faq-card__question { font-size: 0.75rem; line-height: 1.4; }
+    .faq-list__item { font-size: 0.875rem; line-height: 1.5; }
+    .faq-card__question { font-size: 0.875rem; line-height: 1.5; }
     .faq-card__answer { font-size: 0.9375rem; line-height: 1.45; }
   }
   @media (max-width: 52rem) {

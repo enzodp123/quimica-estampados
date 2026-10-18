@@ -1,0 +1,48 @@
+[
+  {
+    "viewport": 390,
+    "check": "Nueva remera en el hero con transparencia y contorno",
+    "passed": true
+  },
+  {
+    "viewport": 390,
+    "product": "gorra-trucker",
+    "check": "Foto WebP cargada y accesible en la galería",
+    "passed": true
+  },
+  {
+    "viewport": 390,
+    "product": "folletos",
+    "check": "Foto WebP cargada y accesible en la galería",
+    "passed": true
+  },
+  {
+    "viewport": 390,
+    "product": "remera-egresadito",
+    "check": "Foto WebP cargada y accesible en la galería",
+    "passed": true
+  },
+  {
+    "viewport": 1440,
+    "check": "Nueva remera en el hero con transparencia y contorno",
+    "passed": true
+  },
+  {
+    "viewport": 1440,
+    "product": "gorra-trucker",
+    "check": "Foto WebP cargada y accesible en la galería",
+    "passed": true
+  },
+  {
+    "viewport": 1440,
+    "product": "folletos",
+    "check": "Foto WebP cargada y accesible en la galería",
+    "passed": true
+  },
+  {
+    "viewport": 1440,
+    "product": "remera-egresadito",
+    "check": "Foto WebP cargada y accesible en la galería",
+    "passed": true
+  }
+]

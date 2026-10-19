@@ -313,6 +313,8 @@ const initialWorks = galleryCategories[0].works;
   .work-gallery {
     --section-title-offset: 0rem;
     --work-heading-bottom: 0rem;
+    --work-cta-height: 3.4375rem;
+    --work-cta-gap: 3rem;
     position: relative;
     isolation: isolate;
     width: 100%;
@@ -593,8 +595,8 @@ const initialWorks = galleryCategories[0].works;
   .work-gallery__cta {
     width: fit-content;
     min-width: 14.25rem;
-    min-height: 3.4375rem;
-    margin: 3rem auto 0;
+    min-height: var(--work-cta-height);
+    margin: var(--work-cta-gap) auto 0;
     transform: translateX(-1.5rem);
     padding: 0.75rem 1.5rem;
     display: flex;
@@ -620,6 +622,8 @@ const initialWorks = galleryCategories[0].works;
   @media (min-width: 40.0625rem) and (max-width: 110rem) {
     .work-gallery {
       --section-title-offset: 1.5rem;
+      --work-cta-height: 2.8125rem;
+      --work-cta-gap: 2.3125rem;
       width: calc(100% - 3rem);
       height: 58.9375rem;
       margin-inline: auto;
@@ -662,8 +666,6 @@ const initialWorks = galleryCategories[0].works;
 
     .work-gallery__cta {
       min-width: 14.125rem;
-      min-height: 2.8125rem;
-      margin-top: 2.3125rem;
       transform: none;
       font-size: 0.875rem;
     }
@@ -768,6 +770,10 @@ const initialWorks = galleryCategories[0].works;
   .work-gallery__title { position: relative; bottom: auto; order: 2; width: fit-content; margin-top: var(--section-content-gap); }
   .work-gallery__rail { bottom: var(--section-block-padding); }
   .work-gallery__grid, .work-gallery__mosaic { gap: var(--card-gap); }
+  @media (min-width: 56.0625rem) {
+    /* Ubicar el título a 15 px de las fotos, junto al botón centrado. */
+    .work-gallery__title { margin-top: calc(0.9375rem - var(--work-cta-gap) - var(--work-cta-height)); }
+  }
   @media (max-width: 40rem) {
     .work-gallery__content { width: calc(100% - var(--section-content-start)); }
     .work-gallery__title { margin-top: 0.9375rem; }

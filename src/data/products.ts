@@ -46,7 +46,11 @@ import folletosDetail2 from "../assets/products/folletos/2.webp";
 import folletosDetail3 from "../assets/products/folletos/3.webp";
 import folletosAprender from "../assets/products/folletos/aprender-jugando.webp";
 import tarjetasMain from "../assets/services/tarjetas-personales.webp";
+import tarjetasSusuStore from "../assets/products/tarjetas-personales/susu-store.webp";
 import etiquetasMain from "../assets/services/etiquetas.webp";
+import etiquetasLasMarias from "../assets/products/etiquetas/las-marias.webp";
+import etiquetasThankYou from "../assets/products/etiquetas/thank-you.webp";
+import etiquetasVanesaBoutique from "../assets/products/etiquetas/vanesa-boutique.webp";
 
 import canguroPremium1 from "../assets/products/buzo-canguro-premium/detail-1.webp";
 import canguroPremium2 from "../assets/products/buzo-canguro-premium/detail-2.webp";
@@ -61,6 +65,7 @@ import calcosVinilo4 from "../assets/products/calcos-vinilo/4.webp";
 import calcosPapel1 from "../assets/products/calcos-papel/1.webp";
 import calcosPapel2 from "../assets/products/calcos-papel/2.webp";
 import calcosPapel3 from "../assets/products/calcos-papel/3.webp";
+import calcosPapelVictoriaGoma from "../assets/products/calcos-papel/victoria-goma.webp";
 import tarjetasPhoto1 from "../assets/works/papeleria/1.webp";
 import tarjetasPhoto2 from "../assets/works/papeleria/2.webp";
 import tarjetasPhoto3 from "../assets/works/papeleria/3.webp";
@@ -181,7 +186,7 @@ export const products: Product[] = [
     sizeTable: calcoSizeTable,
     description: descriptionByType[type as string] ?? defaultProductDescription,
     gallery: slug === "calcos-papel"
-      ? [calcosPapel1, calcosPapel2, calcosPapel3]
+      ? [calcosPapel1, calcosPapel2, calcosPapel3, calcosPapelVictoriaGoma]
       : slug === "calcos-vinilo"
         ? [calcosVinilo1, calcosVinilo2, calcosVinilo3, calcosVinilo4]
         : [calcosDtf1, calcosDtf2, calcosDtf3, calcosDtf4],
@@ -355,7 +360,7 @@ export const products: Product[] = [
     pricingId: "tarjetas-personales", priceSelection: { side: "simple", quantity: "x100" },
     price: catalogPrice("tarjetas-personales", { side: "simple", quantity: "x100" }),
     options: [],
-    sizeValue: "Papel con terminación mate o brillante, de hasta 250 g.", description: "Tarjetas con acabado premium para presentar tu marca con estilo.", gallery: [tarjetasMain, tarjetasPhoto1, tarjetasPhoto2, tarjetasPhoto3, tarjetasPhoto4],
+    sizeValue: "Papel con terminación mate o brillante, de hasta 250 g.", description: "Tarjetas con acabado premium para presentar tu marca con estilo.", gallery: [tarjetasMain, tarjetasPhoto1, tarjetasPhoto2, tarjetasPhoto3, tarjetasPhoto4, tarjetasSusuStore],
   },
   {
     slug: "etiquetas",
@@ -363,7 +368,7 @@ export const products: Product[] = [
     pricingId: "etiquetas", priceSelection: { size: "xs", quantity: "x100" },
     price: catalogPrice("etiquetas", { size: "xs", quantity: "x100" }),
     options: [],
-    description: "Etiquetas con acabado profesional y gran durabilidad.", gallery: [etiquetasMain],
+    description: "Etiquetas con acabado profesional y gran durabilidad.", gallery: [etiquetasMain, etiquetasLasMarias, etiquetasThankYou, etiquetasVanesaBoutique],
   },
 ];
 

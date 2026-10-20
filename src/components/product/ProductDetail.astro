@@ -15,16 +15,13 @@ import buzoCanguroGuide from "../../assets/talles/buzo-canguro.webp";
 import buzoRedondoGuide from "../../assets/talles/buzo-cuello-redondo.webp";
 import camperaCapuchaGuide from "../../assets/talles/campera-capucha.webp";
 import chombaAlgodonGuide from "../../assets/talles/chomba-algodon.webp";
-import chombaDamaGuide from "../../assets/talles/chomba-dama.webp";
 import chombaPiqueGuide from "../../assets/talles/chomba-pique.webp";
-import remeraDamaGuide from "../../assets/talles/remera-dama.webp";
 import remeraNinoGuide from "../../assets/talles/remera-nino.webp";
 import remeraUnisexGuide from "../../assets/talles/remera-unisex.webp";
 
 const sizeGuideMap: Record<string, { image: ImageMetadata; label: string; kind: string }[]> = {
   "remera-unisex": [
     { image: remeraUnisexGuide, label: "Tabla de talles unisex", kind: "unisex" },
-    { image: remeraDamaGuide, label: "Tabla de talles dama", kind: "dama" },
   ],
   "remera-nino": [
     { image: remeraNinoGuide, label: "Tabla de talles niño", kind: "nino" },
@@ -34,11 +31,9 @@ const sizeGuideMap: Record<string, { image: ImageMetadata; label: string; kind: 
   ],
   "chomba-algodon": [
     { image: chombaAlgodonGuide, label: "Tabla de talles hombre", kind: "unisex" },
-    { image: chombaDamaGuide, label: "Tabla de talles dama", kind: "dama" },
   ],
   "chomba-pique": [
     { image: chombaPiqueGuide, label: "Tabla de talles hombre", kind: "unisex" },
-    { image: chombaDamaGuide, label: "Tabla de talles dama", kind: "dama" },
   ],
   "buzo-cuello-redondo": [
     { image: buzoRedondoGuide, label: "Tabla de talles", kind: "unisex" },

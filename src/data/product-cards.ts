@@ -21,16 +21,16 @@ export interface ProductCardData {
 
 type CardDesign = Omit<ProductCardData, "product" | "name"> & { slug: string };
 
-// Imágenes y orden del nodo 1144:2781. Los precios pertenecen a pricing.ts.
+// Imágenes del nodo 1144:2781, con prendas de verano primero. Los precios pertenecen a pricing.ts.
 const printingDesigns: CardDesign[] = [
-  { slug: "buzo-cuello-redondo", description: "Buzo cuello redondo de algodón con frisa clásica", image: crewneck, highlighted: true },
-  { slug: "buzo-canguro", description: "Canguro de algodón con frisa clásica", image: hoodie },
-  { slug: "gorra-trucker", description: "Gorras trucker sublimadas o estampadas con DTF", image: cap },
-  { slug: "campera-capucha", description: "Campera de algodón con frisa clásica con capucha y cierre", image: jacket, highlighted: true },
   { slug: "remera-unisex", description: "Remera de manga corta de algodón peinado 24.1", image: shirt },
-  { slug: "chomba-pique", description: "Piqué de algodón con cuello polo y botones", image: polo },
   { slug: "remera-nino", description: "Remera de manga corta de algodón peinado 24.1", image: shirt },
   { slug: "remera-egresadito", description: "Remera de manga corta de algodón peinado 24.1", image: graduate, highlighted: true },
+  { slug: "chomba-pique", description: "Piqué de algodón con cuello polo y botones", image: polo },
+  { slug: "gorra-trucker", description: "Gorras trucker sublimadas o estampadas con DTF", image: cap },
+  { slug: "buzo-cuello-redondo", description: "Buzo cuello redondo de algodón con frisa clásica", image: crewneck, highlighted: true },
+  { slug: "buzo-canguro", description: "Canguro de algodón con frisa clásica", image: hoodie },
+  { slug: "campera-capucha", description: "Campera de algodón con frisa clásica con capucha y cierre", image: jacket, highlighted: true },
   { slug: "buzo-canguro-nino", description: "Buzo canguro infantil con frisa clásica", image: hoodie },
 ];
 

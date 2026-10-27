@@ -48,7 +48,10 @@ export function initHeroProducts() {
       const extents = indices.map((index) => {
         const image = items[index].querySelector("img")!;
         const bounds = silhouettes.get(image) ?? { left: 0, right: 1 };
-        const renderedWidth = Math.min(width * 0.64, height * (image.naturalWidth / image.naturalHeight || 1));
+        const style = getComputedStyle(items[index]);
+        const imageWidth = Number(style.getPropertyValue("--image-width")) || 1;
+        const imageHeight = Number(style.getPropertyValue("--image-height")) || 1;
+        const renderedWidth = Math.min(width * 0.64 * imageWidth, height * imageHeight * (image.naturalWidth / image.naturalHeight || 1));
         return { left: (0.5 - bounds.left) * renderedWidth, right: (bounds.right - 0.5) * renderedWidth };
       });
       // Only reduce a pair that collides, by the exact factor needed for its gap.

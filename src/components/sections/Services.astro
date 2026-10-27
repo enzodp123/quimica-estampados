@@ -34,7 +34,7 @@ const services = [
   },
   {
     name: "Etiquetas",
-    description: "Terminación mate (sin brillo) o brillante. Ideales para profesionales, comercios y emprendimientos.",
+    description: "Terminación mate (sin brillo) o brillante. Ideales para comercios y emprendimientos.",
     image: labels,
     imageAlt: "Etiquetas colgantes impresas para productos",
     imagePosition: "50% 50%",
@@ -45,8 +45,6 @@ const services = [
 
 <section id="servicios" class="services" aria-labelledby="services-heading">
   <BackgroundText />
-
-  <div class="services__rail" aria-hidden="true">Servicios</div>
 
   <div class="services__content">
     <div class="services__intro">
@@ -96,7 +94,10 @@ const services = [
       </article>
     </div>
 
-    <h2 id="services-heading" class="services__title">Potenciamos<br />tu marca</h2>
+    <div class="services__heading">
+      <div class="services__rail" aria-hidden="true">Servicios</div>
+      <h2 id="services-heading" class="services__title">Potenciamos<br />tu marca</h2>
+    </div>
   </div>
 </section>
 
@@ -782,8 +783,12 @@ const services = [
     }
     .services__grid { grid-column: 1 / -1; position: static; width: 100%; min-width: 0; }
     .services__extras { grid-column: 2; grid-row: 2; position: static; width: 100%; margin: 0; }
-    .services__title { grid-column: 1; grid-row: 2; position: static; }
-    .services__rail { bottom: 0; }
+    .services__heading {
+      grid-column: 1;
+      grid-row: 2;
+      align-self: start;
+      margin-top: calc(0.9375rem - 2.5rem);
+    }
   }
 
   @media (min-width: 80.0625rem) and (max-width: 110rem) {
@@ -792,12 +797,18 @@ const services = [
 
   @media (min-width: 56.0625rem) and (max-width: 80rem) {
     .services { padding: 3rem 0; }
-    .services__rail { bottom: 3rem; }
   }
 
   @media (max-width: 56rem) {
     .services { padding-bottom: 3rem; }
-    .services__title { position: static; margin-top: 0.5rem; }
+    .services__heading { margin-top: 0.5rem; }
+  }
+
+  .services__heading { position: relative; }
+  .services__title { position: static; margin-top: 0; }
+  .services__rail {
+    left: calc(0rem - var(--section-title-rail-size) - var(--section-title-gap));
+    bottom: 0;
   }
 
 </style>

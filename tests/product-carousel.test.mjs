@@ -4,8 +4,8 @@ import test from "node:test";
 import { getCarouselTarget } from "../src/scripts/product-carousel.ts";
 
 const featuredSlugs = [
-  "buzo-cuello-redondo", "buzo-canguro", "gorra-trucker", "campera-capucha",
-  "remera-unisex", "chomba-pique", "remera-nino", "remera-egresadito", "buzo-canguro-nino",
+  "remera-unisex", "remera-nino", "remera-egresadito", "chomba-pique", "gorra-trucker",
+  "buzo-cuello-redondo", "buzo-canguro", "campera-capucha", "buzo-canguro-nino",
 ];
 const trackContent = (html, id) => html.match(new RegExp(`<section\\b[^>]*id="${id}"[^>]*>([\\s\\S]*?)</section>`))?.[1] ?? "";
 const getCards = (html) => [...html.matchAll(/<a\b[^>]*data-product-card="([^"]+)"[^>]*>[\s\S]*?<\/a>/g)];
@@ -31,7 +31,7 @@ test("las flechas se adaptan a anchos móviles y desplazamientos táctiles parci
   assert.equal(getCarouselTarget([], 0, 0, -1), 0);
 });
 
-test("Impresiones publica las nueve tarjetas del Figma en su orden y con precios de la fuente", () => {
+test("Impresiones publica las nueve tarjetas priorizando verano y con precios de la fuente", () => {
   const html = readFileSync("dist/index.html", "utf8");
   const content = trackContent(html, "featured-products-track");
   const cards = getCards(content);

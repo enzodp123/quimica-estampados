@@ -31,7 +31,7 @@ import buzoRedondo1 from "../assets/products/buzo-cuello-redondo/detail-1.webp";
 import buzoRedondo2 from "../assets/products/buzo-cuello-redondo/detail-2.webp";
 import canguroMain from "../assets/products/buzo-canguro/main.webp";
 import canguro1 from "../assets/products/buzo-canguro/detail-1.webp";
-import canguro2 from "../assets/products/buzo-canguro/detail-2.webp";
+import canguro2 from "../assets/products/buzo-canguro/walos.jpeg";
 import canguroNinoMain from "../assets/products/buzo-canguro-nino/main.webp";
 import canguroNino1 from "../assets/products/buzo-canguro-nino/detail-1.webp";
 import canguroNino2 from "../assets/products/buzo-canguro-nino/detail-2.webp";

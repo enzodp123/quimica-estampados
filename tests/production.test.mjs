@@ -72,7 +72,7 @@ test("las galerías distinguen los productos y los servicios muestran trabajos d
   assert.notDeepEqual(gallerySources("buzo-canguro"), gallerySources("buzo-canguro-premium"));
   assert.match(routeMap.get("/productos/buzo-canguro-premium/").html, /href="\/images\/talles\/buzo-canguro-premium\.webp"/);
   const egresaditoSources = gallerySources("remera-egresadito");
-  assert.equal(egresaditoSources.length, 4);
+  assert.equal(egresaditoSources.length, 5);
   assert.ok(egresaditoSources[0].includes("eva."));
   assert.ok(egresaditoSources.every((source) => !source.includes("design-2026")));
   const garmentDetails = new Set(gallerySources("remera-unisex").slice(1));

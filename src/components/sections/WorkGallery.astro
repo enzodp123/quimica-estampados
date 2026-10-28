@@ -33,6 +33,7 @@ type Work = {
   label: string;
   image: typeof work1;
   imagePosition?: string;
+  rotated?: boolean;
 };
 
 type WorkCategory = {
@@ -72,7 +73,7 @@ const workCategories: WorkCategory[] = [
     label: "Papelería",
     figmaNode: "1033:2254",
     works: [
-      { label: "Tarjetas personales azules", image: papeleria1 },
+      { label: "Etiquetas azules Thank you", image: papeleria1, rotated: true },
       { label: "Tarjetas personales color coral", image: papeleria2 },
       { label: "Tarjetas para cerrajería", image: papeleria3 },
       { label: "Tarjetas personales grises", image: papeleria4 },
@@ -167,25 +168,27 @@ const initialWorks = galleryCategories[0].works;
         hidden={categoryIndex !== 0}
       >
         <div class="work-gallery__mosaic">
-          {category.works.slice(0, 2).map(({ label, image, imagePosition }, index) => (
+          {category.works.slice(0, 2).map(({ label, image, imagePosition, rotated }, index) => (
             <button
-              class:list={["work-gallery__media", `work-gallery__media--${index + 1}`]}
+              class:list={["work-gallery__media", `work-gallery__media--${index + 1}`, { "is-rotated": rotated }]}
               type="button"
               data-work-image
               data-image-src={category.works[index].lightboxSrc}
               data-image-alt={label}
+              data-image-rotated={rotated ? "true" : undefined}
               aria-label={`Ampliar ${label}`}
             >
               <Image class="work-gallery__image" src={image} alt={label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 40vw" quality={75} style={imagePosition ? `object-position: ${imagePosition};` : undefined} />
             </button>
           ))}
-          {category.works.slice(2, 4).map(({ label, image, imagePosition }, index) => (
+          {category.works.slice(2, 4).map(({ label, image, imagePosition, rotated }, index) => (
             <button
-              class:list={["work-gallery__media", `work-gallery__media--${index + 4}`]}
+              class:list={["work-gallery__media", `work-gallery__media--${index + 4}`, { "is-rotated": rotated }]}
               type="button"
               data-work-image
               data-image-src={category.works[index + 2].lightboxSrc}
               data-image-alt={label}
+              data-image-rotated={rotated ? "true" : undefined}
               aria-label={`Ampliar ${label}`}
             >
               <Image class="work-gallery__image" src={image} alt={label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 40vw" quality={75} style={imagePosition ? `object-position: ${imagePosition};` : undefined} />
@@ -194,11 +197,12 @@ const initialWorks = galleryCategories[0].works;
         </div>
 
         <button
-          class="work-gallery__media work-gallery__media--3"
+          class:list={["work-gallery__media", "work-gallery__media--3", { "is-rotated": category.works[4].rotated }]}
           type="button"
           data-work-image
           data-image-src={category.works[4].lightboxSrc}
           data-image-alt={category.works[4].label}
+          data-image-rotated={category.works[4].rotated ? "true" : undefined}
           aria-label={`Ampliar ${category.works[4].label}`}
         >
           <Image class="work-gallery__image" src={category.works[4].image} alt={category.works[4].label} loading="lazy" widths={[480, 720, 960]} sizes="(max-width: 42rem) 100vw, 28vw" quality={75} style={category.works[4].imagePosition ? `object-position: ${category.works[4].imagePosition};` : undefined} />
@@ -251,6 +255,7 @@ const initialWorks = galleryCategories[0].works;
     if (request !== imageRequest) return;
     workLightboxImage.src = image.src;
     workLightboxImage.alt = item.dataset.imageAlt ?? "Trabajo realizado";
+    workLightbox.querySelector(".work-lightbox__frame")?.classList.toggle("is-rotated", item.dataset.imageRotated === "true");
     if (workStatus) workStatus.textContent = `${selectedIndex + 1} / ${activeImages.length}`;
     if (!workLightbox.open) {
       document.documentElement.classList.add("has-open-lightbox");
@@ -487,6 +492,18 @@ const initialWorks = galleryCategories[0].works;
     pointer-events: none;
   }
 
+  .work-gallery__media.is-rotated {
+    container-type: size;
+  }
+
+  .work-gallery__media.is-rotated .work-gallery__image {
+    inset: 50% auto auto 50%;
+    width: 100cqh;
+    height: 100cqw;
+    max-width: none;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
   .work-gallery__media:hover::after,
   .work-gallery__media:focus-visible::after { opacity: 0; }
 
@@ -502,6 +519,8 @@ const initialWorks = galleryCategories[0].works;
   }
 
   .work-lightbox {
+    --lightbox-image-width: min(34.01vw, 40.8125rem);
+    --lightbox-image-height: min(63.28dvh, 42rem);
     position: fixed;
     inset: 0;
     z-index: 100;
@@ -558,10 +577,19 @@ const initialWorks = galleryCategories[0].works;
   .work-lightbox__image {
     width: auto;
     height: auto;
-    max-width: min(34.01vw, 40.8125rem);
-    max-height: min(63.28dvh, 42rem);
+    max-width: var(--lightbox-image-width);
+    max-height: var(--lightbox-image-height);
     display: block;
     object-fit: contain;
+  }
+
+  .work-lightbox__frame.is-rotated {
+    transform: rotate(90deg);
+  }
+
+  .work-lightbox__frame.is-rotated .work-lightbox__image {
+    max-width: var(--lightbox-image-height);
+    max-height: var(--lightbox-image-width);
   }
 
   :global(html) { scrollbar-gutter: stable; }
@@ -744,9 +772,9 @@ const initialWorks = galleryCategories[0].works;
     .work-lightbox__close { top: 1.5rem; right: 1rem; }
     .work-lightbox__arrow { top: auto; bottom: 1rem; transform: none; }
     .work-lightbox__close { width: 2.75rem; height: 2.75rem; }
-    .work-lightbox__image {
-      max-width: calc(100vw - 2rem - 0.25rem);
-      max-height: min(72dvh, 42rem);
+    .work-lightbox {
+      --lightbox-image-width: calc(100vw - 2rem - 0.25rem);
+      --lightbox-image-height: min(72dvh, 42rem);
     }
   }
 

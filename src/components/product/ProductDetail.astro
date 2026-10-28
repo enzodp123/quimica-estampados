@@ -76,6 +76,7 @@ const allSlides = [
     label: "",
     kind: "",
     hasGarmentOutline: hasGarmentOutline && image === product.heroImage,
+    rotated: product.rotatedGalleryImages?.includes(image) ?? false,
   })),
   ...sizeGuides.map((guide) => ({
     image: guide.image,
@@ -83,6 +84,7 @@ const allSlides = [
     label: guide.label,
     kind: guide.kind,
     hasGarmentOutline: false,
+    rotated: false,
   })),
 ];
 
@@ -136,7 +138,7 @@ const relatedProducts = getRecommendationCards(product);
               aria-pressed={index === 0 ? "true" : "false"}
             >
               <img
-                class:list={{ "has-garment-outline": item.hasGarmentOutline }}
+                class:list={{ "has-garment-outline": item.hasGarmentOutline, "is-rotated": item.rotated }}
                 src={item.thumb.src}
                 alt=""
                 loading={index === 0 ? "eager" : "lazy"}
@@ -185,7 +187,7 @@ const relatedProducts = getRecommendationCards(product);
               data-size-kind={item.kind}
             >
               <img
-                class:list={{ "has-garment-outline": item.hasGarmentOutline }}
+                class:list={{ "has-garment-outline": item.hasGarmentOutline, "is-rotated": item.rotated }}
                 src={item.main.src}
                 alt={item.isSizeGuide ? item.label : index === 0 ? product.title : `${product.title}, imagen ${index + 1}`}
                 loading={index === 0 ? "eager" : "lazy"}
@@ -693,6 +695,18 @@ const relatedProducts = getRecommendationCards(product);
   .product-gallery__slide--size-guide {
     background: #141414;
     padding: 1.25rem;
+  }
+
+  .product-page--buzo-canguro-premium .product-gallery__slide:not(.product-gallery__slide--size-guide) img,
+  .product-gallery__slide img.is-rotated {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .product-gallery__thumb img.is-rotated,
+  .product-gallery__slide img.is-rotated {
+    transform: rotate(90deg);
   }
 
   .product-gallery__slide--size-guide img {

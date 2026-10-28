@@ -20,6 +20,7 @@ import egresaditoMain from "../assets/products/remera-egresadito/eva.webp";
 import egresadito1 from "../assets/products/remera-egresadito/detail-1.webp";
 import egresadito2 from "../assets/products/remera-egresadito/detail-2.webp";
 import egresadito3 from "../assets/products/remera-egresadito/detail-3.webp";
+import egresaditoDibujos from "../assets/products/remera-egresadito/dibujos-y-nombres.jpeg";
 import chombaAlgodonMain from "../assets/products/chomba-algodon/main.webp";
 import chombaAlgodon1 from "../assets/products/chomba-algodon/detail-1.webp";
 import chombaAlgodon2 from "../assets/products/chomba-algodon/detail-2.webp";
@@ -66,10 +67,8 @@ import calcosPapel1 from "../assets/products/calcos-papel/1.webp";
 import calcosPapel2 from "../assets/products/calcos-papel/2.webp";
 import calcosPapel3 from "../assets/products/calcos-papel/3.webp";
 import calcosPapelVictoriaGoma from "../assets/products/calcos-papel/victoria-goma.webp";
-import tarjetasPhoto1 from "../assets/works/papeleria/1.webp";
 import tarjetasPhoto2 from "../assets/works/papeleria/2.webp";
 import tarjetasPhoto3 from "../assets/works/papeleria/3.webp";
-import tarjetasPhoto4 from "../assets/works/papeleria/4.webp";
 
 export interface ProductChoice {
   label: string;
@@ -106,6 +105,8 @@ export interface Product {
   description: string;
   sizeTable?: string[];
   gallery: ImageMetadata[];
+  /** Photos displayed with a 90-degree clockwise rotation. */
+  rotatedGalleryImages?: ImageMetadata[];
   heroImage?: ImageMetadata;
 }
 
@@ -249,7 +250,7 @@ export const products: Product[] = [
     sizeGuide: "/images/talles/remera-nino.webp",
     description: "Remera de manga corta de algodón peinado 24.1, con terminaciones premium como tapacostura en el cuello y refuerzo de costura en los hombros.",
     heroImage: egresaditoMain,
-    gallery: [egresadito1, egresadito2, egresadito3, egresaditoMain],
+    gallery: [egresadito1, egresadito2, egresadito3, egresaditoDibujos, egresaditoMain],
   },
   {
     slug: "chomba-algodon",
@@ -306,7 +307,7 @@ export const products: Product[] = [
     options: [],
     sizeLabel: "Talles", sizeValue: "Del 1 al 5",
     sizeGuide: "/images/talles/buzo-canguro-premium.webp",
-    description: "Canguro de algodón con frisa: con terminaciones premium, tapacostura en el cuello y refuerzo de costura en hombros; precio correspondiente a estampado chico adelante y media espalda.",
+    description: "Canguro de algodón con frisa invisible y capucha forrada, con terminaciones premium, tapacostura en el cuello y refuerzo de costura en hombros. Precio correspondiente a estampado chico adelante y media espalda.",
     heroImage: canguroMain,
     gallery: [canguroPremium1, canguroPremium2, canguroMain],
   },
@@ -357,7 +358,7 @@ export const products: Product[] = [
     pricingId: "tarjetas-personales", priceSelection: { side: "simple", quantity: "x100" },
     price: catalogPrice("tarjetas-personales", { side: "simple", quantity: "x100" }),
     options: [],
-    sizeValue: "Papel con terminación mate o brillante, de hasta 250 g.", description: "Tarjetas con acabado premium para presentar tu marca con estilo.", gallery: [tarjetasMain, tarjetasPhoto1, tarjetasPhoto2, tarjetasPhoto3, tarjetasPhoto4, tarjetasSusuStore],
+    sizeValue: "Papel con terminación mate o brillante, de hasta 250 g.", description: "Tarjetas con acabado premium para presentar tu marca con estilo.", gallery: [tarjetasMain, tarjetasPhoto2, tarjetasPhoto3, tarjetasSusuStore],
   },
   {
     slug: "etiquetas",
@@ -366,6 +367,7 @@ export const products: Product[] = [
     price: catalogPrice("etiquetas", { size: "xs", quantity: "x100" }),
     options: [],
     description: "Etiquetas con acabado profesional y gran durabilidad.", gallery: [etiquetasMain, etiquetasLasMarias, etiquetasThankYou, etiquetasVanesaBoutique],
+    rotatedGalleryImages: [etiquetasThankYou],
   },
 ];
 

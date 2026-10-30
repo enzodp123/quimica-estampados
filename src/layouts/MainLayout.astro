@@ -71,7 +71,6 @@ const structuredData = {
     <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)}></script>
   </head>
   <body id="page-top" class:list={{ "product-route": Astro.url.pathname.startsWith("/productos/") }}>
-    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
     <slot />
     <FloatingActions />
   </body>

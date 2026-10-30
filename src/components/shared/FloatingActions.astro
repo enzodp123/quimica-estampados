@@ -32,7 +32,7 @@ import { whatsappUrl } from "../../data/site";
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
     });
     if (event.detail === 0) {
-      document.querySelector<HTMLAnchorElement>(".skip-link")?.focus({ preventScroll: true });
+      document.querySelector<HTMLAnchorElement>(".site-header .brand")?.focus({ preventScroll: true });
     }
   });
 </script>

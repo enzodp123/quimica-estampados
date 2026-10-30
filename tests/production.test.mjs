@@ -50,7 +50,7 @@ test("cada documento tiene metadatos y landmarks básicos", () => {
     assert.match(html, /<link\s[^>]*rel="icon"/i, path);
     assert.equal((html.match(/<main\b/gi) ?? []).length, 1, path);
     assert.equal((html.match(/<h1\b/gi) ?? []).length, 1, path);
-    assert.match(html, /class="skip-link"\s+href="#main-content"/i, path);
+    assert.match(html, /<main\b[^>]*\bid="main-content"/i, path);
     assert.doesNotMatch(html, /href="#"|action="#"/i, path);
     assert.doesNotMatch(html, /Ã.|Â.|â€|�/, path);
   }

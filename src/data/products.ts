@@ -54,7 +54,7 @@ import etiquetasThankYou from "../assets/products/etiquetas/thank-you.webp";
 import etiquetasVanesaBoutique from "../assets/products/etiquetas/vanesa-boutique.webp";
 
 import canguroPremium1 from "../assets/products/buzo-canguro-premium/detail-1.webp";
-import canguroPremium2 from "../assets/products/buzo-canguro-premium/detail-2.webp";
+import canguroPremium2 from "../assets/products/buzo-canguro-premium/detail-2.jpeg";
 import calcosDtf1 from "../assets/products/calcos-dtf-uv/1.webp";
 import calcosDtf2 from "../assets/products/calcos-dtf-uv/2.webp";
 import calcosDtf3 from "../assets/products/calcos-dtf-uv/3.webp";

@@ -6,6 +6,8 @@ import { priceCatalog } from "../../data/pricing";
 import shirt from "../../assets/images/remera_home_blanca.webp";
 import hoodie from "../../assets/images/hero-hoodie.webp";
 import cap from "../../assets/products/gorra-trucker/angled-2026.webp";
+import graduate from "../../assets/products/remera-egresadito/eva.webp";
+import crewneck from "../../assets/products/buzo-cuello-redondo/main.webp";
 import type { ImageMetadata } from "astro";
 
 // Each garment appears once; size and fabric variants share its hero slide.
@@ -21,6 +23,8 @@ const heroImages: Record<string, ImageMetadata> = {
   "buzo-canguro": hoodie,
   "remera-unisex": shirt,
   "gorra-trucker": cap,
+  "remera-egresadito": graduate,
+  "buzo-cuello-redondo": crewneck,
 };
 ---
 

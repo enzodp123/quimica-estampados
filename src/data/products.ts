@@ -6,9 +6,11 @@ import {
   type PriceCatalogId,
 } from "./pricing";
 
-import unisexMain from "../assets/products/remera-unisex/main.webp";
-import unisexDetail1 from "../assets/products/remera-unisex/detail-1.webp";
-import unisexDetail2 from "../assets/products/remera-unisex/detail-2.webp";
+import unisexLilas from "../assets/products/remera-unisex/remeras-lilas-estampadas.webp";
+import unisexCuelloBlanco from "../assets/products/remera-unisex/detalle-cuello-blanco.webp";
+import unisexCuelloNegro from "../assets/products/remera-unisex/detalle-cuello-negro.webp";
+import unisexLaFonda from "../assets/products/remera-unisex/estampado-la-fonda.webp";
+import unisexBlancasYNegras from "../assets/products/remera-unisex/remeras-blancas-y-negras.webp";
 import gorraMain from "../assets/products/gorra-trucker/angled-2026.webp";
 import gorra1 from "../assets/products/gorra-trucker/detail-1.webp";
 import gorra3 from "../assets/products/gorra-trucker/detail-3.webp";
@@ -16,22 +18,26 @@ import gorraPromo from "../assets/products/gorra-trucker/promo-25.webp";
 import ninoMain from "../assets/products/remera-nino/main.webp";
 import nino1 from "../assets/products/remera-nino/detail-1.webp";
 import nino2 from "../assets/products/remera-nino/detail-2.webp";
-import egresaditoMain from "../assets/products/remera-egresadito/eva.webp";
-import egresadito1 from "../assets/products/remera-egresadito/detail-1.webp";
-import egresadito2 from "../assets/products/remera-egresadito/detail-2.webp";
-import egresadito3 from "../assets/products/remera-egresadito/detail-3.webp";
-import egresaditoDibujos from "../assets/products/remera-egresadito/dibujos-y-nombres.jpeg";
+import egresaditoColorin from "../assets/products/remera-egresadito/colorin-colorado.webp";
+import egresaditoCuello from "../assets/products/remera-egresadito/detalle-cuello-tapacostura.webp";
+import egresaditoDibujo from "../assets/products/remera-egresadito/dibujo-original-estampado.webp";
+import egresaditoNaranjas from "../assets/products/remera-egresadito/remeras-naranjas-frente-espalda.webp";
+import egresaditoIniciales from "../assets/products/remera-egresadito/iniciales-personalizadas.webp";
 import chombaAlgodonMain from "../assets/products/chomba-algodon/main.webp";
 import chombaAlgodon1 from "../assets/products/chomba-algodon/detail-1.webp";
 import chombaAlgodon2 from "../assets/products/chomba-algodon/detail-2.webp";
 import chombaAlgodon3 from "../assets/products/chomba-algodon/detail-3.webp";
 import chombaAlgodon4 from "../assets/products/chomba-algodon/detail-4.webp";
-import buzoRedondoMain from "../assets/products/buzo-cuello-redondo/main.webp";
-import buzoRedondo1 from "../assets/products/buzo-cuello-redondo/detail-1.webp";
-import buzoRedondo2 from "../assets/products/buzo-cuello-redondo/detail-2.webp";
-import canguroMain from "../assets/products/buzo-canguro/main.webp";
-import canguro1 from "../assets/products/buzo-canguro/detail-1.webp";
-import canguro2 from "../assets/products/buzo-canguro/walos.jpeg";
+import buzoRedondoColores from "../assets/products/buzo-cuello-redondo/farmacia-colores.webp";
+import buzoRedondoCuello from "../assets/products/buzo-cuello-redondo/detalle-cuello-costuras.webp";
+import buzoRedondoVaron from "../assets/products/buzo-cuello-redondo/el-varon-rojo-negro.webp";
+import buzoRedondoRosa from "../assets/products/buzo-cuello-redondo/riddles-rosa.webp";
+import buzoRedondoLoteria from "../assets/products/buzo-cuello-redondo/loteria-frente-espalda.webp";
+import canguroAqua from "../assets/products/buzo-canguro/aqua-azul.webp";
+import canguroCosturas from "../assets/products/buzo-canguro/detalle-costuras-lila.webp";
+import canguroLila from "../assets/products/buzo-canguro/pocas-pulgas-lila.webp";
+import canguroKinexa from "../assets/products/buzo-canguro/kinexa-personalizados.webp";
+import canguroEterea from "../assets/products/buzo-canguro/eterea-frente-espalda.webp";
 import canguroNinoMain from "../assets/products/buzo-canguro-nino/main.webp";
 import canguroNino1 from "../assets/products/buzo-canguro-nino/detail-1.webp";
 import canguroNino2 from "../assets/products/buzo-canguro-nino/detail-2.webp";
@@ -53,8 +59,11 @@ import etiquetasLasMarias from "../assets/products/etiquetas/las-marias.webp";
 import etiquetasThankYou from "../assets/products/etiquetas/thank-you.webp";
 import etiquetasVanesaBoutique from "../assets/products/etiquetas/vanesa-boutique.webp";
 
-import canguroPremium1 from "../assets/products/buzo-canguro-premium/detail-1.webp";
-import canguroPremium2 from "../assets/products/buzo-canguro-premium/detail-2.jpeg";
+import canguroPremiumCompleto from "../assets/products/buzo-canguro-premium/buzo-7139.webp";
+import canguroPremiumCapucha from "../assets/products/buzo-canguro-premium/detalle-capucha.webp";
+import canguroPremiumEstampado from "../assets/products/buzo-canguro-premium/detalle-estampado.webp";
+import canguroPremiumDoblado from "../assets/products/buzo-canguro-premium/buzo-9993.webp";
+import canguroPremiumConjunto from "../assets/products/buzo-canguro-premium/buzo-0827.webp";
 import calcosDtf1 from "../assets/products/calcos-dtf-uv/1.webp";
 import calcosDtf2 from "../assets/products/calcos-dtf-uv/2.webp";
 import calcosDtf3 from "../assets/products/calcos-dtf-uv/3.webp";
@@ -144,8 +153,7 @@ export const products: Product[] = [
     sizeValue: "Del 1 al 10",
     sizeGuide: "/images/talles/remera-unisex.webp",
     description: "Remera de manga corta de algodón peinado 24.1, con terminaciones premium como tapacostura en el cuello y refuerzo de costura en los hombros.",
-    heroImage: unisexMain,
-    gallery: [unisexDetail1, unisexDetail2, unisexMain],
+    gallery: [unisexLilas, unisexCuelloBlanco, unisexCuelloNegro, unisexLaFonda, unisexBlancasYNegras],
   },
   ...[
     ["calcos-papel", "1033:2504", "Papel"],
@@ -249,8 +257,7 @@ export const products: Product[] = [
     sizeValue: "Del 4 al 18",
     sizeGuide: "/images/talles/remera-nino.webp",
     description: "Remera de manga corta de algodón peinado 24.1, con terminaciones premium como tapacostura en el cuello y refuerzo de costura en los hombros.",
-    heroImage: egresaditoMain,
-    gallery: [egresadito1, egresadito2, egresadito3, egresaditoDibujos, egresaditoMain],
+    gallery: [egresaditoColorin, egresaditoCuello, egresaditoDibujo, egresaditoNaranjas, egresaditoIniciales],
   },
   {
     slug: "chomba-algodon",
@@ -286,8 +293,7 @@ export const products: Product[] = [
     options: [], colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
     sizeGuide: "/images/talles/buzo-cuello-redondo.webp",
     description: "Buzo cuello redondo de algodón con frisa clásica: con terminaciones premium, tapacostura en el cuello y refuerzo de costura en hombros; precio correspondiente a estampado chico adelante y media espalda.",
-    heroImage: buzoRedondoMain,
-    gallery: [buzoRedondo1, buzoRedondo2, buzoRedondoMain],
+    gallery: [buzoRedondoColores, buzoRedondoCuello, buzoRedondoVaron, buzoRedondoRosa, buzoRedondoLoteria],
   },
   {
     slug: "buzo-canguro",
@@ -297,8 +303,7 @@ export const products: Product[] = [
     colorLabel: "Colores flash", colors: ["#efefec", "#545454", "#0e0e0e"], sizeLabel: "Talles", sizeValue: "Del 1 al 10",
     sizeGuide: "/images/talles/buzo-canguro.webp",
     description: "Canguro de algodón con frisa clásica, con terminaciones de tapacostura en cuello y refuerzo en hombros; precio correspondiente a estampado chico adelante y media espalda.",
-    heroImage: canguroMain,
-    gallery: [canguro1, canguro2, canguroMain],
+    gallery: [canguroAqua, canguroCosturas, canguroLila, canguroKinexa, canguroEterea],
   },
   {
     slug: "buzo-canguro-premium",
@@ -308,8 +313,7 @@ export const products: Product[] = [
     sizeLabel: "Talles", sizeValue: "Del 1 al 5",
     sizeGuide: "/images/talles/buzo-canguro-premium.webp",
     description: "Canguro de algodón con frisa invisible y capucha forrada, con terminaciones premium, tapacostura en el cuello y refuerzo de costura en hombros. Precio correspondiente a estampado chico adelante y media espalda.",
-    heroImage: canguroMain,
-    gallery: [canguroPremium1, canguroPremium2, canguroMain],
+    gallery: [canguroPremiumCompleto, canguroPremiumCapucha, canguroPremiumEstampado, canguroPremiumDoblado, canguroPremiumConjunto],
   },
   {
     slug: "buzo-canguro-nino",

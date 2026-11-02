@@ -5,7 +5,7 @@ import { getCarouselTarget } from "../src/scripts/product-carousel.ts";
 
 const featuredSlugs = [
   "remera-unisex", "remera-nino", "remera-egresadito", "chomba-pique", "gorra-trucker",
-  "buzo-cuello-redondo", "buzo-canguro", "campera-capucha", "buzo-canguro-nino",
+  "buzo-cuello-redondo", "buzo-canguro", "buzo-canguro-premium", "campera-capucha", "buzo-canguro-nino",
 ];
 const trackContent = (html, id) => html.match(new RegExp(`<section\\b[^>]*id="${id}"[^>]*>([\\s\\S]*?)</section>`))?.[1] ?? "";
 const getCards = (html) => [...html.matchAll(/<a\b[^>]*data-product-card="([^"]+)"[^>]*>[\s\S]*?<\/a>/g)];
@@ -31,7 +31,7 @@ test("las flechas se adaptan a anchos móviles y desplazamientos táctiles parci
   assert.equal(getCarouselTarget([], 0, 0, -1), 0);
 });
 
-test("Impresiones publica las nueve tarjetas priorizando verano y con precios de la fuente", () => {
+test("Impresiones publica las diez tarjetas priorizando verano y con precios de la fuente", () => {
   const html = readFileSync("dist/index.html", "utf8");
   const content = trackContent(html, "featured-products-track");
   const cards = getCards(content);
@@ -44,6 +44,7 @@ test("Impresiones publica las nueve tarjetas priorizando verano y con precios de
   }
   const expectedPrices = {
     "buzo-cuello-redondo": "$152.500", "buzo-canguro": "$185.000",
+    "buzo-canguro-premium": "$215.000",
     "gorra-trucker": "$47.500", "campera-capucha": "$215.000",
     "remera-unisex": "$120.000", "chomba-pique": "$165.000", "remera-nino": "$95.000", "buzo-canguro-nino": "$170.000",
   };
@@ -61,7 +62,7 @@ test("cada ficha recomienda productos publicados y excluye el producto actual", 
     const html = readFileSync(`dist/productos/${slug}/index.html`, "utf8");
     const cards = getCards(trackContent(html, "related-products-track"));
     const slugs = cards.map((match) => match[1]);
-    assert.equal(slugs.length, featuredSlugs.includes(slug) ? 8 : 9, slug);
+    assert.equal(slugs.length, featuredSlugs.includes(slug) ? 9 : 10, slug);
     assert.equal(new Set(slugs).size, slugs.length, slug);
     assert.equal(slugs.includes(slug), false, slug);
     assert.ok(slugs.every((value) => featuredSlugs.includes(value)), slug);

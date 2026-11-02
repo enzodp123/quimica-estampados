@@ -1,7 +1,7 @@
 const normalizePhone = (value: string) => value.replace(/\D/g, "");
 
 const whatsappNumber = normalizePhone(
-  import.meta.env.PUBLIC_WHATSAPP_NUMBER || "5493431234567",
+  import.meta.env.PUBLIC_WHATSAPP_NUMBER || "5493436616313",
 );
 
 export const siteConfig = {
@@ -16,7 +16,7 @@ export const siteConfig = {
   },
   whatsapp: {
     number: whatsappNumber,
-    display: import.meta.env.PUBLIC_WHATSAPP_DISPLAY || "+54 9 343 123 4567",
+    display: import.meta.env.PUBLIC_WHATSAPP_DISPLAY || "+54 9 3436 61-6313",
   },
   social: {
     instagram:

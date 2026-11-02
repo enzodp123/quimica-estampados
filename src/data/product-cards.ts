@@ -30,6 +30,7 @@ const printingDesigns: CardDesign[] = [
   { slug: "gorra-trucker", description: "Gorras trucker sublimadas o estampadas con DTF", image: cap },
   { slug: "buzo-cuello-redondo", description: "Buzo cuello redondo de algodón con frisa clásica", image: crewneck, highlighted: true },
   { slug: "buzo-canguro", description: "Canguro de algodón con frisa clásica", image: hoodie },
+  { slug: "buzo-canguro-premium", description: "buzo de algodón con friza invisible", image: hoodie },
   { slug: "campera-capucha", description: "Campera de algodón con frisa clásica con capucha y cierre", image: jacket, highlighted: true },
   { slug: "buzo-canguro-nino", description: "Buzo canguro infantil con frisa clásica", image: hoodie },
 ];

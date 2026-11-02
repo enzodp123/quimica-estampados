@@ -143,7 +143,6 @@ const benefits = [
     .benefits {
       width: calc(100% - 1.5rem);
       height: auto;
-      min-height: 58.8125rem;
       margin-inline: auto;
       padding-block: 3.25rem 3rem;
     }
@@ -151,15 +150,13 @@ const benefits = [
     .benefits__inner {
       width: 100%;
       height: auto;
-      min-height: 52.5625rem;
-      grid-template-columns: 1fr;
-      align-content: space-between;
-      gap: 0;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem 1rem;
     }
 
     .benefit {
       width: 100%;
-      padding-inline: 0 50%;
+      padding-inline: 0.25rem;
       text-align: center;
     }
 
@@ -172,11 +169,11 @@ const benefits = [
       font-size: 0.875rem;
     }
 
-    .benefit:nth-child(5) { order: 1; padding-inline: 0 50%; }
-    .benefit:nth-child(3) { order: 2; padding-inline: 50% 0; }
-    .benefit:nth-child(2) { order: 3; padding-inline: 0 50%; }
-    .benefit:nth-child(4) { order: 4; padding-inline: 50% 0; }
-    .benefit:nth-child(1) { order: 5; padding-inline: 0 50%; }
+    .benefit:nth-child(5) { order: 1; }
+    .benefit:nth-child(3) { order: 2; }
+    .benefit:nth-child(2) { order: 3; }
+    .benefit:nth-child(4) { order: 4; }
+    .benefit:nth-child(1) { display: none; }
 
     .benefit p { max-width: 10.5rem; }
   }

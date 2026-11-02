@@ -12,7 +12,6 @@ import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/700.css";
 import "@fontsource/poppins/800.css";
 import "@fontsource/poppins/900.css";
-import logo from "../assets/icons/logo-quimica.svg";
 import { siteConfig } from "../data/site";
 import FloatingActions from "../components/shared/FloatingActions.astro";
 
@@ -65,7 +64,7 @@ const structuredData = {
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <link rel="icon" href={logo.src} type="image/svg+xml" />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="96x96" />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <title>{title}</title>
     <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)}></script>

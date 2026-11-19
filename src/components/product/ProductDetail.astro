@@ -5,6 +5,7 @@ import { outlinedGarmentSlugs } from "../../data/garment-outlines";
 import { getRecommendationCards } from "../../data/product-cards";
 import ProductCarousel from "./ProductCarousel.astro";
 import { priceCatalog, type CatalogProduct } from "../../data/pricing";
+import { serviceDescriptions } from "../../data/services";
 import ProductInfo from "./ProductInfo.astro";
 import BrandTicker from "../shared/BrandTicker.astro";
 
@@ -240,6 +241,12 @@ const relatedProducts = getRecommendationCards(product);
     <div>
       <h2 id="description-heading">Descripción</h2>
       {(product.description || catalog.description || "").split("\n").filter(Boolean).map((paragraph) => <p>{paragraph}</p>)}
+      {["Remeras", "Buzos", "Camperas", "Chombas"].includes(catalog.category) && (
+        <>
+          <h3>Estampado textil</h3>
+          {serviceDescriptions.estampadoTextil.map((paragraph) => <p>{paragraph}</p>)}
+        </>
+      )}
     </div>
     {product.sizeTable && (
       <details class="size-guide">
@@ -806,6 +813,7 @@ const relatedProducts = getRecommendationCards(product);
   }
 
   .product-description { margin-top: 2rem; }
+  .product-description h3 { margin-top: 2rem; color: var(--color-magenta); font: 500 1.125rem/1.5 var(--font-jetbrains-mono); }
   .product-description h2, .related h2 {
     margin: 0;
     border-left: 2px solid var(--color-magenta);

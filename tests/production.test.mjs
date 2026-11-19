@@ -174,8 +174,8 @@ test("las dos tarjetas informativas de servicios permanecen visibles en responsi
     "utf8",
   );
 
-  assert.ok(home.includes("Corpóreos en Polifan"));
-  assert.ok(home.includes("Impresión de gran formato"));
+  assert.ok(home.includes("Corpóreos de polifan"));
+  assert.ok(home.includes("Impresión en gran formato"));
   assert.doesNotMatch(
     servicesSource,
     /[^{}]*\.services__extras[^{}]*\{[^{}]*display:\s*none/,

@@ -158,7 +158,7 @@ export const priceCatalog = {
       { key: "side", label: "Impresión", options: [{ value: "simple", label: "Simple faz" }, { value: "doble", label: "Doble faz" }] },
       { key: "quantity", label: "Cantidad", options: quantityChoices(100, 300, 500) },
     ],
-    sizes: ["8,5 × 5,5 cm", "9 × 5 cm"],
+    sizes: ["8,5 × 5,5 cm"],
     prices: [
       price({ side: "simple", quantity: "x100" }, 100, { total: "$18.000" }),
       price({ side: "simple", quantity: "x300" }, 300, { total: "$48.000", note: "$16.000 las 100" }),
@@ -185,7 +185,7 @@ export const priceCatalog = {
     id: "folletos",
     name: "Folletos",
     category: "Folletos",
-    description: "Papel ilustración con terminación brillante o matelina, de hasta 120 g.",
+    description: "Papel ilustración de 120 g. Medida estándar: 10 × 15 cm. Simple o doble faz.",
     variants: [
       { key: "format", label: "Medida", options: [{ value: "estandar", label: "Estándar 10 × 15 cm" }, { value: "chico", label: "Chico 7 × 10 cm" }] },
       { key: "side", label: "Impresión", options: [{ value: "simple", label: "Simple faz" }, { value: "doble", label: "Doble faz" }] },

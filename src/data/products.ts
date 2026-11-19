@@ -1,4 +1,5 @@
 import type { ImageMetadata } from "astro";
+import { serviceDescriptions } from "./services";
 import {
   formatCatalogPrice,
   resolveCatalogPrice,
@@ -169,9 +170,9 @@ export const products: Product[] = [
       "DTF UV": "Calcos DTF UV",
     };
     const descriptionByType: Record<string, string> = {
-      Papel: "Calcos de papel aptos para interior y exterior, impresos con tintas ecosolventes, de colores vibrantes y resistentes al agua. Se pueden usar en vidrieras, vehículos, cartelería, packaging, objetos y diferentes superficies.",
-      "Vinilo troquelado": "Calcos de vinilo troquelado, ideales para superficies lisas y acabados duraderos.",
-      "DTF UV": "Calcos DTF UV, ideales para superficies rígidas y acabados resistentes al uso exterior.",
+      Papel: serviceDescriptions.calcosPapel.join("\n"),
+      "Vinilo troquelado": serviceDescriptions.calcosVinilo.join("\n"),
+      "DTF UV": serviceDescriptions.calcosDtfUv.join("\n"),
     };
 
     return ({
@@ -215,7 +216,7 @@ export const products: Product[] = [
     colors: ["#efefec", "#545454", "#0e0e0e"],
     sizeLabel: "Talles",
     sizeValue: "Regulable",
-    description: "Gorras trucker sublimadas o estampadas con DTF.",
+    description: serviceDescriptions.gorras.join("\n"),
     heroImage: gorraMain,
     gallery: [gorra1, gorra3, gorraPromo, gorraMain],
   },
@@ -354,7 +355,7 @@ export const products: Product[] = [
     pricingId: "folletos", priceSelection: { format: "estandar", side: "simple", quantity: "x100" },
     price: catalogPrice("folletos", { format: "estandar", side: "simple", quantity: "x100" }),
     options: [],
-    sizeValue: "Papel ilustración con terminación brillante o matelina, de hasta 120 g.", description: "Folletos con diseño claro y acabado profesional.", gallery: [folletosMain, folletosDetail2, folletosDetail3, folletosAprender],
+    sizeValue: "Papel ilustración de 120 g.", description: serviceDescriptions.folletos.join("\n"), gallery: [folletosMain, folletosDetail2, folletosDetail3, folletosAprender],
   },
   {
     slug: "tarjetas-personales",
@@ -362,7 +363,7 @@ export const products: Product[] = [
     pricingId: "tarjetas-personales", priceSelection: { side: "simple", quantity: "x100" },
     price: catalogPrice("tarjetas-personales", { side: "simple", quantity: "x100" }),
     options: [],
-    sizeValue: "Papel con terminación mate o brillante, de hasta 250 g.", description: "Tarjetas con acabado premium para presentar tu marca con estilo.", gallery: [tarjetasMain, tarjetasPhoto2, tarjetasPhoto3, tarjetasSusuStore],
+    sizeValue: "Papel con terminación mate o brillante, de hasta 250 g.", description: serviceDescriptions.tarjetas.join("\n"), gallery: [tarjetasMain, tarjetasPhoto2, tarjetasPhoto3, tarjetasSusuStore],
   },
   {
     slug: "etiquetas",

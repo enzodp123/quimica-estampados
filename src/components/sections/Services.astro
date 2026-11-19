@@ -6,11 +6,12 @@ import folletos from "../../assets/products/folletos/1.webp";
 import labels from "../../assets/services/etiquetas.webp";
 import BackgroundText from "../shared/BackgroundText.astro";
 import { serviceConsultationMessages, whatsappUrl } from "../../data/site";
+import { serviceDetails } from "../../data/services";
 
 const services = [
   {
     name: "Calcos",
-    description: "Calcos aptos para interior y exterior, impresos con tintas ecosolventes, de colores vibrantes y resistentes al agua.",
+    description: "Vinilo con tintas ecosolventes, papel con tintas al agua y DTF UV. Conocé las características de cada opción.",
     image: stickers,
     imageAlt: "Calcos impresos a color para una marca gastronómica",
     imagePosition: "50% 50%",
@@ -18,7 +19,7 @@ const services = [
   },
   {
     name: "Tarjetas personales",
-    description: "Terminación mate (sin brillo) o brillante. Ideales para profesionales, comercios y emprendimientos.",
+    description: "Medida estándar: 8,5 × 5,5 cm. Simple o doble faz, con terminación mate (sin brillo) o brillante.",
     image: cards,
     imageAlt: "Tarjetas personales negras con terminación brillante",
     imagePosition: "50% 50%",
@@ -26,7 +27,7 @@ const services = [
   },
   {
     name: "Folletos",
-    description: "Papel ilustración con terminación brillante o matelina, de hasta 120 g.",
+    description: "Medida estándar: 10 × 15 cm. Papel ilustración de 120 g. Simple o doble faz.",
     image: folletos,
     imageAlt: "Folletos personalizados impresos a color",
     imagePosition: "50% 50%",
@@ -77,20 +78,44 @@ const services = [
       ))}
     </div>
 
-    <a class="services__all-cta" href="#contacto">Todos los servicios</a>
+    <a class="services__all-cta" href="#detalles-servicios">Todos los servicios</a>
+
+    <div id="detalles-servicios" class="services__details">
+      {serviceDetails.map(({ name, paragraphs, href, linkLabel }) => (
+        <details class="service-detail">
+          <summary>{name}</summary>
+          <div class="service-detail__body">
+            {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            <a href={href}>{linkLabel}</a>
+          </div>
+        </details>
+      ))}
+    </div>
 
     <div class="services__extras">
       <article id="corporeos" class="service-extra service-extra--cyan">
-        <h3>Corpóreos en Polifan</h3>
-        <p>Letras, logos y diseños realizados en Polifan, ideales para destacar tu marca en vidrieras, locales, eventos y espacios comerciales.</p>
+        <h3>Corpóreos de polifan</h3>
+        <p>Letras, logos y diseños realizados en polifan, ideales para destacar tu marca en vidrieras, locales, eventos y espacios comerciales. Una opción liviana, versátil y con excelente impacto visual.</p>
         <p class="service-extra__detail"><strong>¿Querés cotizar el tuyo?</strong> El presupuesto se realiza de manera personalizada según las medidas, la cantidad, el diseño y la terminación.</p>
-        <a href={whatsappUrl(serviceConsultationMessages.corporeos)} target="_blank" rel="noopener noreferrer">Consultar</a>
+        <p class="service-extra__detail">Consultanos por WhatsApp y te asesoramos.</p>
+        <a href={whatsappUrl(serviceConsultationMessages.corporeos)} target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
       </article>
       <article id="gran-formato" class="service-extra service-extra--magenta">
-        <h3>Impresión de gran formato</h3>
+        <h3>Impresión en gran formato</h3>
+        <p>Impresiones en vinilo y en lona.</p>
         <p>Impresión de alta calidad para vidrieras, locales, vehículos, cartelería y diferentes proyectos comerciales. Trabajamos con distintos tipos de materiales según la superficie, el uso y el resultado que quieras lograr.</p>
+        <ul>
+          <li>Vinilo base blanca</li>
+          <li>Vinilo base transparente</li>
+          <li>Vinilo microperforado</li>
+          <li>Lona front</li>
+          <li>Lona backlight</li>
+          <li>Tela Canvas</li>
+        </ul>
+        <p>También realizamos vinilos de corte.</p>
         <p class="service-extra__detail"><strong>Cada proyecto es diferente.</strong> Te asesoramos sobre cada material y cotizamos según las medidas, la cantidad y las características de cada trabajo.</p>
-        <a href={whatsappUrl(serviceConsultationMessages.granFormato)} target="_blank" rel="noopener noreferrer">Consultar</a>
+        <p class="service-extra__detail">Consultanos por WhatsApp y te asesoramos.</p>
+        <a href={whatsappUrl(serviceConsultationMessages.granFormato)} target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
       </article>
     </div>
 
@@ -145,7 +170,8 @@ const services = [
   }
 
   .service-card {
-    height: 32.5rem;
+    height: auto;
+    min-height: 32.5rem;
     min-width: 0;
     display: block;
     overflow: hidden;
@@ -157,9 +183,9 @@ const services = [
 
   .service-card--1,
   .service-card--3 { margin-top: 5.946rem; }
-  .service-card--2 { height: 32.5538rem; }
-  .service-card--3 { height: 31.3038rem; }
-  .service-card--4 { height: 34.375rem; margin-top: 0.125rem; }
+  .service-card--2 { min-height: 32.5538rem; }
+  .service-card--3 { min-height: 31.3038rem; }
+  .service-card--4 { min-height: 34.375rem; margin-top: 0.125rem; }
 
   .service-card:hover,
   .service-card:focus-within {
@@ -209,6 +235,16 @@ const services = [
   }
 
   .service-extra p { margin-top: 1.5rem; }
+  .service-extra ul { margin-top: 1.5rem; padding-left: 1.25rem; list-style: disc; color: rgba(255, 255, 255, 0.69); font: 400 1rem/1.7 var(--font-poppins); }
+
+  .services__details { width: 100%; min-width: 0; margin-top: 2rem; }
+  .service-detail { border-bottom: 1px solid var(--color-border); }
+  .service-detail:first-child { border-top: 1px solid var(--color-border); }
+  .service-detail summary { padding: 1.25rem 0; color: var(--color-yellow); font: 700 1rem/1.5 var(--font-jetbrains-mono); cursor: pointer; }
+  .service-detail summary:focus-visible { outline: 2px solid var(--color-yellow); outline-offset: 4px; }
+  .service-detail__body { max-width: 70ch; padding-bottom: 1.5rem; color: rgba(255, 255, 255, 0.69); font: 400 1rem/1.7 var(--font-poppins); }
+  .service-detail__body p + p { margin-top: 1rem; }
+  .service-detail__body a { display: inline-block; margin-top: 1.25rem; color: var(--color-cyan); text-decoration: underline; text-underline-offset: 0.2em; }
 
   .services__extras {
     position: absolute;
@@ -217,6 +253,7 @@ const services = [
     width: 59.4271%;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
     gap: 2.5625rem;
   }
 
@@ -256,6 +293,9 @@ const services = [
     position: relative;
     width: 14.125rem;
     min-height: 3.4375rem;
+    max-width: 100%;
+    padding: 0.75rem;
+    text-align: center;
     margin-top: auto;
     display: grid;
     place-items: center;
@@ -782,10 +822,11 @@ const services = [
       margin-left: var(--section-content-start);
     }
     .services__grid { grid-column: 1 / -1; position: static; width: 100%; min-width: 0; }
-    .services__extras { grid-column: 2; grid-row: 2; position: static; width: 100%; margin: 0; }
+    .services__details { grid-column: 1 / -1; grid-row: 2; margin: 0; }
+    .services__extras { grid-column: 2; grid-row: 3; position: static; width: 100%; margin: 0; }
     .services__heading {
       grid-column: 1;
-      grid-row: 2;
+      grid-row: 3;
       align-self: start;
       margin-top: calc(0.9375rem - 2.5rem);
     }
